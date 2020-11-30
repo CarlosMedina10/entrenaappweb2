@@ -2,14 +2,14 @@
 
 
 
-import 'dart:html';
 
+import 'package:http/http.dart' as http;
 import 'package:entrenaappweb/models/Configuracion.dart';
 import 'package:entrenaappweb/models/Patron.dart';
 import 'package:excel/excel.dart';
 import 'package:file_picker_cross/file_picker_cross.dart';
 import 'dart:convert';
-import 'dart:html' as html;
+
 import '../../models/MesocicloEntrenamiento.dart';
 import '../../models/Ejercicio.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -393,6 +393,8 @@ List<Ejercicio>  listaEjercicios = [
 Ejercicio ejercicioSeleccionado;
 MesocicloEntrenamiento mesocicloEntrenamiento;
 Patron patron;
+
+
 buscarEjercicio(String nombreEjercicio){
   ejercicioSeleccionado=null;
  listaEjercicios.forEach((ejercicio) {
@@ -402,7 +404,23 @@ buscarEjercicio(String nombreEjercicio){
  });
 
 }
-
+ Future guardarEnBBDD(MesocicloEntrenamiento mesocicloEntrenamiento) async{
+final url = 'https://entrenaapp2-12fbe.firebaseio.com/W8BP78bU2oSUsOkiJvQTFLicseg1/mesociclos.json';
+    try{ final response = await http.post(url, body: 
+     json.encode(
+    mesocicloEntrenamiento.toJson()
+    ),
+    );
+   
+ 
+  mesocicloEntrenamiento.id= json.decode(response.body)['name'];
+ 
+  
+}  catch (error) {
+      print(error);
+      throw error;
+    }
+    }
   List<BlogModel> blogList = List<BlogModel>();
   bool isEjercicio=false;
   bool isNombre = false;
@@ -502,11 +520,12 @@ buscarEjercicio(String nombreEjercicio){
 
 
 FilePickerCross myFile = await FilePickerCross.importFromStorage(
-  type: FileTypeCross.any,       // Available: `any`, `audio`, `image`, `video`, `custom`. Note: not available using FDE
-  fileExtension: '.txt, .md'     // Only if FileTypeCross.custom . May be any file extension like `.dot`, `.ppt,.pptx,.odp`
+  type: FileTypeCross.custom,       // Available: `any`, `audio`, `image`, `video`, `custom`. Note: not available using FDE
+  fileExtension: '.xlsx'     // Only if FileTypeCross.custom . May be any file extension like `.dot`, `.ppt,.pptx,.odp`
 );
 print(myFile.path);
-
+print(myFile.fileName.replaceRange(myFile.fileName.length-5,myFile.fileName.length,''));
+   
     var bytes = myFile.toUint8List();
     var excel = Excel.decodeBytes(bytes);
     int hoja=0;
@@ -523,6 +542,8 @@ print(myFile.path);
     } else if (hojas==6) {
       mesocicloEntrenamiento=MesocicloEntrenamiento.mesocicloVacio6Dias();
     }
+
+     mesocicloEntrenamiento.nombreMesociclo=myFile.fileName.replaceRange(myFile.fileName.length-5,myFile.fileName.length,'');
     for (var table in excel.tables.keys) {
 
       print(table); //sheet Name
@@ -629,7 +650,8 @@ print(myFile.path);
          });
  });
  
- 
+ await guardarEnBBDD(mesocicloEntrenamiento);
+ print('Se ha guardado!!');
                     },
                     child: Card(
                       child: Padding(

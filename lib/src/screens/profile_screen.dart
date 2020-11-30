@@ -33,20 +33,20 @@ class _ProfileSectionState extends State<ProfileSection> {
           children: <Widget>[
             Container(
               height: isSmallScreen(context)
-                  ? displaySize.width / 2.5
-                  : displaySize.width / 3.2,
+                  ? displaySize.width / 5.5
+                  : displaySize.width / 6.5,
               child: Stack(
                 overflow: Overflow.visible,
                 children: <Widget>[
-                  Image.network(
-                    "https://pbs.twimg.com/profile_banners/3015219910/1559145714/1500x500",
+                  Image.asset(
+                    "assets/images/Fondo1.jpg",
                     width: displaySize.width,
                     fit: BoxFit.fitWidth,
                   ),
                   Positioned(
                     top: isSmallScreen(context)
-                        ? displaySize.width / 4
-                        : displaySize.width / 6.5,
+                        ? displaySize.width / 12
+                        : displaySize.width / 14,
                     child: Container(
                       margin: EdgeInsets.only(left: 8.0),
                       padding: EdgeInsets.all(3),
@@ -65,7 +65,24 @@ class _ProfileSectionState extends State<ProfileSection> {
                         ),
                       ),
                     ),
-                  )
+                  ),
+                   Positioned(
+                     top: isSmallScreen(context)
+                        ? displaySize.width / 5.25
+                        : displaySize.width / 6.25,
+                    left:displaySize.width / 6, 
+                    child: Column(children:
+                    [
+                      Container(
+                      width: displaySize.width,
+                      child: AutoSizeText(
+                        "Bienvenido, Carlos Medina",
+                        style: TextStyle(fontSize: 40),
+                      )),
+                
+                    ]
+                    ),
+                   )
                 ],
               ),
             ),
@@ -74,21 +91,10 @@ class _ProfileSectionState extends State<ProfileSection> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Container(
-                      width: displaySize.width,
-                      child: AutoSizeText(
-                        "Ashish Rawat",
-                        style: TextStyle(fontSize: 40),
-                      )),
-                  Container(
-                    width: displaySize.width,
-                    child: AutoSizeText(
-                      "Android and Fluttter Developer",
-                      style: TextStyle(fontSize: 30),
-                    ),
-                  ),
+                  
+              
                   SizedBox(
-                    height: 20,
+                    height: MediaQuery.of(context).size.height*0.15,
                   ),
                   Container(
                     width: displaySize.width / 1.1,

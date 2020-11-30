@@ -1,6 +1,9 @@
 import 'package:entrenaappweb/blocs/navigation_bloc.dart';
+import 'package:entrenaappweb/src/bloc/authentication_bloc/authentication_bloc.dart';
+import 'package:entrenaappweb/src/bloc/authentication_bloc/authentication_event.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MenuSection extends StatefulWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
@@ -15,7 +18,7 @@ class _MenuSectionState extends State<MenuSection> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.blue,
+      color: Color.fromRGBO(3, 9, 40, 1),
       child: Column(
         children: <Widget>[
           ListTile(
@@ -93,6 +96,23 @@ class _MenuSectionState extends State<MenuSection> {
               if (widget.scaffoldKey.currentState.isDrawerOpen) {
                 Navigator.of(context).pop();
               }
+            },
+          ),
+          ListTile(
+            title: Text(
+              "Salir",
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.white,
+              ),
+            ),
+            leading: Icon(
+              Icons.power_settings_new,
+              color: Colors.white,
+            ),
+            onTap: () {
+              BlocProvider.of<AuthenticationBloc>(context).add(LoggedOut());
+            
             },
           ),
         ],

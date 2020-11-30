@@ -8,6 +8,10 @@ import 'package:flutter/material.dart';
 import 'blog_screen.dart';
 
 class Home extends StatefulWidget {
+  String idUser;
+  String token;
+  
+  Home(this.idUser,this.token);
   @override
   _HomeState createState() => _HomeState();
 }
@@ -17,6 +21,9 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    print(widget.idUser);
+    print(widget.token);
+
     return Scaffold(
       key: _scaffoldKey,
       appBar: isSmallScreen(context)
@@ -46,7 +53,7 @@ class _HomeState extends State<Home> {
                   child: MenuSection(_scaffoldKey),
                 ),
                 Container(
-                  color: Colors.black,
+                  color: Colors.white,
                   width: 0.65,
                 ),
                 Expanded(
