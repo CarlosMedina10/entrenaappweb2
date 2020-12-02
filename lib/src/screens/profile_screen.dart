@@ -1,5 +1,6 @@
+import 'dart:convert';
 import 'dart:html' as html;
-
+import 'package:http/http.dart' as http;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:entrenaappweb/blocs/navigation_bloc.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,9 @@ import 'package:flutter/material.dart';
 import 'home_screen.dart';
 
 class ProfileSection extends StatefulWidget {
+  final String idUser;
+  final String token;
+  ProfileSection(this.idUser,this.token);
   @override
   _ProfileSectionState createState() => _ProfileSectionState();
 }
@@ -15,6 +19,8 @@ class ProfileSection extends StatefulWidget {
 class _ProfileSectionState extends State<ProfileSection> {
   @override
   Widget build(BuildContext context) {
+ 
+    print(widget.idUser);
     Size displaySize = MediaQuery.of(context).size;
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
@@ -125,7 +131,9 @@ class _ProfileSectionState extends State<ProfileSection> {
                           imageUrl:
                               "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
                           url: "https://github.com/ashishrawat2911",
-                          context: context),
+                          context: context,
+                        ),
+                          
                       socialProfile(
                           imageUrl:
                               "https://cdn1.iconfinder.com/data/icons/logotypes/32/square-linkedin-512.png",
@@ -220,10 +228,11 @@ class _ProfileSectionState extends State<ProfileSection> {
     );
   }
 
-  Widget socialProfile({String imageUrl, String url, BuildContext context}) {
+  Widget socialProfile({String imageUrl, String url, BuildContext context,Function comprar}) {
     return GestureDetector(
         onTap: () {
-          html.window.open(url, "");
+          // html.window.open(url, "");
+          comprar();
         },
         child: Image.network(
           imageUrl,

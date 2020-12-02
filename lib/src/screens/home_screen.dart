@@ -71,15 +71,15 @@ class _HomeState extends State<Home> {
         initialData: navigationDrawerBloc.navigationProvider.currentNavigation,
         builder: (context, snapshot) {
           if (snapshot.data == NavigationScreen.Profile) {
-            return ProfileSection();
+            return ProfileSection(widget.idUser,widget.token);
           } else if (snapshot.data == NavigationScreen.Blog) {
             return Blogs();
           } else if (snapshot.data == NavigationScreen.Talks) {
             return TalksScreen();
           } else if (snapshot.data == NavigationScreen.PersonalProject) {
-            return PersonalProjects();
+            return PersonalProjects(widget.token);
           } else {
-            return ProfileSection();
+            return ProfileSection(widget.idUser,widget.token);
           }
         });
   }
