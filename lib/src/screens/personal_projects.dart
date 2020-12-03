@@ -22,20 +22,59 @@ import 'package:flutter/material.dart';
 import 'home_screen.dart';
 
 class PersonalProjects extends StatefulWidget {
+  final String idUser;
   final String idToken;
-  PersonalProjects(this.idToken);
+  PersonalProjects(this.idUser,this.idToken);
   @override
   _PersonalProjectsState createState() => _PersonalProjectsState();
 }
 
 class _PersonalProjectsState extends State<PersonalProjects> {
 
+bool isLoading=false;
+Map<String,dynamic> listaClientes;
 
+Future quiereSerEntrenador() async{
 
+final url = 'https://entrenaapp2-12fbe.firebaseio.com/ZZentrenadores/${widget.idUser}.json?auth=${widget.idToken}';
+    try{  await http.patch(url, body: 
+     json.encode(
+     {'Nombre':'Carlos Medina'}
+    ),
+    );
+ }  catch (error) {
+      print(error);
+      throw error;
+    }
+    }
 
+Future quiereSerCliente() async{
+
+final url = 'https://entrenaapp2-12fbe.firebaseio.com/ZZentrenadores/${widget.idUser}/Clientes.json?auth=${widget.idToken}';
+    try{  await http.patch(url, body: 
+     json.encode(
+     {'vjPlfIOxv1aLlgdDqxcNDCpzQJh2':'Alejandra Vila'}
+    ),
+    );
+ }  catch (error) {
+      print(error);
+      throw error;
+    }
+    }
+
+  Future obtenerDatosDeClientes()async{
+
+final url = 'https://entrenaapp2-12fbe.firebaseio.com/ZZentrenadores/${widget.idUser}/Clientes.json?auth=${widget.idToken}';
+
+final response = await http.get(url);
+        // print(response.body);
+        listaClientes = json.decode(response.body) as Map<String,dynamic>;
+
+       
  
-  List<BlogModel> blogList = List<BlogModel>();
-
+  }
+    
+ List<BlogModel> blogList = List<BlogModel>();
 
   @override
   void initState() {
@@ -49,7 +88,9 @@ class _PersonalProjectsState extends State<PersonalProjects> {
     Size displaySize = MediaQuery.of(context).size;
     return SingleChildScrollView(
       physics: BouncingScrollPhysics(),
-      child: Container(
+      child: 
+      (isLoading==false) ?
+      Container(
         height: displaySize.height,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -75,64 +116,22 @@ class _PersonalProjectsState extends State<PersonalProjects> {
                 ...List<Widget>.generate(blogList.length, (int index) {
                   return GestureDetector(
                     onTap: () async{
-                     
+                  if (index==0)
+    {
+      setState(() {
+        isLoading=true;
+      });
+      await obtenerDatosDeClientes();
  Navigator.push(
                                                                       context,
                                                                       MaterialPageRoute(
                                                                           builder: (context) => CargarEntrenamiento(
-                                                                               widget.idToken
+                                                                               widget.idToken,listaClientes
                                                                               )));
-//  List<String> listaMusculos= ['Pecho','Espalda','Hombro Frontal','Hombro Lateral','Hombro Posterior','Biceps','Triceps','Cuadriceps','Femoral','Gluteo','Trapecio','Gemelo','Abs'];
-// FilePickerCross myFile = await FilePickerCross.importFromStorage(
-//   type: FileTypeCross.any,       // Available: `any`, `audio`, `image`, `video`, `custom`. Note: not available using FDE
-//   fileExtension: '.txt, .md'     // Only if FileTypeCross.custom . May be any file extension like `.dot`, `.ppt,.pptx,.odp`
-// );
-// print(myFile.path);
+                                                                              
+                                                                              }
+      else obtenerDatosDeClientes();
 
-//     var bytes = myFile.toUint8List();
-//     var excel = Excel.decodeBytes(bytes);
-//       Sheet sheetObject = excel['Hoja 3'];
-//       int rowindex=3;
-//       int columnindex=3;
-//       listaMusculos.forEach((musculo) { 
-//       listaEjercicios.forEach((ejercicio) {
-//         if (ejercicio.musculosTrabajados['Primario1']==musculo){
-//           print(ejercicio.nombre);
-//   var cell = sheetObject.cell(CellIndex.indexByColumnRow(columnIndex:columnindex,rowIndex:rowindex));
-//  cell.value = ejercicio.nombre; 
-//   rowindex=rowindex+1;
-
-//   }
- 
- 
-//  }); 
-//  rowindex=3;
-//  columnindex=columnindex+1;
- 
-//  });
-//   excel.encode().then((excel_bytes) {
-//    final blob = html.Blob([excel_bytes]);
-//    final url = html.Url.createObjectUrlFromBlob(blob);
-//    final anchor = html.document.createElement('a') as html.AnchorElement
-//      ..href = url
-//      ..style.display = 'none'
-//      ..download = 'Prueba.xlsx';
-//    html.document.body.children.add(anchor);
-
-//    // download the file
-//    anchor.click();
-
-//    // cleanup
-//    // html.document.body.children.remove(anchor);
-//    // html.Url.revokeObjectUrl(url);
-//  });
-
-
-
-// await cargarMesociclo();
- 
-//  await guardarEnBBDD(mesocicloEntrenamiento);
- print('Se ha guardado!!');
                     },
                     child: Card(
                       child: Padding(
@@ -161,7 +160,7 @@ class _PersonalProjectsState extends State<PersonalProjects> {
             )
           ],
         ),
-      ),
+      ) : Center(child: CircularProgressIndicator(backgroundColor: Colors.orange,),),
     );
   }
 

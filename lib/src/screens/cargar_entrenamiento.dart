@@ -11,14 +11,17 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:convert';
 class CargarEntrenamiento extends StatefulWidget {
  final String idToken;
- CargarEntrenamiento(this.idToken);
+ final Map<String,dynamic> listaClientes;
+ CargarEntrenamiento(this.idToken,this.listaClientes);
 
   @override
   _CargarEntrenamientoState createState() => _CargarEntrenamientoState();
 }
 
 class _CargarEntrenamientoState extends State<CargarEntrenamiento> {
+
  Configuracion configuracion;
+ String nombreEntrenamiento;
   Series series;
   Repeticiones repeticiones;
   Rir rir;
@@ -402,6 +405,7 @@ Patron patron;
   fileExtension: '.xlsx'     // Only if FileTypeCross.custom . May be any file extension like `.dot`, `.ppt,.pptx,.odp`
 );
 print(myFile.path);
+nombreEntrenamiento=myFile.fileName;
 print(myFile.fileName.replaceRange(myFile.fileName.length-5,myFile.fileName.length,''));
    
     var bytes = myFile.toUint8List();
@@ -555,17 +559,17 @@ print(myFile.fileName.replaceRange(myFile.fileName.length-5,myFile.fileName.leng
  });
  
  }
- Future guardarEnBBDD(MesocicloEntrenamiento mesocicloEntrenamiento) async{
+ Future guardarEnBBDD(MesocicloEntrenamiento mesocicloEntrenamiento,String idCliente) async{
 
-final url = 'https://entrenaapp2-12fbe.firebaseio.com/W8BP78bU2oSUsOkiJvQTFLicseg1/mesociclos.json?auth=${widget.idToken}';
-    try{ final response = await http.post(url, body: 
+final url = 'https://entrenaapp2-12fbe.firebaseio.com/$idCliente/mesociclos.json?auth=${widget.idToken}';
+    try{  await http.post(url, body: 
      json.encode(
     mesocicloEntrenamiento.toJson()
     ),
     );
    
  
-  mesocicloEntrenamiento.id= json.decode(response.body)['name'];
+ 
   
  
   
@@ -583,25 +587,111 @@ buscarEjercicio(String nombreEjercicio){
  });
 
 }
+List<String> listaNombreClientes = [];
+Map<String,String> clienteSeleccionado;
+@override
+  void initState() {
+  
+  widget.listaClientes.forEach((key, value) {
+   
+    listaNombreClientes.add(value);
+
+  });
+  print(listaNombreClientes);
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
+   
     return    Scaffold(
-      body: (entrenamientoCargado) ? Center(
-        child: RaisedButton(
-          onPressed: () async{
-          await cargarMesociclo();
-          setState(() {
-            entrenamientoCargado=true;
-          });
-          // await guardarEnBBDD(mesocicloEntrenamiento);
-          },
-          child: Text('Cargar Entrenamiento'),
+      body: (entrenamientoCargado==false) ? Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+             Container(
+                width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.5,
+               child: new DropdownButton<String>(
+                                        isExpanded: true,
+                                        hint: Container(
+                                      
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.5,
+                                            child: Text('Seleccionar',
+                                                style: TextStyle(
+                                                  color: Colors.grey[300],
+                                                  fontSize:
+                                                      (MediaQuery.of(context)
+                                                                  .size
+                                                                  .width <
+                                                              500)
+                                                          ? 16
+                                                          : 24,
+                                                  fontWeight: FontWeight.w500,
+                                                ))),
+                                        items:listaNombreClientes
+                                            .map((nombre) => DropdownMenuItem(
+                                                  value: nombre,
+                                                  child: Text(
+                                                    '$nombre',
+                                                    style: TextStyle(
+                                                      color: Colors.grey[300],
+                                                      fontSize: (MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width <
+                                                              500)
+                                                          ? 16
+                                                          : 24,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
+                                                  ),
+                                                ))
+                                            .toList(),
+                                        onChanged: (value) {
+                                        widget.listaClientes.forEach((key, value1) {
+                                          if (value1==value)
+                                          setState(() {
+                                            clienteSeleccionado={key:value1};
+                                          });
+                                          
+                                        });
+                                        print(clienteSeleccionado.values.first);
+                                        print(clienteSeleccionado.keys.first);
+                                        },
+                                        value: (clienteSeleccionado!=null) ? clienteSeleccionado.values.first : null,
+                                      ),
+             ),
+
+            SizedBox(height:5),
+            RaisedButton(
+              onPressed: () async{
+              
+              await cargarMesociclo();
+              setState(() {
+                entrenamientoCargado=true;
+              });
+              await guardarEnBBDD(mesocicloEntrenamiento,clienteSeleccionado.keys.first);
+              },
+              child: Text('Cargar Entrenamiento'),
+            ),
+          ],
         ),
       ) : Center(
         child: 
         Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children:[
-           Icon(FontAwesomeIcons.fileExcel,size: 50,),
+           Icon(FontAwesomeIcons.solidFileExcel,size: 50,color:Colors.green),
+           SizedBox(height:5),
+           Text(nombreEntrenamiento)
           ]
         )
         // RaisedButton(

@@ -77,7 +77,7 @@ class _HomeState extends State<Home> {
           } else if (snapshot.data == NavigationScreen.Talks) {
             return TalksScreen();
           } else if (snapshot.data == NavigationScreen.PersonalProject) {
-            return PersonalProjects(widget.token);
+            return PersonalProjects(widget.idUser,widget.token);
           } else {
             return ProfileSection(widget.idUser,widget.token);
           }
