@@ -5,6 +5,9 @@ import '../../bloc/login_bloc/bloc.dart';
 
 
 class GoogleLoginButton extends StatelessWidget {
+  final bool isMobile;
+  final bool isTablet;
+  GoogleLoginButton(this.isMobile,this.isTablet);
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
@@ -28,15 +31,15 @@ class GoogleLoginButton extends StatelessWidget {
       elevation: 2.0,
       fillColor: Colors.white,
       child: Container(
-        height: 60,
+        height: isMobile ? 45 :  52.5 ,
         child: Center(
           child: Image(
             image: AssetImage(
               "graphics/google-logo.png",
               package: "flutter_auth_buttons",
             ),
-            height: 30.0,
-            width: 30.0,
+             height: isMobile ? 20 : isTablet ? 25 : 30,
+            width: isMobile ? 20 : isTablet ? 25 : 30,
           ),
         ),
       ),

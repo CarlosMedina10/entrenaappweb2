@@ -1,7 +1,8 @@
 
 
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:entrenaappweb/utils/responsiveLayout.dart';
+import 'package:entrenaappweb/src/ui/login/apple_login_button.dart';
+
 import 'package:flutter/material.dart';
 // import './signup.dart';
 
@@ -35,11 +36,11 @@ class LoginPage extends StatefulWidget {
   static const routename = '/loginPage';
 
   final UserRepository _userRepository;
+  final bool isMobile;
+  final bool isTablet;
 
-  LoginPage({Key key, @required UserRepository userRepository})
-      : assert(userRepository != null),
-        _userRepository = userRepository,
-        super(key: key);
+  LoginPage( this._userRepository,this.isMobile,this.isTablet);
+    
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -111,9 +112,9 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _title() {
     return Container(
-      
+      padding: EdgeInsets.symmetric(vertical:10),
       height: MediaQuery.of(context).size.height*0.125,
-      width: MediaQuery.of(context).size.width*0.6,
+     
       // padding: EdgeInsets.only(
       //     right: MediaQuery.of(context).size.width * 0.2,
       //     left: MediaQuery.of(context).size.width * 0.1),
@@ -206,275 +207,274 @@ class _LoginPageState extends State<LoginPage> {
       }
     }, child: BlocBuilder<LoginBloc, LoginState>(
       builder: (context, state) {
-        return Scaffold(
-            backgroundColor: Color.fromRGBO(3, 9, 40, 1),
-            body: new GestureDetector(
+        return new GestureDetector(
                 onTap: () {
                   // call this method here to hide soft keyboard
                   FocusScope.of(context).requestFocus(new FocusNode());
                 },
-                child: Center(
-                  child: SingleChildScrollView(
-                      child: Container(
-                          alignment: Alignment.center,
-                          
-                    // color: Color.fromRGBO(3, 9, 40, 0.65),
-                    height: MediaQuery.of(context).size.height,
-                    child: ListView(
-                      children: <Widget>[
-                        SizedBox(height:MediaQuery.of(context).size.height*0.05),
-                        Container(
-                          alignment: Alignment.center,
-                          
+                child:  Container(
+                      color:Color(0xff0A183D) ,
+                      
+                        alignment: Alignment.center,
                         
-                          padding: EdgeInsets.symmetric(horizontal: 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              // Expanded(
-                              //   flex: 6,
-                              //   child: SizedBox(),
-                              // ),
-                              _title(),
-                              SizedBox(
-                               
-                                height: (altura > 600) ? 30 : 10,
-                              ),
-                              Container(
-                               
-                                width: 
-                                MediaQuery.of(context).size.width*0.25,
-                                child: Form(
-                                  child: Column(
-                                    children: <Widget>[
-                                      Container(
-                                       
-                                        margin: EdgeInsets.symmetric(vertical: 10),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            (MediaQuery.of(context).size.height >
-                                                    550)
-                                                ? Text(
-                                                    'Correo',
-                                                    style: TextStyle(
-                                                        fontSize: 15,
-                                                        color: Colors.white),
-                                                  )
-                                                : Container(),
-                                            (MediaQuery.of(context).size.height >
-                                                    550)
-                                                ? SizedBox(
-                                                    height: 10,
-                                                  )
-                                                : Container(),
-                                            TextFormField(
-                                              controller: _emailController,
-                                              decoration: InputDecoration(
-                                                  contentPadding:
-                                                      new EdgeInsets.symmetric(
-                                                          vertical: 0,
-                                                          horizontal: 0),
-                                                  labelText: (MediaQuery.of(context)
-                                                              .size
-                                                              .height >
-                                                          550)
-                                                      ? ''
-                                                      : 'Correo',
-                                                  border: InputBorder.none,
-                                                  errorStyle:
-                                                      TextStyle(fontSize: 10),
-                                                  fillColor: Color(0xfff3f3f4),
-                                                  filled: true),
-                                              keyboardType:
-                                                  TextInputType.emailAddress,
-                                              autovalidate: (MediaQuery.of(context)
-                                                          .size
-                                                          .height >
-                                                      500)
-                                                  ? true
-                                                  : false,
-                                              autocorrect: false,
-                                              validator: (_) {
-                                                return !state.isEmailValid
-                                                    ? 'Correo Invalido'
-                                                    : null;
-                                              },
-                                            ),
-                                          ],
-                                        ),
+                  // color: Color.fromRGBO(3, 9, 40, 0.65),
+                  height: MediaQuery.of(context).size.height,
+                  child: ListView(
+                    children: <Widget>[
+                     
+                      Container(
+                        alignment: Alignment.center,
+                        
+                      
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            // Expanded(
+                            //   flex: 6,
+                            //   child: SizedBox(),
+                            // ),
+                            _title(),
+                            SizedBox(
+                             
+                              height: (altura > 600) ? 20 : 10,
+                            ),
+                            Container(
+                             
+                              width: 
+                            (widget.isMobile) ? MediaQuery.of(context).size.width : (widget.isTablet) ? MediaQuery.of(context).size.width*0.5 :  MediaQuery.of(context).size.width*0.3,
+                              child: Form(
+                                child: Column(
+                                  children: <Widget>[
+                                    Container(
+                                     
+                                      margin: EdgeInsets.symmetric(vertical: 10),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          (MediaQuery.of(context).size.height >
+                                                  550)
+                                              ? Text(
+                                                  'Correo',
+                                                  style: TextStyle(
+                                                      fontSize: (widget.isMobile) ? 12 : 16,
+                                                      color: Colors.white),
+                                                )
+                                              : Container(),
+                                          (MediaQuery.of(context).size.height >
+                                                  550)
+                                              ? SizedBox(
+                                                  height: 10,
+                                                )
+                                              : Container(),
+                                          TextFormField(
+                                            controller: _emailController,
+                                            decoration: InputDecoration(
+                                                contentPadding:
+                                                    new EdgeInsets.symmetric(
+                                                        vertical: 0,
+                                                        horizontal: 0),
+                                                labelText: (MediaQuery.of(context)
+                                                            .size
+                                                            .height >
+                                                        550)
+                                                    ? ''
+                                                    : 'Correo',
+                                                border: InputBorder.none,
+                                                errorStyle:
+                                                    TextStyle(fontSize: 10),
+                                                fillColor: Color(0xfff3f3f4),
+                                                filled: true),
+                                            keyboardType:
+                                                TextInputType.emailAddress,
+                                            autovalidate: (MediaQuery.of(context)
+                                                        .size
+                                                        .height >
+                                                    500)
+                                                ? true
+                                                : false,
+                                            autocorrect: false,
+                                            validator: (_) {
+                                              return !state.isEmailValid
+                                                  ? 'Correo Invalido'
+                                                  : null;
+                                            },
+                                          ),
+                                        ],
                                       ),
-                                      Container(
-                                        margin: EdgeInsets.symmetric(vertical: 10),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            (MediaQuery.of(context).size.height >
-                                                    550)
-                                                ? Text(
-                                                    'Contraseña',
-                                                    style: TextStyle(
-                                                        fontSize: 15,
-                                                        color: Colors.white),
-                                                  )
-                                                : Container(),
-                                            (MediaQuery.of(context).size.height >
-                                                    550)
-                                                ? SizedBox(
-                                                    height: 10,
-                                                  )
-                                                : Container(),
-                                            TextFormField(
-                                              controller: _passwordController,
-                                              decoration: InputDecoration(
-                                                  contentPadding:
-                                                      new EdgeInsets.symmetric(
-                                                          vertical: 0,
-                                                          horizontal: 0),
-                                                  labelText: (MediaQuery.of(context)
-                                                              .size
-                                                              .height >
-                                                          550)
-                                                      ? ''
-                                                      : 'Contraseña',
-                                                  border: InputBorder.none,
-                                                  errorStyle:
-                                                      TextStyle(fontSize: 10),
-                                                  suffixIcon: (isTap == false)
-                                                      ? InkWell(
-                                                          child: Icon(
-                                                            CommunityMaterialIcons
-                                                                .eye,
-                                                          ),
-                                                          onTap: () {
-                                                            setState(() {
-                                                              isTap = true;
-                                                            });
-                                                          },
-                                                        )
-                                                      : InkWell(
-                                                          child: Icon(
-                                                            CommunityMaterialIcons
-                                                                .eye_off,
-                                                          ),
-                                                          onTap: () {
-                                                            setState(() {
-                                                              isTap = false;
-                                                            });
-                                                          },
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.symmetric(vertical: 10),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          (MediaQuery.of(context).size.height >
+                                                  550)
+                                              ? Text(
+                                                  'Contraseña',
+                                                  style: TextStyle(
+                                                      fontSize: (widget.isMobile) ? 12 : 16,
+                                                      color: Colors.white),
+                                                )
+                                              : Container(),
+                                          (MediaQuery.of(context).size.height >
+                                                  550)
+                                              ? SizedBox(
+                                                  height: 10,
+                                                )
+                                              : Container(),
+                                          TextFormField(
+                                            controller: _passwordController,
+                                            decoration: InputDecoration(
+                                                contentPadding:
+                                                    new EdgeInsets.symmetric(
+                                                        vertical: 0,
+                                                        horizontal: 0),
+                                                labelText: (MediaQuery.of(context)
+                                                            .size
+                                                            .height >
+                                                        550)
+                                                    ? ''
+                                                    : 'Contraseña',
+                                                border: InputBorder.none,
+                                                errorStyle:
+                                                    TextStyle(fontSize: 10),
+                                                suffixIcon: (isTap == false)
+                                                    ? InkWell(
+                                                        child: Icon(
+                                                          CommunityMaterialIcons
+                                                              .eye,
                                                         ),
-                                                  fillColor: Color(0xfff3f3f4),
-                                                  filled: true),
-                                              obscureText:
-                                                  (isTap == true) ? false : true,
-                                              autovalidate: true,
-                                              autocorrect: false,
-                                              validator: (_) {
-                                                return !state.isPasswordValid
-                                                    ? 'Contraseña Invalida'
-                                                    : null;
-                                              },
-                                            ),
-                                          ],
-                                        ),
+                                                        onTap: () {
+                                                          setState(() {
+                                                            isTap = true;
+                                                          });
+                                                        },
+                                                      )
+                                                    : InkWell(
+                                                        child: Icon(
+                                                          CommunityMaterialIcons
+                                                              .eye_off,
+                                                        ),
+                                                        onTap: () {
+                                                          setState(() {
+                                                            isTap = false;
+                                                          });
+                                                        },
+                                                      ),
+                                                fillColor: Color(0xfff3f3f4),
+                                                filled: true),
+                                            obscureText:
+                                                (isTap == true) ? false : true,
+                                            autovalidate: true,
+                                            autocorrect: false,
+                                            validator: (_) {
+                                              return !state.isPasswordValid
+                                                  ? 'Contraseña Invalida'
+                                                  : null;
+                                            },
+                                          ),
+                                        ],
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                              SizedBox(
-                                height: (MediaQuery.of(context).size.height > 600)
-                                    ? 20
-                                    : 10,
-                              ),
-                              isLoginButtonEnabled(state)
-                                  ? LoginButton(onPressed: () {
-                                      FocusScope.of(context)
-                                          .requestFocus(new FocusNode());
-                                      _onFormSubmitted();
-                                    })
-                                  : LoginButton(
-                                      onPressed: null,
-                                    ),
-                              CreateChangePasswordButton(
-                                  userRepository: _userRepository),
-                              Container(
-                                 width: MediaQuery.of(context).size.width*0.25,
-                                
-                                child: _divider()),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  GoogleLoginButton(),
-                                  // SizedBox(
-                                  //   height: 30,
-                                  // ),
-                                  FbLoginButton(),
-                                  // SizedBox(
-                                  //   height: 30,
-                                  // ),
-                               
-                                ],
-                              ),
+                            ),
+                            SizedBox(
+                              height: (MediaQuery.of(context).size.height > 600)
+                                  ? 20
+                                  : 10,
+                            ),
+                            isLoginButtonEnabled(state)
+                                ? LoginButton( () {
+                                    FocusScope.of(context)
+                                        .requestFocus(new FocusNode());
+                                    _onFormSubmitted();
+                                  },widget.isMobile,widget.isTablet)
+                                : LoginButton(
+                                    null,widget.isMobile,widget.isTablet
+                                  ),
+                            CreateChangePasswordButton(
+                               _userRepository,widget.isMobile,widget.isTablet),
+                            Container(
+                              width:(widget.isMobile) ? MediaQuery.of(context).size.width : (widget.isTablet) ? MediaQuery.of(context).size.width*0.5 :  MediaQuery.of(context).size.width*0.3,
+                              
+                              child: _divider()),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                GoogleLoginButton(widget.isMobile,widget.isTablet),
+                                // SizedBox(
+                                //   height: 30,
+                                // ),
+                                FbLoginButton(widget.isMobile,widget.isTablet),
+                                 AppleLoginButton(widget.isMobile,widget.isTablet)
+                                // SizedBox(
+                                //   height: 30,
+                                // ),
+                             
+                              ],
+                            ),
 
-                              SizedBox(
-                                height: 15,
-                              ),
-                              Container(
-                     width: MediaQuery.of(context).size.width*0.25,
+                            SizedBox(
+                              height: (widget.isMobile) ? 10 : 15,
+                            ),
+                            Container(
+                   width: (widget.isMobile) ? MediaQuery.of(context).size.width-40 : (widget.isTablet) ? MediaQuery.of(context).size.width*0.5 :  MediaQuery.of(context).size.width*0.3,
                 
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Container(
-                        
-                          width: MediaQuery.of(context).size.width*0.2-2,
-                        child: AutoSizeText('Al entrar aceptas nuestros términos y condiciones.',style: TextStyle(color:Colors.grey[50]),maxFontSize: 10,minFontSize: 6,maxLines: 2,)),
-                        SizedBox(width:2),
-                        Container(
-                           width: MediaQuery.of(context).size.width*0.05,
-                          child: InkWell(
-                            onTap: () async{
-                                 if (await canLaunch("https://docs.google.com/document/d/18oJrOwZRm57BbnSwpPCtKtXdGufQwARFfQPeLiTyN28/edit")) {
-                             await launch("https://docs.google.com/document/d/18oJrOwZRm57BbnSwpPCtKtXdGufQwARFfQPeLiTyN28/edit");
-                                   }
-                            },
-                            child: AutoSizeText('Ver',style: TextStyle(color:Colors.grey[50],decoration: TextDecoration.underline),maxFontSize: 10,minFontSize: 6,maxLines: 2,)),
-                        ),
-                      ],
-                    )),
-
-                           Container(
-                          alignment: Alignment.bottomCenter,
-                          child: CreateAccountButton(
-                            userRepository: _userRepository,
-                          ),
-                        ),
-                              // Expanded(
-                              //   flex: (altura > 650) ? 6 : 12,
-                              //   child: SizedBox(),
-                              // ),
-                            ],
-                          ),
-                        ),
-                        
-                        // // Positioned(top: 40, left: 0, child: _backButton()),
-                        // // (altura > 700)
-                        // //     ? 
-                        //     Positioned(
-                        //         top: -MediaQuery.of(context).size.height * .15,
-                        //         right: -MediaQuery.of(context).size.width * .50,
-                        //         child: BezierContainer())
-                        //     // : Container()
-                      ],
-                    ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                      
+                       width: (widget.isMobile) ? MediaQuery.of(context).size.width*0.65-42 : (widget.isTablet) ? MediaQuery.of(context).size.width*0.4-2 :  MediaQuery.of(context).size.width*0.25-2,
+                      child: AutoSizeText('Términos y condiciones.',style: TextStyle(color:Colors.grey[50]),maxFontSize: 12,minFontSize: 6,maxLines: 2,)),
+                      SizedBox(width:2),
+                      Container(
+                      
+                         width: (widget.isMobile) ? MediaQuery.of(context).size.width*0.2 : (widget.isTablet) ? MediaQuery.of(context).size.width*0.1 :  MediaQuery.of(context).size.width*0.05,
+                        child: InkWell(
+                          onTap: () async{
+                               if (await canLaunch("https://docs.google.com/document/d/18oJrOwZRm57BbnSwpPCtKtXdGufQwARFfQPeLiTyN28/edit")) {
+                           await launch("https://docs.google.com/document/d/18oJrOwZRm57BbnSwpPCtKtXdGufQwARFfQPeLiTyN28/edit");
+                                 }
+                          },
+                          child: AutoSizeText('Ver',style: TextStyle(color:Colors.grey[50],decoration: TextDecoration.underline),maxFontSize: 12,minFontSize: 6,maxLines: 2,)),
+                      ),
+                    ],
                   )),
-                )));
+
+                         Container(
+                        alignment: Alignment.bottomCenter,
+                        child: CreateAccountButton(
+                         _userRepository,widget.isMobile,widget.isTablet
+                        ),
+                      ),
+                            // Expanded(
+                            //   flex: (altura > 650) ? 6 : 12,
+                            //   child: SizedBox(),
+                            // ),
+                          ],
+                        ),
+                      ),
+                      
+                      // // Positioned(top: 40, left: 0, child: _backButton()),
+                      // // (altura > 700)
+                      // //     ? 
+                      //     Positioned(
+                      //         top: -MediaQuery.of(context).size.height * .15,
+                      //         right: -MediaQuery.of(context).size.width * .50,
+                      //         child: BezierContainer())
+                      //     // : Container()
+                    ],
+                  ),
+                ));
       },
     ));
   }

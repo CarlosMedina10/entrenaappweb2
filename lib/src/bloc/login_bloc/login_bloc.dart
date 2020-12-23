@@ -48,7 +48,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     if (event is LoginWithFbPressed) {
       yield* _mapLoginWithFbPressedToState();
     }
-   
+   if (event is LoginWithApplePressed) {
+      yield* _mapLoginWithApplePressedToState();
+    }
     if (event is LoginWithCredentialsPressed) {
       yield* _mapLoginWithCredentialsPressedToState(
           email: event.email, password: event.password);
@@ -75,6 +77,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   Stream<LoginState> _mapLoginWithFbPressedToState() async* {
     try {
+      print('pres aqui');
       await _userRepository.signInWithFb();
       yield LoginState.success();
     } catch (error) {
@@ -83,7 +86,15 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     }
   }
 
- 
+ Stream<LoginState> _mapLoginWithApplePressedToState() async* {
+    try {
+      await _userRepository.signInWithApple();
+      yield LoginState.success();
+    } catch (error) {
+      print(error);
+      yield LoginState.failure();
+    }
+  }
 
   Stream<LoginState> _mapLoginWithCredentialsPressedToState(
       {String email, String password}) async* {

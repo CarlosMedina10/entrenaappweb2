@@ -1,10 +1,12 @@
 
+import 'package:entrenaappweb/models/Configuracion.dart';
 import 'package:entrenaappweb/models/Ejercicio.dart';
 import 'package:entrenaappweb/models/MesocicloEntrenamiento.dart';
+import 'package:entrenaappweb/models/Patron.dart';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:entrenaappweb/models/Configuracion.dart';
-import 'package:entrenaappweb/models/Patron.dart';
+
 import 'package:excel/excel.dart';
 import 'package:file_picker_cross/file_picker_cross.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -504,11 +506,32 @@ print(myFile.fileName.replaceRange(myFile.fileName.length-5,myFile.fileName.leng
         }
        if (isEjercicio && isSeries && isReps && isRir && isTd && isComentario)
        {
+
+         int trabajo;
+         if (repeticiones.semana1.length > 1 &&
+                            int.tryParse(repeticiones.semana1[1]) != null) {
+                          if (repeticiones.semana1.length >= 3) {
+                            if (int.parse(repeticiones.semana1.replaceRange(
+                                    2, repeticiones.semana1.length, '')) >
+                                15)
+                              trabajo = 3;
+                            else
+                              trabajo = 2;
+                          } else if (int.parse(repeticiones.semana1) > 15)
+                            trabajo = 3;
+                          else
+                            trabajo = 2;
+                        } else if (int.parse(repeticiones.semana1[0]) > 5)
+                          trabajo = 2;
+                        else
+                          trabajo = 1;
+
+
          patron=Patron(
            ejercicioSeleccionado: ejercicioSeleccionado,
            musculosTrabajados: ejercicioSeleccionado.musculosTrabajados,
            comentario: comentario,
-         configuracion: Configuracion(series: series,repeticiones: repeticiones,rir: rir,tiempoDeDescanso: tiempoDeDescanso));
+         configuracion: Configuracion(series: series,repeticiones: repeticiones,rir: rir,tiempoDeDescanso: tiempoDeDescanso,trabajo: trabajo));
          isEjercicio=false;
          isSeries=false;
          isReps=false;
@@ -533,19 +556,19 @@ print(myFile.fileName.replaceRange(myFile.fileName.length-5,myFile.fileName.leng
     print(key);
     if (key=='Primario1'){
       print(value);
-      print(ejercicioSeleccionado.musculosTrabajados['Primario1']);
-     if (ejercicioSeleccionado.musculosTrabajados['Primario1']==value)
+   
+    //  if (ejercicioSeleccionado.musculosTrabajados['Primario1']==value)
      
      
-     musculosTrabajados.add(ejercicioSeleccionado.musculosTrabajados['Primario1']);
+     musculosTrabajados.add(patron.ejercicioSeleccionado.musculosTrabajados['Primario1']);
    
     
     
     }
     });
-    
+     diaE.musculosTrabajados=musculosTrabajados.toSet().toList();
    });
-   diaE.musculosTrabajados=musculosTrabajados.toSet().toList();
+  
 
    print(diaE.nombreentrenamiento);
    print(diaE.musculosTrabajados);
@@ -561,7 +584,7 @@ print(myFile.fileName.replaceRange(myFile.fileName.length-5,myFile.fileName.leng
  }
  Future guardarEnBBDD(MesocicloEntrenamiento mesocicloEntrenamiento,String idCliente) async{
 
-final url = 'https://entrenaapp2-12fbe.firebaseio.com/$idCliente/mesociclos.json?auth=${widget.idToken}';
+final url = 'https://entrenaapp2-12fbe.firebaseio.com/SMy0LF7qo8UiE06ONPtoJpN2Dc82/mesociclos.json?auth=${widget.idToken}';
     try{  await http.post(url, body: 
      json.encode(
     mesocicloEntrenamiento.toJson()
@@ -614,7 +637,14 @@ Map<String,String> clienteSeleccionado;
                                                     .size
                                                     .width *
                                                 0.5,
-               child: new DropdownButton<String>(
+               child: 
+             new Theme(
+          data: Theme.of(context).copyWith(
+            canvasColor: Color.fromRGBO(3, 9, 40, 1),
+          ),
+           child:    new DropdownButton<String>(
+             underline: SizedBox(),
+             iconEnabledColor:Color.fromRGBO(3, 9, 40, 1), 
                                         isExpanded: true,
                                         hint: Container(
                                       
@@ -622,9 +652,9 @@ Map<String,String> clienteSeleccionado;
                                                     .size
                                                     .width *
                                                 0.5,
-                                            child: Text('Seleccionar',
+                                            child: Text('Seleccionar Cliente',
                                                 style: TextStyle(
-                                                  color: Colors.grey[300],
+                                                  color: Color.fromRGBO(3, 9, 40, 1),
                                                   fontSize:
                                                       (MediaQuery.of(context)
                                                                   .size
@@ -634,6 +664,29 @@ Map<String,String> clienteSeleccionado;
                                                           : 24,
                                                   fontWeight: FontWeight.w500,
                                                 ))),
+                                       
+                                        selectedItemBuilder:(context) {
+                                          return listaNombreClientes
+                                            .map((nombre) => DropdownMenuItem(
+                                                  value: nombre,
+                                                  child: Text(
+                                                    '$nombre',
+                                                    style: TextStyle(
+                                                      color:  Color.fromRGBO(3, 9, 40, 1),
+                                                      fontSize: (MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width <
+                                                              500)
+                                                          ? 16
+                                                          : 24,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
+                                                  ),
+                                                ))
+                                            .toList();},
+                                        
                                         items:listaNombreClientes
                                             .map((nombre) => DropdownMenuItem(
                                                   value: nombre,
@@ -666,11 +719,12 @@ Map<String,String> clienteSeleccionado;
                                         print(clienteSeleccionado.keys.first);
                                         },
                                         value: (clienteSeleccionado!=null) ? clienteSeleccionado.values.first : null,
-                                      ),
+                                      )),
              ),
 
             SizedBox(height:5),
             RaisedButton(
+              color: Color.fromRGBO(3, 9, 40, 1),
               onPressed: () async{
               
               await cargarMesociclo();
@@ -679,7 +733,7 @@ Map<String,String> clienteSeleccionado;
               });
               await guardarEnBBDD(mesocicloEntrenamiento,clienteSeleccionado.keys.first);
               },
-              child: Text('Cargar Entrenamiento'),
+              child: Text('Cargar Entrenamiento',style: TextStyle(color:Colors.grey[300]),),
             ),
           ],
         ),

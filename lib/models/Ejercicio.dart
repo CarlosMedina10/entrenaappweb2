@@ -1781,7 +1781,7 @@ factory Ejercicio.remoEnPuntaAgarreCerrado() {
   }
  factory Ejercicio.remoSupinoEnMultipower() {
     return Ejercicio(
-        nombre: "Remo supino en multipower ",
+        nombre: "Remo supino en multipower",
         imagen: ['RemoSupinoEnMultipower.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -1809,7 +1809,7 @@ factory Ejercicio.remoEnPuntaAgarreCerrado() {
 
 factory Ejercicio.remoEnPoleaBajaAUnaMano() {
     return Ejercicio(
-        nombre: "Remo en polea a una mano ",
+        nombre: "Remo en polea a una mano",
         imagen: ['RemoEnPoleaAUnaMano.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -1836,7 +1836,7 @@ factory Ejercicio.remoEnPoleaBajaAUnaMano() {
   }
   factory Ejercicio.remoEnPoleaBajaSentadoAUnaMano() {
     return Ejercicio(
-        nombre: "Remo en polea baja sentado a una mano ",
+        nombre: "Remo en polea baja sentado a una mano",
         imagen: ['RemoAUnaManoEnPoleaBaja.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -3177,7 +3177,7 @@ factory Ejercicio.pressMilitarTrasnuca() {
 
   factory Ejercicio.pressDeHombroConMancuernas() {
     return Ejercicio(
-        nombre: "Press de hombro con mancuernas ",
+        nombre: "Press de hombro con mancuernas",
         imagen: ['PressDeHombroConMancuernas.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -3208,7 +3208,7 @@ factory Ejercicio.pressMilitarTrasnuca() {
 
   factory Ejercicio.pressDeHombroConMancuernasAgarreNeutro() {
     return Ejercicio(
-        nombre: "Press de hombro con mancuernas agarre neutro ",
+        nombre: "Press de hombro con mancuernas agarre neutro",
         imagen: ['PressDeHombroAgarreNeutroConMancuernas.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -3238,7 +3238,7 @@ factory Ejercicio.pressMilitarTrasnuca() {
   }
   factory Ejercicio.pressArnold() {
     return Ejercicio(
-        nombre: "Press arnold ",
+        nombre: "Press arnold",
         imagen: ['21371301-Dumbbell-Arnold-Press_Shoulders_180.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -3304,7 +3304,7 @@ factory Ejercicio.pressDeHombroEnMaquina() {
 
 factory Ejercicio.pressMilitarEnMultipower() {
     return Ejercicio(
-        nombre: "Press militar en multipower ",
+        nombre: "Press militar en multipower",
         imagen: ['PressMilitarEnMultipower.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -3336,7 +3336,7 @@ factory Ejercicio.pressMilitarEnMultipower() {
 
   factory Ejercicio.pressMilitarTrasnucaEnMultipower() {
     return Ejercicio(
-        nombre: "Press militar trasnuca en multipower ",
+        nombre: "Press militar trasnuca en multipower",
         imagen: ['PressTrasnucaEnMultipower.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -3366,7 +3366,7 @@ factory Ejercicio.pressMilitarEnMultipower() {
   }
  factory Ejercicio.pressMilitarEnPolea() {
     return Ejercicio(
-        nombre: "Press militar en polea ",
+        nombre: "Press militar en polea",
         imagen: ['01481301-Cable-Alternate-Shoulder-Press_Shoulders_180.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -3396,7 +3396,7 @@ factory Ejercicio.pressMilitarEnMultipower() {
   }
 factory Ejercicio.pressMilitarConBandasElasticas() {
     return Ejercicio(
-        nombre: "Press militar con banda elástica ",
+        nombre: "Press militar con banda elástica",
         imagen: ['PressMilitarBandaElastica.gif','PressMilitarBandaElastica2.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -4548,7 +4548,7 @@ factory Ejercicio.curlDeBicepsMartilloEnBancoScottConMancuerna() {
   }
 factory Ejercicio.curlDeBicepsEnPoleaAltaADosManos() {
     return Ejercicio(
-        nombre: "Curl de bíceps en polea alta a dos manos ",
+        nombre: "Curl de bíceps en polea alta a dos manos",
         imagen: ['CurlDeBicepsEnPoleaADosManos.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -4836,7 +4836,7 @@ factory Ejercicio.curlDeBicepsTumbadoEnPoleaBaja() {
 
 factory Ejercicio.curlDeBicepsConBandaElastica() {
     return Ejercicio(
-        nombre: "Curl de bíceps con banda elástica ",
+        nombre: "Curl de bíceps con banda elástica",
         imagen: ['CurlDeBicepsBandaElastica.gif','CurlDeBicepsBandaElastica2.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -4864,7 +4864,7 @@ factory Ejercicio.curlDeBicepsConBandaElastica() {
   }
 factory Ejercicio.curlDeBicepsConElasticoSentado() {
     return Ejercicio(
-        nombre: "Curl de bíceps con elástico sentado ",
+        nombre: "Curl de bíceps con elástico sentado",
         imagen: ['31231301-Resistance-Band-Seated-Biceps-Curl_Chest_180.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -4892,7 +4892,7 @@ factory Ejercicio.curlDeBicepsConElasticoSentado() {
   }
 factory Ejercicio.curlDeBicepsMartilloConBandaElastica() {
     return Ejercicio(
-        nombre: "Curl martillo con banda elástica ",
+        nombre: "Curl martillo con banda elástica",
         imagen: ['CurlMartilloBandaElastica.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -5006,7 +5006,7 @@ factory Ejercicio.curlDeArrastreConBarraRecta() {
 
 factory Ejercicio.curlDeBicepsEnBancoInclinadoConMancuernas() {
     return Ejercicio(
-        nombre: "Curl de bíceps en banco inclinado con mancuernas ",
+        nombre: "Curl de bíceps en banco inclinado con mancuernas",
         imagen: ['CurlDeBicepsEnBancoInclinadoConMancuernas.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -8295,7 +8295,7 @@ factory Ejercicio.abduccionDeGluteoConPesoCorporal() {
 
   factory Ejercicio.abduccionDeGluteoEnMaquina() {
     return Ejercicio(
-        nombre: "Abducción de glúteo sentado en máquina ",
+        nombre: "Abducción de glúteo sentado en máquina",
         imagen: ['AbduccionesEnMaquina.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -8380,7 +8380,7 @@ factory Ejercicio.abduccionesDeGluteoEnMaquina() {
 
   factory Ejercicio.abduccionDeGluteoConGomaElastica() {
     return Ejercicio(
-        nombre: "Abducción de glúteo con banda elástica ",
+        nombre: "Abducción de glúteo con banda elástica",
         imagen: ['AbduccionesDeGluteoBandaElastica.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -8407,7 +8407,7 @@ factory Ejercicio.abduccionesDeGluteoEnMaquina() {
   }
 factory Ejercicio.abduccionDeGluteoConGomaElasticaTumbado() {
     return Ejercicio(
-        nombre: "Abducción de glúteo con banda elástica tumbado ",
+        nombre: "Abducción de glúteo con banda elástica tumbado",
         imagen: ['24211301-Resistance-Band-Lying-Abduction_Hips_180.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -8434,7 +8434,7 @@ factory Ejercicio.abduccionDeGluteoConGomaElasticaTumbado() {
   }
 factory Ejercicio.abduccionDeGluteoConGomaElasticaDeRodillas() {
     return Ejercicio(
-        nombre: "Abducción de glúteo con banda elástica de rodillas ",
+        nombre: "Abducción de glúteo con banda elástica de rodillas",
         imagen: ['24181301-Resistance-Band-Bent-Leg-Side-Kick-(kneeling)_Hips_180.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -8570,7 +8570,7 @@ factory Ejercicio.aduccionDeGluteoEnPolea() {
   }
   factory Ejercicio.aduccionDeGluteoConGomaElastica() {
     return Ejercicio(
-        nombre: "Aducción de glúteo con banda elástica ",
+        nombre: "Aducción de glúteo con banda elástica",
         imagen: ['AduccionesBandaElastica.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(

@@ -1,10 +1,10 @@
 
-import 'package:entrenaappweb/models/MesocicloEntrenamiento.dart';
-import 'package:entrenaappweb/models/Diadeentrenamiento.dart';
-import 'package:entrenaappweb/models/Patron.dart';
-import 'package:entrenaappweb/models/Ejercicio.dart';
-import 'package:entrenaappweb/models/Configuracion.dart';
-import 'package:entrenaappweb/models/Diadeentrenamiento.dart';
+import '../models/MesocicloEntrenamiento.dart';
+import '../models/Diadeentrenamiento.dart';
+import '../models/Patron.dart';
+import '../models/Ejercicio.dart';
+import '../models/Configuracion.dart';
+import '../models/Diadeentrenamiento.dart';
 
 class MesocicloEntrenamiento {
 

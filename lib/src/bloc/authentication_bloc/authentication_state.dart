@@ -25,7 +25,7 @@ class Authenticated extends AuthenticationState {
   final String displayName;
   final String imgUrl;
   final String email;
-  final FirebaseUser firebaseUser;
+  final User firebaseUser;
   
 
   const Authenticated(this.userID,this.idToken,this.displayName,this.imgUrl,this.email,this.firebaseUser);

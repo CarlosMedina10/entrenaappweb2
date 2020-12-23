@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class LoginButton extends StatelessWidget {
-  final VoidCallback _onPressed;
 
-  LoginButton({Key key, VoidCallback onPressed})
-    : _onPressed = onPressed,
-    super(key: key);
+  final VoidCallback _onPressed;
+  final bool isMobile;
+  final bool isTablet;
+
+  LoginButton(this._onPressed,this.isMobile,this.isTablet);
+   
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,7 @@ class LoginButton extends StatelessWidget {
       return InkWell(
       onTap: _onPressed,
           child: Container(
-      width: MediaQuery.of(context).size.width*0.25,
+      width: (isMobile) ? MediaQuery.of(context).size.width : (isTablet) ? MediaQuery.of(context).size.width*0.5 :  MediaQuery.of(context).size.width*0.3,
         padding:(MediaQuery.of(context).size.height>600) ?   EdgeInsets.symmetric(vertical: 15) : EdgeInsets.symmetric(vertical: 10) ,
         alignment: Alignment.center,
         decoration: BoxDecoration(

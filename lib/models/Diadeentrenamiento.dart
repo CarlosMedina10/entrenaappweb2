@@ -1,6 +1,6 @@
 
-import 'package:entrenaappweb/models/Configuracion.dart';
-import 'package:entrenaappweb/models/Ejercicio.dart';
+import './Configuracion.dart';
+
 
 import './Patron.dart';
 

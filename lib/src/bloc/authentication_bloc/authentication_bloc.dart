@@ -39,11 +39,11 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
     String imgUrl = await _userRepository.getPhoto();
     String email = await _userRepository.getUser();
     String userID= await _userRepository.getUserID();
-    FirebaseUser firebaseUser = await _userRepository.getFirebaseUser();
+    User firebaseUser = await _userRepository.getFirebaseUser();
     
 
-    var idToken2= await _userRepository.getToken();
-    String idToken= idToken2.token;
+    var idToken= await _userRepository.getToken();
+    
   
 
         yield  Authenticated(userID,idToken,nombre,imgUrl,email,firebaseUser);
@@ -65,12 +65,12 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
     String imgUrl = await _userRepository.getPhoto();
     String email = await _userRepository.getUser();
    String userID = await _userRepository.getUserID();
-   FirebaseUser firebaseUser = await _userRepository.getFirebaseUser();
+  User firebaseUser = await _userRepository.getFirebaseUser();
     
     
 
-    var idToken2 = await _userRepository.getToken();
-    String idToken= idToken2.token;
+    var idToken = await _userRepository.getToken();
+    
    
 
     yield Authenticated(userID,idToken,nombre,imgUrl,email,firebaseUser);

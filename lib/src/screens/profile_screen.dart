@@ -82,7 +82,7 @@ class _ProfileSectionState extends State<ProfileSection> {
                       Container(
                       width: displaySize.width,
                       child: AutoSizeText(
-                        "Bienvenido, Carlos Medina",
+                        "Bienvenido, Carlos Medina, ${widget.idUser}",
                         style: TextStyle(fontSize: 40),
                       )),
                 

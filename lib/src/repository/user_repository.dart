@@ -1,6 +1,7 @@
 // Imports
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth_oauth/firebase_auth_oauth.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_facebook_login_web/flutter_facebook_login_web.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -18,7 +19,7 @@ class UserRepository {
 
   String errorString;
   // SignInWithGoogle
-  Future<FirebaseUser> signInWithGoogle() async {
+  Future<User> signInWithGoogle() async {
 
     GoogleSignIn _googleSignIn = GoogleSignIn(
   scopes: [
@@ -33,38 +34,31 @@ class UserRepository {
         accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
 
     await _firebaseAuth.signInWithCredential(credential);
-    return _firebaseAuth.currentUser();
+    return _firebaseAuth.currentUser;
   }
 
-  Future<FirebaseUser> signInWithFb() async {
+  Future<User> signInWithFb() async {
    
       final facebookSignIn = FacebookLoginWeb();
-    final FacebookLoginResult result = await facebookSignIn.logIn(['email']);
+    FacebookLoginResult result = await facebookSignIn.logIn(['email',]);
+    final AuthCredential credential = FacebookAuthProvider.credential(
+        result.accessToken.token);
+    await _firebaseAuth.signInWithCredential(credential);
+    return _firebaseAuth.currentUser;
+  
+     
+      
 
-  //   switch (result.status) {
-  //     // case FacebookLoginStatus.loggedIn:
-  //     //   final FacebookAccessToken accessToken = result.accessToken;
-  //     //   _showMessage('''
-  //     //    Logged in!
-         
-  //     //    Token: ${accessToken.token}
-  //     //    User id: ${accessToken.userId}
-  //     //    ''');
 
-  //     //   facebookSignIn.testApi();
-  //     //   break;
-  //     // case FacebookLoginStatus.cancelledByUser:
-  //     //   _showMessage('Login cancelled by the user.');
-  //     //   break;
-  //     // case FacebookLoginStatus.error:
-  //     //   _showMessage('Something went wrong with the login process.\n'
-  //     //       'Here\'s the error Facebook gave us: ${result.errorMessage}');
-  //     //   break;
-    
-  // }
+  
   }
 
-
+Future<User> signInWithApple() async {
+    // 1. perform the sign-in request
+   final user = await FirebaseAuthOAuth()
+          .openSignInFlow("apple.com", ["email"], {"locale": "en"});
+        return user;
+  }
 
   // SignInWithCredentials
   Future<void> signInWithCredentials(String email, String password) {
@@ -85,33 +79,33 @@ class UserRepository {
 
   // Esta logueado?
   Future<bool> isSignedIn() async {
-    final currentUser = await _firebaseAuth.currentUser();
+    final currentUser = _firebaseAuth.currentUser;
     return currentUser != null;
   }
 
   // Obtener usuario
   Future<String> getUser() async {
-    return (await _firebaseAuth.currentUser()).email;
+    return  _firebaseAuth.currentUser.email;
   }
 
   Future<String> getName() async {
-    return (await _firebaseAuth.currentUser()).displayName;
+    return _firebaseAuth.currentUser.displayName;
   }
 
   Future<String> getPhoto() async {
-    return (await _firebaseAuth.currentUser()).photoUrl;
+    return _firebaseAuth.currentUser.photoUrl;
   }
 
   Future<String> getUserID() async {
-    return (await _firebaseAuth.currentUser()).uid;
+    return  _firebaseAuth.currentUser.uid;
   }
 
-  Future<IdTokenResult> getToken() async {
-    return (await _firebaseAuth.currentUser()).getIdToken();
+  Future<String> getToken() async {
+    return await _firebaseAuth.currentUser.getIdToken();
   }
 
-  Future<FirebaseUser> getFirebaseUser() async {
-    return (await _firebaseAuth.currentUser());
+  Future<User> getFirebaseUser() async {
+    return _firebaseAuth.currentUser;
   }
 
   sendPaswordResetEmail(String email) async {

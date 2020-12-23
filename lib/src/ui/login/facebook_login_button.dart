@@ -6,6 +6,9 @@ import '../../bloc/login_bloc/bloc.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 
 class FbLoginButton extends StatelessWidget {
+  final bool isMobile;
+  final bool isTablet;
+  FbLoginButton(this.isMobile,this.isTablet);
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
@@ -28,12 +31,12 @@ class FbLoginButton extends StatelessWidget {
       elevation: 2.0,
       fillColor: Colors.white,
       child: Container(
-        height: 60,
+         height: isMobile ? 45 :52.5 ,
         child: Center(
           child: Icon(
             FontAwesomeIcons.facebookSquare,
             color: Color.fromRGBO(59, 89, 152, 1),
-            size: 32,
+            size: isMobile ? 20 : isTablet ? 26 : 32,
           ),
           // child: Image(
           //   image: AssetImage(
