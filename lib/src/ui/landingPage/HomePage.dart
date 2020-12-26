@@ -1,7 +1,8 @@
+import 'package:entrenaappweb/blocs/LandingPageBloc/landingpage_bloc.dart';
 import 'package:entrenaappweb/src/repository/user_repository.dart';
 import 'package:entrenaappweb/src/ui/login/login_screen.dart';
 
-import '../../../blocs/bloc/landingpage_bloc.dart';
+
 import '../../ui/landingPage/SendEmail.dart';
 import 'package:drawerbehavior/drawer_scaffold.dart';
 import 'package:drawerbehavior/drawerbehavior.dart';
@@ -23,21 +24,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  List<Map<String, String>> isInit =[];
   @override
   Widget build(BuildContext context) {
-    print('entraaaaa noooooo');
-    launchMailto() async {
-  final mailtoLink = Mailto(
-    to: ['carlos10zrg@hotmail.com'],
+   
 
-    subject: 'Asesoramiento personalizado',
-    body: 'Hola Carlos, me gustaria recibir información sobre tu forma de trabajar y tarifas. Un Saludo.',
-  );
-  // Convert the Mailto instance into a string.
-  // Use either Dart's string interpolation
-  // or the toString() method.
-  await launch('$mailtoLink');
-}
     var deviceType = getDeviceType(MediaQuery.of(context).size);
 bool isMobile = false;
 bool isTablet = false;
@@ -108,8 +100,7 @@ switch(deviceType) {
            if (state is IsDesktop)  
             {
 
-      print('${state.isOnPrincipal} principalll' );
-      print('${state.isOnConocenos} conocenosssss');
+     
           
               if (state.isOnPrincipal)
               {
@@ -120,7 +111,7 @@ switch(deviceType) {
         child: Column( 
           children: [
               NavigationBar(),
-              LandingPage(state.isOnPrincipal),
+              LandingPage(state.isOnPrincipal,isInit),
           ],
         ),
       ),
@@ -166,8 +157,8 @@ Scaffold(
 
           if (state is IsMobileOrTablet)
 {
-  print('este estadoooo');
-          return Scaffold(body: Drawer3d(state.isOnPrincipal,state.isOnConocenos,state.isOnContactanos,state.isOnLogin,widget._userRepository));
+ 
+          return Scaffold(body: Drawer3d(state.isOnPrincipal,state.isOnConocenos,state.isOnContactanos,state.isOnLogin,isMobile,isTablet,isInit,widget._userRepository));
 }
     
     }),));
@@ -197,9 +188,12 @@ class Drawer3d extends StatefulWidget {
   final bool isOnConocenos;
   final bool isOnContactanos;
   final bool isOnLogin;
+  final bool isMobile;
+  final bool isTablet;
+  final List<Map<String, String>> isInit;
   final UserRepository _userRepository;
 
-  Drawer3d(this.isOnPrincipal,this.isOnConocenos,this.isOnContactanos,this.isOnLogin,this._userRepository);
+  Drawer3d(this.isOnPrincipal,this.isOnConocenos,this.isOnContactanos,this.isOnLogin,this.isMobile,this.isTablet,this.isInit,this._userRepository);
   @override
   _Drawer3dState createState() => _Drawer3dState();
 }
@@ -207,28 +201,24 @@ List<MenuItem> items = [
   new MenuItem<int>(
     id: 0,
     title: 'Entrena con EntrenaAPP',
-    icon: Icons.fastfood,
+   
   ),
   new MenuItem<int>(
     id: 1,
     title: 'Conócenos',
-    icon: Icons.person,
+    
   ),
   new MenuItem<int>(
     id: 2,
     title: 'Contacto',
-    icon: Icons.terrain,
+   
   ),
   new MenuItem<int>(
     id: 3,
     title: 'Iniciar sesión',
-    icon: Icons.settings,
+    
   ),
-  new MenuItem<int>(
-    id: 3,
-    title: 'Registrarse',
-    icon: Icons.settings,
-  ),
+ 
 ];
 final menu = Menu(
   items: items.map((e) => e.copyWith(icon: null)).toList(),
@@ -274,9 +264,10 @@ class _Drawer3dState extends State<Drawer3d> {
       
       drawers: [
         SideDrawer(
-     
+          padding: EdgeInsets.only(left:20,top:15,bottom:15),
           percentage: 0.8,
           degree: 45,
+          drawerWidth: (widget.isMobile) ? 120 : 300,
           menu: menu,
           direction: Direction.left,
           animation: true,
@@ -292,24 +283,7 @@ class _Drawer3dState extends State<Drawer3d> {
           //                                                             .add(WantMobileOrTablet(true,false));
           },
         ),
-        SideDrawer(
-          degree: 45,
-          menu: menu,
-          direction: Direction.right,
-          animation: true,
-          color:Colors.orange,
-          selectorColor:  Color(0xff08192D),
-          selectedItemId: selectedMenuItemId,
-          onMenuItemSelected: (itemId) {
-            print(itemId);
-             setState(() {
-              selectedMenuItemId = itemId;
-            });
-          // BlocProvider.of<LandingpageBloc>(
-          //                                                                 context)
-          //                                                             .add(WantMobileOrTablet(false,true));
-          },
-        ),
+    
          
       ],  
       
@@ -319,14 +293,14 @@ class _Drawer3dState extends State<Drawer3d> {
         index: id,
         children:  [
           
-          LandingPage(true),ConocenosPage(false),SendEmail(false),LoginScreen(widget._userRepository,false)] 
+          LandingPage(true,widget.isInit),ConocenosPage(false),SendEmail(false),LoginScreen(widget._userRepository,false)] 
             
       ) ; else if  (id== 1)   
         return IndexedStack(
         index: id,
         children:  [
           
-          LandingPage(false),ConocenosPage(true),SendEmail(false),LoginScreen(widget._userRepository,false)] 
+          LandingPage(false,widget.isInit),ConocenosPage(true),SendEmail(false),LoginScreen(widget._userRepository,false)] 
             
       ) ;
       else if  (id== 2)   
@@ -334,7 +308,7 @@ class _Drawer3dState extends State<Drawer3d> {
         index: id,
         children:  [
           
-          LandingPage(false),ConocenosPage(false),SendEmail(true),LoginScreen(widget._userRepository,false)] 
+          LandingPage(false,widget.isInit),ConocenosPage(false),SendEmail(true),LoginScreen(widget._userRepository,false)] 
             
       ) ;
       else if  (id== 3)   
@@ -342,7 +316,7 @@ class _Drawer3dState extends State<Drawer3d> {
         index: id,
         children:  [
           
-          LandingPage(false),ConocenosPage(false),SendEmail(false),LoginScreen(widget._userRepository,true)] 
+          LandingPage(false,widget.isInit),ConocenosPage(false),SendEmail(false),LoginScreen(widget._userRepository,true)] 
             
       ) ;
       

@@ -126,15 +126,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bloc/bloc.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import './src/bloc/authentication_bloc/bloc.dart';
-
+import 'package:firebase_core/firebase_core.dart' as firebase_core;
 import './src/repository/user_repository.dart';
 
 
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
 
-  
+    await firebase_core.Firebase.initializeApp();
+    
+
    ResponsiveSizingConfig.instance.setCustomBreakpoints(
     ScreenBreakpoints(desktop: 1025, tablet: 550, watch: 200),
   );

@@ -35,7 +35,7 @@ class CreateAccountButton extends StatelessWidget {
               onTap: () {
                   Navigator.of(context).push(
             MaterialPageRoute(builder: (context){
-              return RegisterScreen(userRepository: _userRepository,);
+              return RegisterScreen(_userRepository,isMobile,isTablet);
             })
         );
               },

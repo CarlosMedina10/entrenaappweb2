@@ -1,4 +1,6 @@
-import '../../../blocs/bloc/landingpage_bloc.dart';
+import 'package:entrenaappweb/blocs/LandingPageBloc/landingpage_bloc.dart';
+
+
 import 'package:flutter/material.dart';
 
 
@@ -32,7 +34,7 @@ class _NavigationBarState extends State<NavigationBar> {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
                     child: Image(
-                      image: AssetImage("images/LogoEntrenaAppFondoNegro.png"),
+                      image: AssetImage("assets/images/LogoEntrenaAppFondoNegro.png"),
                     ),
                   ),
                   // Wrap( 
@@ -78,25 +80,21 @@ class _NavigationBarState extends State<NavigationBar> {
            
             Flexible(
               flex: 2,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  InkWell(
-                     onTap: (){
-                       BlocProvider.of<LandingpageBloc>(
-                                                                          context)
-                                                                      .add(WantIsDesktop(false, false, false,true));
-                     },
-                                      child: Padding(
-                      padding: const EdgeInsets.all(2.0),
-                      child: Text("Iniciar sesión", 
-                      style: ThemText.loginWhiteText
-                     ),
-                    ),
+              child: Container(
+                 width: MediaQuery.of(context).size.width*0.15,
+                child: InkWell(
+                   onTap: (){
+                     BlocProvider.of<LandingpageBloc>(
+                                                                        context)
+                                                                    .add(WantIsDesktop(false, false, false,true));
+                   },
+                                    child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical:2,horizontal:8),
+                    child: Text("Iniciar sesión", 
+                    style: ThemText.loginWhiteText
+                   ),
                   ),
-                  Text("Registrarse",
-                      style: ThemText.createAccountOrangeText),
-                ],
+                ),
               ),
             ),
           ],
