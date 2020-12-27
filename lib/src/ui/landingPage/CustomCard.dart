@@ -54,7 +54,7 @@ class _CustomCardState extends State<CustomCard> {
    if (mounted)
    setState(() {
    url=value.toString();
-
+rrrr
    
   isInit=true;
    
