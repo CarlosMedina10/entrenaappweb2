@@ -15,7 +15,7 @@ class LoginButton extends StatelessWidget {
       return InkWell(
       onTap: _onPressed,
           child: Container(
-      width: (isMobile) ? MediaQuery.of(context).size.width : (isTablet) ? MediaQuery.of(context).size.width*0.5 :  MediaQuery.of(context).size.width*0.3,
+      width: (isMobile) ? MediaQuery.of(context).size.width : (isTablet) ? MediaQuery.of(context).size.width*0.5 :  MediaQuery.of(context).size.width*0.35,
         padding:(MediaQuery.of(context).size.height>600) ?   EdgeInsets.symmetric(vertical: 15) : EdgeInsets.symmetric(vertical: 10) ,
         alignment: Alignment.center,
         decoration: BoxDecoration(

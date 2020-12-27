@@ -1,12 +1,14 @@
 import 'dart:html';
 
-import '../../../blocs/bloc/landingpage_bloc.dart';
+import 'package:entrenaappweb/blocs/LandingPageBloc/landingpage_bloc.dart';
+
+
 import 'package:community_material_icon/community_material_icon.dart';
-import 'package:expansion_card/expansion_card.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:sliding_card/sliding_card.dart';
+
 
 import '../../widgets/RoundedButton.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -23,7 +25,7 @@ class ConocenosPage extends StatefulWidget {
 }
 
 class _ConocenosPageState extends State<ConocenosPage> with TickerProviderStateMixin {
-SlidingCardController controller ;
+
   bool card1 =false;
   bool card2 = false;
   bool card3=false;
@@ -44,7 +46,7 @@ SlidingCardController controller ;
   @override
   void initState() {
     super.initState();
-  controller = SlidingCardController();
+
     scrollController = new ScrollController();
     scrollController2 = new ScrollController();
   }
@@ -52,8 +54,8 @@ SlidingCardController controller ;
    Widget _buildDocumentAttachmentWidget(
       BuildContext context, String titulo, fecha, int color,bool isMobile,isTablet) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 6),
-      height: 37,
+      margin: EdgeInsets.symmetric(vertical: 4),
+      height: (isMobile) ? 33 : 35,
       color: Color.fromRGBO(255, 128, 0, 0.2),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,7 +83,7 @@ SlidingCardController controller ;
                 child: Text(
                   '$titulo',
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: (isMobile) ? 12 : 14,
                     color: Colors.orange[800],
                     fontWeight: FontWeight.w600,
                   ),
@@ -90,7 +92,7 @@ SlidingCardController controller ;
                 ),
               ),
               SizedBox(
-                height: 4,
+                height: 2,
               ),
               Text(
                 "$fecha",
@@ -105,57 +107,7 @@ SlidingCardController controller ;
       ),
     );
   }
-  Widget _buildFrontWidget(String text, bool isMobile,isTablet) {
-    return Container(
-       width: (isMobile||isTablet) ? MediaQuery.of(context).size.width*0.7 :  MediaQuery.of(context).size.width*0.5,
-      padding: EdgeInsets.all(15),
-        color: Color(0xff0A183D),
-        alignment: Alignment.center,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Container(
-               width: (isMobile||isTablet) ? MediaQuery.of(context).size.width*0.4 :  MediaQuery.of(context).size.width*0.2,
-              child: Text(text,
-                  style: TextStyle(
-                      color: Colors.white,
-                     fontSize:(isMobile) ? 12 : 14,
-                      fontWeight: FontWeight.w700)),
-            ),
-            
-          
-            
-          ],
-        ));
-  }
-
   
-
-  Widget _buildInnerBottomWidget(String text, bool isMobile,isTablet) {
-   return Container(
-    margin: EdgeInsets.symmetric(horizontal:(isMobile||isTablet) ? 0 : MediaQuery.of(context).size.width*0.0125),
-     width:(isMobile||isTablet) ?  MediaQuery.of(context).size.width*0.85 : MediaQuery.of(context).size.width*0.5,
-      padding: EdgeInsets.all(12),
-        color: Color(0xff1c3546),
-        alignment: Alignment.centerLeft,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Container(
-              width: (isMobile||isTablet) ? MediaQuery.of(context).size.width*0.7 :  MediaQuery.of(context).size.width*0.4,
-              child: Text(text,
-                  style: TextStyle(
-                      color: Colors.white,
-                     
-                      fontSize:(isMobile) ? 12 : 14,
-                      fontWeight: FontWeight.w500)),
-            ),
-            
-          
-            
-          ],
-        ));
-  }
   Widget customFlexible(String text, String subText, var icon) {
     return Flexible(
       flex: 1,
@@ -321,11 +273,11 @@ Widget _buildFotos(bool isMobile, isTablet) {
         controller: scrollController,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, position) {
-          print(position);
+        
           return GestureDetector(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: customCard('images/${position+1}-min.jpg' ,isMobile,isTablet,text:'${listaNombres[position]}'),
+              child: customCard('assets/images/${position+1}-min.jpg' ,isMobile,isTablet,text:'${listaNombres[position]}'),
             ),
             onHorizontalDragEnd: (details) {
               animationController = AnimationController(
@@ -375,11 +327,11 @@ Widget _buildFotos(bool isMobile, isTablet) {
         controller: scrollController2,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, position) {
-          print(position);
+         
           return GestureDetector(
             child: Padding(
               padding: const EdgeInsets.all(0),
-              child:  customCard( "images/R${position+1}.PNG",isMobile,isTablet
+              child:  customCard( "assets/images/R${position+1}.PNG",isMobile,isTablet
                  ),
             ),
             onHorizontalDragEnd: (details) {
@@ -474,8 +426,7 @@ if (isMobile || isTablet)
             }
 
     var size = MediaQuery.of(context).size;
-    print(size.height);
-    print(size.width);
+    
     return SingleChildScrollView(
       child: 
       
@@ -494,7 +445,7 @@ if (isMobile || isTablet)
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 16.0),
                       child: Image(
-                        image: AssetImage("images/Conocenos.png"),
+                        image: AssetImage("assets/images/Conocenos.jpg"),
                       ),
                     ),
                   ) : Container(),
@@ -605,7 +556,7 @@ if (isMobile || isTablet)
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 4),
                       child: Image(
-                        image: (isTablet) ?  AssetImage("images/Conocenos.png") : AssetImage("images/Conocenos.png"),
+                        image: (isTablet) ?  AssetImage("assets/images/Conocenos.jpg") : AssetImage("assets/images/Conocenos.jpg"),
                       ),
                     ),
                   ) : Container(), 
@@ -628,7 +579,7 @@ if (isMobile || isTablet)
                 children: [
                   Container(
                      
-                      width: (isMobile || isTablet) ? size.width-64 :  size.width*2 / 5 ,
+                      width: (isMobile || isTablet) ? size.width-64 :  size.width*3 / 5 ,
                     child: Column(
                       crossAxisAlignment:  CrossAxisAlignment.start ,
                       mainAxisAlignment: (isMobile||isTablet) ? MainAxisAlignment.start : MainAxisAlignment.center,
@@ -679,11 +630,11 @@ if (isMobile || isTablet)
                       style: TextStyle(
                         color: Color.fromRGBO(3, 9, 40, 1),
                         fontWeight: FontWeight.w700,
-                        fontSize: (isMobile) ? size.width/17.5 : size.width/22.76,
+                        fontSize: (isMobile) ? size.width/17.5 : size.width/35,
                       ),
                     ),
                     SizedBox(
-                      height: 12,
+                      height: 10,
                     ),
                     _buildDocumentAttachmentWidget(
                         context, "Campeón del mundo WNBB", '10/10/2018', 1,isMobile,isTablet),
@@ -694,13 +645,13 @@ if (isMobile || isTablet)
                     _buildDocumentAttachmentWidget(
                         context, "Subcampeón del mundo WNBB", '02/10/2019', 2,isMobile,isTablet), 
                       (isMobile||isTablet)  ?  Container(
-                     height:  (isMobile) ? (size.height<500) ? 200 : size.height*0.4 : (size.height<500) ? 300 :  size.height * 0.6,
+                     height:  (isMobile) ? (size.height<500) ? 150 : size.height*0.33 : (size.height<500) ? 200 :  size.height * 0.4,
                     width:  size.width ,
                     alignment: Alignment.center,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: Image(
-                        image: AssetImage("images/Conocenos2.png"),
+                        image: AssetImage("assets/images/Conocenos2.jpg"),
                       ),
                     ),
                   ) : Container(),
@@ -710,12 +661,12 @@ if (isMobile || isTablet)
                   ),
                (isMobile||isTablet) ? Container() :  Container(
                     
-                    width:  size.width*3 / 5-64 ,
+                    width:  size.width*2 / 5-64 ,
                     alignment: Alignment.center,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 16.0,horizontal: 32),
                       child: Image(
-                        image: AssetImage("images/Conocenos2.png"),
+                        image: AssetImage("assets/images/Conocenos2.jpg"),
                       ),
                     ),
                   )
@@ -798,7 +749,7 @@ if (isMobile || isTablet)
                     width:size.width/3,
                     alignment: Alignment.center,
                     child: Image(
-                                image:  AssetImage("images/MostMuscular.jpg"),
+                                image:  AssetImage("assets/images/MostMuscular.jpg"),
                     ),
                   ),
                   SizedBox(
@@ -809,7 +760,7 @@ if (isMobile || isTablet)
                     width:size.width/3,
                     alignment: Alignment.center,
                     child: Image(
-                                image:  AssetImage("images/B99A0068.JPG"),
+                                image:  AssetImage("assets/images/B99A0068.jpg"),
                     ),
                   ),
                             ],
@@ -823,7 +774,7 @@ if (isMobile || isTablet)
                     width:size.width/3,
                     alignment: Alignment.center,
                     child: Image(
-                            image:  AssetImage("images/MostMuscular.jpg"),
+                            image:  AssetImage("assets/images/MostMuscular.jpg"),
                     ),
                   ) : Container (),
                       
@@ -927,78 +878,15 @@ if (isMobile || isTablet)
            
             //Footer
             Container(
-              height: size.height * 0.60,
+              height: size.height * 0.15,
               width: size.width,
               color: Color(0xff0A183D),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 120),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 12.0),
-                      child: Text(
-                        "Questions? Call 000-800-040-1843",
-                        style: ThemText.footerText,
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            footerText("FAQ"),
-                            footerText("Investor Relations"),
-                            footerText("Privacy"),
-                            footerText("Speed Test"),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            footerText("Help Centre"),
-                            footerText("Jobs"),
-                            footerText("Cookie Preferences"),
-                            footerText("Legal Notices"),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            footerText("Account"),
-                            footerText("Ways to Watch"),
-                            footerText("Corporate Information"),
-                            footerText("EntrenaAPP Originals"),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            footerText("Media Centre"),
-                            footerText("Terms of Use"),
-                            footerText("Contact Us"),
-                          ],
-                        )
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 12.0),
-                      child: Text(
-                        "EntrenaAPP India",
-                        style: ThemText.footerText,
-                      ),
-                    ),
-                    Center(
-                      child: Text(
-                        "© Created By Tushar Nikam",
-                        style: ThemText.footerText,
-                      ),
-                    )
-                  ],
+              child: Center(
+                  child: Text(
+                    "©2021 Una web creada por @carlos10medina",
+                    style: ThemText.footerText,
+                  ),
                 ),
-              ),
             ),
           ],
         ),
@@ -1006,13 +894,13 @@ if (isMobile || isTablet)
     );
   }
 
-  Widget footerText(text) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Text(
-        text,
-        style: ThemText.footerText,
-      ),
-    );
-  }
-}
+//   Widget footerText(text) {
+//     return Padding(
+//       padding: const EdgeInsets.symmetric(vertical: 8.0),
+//       child: Text(
+//         text,
+//         style: ThemText.footerText,
+//       ),
+//     );
+//   }
+ }

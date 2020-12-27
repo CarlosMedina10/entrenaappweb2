@@ -113,7 +113,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget _title() {
     return Container(
       padding: EdgeInsets.symmetric(vertical:10),
-      height: MediaQuery.of(context).size.height*0.125,
+      height: (MediaQuery.of(context).size.height<500) ? 62.5 : MediaQuery.of(context).size.height*0.125,
      
       // padding: EdgeInsets.only(
       //     right: MediaQuery.of(context).size.width * 0.2,
@@ -149,15 +149,11 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    print('${MediaQuery.of(context).size.height}');
-    print('${MediaQuery.of(context).size.width}');
+  
 
-    double pulgadas = sqrt((MediaQuery.of(context).size.height *
-            MediaQuery.of(context).size.height) *
-        (MediaQuery.of(context).size.width *
-            MediaQuery.of(context).size.width));
+  
     double altura = MediaQuery.of(context).size.height;
-    print('$pulgadas');
+ 
 
     return BlocListener<LoginBloc, LoginState>(listener: (context, state) {
       // tres casos, tres if:
@@ -221,7 +217,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: MediaQuery.of(context).size.height,
                   child: ListView(
                     children: <Widget>[
-                     
+                       SizedBox(height:(altura>700) ? 50 : 0 ),
                       Container(
                         alignment: Alignment.center,
                         
@@ -243,7 +239,7 @@ class _LoginPageState extends State<LoginPage> {
                             Container(
                              
                               width: 
-                            (widget.isMobile) ? MediaQuery.of(context).size.width : (widget.isTablet) ? MediaQuery.of(context).size.width*0.5 :  MediaQuery.of(context).size.width*0.3,
+                            (widget.isMobile) ? MediaQuery.of(context).size.width : (widget.isTablet) ? MediaQuery.of(context).size.width*0.5 :  MediaQuery.of(context).size.width*0.35,
                               child: Form(
                                 child: Column(
                                   children: <Widget>[
@@ -425,7 +421,7 @@ class _LoginPageState extends State<LoginPage> {
                               height: (widget.isMobile) ? 10 : 15,
                             ),
                             Container(
-                   width: (widget.isMobile) ? MediaQuery.of(context).size.width-40 : (widget.isTablet) ? MediaQuery.of(context).size.width*0.5 :  MediaQuery.of(context).size.width*0.3,
+                   width: (widget.isMobile) ? MediaQuery.of(context).size.width-40 : (widget.isTablet) ? MediaQuery.of(context).size.width*0.5 :  MediaQuery.of(context).size.width*0.35,
                 
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,

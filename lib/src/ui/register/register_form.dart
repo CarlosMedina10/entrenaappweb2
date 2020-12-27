@@ -19,11 +19,12 @@ import 'package:community_material_icon/community_material_icon.dart';
 
 class RegisterPage extends StatefulWidget {
    final UserRepository _userRepository;
+   final bool isMobile;
+   final bool isTablet;
+  
 
-  RegisterPage({Key key, @required UserRepository userRepository})
-      : assert(userRepository != null),
-        _userRepository = userRepository,
-        super(key: key);
+  RegisterPage(this._userRepository,this.isMobile,this.isTablet);
+     
 
   
 
@@ -155,11 +156,11 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-    Widget _title() {
+  Widget _title() {
     return Container(
-      
-      height: MediaQuery.of(context).size.height*0.125,
-      width: MediaQuery.of(context).size.width*0.6,
+      padding: EdgeInsets.symmetric(vertical:10),
+      height: (MediaQuery.of(context).size.height<500) ? 62.5 : MediaQuery.of(context).size.height*0.125,
+     
       // padding: EdgeInsets.only(
       //     right: MediaQuery.of(context).size.width * 0.2,
       //     left: MediaQuery.of(context).size.width * 0.1),
@@ -271,238 +272,251 @@ class _RegisterPageState extends State<RegisterPage> {
         builder: (context, state) {
           return
     
-    Scaffold(
-    backgroundColor: Color.fromRGBO(3, 9, 40, 1),
-        body:  new GestureDetector(
-      onTap: () {
-        // call this method here to hide soft keyboard
-        FocusScope.of(context).requestFocus(new FocusNode());
-      }, child:
-        SingleChildScrollView(
-          
-            child: Container(
-              // color: Color.fromRGBO(3, 9, 47, 1),
-      height: MediaQuery.of(context).size.height,
-      child: Stack(
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Expanded(
-                  flex: (altura>700) ? 3 : 2,
-                  child: SizedBox(),
-                ),
-                _title(),
-                SizedBox(
-                  height: altura/30,
-                ),
-                Form(
-          
-          child: Column(
-        children: <Widget>[
-          Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-      (MediaQuery.of(context).size.height>550) ?  Text(
-           'Correo',
-            style: TextStyle(fontSize: 15,color: Colors.white),
-          ) : Container(),
-         (MediaQuery.of(context).size.height>550) ?  SizedBox(
-            height: 10,
-          ) : Container(),
-           TextFormField(
-                    controller: _emailController,
-                    decoration: InputDecoration(
-                    contentPadding:  EdgeInsets.symmetric(vertical: 0, horizontal: 0) ,
-                    labelText:(MediaQuery.of(context).size.height>550) ? '' : 'Correo' ,
-                  border: InputBorder.none,
-                  errorStyle: TextStyle(fontSize:10),
-                  fillColor: Color(0xfff3f3f4),
-                  filled: true),
-                    keyboardType: TextInputType.emailAddress,
-                    autocorrect: false,
-                    autovalidate: true,
-                    validator: (_){
-                      return !state.isEmailValid? 'Email Invalido' : null;
-                    },
-                  ),
-        ],
-      ),
-    ),
-         Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          (MediaQuery.of(context).size.height>550) ?  Text(
-           'Contraseña' ,
-            style: TextStyle(fontSize: 15,color: Colors.white),
-          ) : Container(),
-          (MediaQuery.of(context).size.height>550) ? SizedBox(
-            height: 10,
-          ) : Container(),
-          TextFormField(
-                    controller: _passwordController,
-                     decoration: InputDecoration(
-                       suffixIcon: (isTap1== false) ? InkWell(child: Icon(CommunityMaterialIcons.eye,),
-                       onTap: (){
-                         setState(() {
-                           isTap1=true;
-                         });
-                       },) :
-                       
-                       InkWell(child: Icon(CommunityMaterialIcons.eye_off,),
-                       onTap: (){
-                         setState(() {
-                           isTap1=false;
-                         });
-                       },) ,
-                       errorStyle: TextStyle(fontSize:10),
-                       contentPadding:  EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-                       labelText:(MediaQuery.of(context).size.height>550) ? '' : 'Contraseña',
-                  border: InputBorder.none,
-                  fillColor: Color(0xfff3f3f4),
-                  filled: true),
-                    obscureText: (isTap1 == true) ? false : true,
-                    autocorrect: false,
-                    autovalidate: true,
-                
-                    validator: (_){
-                      return !state.isPasswordValid ? 'Al menos 8 carácteres con letras y números.': null;
-                    },
-                  ),
-        ],
-      ),
-    ),
-         
-                  Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-         (MediaQuery.of(context).size.height>550) ?  Text(
-           'Verificar Contraseña' ,
-            style: TextStyle(fontSize: 15,color: Colors.white),
-          ) : Container(),
-          (MediaQuery.of(context).size.height>550) ? SizedBox(
-            height: 10,
-          ) : Container(),
-        
-           TextFormField(
-                    controller: _verifyPasswordController,
-                     decoration: InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-                      labelText:(MediaQuery.of(context).size.height>550) ? '' : 'Verificar Contraseña',
-                  border: InputBorder.none,
-                  errorStyle: TextStyle(fontSize:10),
-                   suffixIcon: (isTap2== false) ? InkWell(child: Icon(CommunityMaterialIcons.eye,),
-                       onTap: (){
-                         setState(() {
-                           isTap2=true;
-                         });
-                       },) :
-                       
-                       InkWell(child: Icon(CommunityMaterialIcons.eye_off,),
-                       onTap: (){
-                         setState(() {
-                           isTap2=false;
-                         });
-                       },) ,
-                  fillColor: Color(0xfff3f3f4),
-                  filled: true),
-                    obscureText: (isTap2 == true) ? false : true,
-                    autocorrect: false,
-                    autovalidate: true,
-                    validator: (_){
-                      return !state.isVerify ? 'No coinciden las contraseñas': null;
-                    },
-                  ),
-            SizedBox(
-            height: 10,
-          ),
-            Row(
-              children: <Widget>[
-                Container(
-                  width: MediaQuery.of(context).size.width*0.6,
-                  child: Column(
-                    children: <Widget>[
-                      AutoSizeText('Estoy de acuerdo con los términos y condiciones.',style: TextStyle(color:Colors.grey[50]),maxFontSize: 14,minFontSize: 8,maxLines: 1,),
-                      SizedBox(height: 10),
-                      InkWell(
-                        onTap: () async{
-                             if (await canLaunch("https://docs.google.com/document/d/18oJrOwZRm57BbnSwpPCtKtXdGufQwARFfQPeLiTyN28/edit")) {
-                         await launch("https://docs.google.com/document/d/18oJrOwZRm57BbnSwpPCtKtXdGufQwARFfQPeLiTyN28/edit");
-                               }
-                        },
-                        child: AutoSizeText('Ver términos y condiciones de EntrenaAPP',style: TextStyle(color:Colors.grey[50],decoration: TextDecoration.underline),maxFontSize: 14,minFontSize: 8,maxLines: 1,)),
-                    ],
-                  )),
-                SizedBox(
-                  width:MediaQuery.of(context).size.width*0.15
-                ),
-                Checkbox(         
-                                  activeColor: Colors.orange,
-                                  
-                                  value: checkbox ,
-                                  onChanged: (bool value) {
-                                    print('$value');
-                                    setState(() {
-                                       checkbox=value;
-                                    });
-                                  
-                                  } ),
-              ],
-            ),
-        ],
-      ),
-    ),
+  
+        Center(
+          child: Container(
+             
+             width: (widget.isMobile) ? MediaQuery.of(context).size.width : (widget.isTablet) ? MediaQuery.of(context).size.width*0.5 :  MediaQuery.of(context).size.width*0.35,
             
-        
-        ],
+                  
+      
+            child: ListView(
+              
+                children: [Container(
+                  
+            
+                 
+      height: (MediaQuery.of(context).size.height<500) ? 500 : MediaQuery.of(context).size.height ,
+      child: Stack(
+            children: <Widget>[
+              Container(
+               
+                 
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Expanded(
+                      flex: (altura>700) ? 3 : 1,
+                      child: SizedBox(),
+                    ),
+                    _title(),
+                    SizedBox(
+                      height: altura/30,
+                    ),
+                    Form(
+              
+              child: Column(
+            children: <Widget>[
+              Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+      (MediaQuery.of(context).size.height>550) ?  Text(
+               'Correo',
+                style: TextStyle(fontSize: 15,color: Colors.white),
+              ) : Container(),
+             (MediaQuery.of(context).size.height>550) ?  SizedBox(
+                height: 10,
+              ) : Container(),
+               TextFormField(
+                        controller: _emailController,
+                        decoration: InputDecoration(
+                        contentPadding:  EdgeInsets.symmetric(vertical: 0, horizontal: 0) ,
+                        labelText:(MediaQuery.of(context).size.height>550) ? '' : 'Correo' ,
+                      border: InputBorder.none,
+                      errorStyle: TextStyle(fontSize:10),
+                      fillColor: Color(0xfff3f3f4),
+                      filled: true),
+                        keyboardType: TextInputType.emailAddress,
+                        autocorrect: false,
+                        autovalidate: true,
+                        validator: (_){
+                          return !state.isEmailValid? 'Email Invalido' : null;
+                        },
+                      ),
+            ],
       ),
     ),
-                SizedBox(
-                  height: 20,
-                ),
-                 isRegisterButtonEnabled(state) ?
-                  RegisterButton(
-                        onPressed:() {
-                          if (checkbox==true) {
-                             FocusScope.of(context).requestFocus(new FocusNode());
-                           _onFormSubmitted();} else _aceptarPolitica();
-                        }
-                         
-                          
-                      ) :
-                  RegisterButton(
-                        onPressed: 
-                          
-                           null,
+             Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              (MediaQuery.of(context).size.height>550) ?  Text(
+               'Contraseña' ,
+                style: TextStyle(fontSize: 15,color: Colors.white),
+              ) : Container(),
+              (MediaQuery.of(context).size.height>550) ? SizedBox(
+                height: 10,
+              ) : Container(),
+              TextFormField(
+                        controller: _passwordController,
+                         decoration: InputDecoration(
+                           suffixIcon: (isTap1== false) ? InkWell(child: Icon(CommunityMaterialIcons.eye,),
+                           onTap: (){
+                             setState(() {
+                               isTap1=true;
+                             });
+                           },) :
+                           
+                           InkWell(child: Icon(CommunityMaterialIcons.eye_off,),
+                           onTap: (){
+                             setState(() {
+                               isTap1=false;
+                             });
+                           },) ,
+                           errorStyle: TextStyle(fontSize:10),
+                           contentPadding:  EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+                           labelText:(MediaQuery.of(context).size.height>550) ? '' : 'Contraseña',
+                      border: InputBorder.none,
+                      fillColor: Color(0xfff3f3f4),
+                      filled: true),
+                        obscureText: (isTap1 == true) ? false : true,
+                        autocorrect: false,
+                        autovalidate: true,
+                    
+                        validator: (_){
+                          return !state.isPasswordValid ? 'Al menos 8 carácteres con letras y números.': null;
+                        },
                       ),
-                Expanded(
-                  flex: (altura>700) ? 2 : 3,
-                  child: SizedBox(),
-                )
-              ],
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: _loginAccountLabel(),
-          ),
-          // Positioned(top: 40, left: 0, child: _backButton()),
-          (altura>700) ? Positioned(
-              top: -MediaQuery.of(context).size.height * .15,
-              right: -MediaQuery.of(context).size.width * .4,
-              child: BezierContainer()) : Container()
-        ],
+            ],
       ),
-    ))));}),);
+    ),
+             
+                      Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+             (MediaQuery.of(context).size.height>550) ?  Text(
+               'Verificar Contraseña' ,
+                style: TextStyle(fontSize: 15,color: Colors.white),
+              ) : Container(),
+              (MediaQuery.of(context).size.height>550) ? SizedBox(
+                height: 10,
+              ) : Container(),
+            
+               TextFormField(
+                        controller: _verifyPasswordController,
+                         decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+                          labelText:(MediaQuery.of(context).size.height>550) ? '' : 'Verificar Contraseña',
+                      border: InputBorder.none,
+                      errorStyle: TextStyle(fontSize:10),
+                       suffixIcon: (isTap2== false) ? InkWell(child: Icon(CommunityMaterialIcons.eye,),
+                           onTap: (){
+                             setState(() {
+                               isTap2=true;
+                             });
+                           },) :
+                           
+                           InkWell(child: Icon(CommunityMaterialIcons.eye_off,),
+                           onTap: (){
+                             setState(() {
+                               isTap2=false;
+                             });
+                           },) ,
+                      fillColor: Color(0xfff3f3f4),
+                      filled: true),
+                        obscureText: (isTap2 == true) ? false : true,
+                        autocorrect: false,
+                        autovalidate: true,
+                        validator: (_){
+                          return !state.isVerify ? 'No coinciden las contraseñas': null;
+                        },
+                      ),
+                SizedBox(
+                height: 10,
+              ),
+                Container(
+                  width: (widget.isMobile) ? MediaQuery.of(context).size.width : (widget.isTablet) ? MediaQuery.of(context).size.width*0.5 :  MediaQuery.of(context).size.width*0.35,
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                          width: (widget.isMobile) ? MediaQuery.of(context).size.width*0.75 : (widget.isTablet) ? MediaQuery.of(context).size.width*0.45 :  MediaQuery.of(context).size.width*0.25,
+                        child: Column(
+                          children: <Widget>[
+                           (MediaQuery.of(context).size.width<406) ? Container(child: AutoSizeText('Estoy de acuerdo',style: TextStyle(color:Colors.grey[50]),maxFontSize: 14,minFontSize: 8,maxLines: 1,)) : Container(child: AutoSizeText('Estoy de acuerdo con los términos y condiciones.',style: TextStyle(color:Colors.grey[50]),maxFontSize: 14,minFontSize: 8,maxLines: 1,)),
+                            SizedBox(height: 8),
+                            InkWell(
+                              onTap: () async{
+                                   if (await canLaunch("https://docs.google.com/document/d/18oJrOwZRm57BbnSwpPCtKtXdGufQwARFfQPeLiTyN28/edit")) {
+                               await launch("https://docs.google.com/document/d/18oJrOwZRm57BbnSwpPCtKtXdGufQwARFfQPeLiTyN28/edit");
+                                     }
+                              },
+                              child: AutoSizeText('Ver términos y condiciones',style: TextStyle(color:Colors.grey[50],decoration: TextDecoration.underline),maxFontSize: 14,minFontSize: 8,maxLines: 1,)),
+                          ],
+                        )),
+                      SizedBox(
+                        width:MediaQuery.of(context).size.width*0.0125
+                      ),
+                      Theme(
+data: ThemeData(unselectedWidgetColor: Colors.white),child:
+                      Checkbox(         
+                                        activeColor: Colors.orange,
+                                        checkColor: Colors.white,
+                                        
+                                        value: checkbox ,
+                                        onChanged: (bool value) {
+                                          print('$value');
+                                          setState(() {
+                                             checkbox=value;
+                                          });
+                                        
+                                        } ),),
+                    ],
+                  ),
+                ),
+            ],
+      ),
+    ),
+                
+            
+            ],
+      ),
+    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                     isRegisterButtonEnabled(state) ?
+                      RegisterButton(
+                            onPressed:() {
+                              if (checkbox==true) {
+                                 FocusScope.of(context).requestFocus(new FocusNode());
+                               _onFormSubmitted();} else _aceptarPolitica();
+                            }
+                             
+                              
+                          ) :
+                      RegisterButton(
+                            onPressed: 
+                              
+                               null,
+                          ),
+                    Expanded(
+                      flex: (altura>700) ? 2 : 3,
+                      child: SizedBox(),
+                    )
+                  ],
+                ),
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: _loginAccountLabel(),
+              ),
+              // Positioned(top: 40, left: 0, child: _backButton()),
+              (altura>700 && widget.isMobile) ? Positioned(
+                top: -MediaQuery.of(context).size.height * .175,
+                right: -MediaQuery.of(context).size.width * .5,
+                child: BezierContainer())  : Container()
+            ],
+      ),
+    )]),
+          ),
+        );}),);
   }
   void _onEmailChanged() {
     _registerBloc.add(

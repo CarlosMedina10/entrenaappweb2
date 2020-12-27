@@ -5,22 +5,20 @@ import '../../repository/user_repository.dart';
 import '../../ui/register/register_form.dart';
 
 class RegisterScreen extends StatelessWidget {
-  final UserRepository _userRepository;
+   final UserRepository _userRepository;
+   final bool isMobile;
+   final bool isTablet;
+  
 
-  RegisterScreen({Key key, @required UserRepository userRepository})
-    :assert(userRepository != null),
-    _userRepository = userRepository,
-    super(key: key);
+  RegisterScreen(this._userRepository,this.isMobile,this.isTablet);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    
-      body: Center(
-        child: BlocProvider<RegisterBloc>(
-          create: (context) => RegisterBloc(userRepository: _userRepository),
-          child: RegisterPage(userRepository: _userRepository,),
-        ),
+    backgroundColor: Color(0xff0A183D),
+      body: BlocProvider<RegisterBloc>(
+        create: (context) => RegisterBloc(userRepository: _userRepository),
+        child: RegisterPage( _userRepository,isMobile,isTablet),
       ),
     );
   }

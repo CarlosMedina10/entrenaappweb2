@@ -44,8 +44,8 @@ class _ProfileSectionState extends State<ProfileSection> {
               child: Stack(
                 overflow: Overflow.visible,
                 children: <Widget>[
-                  Image.asset(
-                    "assets/images/Fondo1.jpg",
+                  Image.network(
+                    "https://firebasestorage.googleapis.com/v0/b/entrenaapp2-12fbe.appspot.com/o/fotosPromocionales%2F7-min.jpg?alt=media&token=76173d69-36bd-4152-b462-57db1bfbfd76",
                     width: displaySize.width,
                     fit: BoxFit.fitWidth,
                   ),

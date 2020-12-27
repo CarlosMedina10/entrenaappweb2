@@ -1,11 +1,17 @@
 
 
-import '../../../blocs/bloc/landingpage_bloc.dart';
-import 'package:expansion_card/expansion_card.dart';
+
+import 'package:entrenaappweb/blocs/CardBloc/card_bloc.dart';
+import 'package:entrenaappweb/blocs/LandingPageBloc/landingpage_bloc.dart';
+import 'package:entrenaappweb/src/ui/landingPage/CustomCard.dart';
+
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'package:sliding_card/sliding_card.dart';
+
 import '../../widgets/RoundedButton.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
@@ -19,13 +25,14 @@ import 'package:url_launcher/url_launcher.dart';
 
 class LandingPage extends StatefulWidget {
   final bool isOnPrincipal;
-  LandingPage(this.isOnPrincipal);
+  final List<Map<String, String>> isInit;
+  LandingPage(this.isOnPrincipal,this.isInit);
   @override
   _LandingPageState createState() => _LandingPageState();
 }
 
 class _LandingPageState extends State<LandingPage> with TickerProviderStateMixin {
-SlidingCardController controller ;
+
   bool card1 =false;
   bool card2 = false;
   bool card3=false;
@@ -35,6 +42,7 @@ SlidingCardController controller ;
   var cardIndex2 = 0;
   ScrollController scrollController;
   ScrollController scrollController2;
+
 
   AnimationController animationController;
   AnimationController animationController2;
@@ -46,22 +54,37 @@ SlidingCardController controller ;
   @override
   void initState() {
     super.initState();
-  controller = SlidingCardController();
+  
     scrollController = new ScrollController();
     scrollController2 = new ScrollController();
     
   }
-  Widget _buildFrontWidget(String text, bool isMobile,isTablet) {
+  Widget _buildFrontWidget(BuildContext context,String text, bool isMobile,isTablet,CardState state,int numeroTarjeta) {
     return Container(
-       width: (isMobile||isTablet) ? MediaQuery.of(context).size.width*0.7 :  MediaQuery.of(context).size.width*0.5,
-      padding: EdgeInsets.all(15),
+       width: MediaQuery.of(context).size.width*0.85 ,
+         padding: EdgeInsets.symmetric(horizontal: isMobile ? 8 : 16, vertical: isMobile ? 8 : 16),
         color: Color(0xff0A183D),
         alignment: Alignment.center,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+         
           children: <Widget>[
+           (state is TarjetaDeVuelta && state.numeroTarjeta==numeroTarjeta  ) ?   InkWell(
+                onTap: (){
+                   BlocProvider.of<CardBloc>(
+                                                                          context)
+                                                                      .add(DarVuelta(numeroTarjeta, false));
+                },
+               child: Icon(Icons.keyboard_arrow_down,color: Colors.white,size: 32,)) : InkWell(
+             onTap: (){
+                    BlocProvider.of<CardBloc>(
+                                                                          context)
+                                                                      .add(DarVuelta(numeroTarjeta, true));
+             },
+             child: Icon(Icons.keyboard_arrow_right,color: Colors.white,size: 32 ,)),
+            SizedBox(width:8),
             Container(
-               width: (isMobile||isTablet) ? MediaQuery.of(context).size.width*0.4 :  MediaQuery.of(context).size.width*0.2,
+           
+               width:   MediaQuery.of(context).size.width*0.85-80,
               child: Text(text,
                   style: TextStyle(
                       color: Colors.white,
@@ -79,16 +102,17 @@ SlidingCardController controller ;
 
   Widget _buildInnerBottomWidget(String text, bool isMobile,isTablet) {
    return Container(
-    margin: EdgeInsets.symmetric(horizontal:(isMobile||isTablet) ? 0 : MediaQuery.of(context).size.width*0.0125),
-     width:(isMobile||isTablet) ?  MediaQuery.of(context).size.width*0.85 : MediaQuery.of(context).size.width*0.5,
-      padding: EdgeInsets.all(12),
+  
+     width: MediaQuery.of(context).size.width*0.85,
+      padding: EdgeInsets.symmetric(horizontal: isMobile ? 8 : 16, vertical: isMobile ? 8 : 16),
         color: Color(0xff1c3546),
-        alignment: Alignment.centerLeft,
+        alignment: Alignment.center,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          
           children: <Widget>[
             Container(
-              width: (isMobile||isTablet) ? MediaQuery.of(context).size.width*0.7 :  MediaQuery.of(context).size.width*0.4,
+           
+              width: MediaQuery.of(context).size.width*0.85-45 ,
               child: Text(text,
                   style: TextStyle(
                       color: Colors.white,
@@ -102,39 +126,7 @@ SlidingCardController controller ;
           ],
         ));
   }
-  Widget customFlexible(String text, String subText, var icon) {
-    return Flexible(
-      flex: 1,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            CircleAvatar(
-              backgroundColor: Color(0xffF24854),
-              radius: 32.0,
-              child: Icon(icon, color: Colors.white, size: 28.0),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            Text(
-              text,
-              style: ThemText.createText,
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            Text(
-              subText,
-              style: ThemText.howitworkDec,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+
 
   Widget customCheckBox(String text, bool value,){
     var deviceType = getDeviceType(MediaQuery.of(context).size);
@@ -232,30 +224,18 @@ switch(deviceType) {
      (text!=null) ?  Text(
           text,
           style: ThemText.cardText,
-        ) :     Text(
+        ) :  (isMobile) ?  Text(
                               "** Desliza para ver mas",
                               style: TextStyle(
     color: Color(0xff0A183D),
      fontSize: (isMobile) ? 12 : (isTablet) ? 14 : 16,
    
-  ),)
+  ),) : Container(height:1)
       ],
     );
   }
 
-  Widget customCircleAvtar( img,bool isMobile, isTablet) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        CircleAvatar(
-          radius: 100.0,
-          backgroundImage: AssetImage(img),
-        ),
-       
-        
-      ],
-    );
-  }
+  
 Widget _buildFotos(bool isMobile, isTablet) {
   List<String> listaNombres = ['Juan','Richard','Kilian','Adrian','Jonathan','Adrian','Carlos','Jandro'];
     return Container(
@@ -267,11 +247,11 @@ Widget _buildFotos(bool isMobile, isTablet) {
         controller: scrollController,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, position) {
-          print(position);
+         
           return GestureDetector(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: customCard('images/${position+1}-min.jpg' ,isMobile,isTablet,text:'${listaNombres[position]}'),
+              child: CustomCard('${position+1}-min.jpg' ,isMobile,isTablet,widget.isInit,text:'${listaNombres[position]}'),
             ),
             onHorizontalDragEnd: (details) {
               animationController = AnimationController(
@@ -321,11 +301,11 @@ Widget _buildFotos(bool isMobile, isTablet) {
         controller: scrollController2,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, position) {
-          print(position);
+         
           return GestureDetector(
             child: Padding(
               padding: const EdgeInsets.all(0),
-              child:  customCard( "images/R${position+1}.PNG",isMobile,isTablet
+              child:  customCard( "assets/images/R${position+1}.PNG",isMobile,isTablet
                  ),
             ),
             onHorizontalDragEnd: (details) {
@@ -434,18 +414,18 @@ switch(deviceType) {
             (isMobile) ?
             Container(
             
-                height: (size.height>500) ? size.height*3/8 : 187.5,
+                height: (size.height>500) ? size.height*2.8/8 : 175,
                     width:  size.width,
                     alignment: Alignment.center,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 16.0),
                       child: Image(
-                        image: AssetImage("images/DisenoFondo2.png"),
+                        image: AssetImage("assets/images/DisenoFondo2.jpg"),
                       ),
                     ),
                   ) : Container(),
             Container(
-              height: (isMobile) ? (size.height>500) ? size.height*5/8 : 312.5 : (size.height>500) ? size.height : 500,
+              height: (isMobile) ? (size.height>500) ? size.height*5.2/8 : 325 : (size.height>500) ? size.height : 500,
               width: size.width,
            
               child: Row(
@@ -552,7 +532,7 @@ switch(deviceType) {
                     width:(isMobile ) ? 100 : (isTablet ) ? 150 : 150,
                     alignment: Alignment.center,
                     child: Image(
-                            image:  AssetImage("images/1.png"),
+                            image:  AssetImage("assets/images/1.png"),
                     ),
                   ),
                               ),
@@ -566,7 +546,7 @@ switch(deviceType) {
                      width:(isMobile ) ? 100 : (isTablet ) ? 150 : 160,
                     alignment: Alignment.center,
                     child: Image(
-                            image:  AssetImage("images/2.png"),
+                            image:  AssetImage("assets/images/2.png"),
                     ),
                   ),
                                ),
@@ -583,7 +563,7 @@ switch(deviceType) {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 4),
                       child: Image(
-                        image: (isTablet) ?  AssetImage("images/DisenoFondo.png") : AssetImage("images/DisenoFondo2.png"),
+                        image: (isTablet) ?  AssetImage("assets/images/DisenoFondo.jpg") : AssetImage("assets/images/DisenoFondo2.jpg"),
                       ),
                     ),
                   ) : Container(), 
@@ -639,13 +619,13 @@ switch(deviceType) {
                             
                           
                              Container(
-                         height:  (isMobile) ? (size.height<500) ? 200 : size.height*0.4 : (size.height<500) ? 300 :  size.height * 0.6,
+                         height:  (isMobile) ? (size.height<500) ? 200 : size.height*0.4 : (size.height<500) ? 275 :  size.height * 0.55,
                         width: (isMobile||isTablet) ? size.width : size.width / 2 ,
                         alignment: Alignment.center,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8.0),
                           child: Image(
-                            image: AssetImage("images/ImagenApp.png"),
+                            image: AssetImage("assets/images/ImagenApp.jpg"),
                           ),
                         ),
                       ) ,
@@ -743,7 +723,7 @@ switch(deviceType) {
                     width:size.width/6,
                     alignment: Alignment.center,
                     child: Image(
-                            image:  AssetImage("images/3.png"),
+                            image:  AssetImage("assets/images/3.png"),
                     ),
                   ),
                         ],
@@ -839,7 +819,7 @@ switch(deviceType) {
                     width:size.width/6,
                     alignment: Alignment.center,
                     child: Image(
-                            image:  AssetImage("images/4.png"),
+                            image:  AssetImage("assets/images/4.png"),
                     ),
                   ),
                         ],
@@ -1163,22 +1143,22 @@ switch(deviceType) {
                           (isMobile) ? Row(
                             children: [
                               Container(
-                    height: (size.height<500) ? 166.66 :  size.height/3,
+                    height: (size.height<500) ? 160 :  size.height/3.125,
                     width:size.width/3,
                     alignment: Alignment.center,
                     child: Image(
-                                image:  AssetImage("images/MostMuscular.jpg"),
+                                image:  AssetImage("assets/images/MostMuscular.jpg"),
                     ),
                   ),
                   SizedBox(
                     width:size.width/12
                   ),
                    Container(
-                    height: (size.height<500) ? 166.66 :  size.height/3,
+                    height: (size.height<500) ? 160 :  size.height/3.125,
                     width:size.width/3,
                     alignment: Alignment.center,
                     child: Image(
-                                image:  AssetImage("images/B99A0068.JPG"),
+                                image:  AssetImage("assets/images/B99A0068.jpg"),
                     ),
                   ),
                             ],
@@ -1192,7 +1172,7 @@ switch(deviceType) {
                     width:size.width/3,
                     alignment: Alignment.center,
                     child: Image(
-                            image:  AssetImage("images/MostMuscular.jpg"),
+                            image:  AssetImage("assets/images/MostMuscular.jpg"),
                     ),
                   ) : Container (),
                       
@@ -1347,25 +1327,25 @@ switch(deviceType) {
           
             Container(
               alignment: Alignment.center,
-              height: 
+              height: (size.height<500) ? 800 : size.height*1.6,
 
-              (isMobile||isTablet) ? 
-              (numeroTarjetas==4) ?
-              (size.height<500) ? 1150 : size.height*2.3 :
-               (numeroTarjetas==3) ?
-              (size.height<500) ? 1050 : size.height*2.1
-              : 
-             (numeroTarjetas==2) ?
-              (size.height<500) ? 950 : size.height*1.9
-              : 
-              (numeroTarjetas==1) ?
-              (size.height<500) ? 850 : size.height*1.7
-              : 
-              (size.height<500) ? 750 : size.height*1.5
-              : 
-              (card1 && card2 && card3 && card4) ?
-              (size.height<600) ? 600 : size.height*1.2 :
-              (size.height<500) ? 500 : size.height,
+            //   (isMobile||isTablet) ? 
+            //   (numeroTarjetas==4) ?
+            //   (size.height<500) ? 1150 : size.height*2.3 :
+            //    (numeroTarjetas==3) ?
+            //   (size.height<500) ? 1050 : size.height*2.1
+            //   : 
+            //  (numeroTarjetas==2) ?
+            //   (size.height<500) ? 950 : size.height*1.9
+            //   : 
+            //   (numeroTarjetas==1) ?
+            //   (size.height<500) ? 850 : size.height*1.7
+            //   : 
+            //   (size.height<500) ? 750 : size.height*1.5
+            //   : 
+            //   (card1 && card2 && card3 && card4) ?
+            //   (size.height<600) ? 600 : size.height*1.2 :
+            //   (size.height<500) ? 500 : size.height,
               width: size.width,
               color: Colors.white,
               child: Row(
@@ -1376,18 +1356,18 @@ switch(deviceType) {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 36.0),
                         child: Column(
-                          mainAxisAlignment: (isMobile || isTablet) ? MainAxisAlignment.start : MainAxisAlignment.center,
+                          mainAxisAlignment:  MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(height: (isMobile || isTablet) ? 25 : 0),
+                            SizedBox(height: (isMobile || (isTablet && size.height>580)) ? 25 : 5),
                             Container(
                               alignment: Alignment.center,
-                              width: (isTablet || isMobile) ? size.width : size.width/2,
+                              width:  size.width ,
                               child: Text(
                                 "PREGUNTAS FRECUENTES",
                                 style: TextStyle(
     color: Color(0xff0A183D),
-    fontSize: (isMobile) ? size.width/17.5 : (isTablet) ? size.width/17.5 :  size.width/22.76,   
+    fontSize: (isMobile) ? size.width/17.5 : (isTablet) ? (size.height<580) ? size.width/22.76 : size.width/17.5 :  size.width/22.76,   
     fontWeight: FontWeight.w700,
     letterSpacing: 0.75,
   ),
@@ -1398,13 +1378,15 @@ switch(deviceType) {
   
                             
                             SizedBox(
-                              height: 18.0,
+                              height: (isMobile) ? 12 : (isTablet && size.height<580) ? 16 : 18.0,
                             ),
                            
-                        Container(
-                        
-                          width: size.width/8,
-                          child: Divider(color:Colors.orange,thickness: 1.0,)),
+                        Center(
+                          child: Container(
+                          
+                            width: size.width/4,
+                            child: Divider(color:Colors.orange,thickness: 1.0,)),
+                        ),
                            SizedBox(height:18),
                              Text(
                                "En EntrenaAPP tratamos de darte respuesta de las principales preguntas que suelen surgir para que no te quedes con ninguna duda y que tu experiencia con nosotros sea perfecta.",
@@ -1416,366 +1398,110 @@ switch(deviceType) {
                              ),
                             
                             SizedBox(
-                              height: 25,
+                              height: (isMobile) ? 15 : (isTablet && size.height<580) ? 20 : 25,
                             ),
                             
-                            Center(
-                              child: RoundedButton(
-                                color: Color(0xff0A183D),
-                                textTitle: 'Ver más',
-                                isMobile: isMobile,
-                                isTablet: isTablet,
-                              ),
-                            ),
+                            // Center(
+                            //   child: RoundedButton(
+                            //     color: Color(0xff0A183D),
+                            //     textTitle: 'Ver más',
+                            //     isMobile: isMobile,
+                            //     isTablet: isTablet,
+                            //   ),
+                            // ),
                              SizedBox(
-                              height:(isMobile || isTablet) ?  25 : 0,
+                              height: 25 ,
                             ),
-                          (isMobile || isTablet) ? 
-                         Column(
-  mainAxisAlignment: MainAxisAlignment.center,
-  crossAxisAlignment: CrossAxisAlignment.center,
-  children: [
-        ExpansionCard(
-        
-          onExpansionChanged: (_){
-               
-                setState(() {
-                  if (card1 ==false) 
-                  {
-                     card1=true;
-                     numeroTarjetas=numeroTarjetas+1;
-                  }
-                 
-                  else 
-                    {
-                     card1=false;
-                     numeroTarjetas=numeroTarjetas-1;
-                  }
-                });
-              },
-          trailing: (card1==true) ? Icon(Icons.close,color:Color(0xff0A183D)) : Icon(Icons.add,color:Color(0xff0A183D)),
-           margin: EdgeInsets.all(0),
-            
-            title: Container(
-
-              child: _buildFrontWidget("¿Dónde debo realizar el entrenamiento?",isMobile,isTablet)
-            ),
-            children: <Widget>[
-              
-              _buildInnerBottomWidget("En un gimnasio que tenga un equipamiento razonable. No tiene porque tener toda la maquinaria ya que, en cada patrón de movimiento, vas a poder elegir los ejercicios que mejor se adapten a ti, pero son programas específicos de entrenamiento con pesas para modificar la composición corporal.",isMobile,isTablet)
-            ],
-          ),
-          ExpansionCard(
-            margin: EdgeInsets.all(0),
-              onExpansionChanged: (_){
-               
-                setState(() {
-                  if (card2 ==false) 
-                    {
-                     card2=true;
-                     numeroTarjetas=numeroTarjetas+1;
-                  }
-
-                  else 
-                    {
-                     card2=false;
-                     numeroTarjetas=numeroTarjetas-1;
-                  }
-
-                });
-              },
-              trailing: (card2==true) ? Icon(Icons.close,color:Color(0xff0A183D)) : Icon(Icons.add,color:Color(0xff0A183D)),
-              title: Container(
-                child: _buildFrontWidget("¿En cuánto tiempo se empiezan a notar los resultados?",isMobile,isTablet)
-              ),
-              children: <Widget>[
-                
-                _buildInnerBottomWidget("La progresión de cargas es semanal, por lo que, a nivel numérico y objetivo, empiezas a ver resultados desde la primera semana. En cuanto a peso en la báscula, ya sea el objetivo incrementar o disminuir, también mejoras desde la primera semana.A nivel visual, el mayor impacto es al comparar las fotos de ciclo en ciclo en fotos (aprox 16-20 semanas).",isMobile,isTablet)
-              ],
-            ),
-           ExpansionCard(
+                    BlocProvider<CardBloc>(create: (context) => CardBloc(),
+     
+     
+     
+     
+      child:BlocBuilder<CardBloc,CardState>(
            
-            margin: EdgeInsets.all(0),
-              onExpansionChanged: (_){
-                 setState(() {
-                  if (card3 ==false) 
-                   {
-                     card3=true;
-                     numeroTarjetas=numeroTarjetas+1;
-                  }
-
-                  else 
-                    {
-                     card3=false;
-                     numeroTarjetas=numeroTarjetas-1;
-                  }
-
-                });
-              },
-            trailing: (card3==true) ? Icon(Icons.close,color:Color(0xff0A183D)) : Icon(Icons.add,color:Color(0xff0A183D)),
-              title: Container(
-                child: _buildFrontWidget("¿Para quién es este tipo de entrenamiento?",isMobile,isTablet)
-              ),
-              children: <Widget>[
-                
-                _buildInnerBottomWidget("Este tipo de entrenamiento va dirigido a aquellas personas que llevan mínimo un año trabajando una rutina de entrenamiento en gimnasio. Conocen diferentes tipos de ejercicios, pero quieren seguir aprendiendo por sí mismos. Además, tienen la capacidad de corregir ejercicios y posturas a través de videos. En definitiva, para todo aquel que desee saber cómo sacar el máximo partido a su cuerpo.",isMobile,isTablet)
-              ],
-            ),
-               ExpansionCard(
-            margin: EdgeInsets.all(0),
-              onExpansionChanged: (_){
+            // // ignore: missing_return
+            // buildWhen: (previousState, state) =>
+            //  // ignore: unnecessary_statements
+            //  ( state is IsMobileOrTablet ||  (state is IsDesktop && !state.isOnContactanos)), 
+             
+    // return true/false to determine whether or not
+    // to rebuild the widget with state
+  
+          
+          builder:(BuildContext context, CardState state){
+  
+          return     
+          Container(
+            
+          height: (size.height<500) ? 600 :size.height*1.2,
+            child: ListView(
+              
+              children: [
+                Center(child: _buildFrontWidget( context,"¿Dónde debo realizar el entrenamiento?",isMobile,isTablet,state,1)),
+               (state is TarjetaDeVuelta && state.numeroTarjeta==1) ? Center(child: _buildInnerBottomWidget("En cualquier lugar (gimnasio o en tu casa por ejemplo) que tenga un equipamiento razonable. No tienes porque tener toda la maquinaria ya que, en cada patrón de movimiento, vas a poder elegir los ejercicios que mejor se adapten a ti y al material que dispones para que puedas disponer de un programa específico de entrenamiento para mejorar la composición corporal.",isMobile,isTablet)) : Container(height: 1,),
                
-                setState(() {
-                  if (card4 ==false) 
-                    {
-                     card4=true;
-                     numeroTarjetas=numeroTarjetas+1;
-                  }
+               
+               Center(child: _buildFrontWidget( context,"¿En cuánto tiempo se empiezan a notar los resultados?",isMobile,isTablet,state,2)),
+               (state is TarjetaDeVuelta && state.numeroTarjeta==2) ? Center(child: _buildInnerBottomWidget("La progresión de cargas es semanal, por lo que, a nivel numérico y objetivo, empiezas a ver resultados desde la primera semana. En cuanto a peso en la báscula,perimetros corporales y plieges cutáneos, ya sea el objetivo incrementar o disminuir,con una buena alimentación también mejoras desde la primera semana.A nivel visual ya es mas complicado decir fechas ya que es algo relativo,dependera mucho del nivel de partida y de lo bien que se haga el entrenamiento y alimentación. Aun asi,en plazos de 16-20 semanas de entrenamiento haciendo bien las cosas deberiamos ver cambios por lo general.",isMobile,isTablet)) : Container(height: 1,),
+               
+               Center(child: _buildFrontWidget( context,"¿Para quién es este tipo de entrenamiento?",isMobile,isTablet,state,3)),
+               (state is TarjetaDeVuelta && state.numeroTarjeta==3) ? Center(child: _buildInnerBottomWidget("Este tipo de entrenamiento va dirigido a aquellas personas que quieren obtener una mejora física, independientemente de cual sea su nivel, ya que de detectar ese nivel se encargara la aplicación y a partir de ahí, comenzará su progresión específica. Te aseguro que no hay dos entrenamientos iguales.",isMobile,isTablet)) : Container(height: 1,),
 
-                  else 
-                    {
-                     card4=false;
-                     numeroTarjetas=numeroTarjetas-1;
-                  }
-
-                });
-              },
-          trailing: (card4==true) ? Icon(Icons.close,color:Color(0xff0A183D)) : Icon(Icons.add,color:Color(0xff0A183D)),
-              title: Container(
-                child: _buildFrontWidget("¿Cómo puedo saber qué entrenamiento es el que más me conviene?",isMobile,isTablet)
-              ),
-              children: <Widget>[
-                
-                _buildInnerBottomWidget("El entrenamiento dependerá siempre de las necesidades, objetivos y disponibilidad de cada usuario. Para descubrirlo, realizaremos un cuestionario previo que nos indicará cual es el entrenamiento recomendando.",isMobile,isTablet)
+               Center(child: _buildFrontWidget( context,"¿Cómo puedo saber qué entrenamiento es el que más me conviene?",isMobile,isTablet,state,4)),
+               (state is TarjetaDeVuelta && state.numeroTarjeta==4) ? Center(child: _buildInnerBottomWidget("El entrenamiento dependerá siempre de las necesidades, objetivos y disponibilidad de cada usuario. Para descubrirlo, realizaremos un cuestionario previo que nos indicará cual es el entrenamiento inicial recomendando y, a partir de ahí, estableceremos una progresión, tanto semana a semana dentro del mesociclo de entrenamiento, con mes a mes.",isMobile,isTablet)) : Container(height: 1,),
+               
+               Center(child: _buildFrontWidget( context,"¿Que pasa cuando acabo un mesociclo entrenamiento si he entrado en la fase de formación?",isMobile,isTablet,state,5)),
+               (state is TarjetaDeVuelta && state.numeroTarjeta==5) ? Center(child: _buildInnerBottomWidget("En este caso la aplicación ya tiene tu programación de 2 o 3 meses preparada hasta que asientes unas buenas bases, simplemente tendras que pulsar sobre el botón de crear un nuevo entrenamiento de la página principal,rellenar el formulario y ya tendras tu entrenamiento (mas demandante que el anterior).",isMobile,isTablet)) : Container(height: 1,),
+                Center(child: _buildFrontWidget( context,"¿Que pasa cuando acabo un mesociclo entrenamiento si ya he pasado la fase de formación?",isMobile,isTablet,state,6)),
+               (state is TarjetaDeVuelta && state.numeroTarjeta==6) ? Center(child: _buildInnerBottomWidget("En el caso de que apruebes nuestro examen o de que ya hayas completado 2 o 3 meses con nuestra aplicación ya podemos considerar que estas preparado para entrenar con valores de MEV,MAV,MRV recomendados y programar en base a estos parametros, el feedback que le des a la aplicación y tus preferencias cada mes. Nosotros recomendamos mantener la base del entrenamiento unos meses y si acaso cambiar algunos ejercicios accesorios para poder tener una trazabilidad adecuada y poder saber si estamos progresando, cosa que es imposible si cambiamos constantemente de ejercicios (esto puedes hacer seleccionando en el cuestionario la opción de \"Seleccionar tu mismo los ejercicios en base a una estructura prefijada por un profesional\", buscando la estructura que tenias anteriormente y configurándola adecuadamente. Además recomendamos usar la opcion de gestión de la fatiga para hilar mas fino en los valores de MEV,MAV y MRV de tu mesociclo (esta opción es premium).",isMobile,isTablet)) : Container(height: 1,),
+                Center(child: _buildFrontWidget( context,"¿En base a qué parémetros se programa la intensidad?",isMobile,isTablet,state,7)),
+               (state is TarjetaDeVuelta && state.numeroTarjeta==7) ? Center(child: _buildInnerBottomWidget("Programamos en base al RIR (repeticiones en recámara)",isMobile,isTablet)) : Container(height: 1,),
+                Center(child: _buildFrontWidget( context,"¿Puedo llevar todo apuntado directamente en la aplicación o necesito seguir usando el papel y boli?",isMobile,isTablet,state,8)),
+               (state is TarjetaDeVuelta && state.numeroTarjeta==8) ? Center(child: _buildInnerBottomWidget("Cada ejercicio tiene su agenda en la que cada semana, para cada una de las series efectivas puedes apuntar la carga que has usado y las repeticiones que has realizado. Además, existe una página de detalle de cada ejercicio, donde puedes ver la ejecución, usar un cronómetro para los tiempos de descanso etc.",isMobile,isTablet)) : Container(height: 1,),
+                Center(child: _buildFrontWidget( context,"¿Cuando acabo un mesociclo de entrenamiento se quedan guardados los datos?",isMobile,isTablet,state,9)),
+               (state is TarjetaDeVuelta && state.numeroTarjeta==9) ? Center(child: _buildInnerBottomWidget("Si, estos se guardan en la sección de historial.",isMobile,isTablet)) : Container(height: 1,),
+               Center(child: _buildFrontWidget( context,"Oye, ¿y eso de que hay un equipo humano detrás?",isMobile,isTablet,state,10)),
+               (state is TarjetaDeVuelta && state.numeroTarjeta==10) ? Center(child: _buildInnerBottomWidget("Más allá de la preparación ONE-TO-ONE, en la cual puedes tener contacto directo con Carlos, usándo solo la aplicación también puedes resolver tus dudas en la comunidad gratuita que tenemos, y además en el 2021 vamos a poner en marcha la sección de reuniones con un directo semanal para que puedas consultar en directo las dudas que tengas con tu preparación a Carlos y además aprender de las dudas que plantean otros usuarios.",isMobile,isTablet)) : Container(height: 1,),
               ],
             ),
-  ],
-)
-                           : Container (),
+          );
+        
+
+         
+    
+    }),)      
+        
+                        
                           ],
                         ),
                       ),
                     ),
                   ),
-               (!isMobile && !isTablet) ? 
-                      Expanded(
-                        flex:1,
-                                              child: 
-Column(
-  mainAxisAlignment: MainAxisAlignment.center,
-  crossAxisAlignment: CrossAxisAlignment.center,
-  children: [
-        ExpansionCard(
-        
-          onExpansionChanged: (_){
-               
-                setState(() {
-                  if (card1 ==false) 
-                  {
-                     card1=true;
-                     numeroTarjetas=numeroTarjetas+1;
-                  }
-                 
-                  else 
-                    {
-                     card1=false;
-                     numeroTarjetas=numeroTarjetas-1;
-                  }
-                });
-              },
-          trailing: (card1==true) ? Icon(Icons.close,color:Color(0xff0A183D)) : Icon(Icons.add,color:Color(0xff0A183D)),
-           margin: EdgeInsets.all(0),
-            
-            title: Container(
-
-              child: _buildFrontWidget("¿Dónde debo realizar el entrenamiento?",isMobile,isTablet)
-            ),
-            children: <Widget>[
               
-              _buildInnerBottomWidget("En un gimnasio que tenga un equipamiento razonable. No tiene porque tener toda la maquinaria ya que, en cada patrón de movimiento, vas a poder elegir los ejercicios que mejor se adapten a ti, pero son programas específicos de entrenamiento con pesas para modificar la composición corporal.",isMobile,isTablet)
-            ],
-          ),
-          ExpansionCard(
-            margin: EdgeInsets.all(0),
-              onExpansionChanged: (_){
-               
-                setState(() {
-                  if (card2 ==false) 
-                    {
-                     card2=true;
-                     numeroTarjetas=numeroTarjetas+1;
-                  }
-
-                  else 
-                    {
-                     card2=false;
-                     numeroTarjetas=numeroTarjetas-1;
-                  }
-
-                });
-              },
-              trailing: (card2==true) ? Icon(Icons.close,color:Color(0xff0A183D)) : Icon(Icons.add,color:Color(0xff0A183D)),
-              title: Container(
-                child: _buildFrontWidget("¿En cuánto tiempo se empiezan a notar los resultados?",isMobile,isTablet)
-              ),
-              children: <Widget>[
-                
-                _buildInnerBottomWidget("La progresión de cargas es semanal, por lo que, a nivel numérico y objetivo, empiezas a ver resultados desde la primera semana. En cuanto a peso en la báscula, ya sea el objetivo incrementar o disminuir, también mejoras desde la primera semana.A nivel visual, el mayor impacto es al comparar las fotos de ciclo en ciclo en fotos (aprox 16-20 semanas).",isMobile,isTablet)
-              ],
-            ),
-           ExpansionCard(
-           
-            margin: EdgeInsets.all(0),
-              onExpansionChanged: (_){
-                 setState(() {
-                  if (card3 ==false) 
-                   {
-                     card3=true;
-                     numeroTarjetas=numeroTarjetas+1;
-                  }
-
-                  else 
-                    {
-                     card3=false;
-                     numeroTarjetas=numeroTarjetas-1;
-                  }
-
-                });
-              },
-            trailing: (card3==true) ? Icon(Icons.close,color:Color(0xff0A183D)) : Icon(Icons.add,color:Color(0xff0A183D)),
-              title: Container(
-                child: _buildFrontWidget("¿Para quién es este tipo de entrenamiento?",isMobile,isTablet)
-              ),
-              children: <Widget>[
-                
-                _buildInnerBottomWidget("Este tipo de entrenamiento va dirigido a aquellas personas que llevan mínimo un año trabajando una rutina de entrenamiento en gimnasio. Conocen diferentes tipos de ejercicios, pero quieren seguir aprendiendo por sí mismos. Además, tienen la capacidad de corregir ejercicios y posturas a través de videos. En definitiva, para todo aquel que desee saber cómo sacar el máximo partido a su cuerpo.",isMobile,isTablet)
-              ],
-            ),
-               ExpansionCard(
-            margin: EdgeInsets.all(0),
-              onExpansionChanged: (_){
-               
-                setState(() {
-                  if (card4 ==false) 
-                    {
-                     card4=true;
-                     numeroTarjetas=numeroTarjetas+1;
-                  }
-
-                  else 
-                    {
-                     card4=false;
-                     numeroTarjetas=numeroTarjetas-1;
-                  }
-
-                });
-              },
-          trailing: (card4==true) ? Icon(Icons.close,color:Color(0xff0A183D)) : Icon(Icons.add,color:Color(0xff0A183D)),
-              title: Container(
-                child: _buildFrontWidget("¿Cómo puedo saber qué entrenamiento es el que más me conviene?",isMobile,isTablet)
-              ),
-              children: <Widget>[
-                
-                _buildInnerBottomWidget("El entrenamiento dependerá siempre de las necesidades, objetivos y disponibilidad de cada usuario. Para descubrirlo, realizaremos un cuestionario previo que nos indicará cual es el entrenamiento recomendando.",isMobile,isTablet)
-              ],
-            ),
-  ],
-))
-                                            
-                       : Container()
-  
+    
                   
                 ],
               ),
             ),
             //Footer
-            Container(
-              height: size.height * 0.60,
+         
+         Container(
+              height: size.height * 0.15,
               width: size.width,
               color: Color(0xff0A183D),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 120),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 12.0),
-                      child: Text(
-                        "Questions? Call 000-800-040-1843",
-                        style: ThemText.footerText,
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            footerText("FAQ"),
-                            footerText("Investor Relations"),
-                            footerText("Privacy"),
-                            footerText("Speed Test"),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            footerText("Help Centre"),
-                            footerText("Jobs"),
-                            footerText("Cookie Preferences"),
-                            footerText("Legal Notices"),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            footerText("Account"),
-                            footerText("Ways to Watch"),
-                            footerText("Corporate Information"),
-                            footerText("EntrenaAPP Originals"),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            footerText("Media Centre"),
-                            footerText("Terms of Use"),
-                            footerText("Contact Us"),
-                          ],
-                        )
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 12.0),
-                      child: Text(
-                        "EntrenaAPP India",
-                        style: ThemText.footerText,
-                      ),
-                    ),
-                    Center(
-                      child: Text(
-                        "© Created By Tushar Nikam",
-                        style: ThemText.footerText,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
+              child: Center(
+                  child: Text(
+                    "©2021 Una web creada por @carlos10medina",
+                    style:  TextStyle(
+        color: Colors.grey,
+        fontSize: (isMobile) ? 12 : 14.0      
+    ),
+                  ),
+                ))
           ],
         ),
       ),
     );
   }
 
-  Widget footerText(text) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Text(
-        text,
-        style: ThemText.footerText,
-      ),
-    );
-  }
 }

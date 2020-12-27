@@ -49,13 +49,12 @@ dependencies:
  
 
   flutter_auth_buttons: ^0.10.0
-  
+  universal_html: ^1.2.3
   drawerbehavior: ^1.1.4
   mailto: ^1.0.0
   url_launcher: ^5.7.10
-  sliding_card: ^0.1.2
-  expansion_card: ^0.1.0
-  
+  shared_preferences: ^0.5.12+4
+  firebase_storage: ^5.2.0
   community_material_icon: ^5.4.55
   
  

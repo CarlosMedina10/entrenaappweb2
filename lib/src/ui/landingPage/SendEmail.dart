@@ -1,4 +1,5 @@
-import '../../../blocs/bloc/landingpage_bloc.dart';
+
+import 'package:entrenaappweb/blocs/LandingPageBloc/landingpage_bloc.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
