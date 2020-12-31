@@ -6,6 +6,7 @@
 
 import 'package:entrenaappweb/models/blog_model.dart';
 import 'package:entrenaappweb/src/screens/cargar_entrenamiento.dart';
+import 'package:firebase/firebase.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:excel/excel.dart';
@@ -23,9 +24,8 @@ import 'package:flutter/material.dart';
 import 'home_screen.dart';
 
 class PersonalProjects extends StatefulWidget {
-  final String idUser;
-  final String idToken;
-  PersonalProjects(this.idUser,this.idToken);
+
+  PersonalProjects();
   @override
   _PersonalProjectsState createState() => _PersonalProjectsState();
 }
@@ -35,45 +35,45 @@ class _PersonalProjectsState extends State<PersonalProjects> {
 bool isLoading=false;
 Map<String,dynamic> listaClientes;
 
-Future quiereSerEntrenador() async{
+// Future quiereSerEntrenador() async{
 
-final url = 'https://entrenaapp2-12fbe.firebaseio.com/ZZentrenadores/${widget.idUser}.json?auth=${widget.idToken}';
-    try{  await http.patch(url, body: 
-     json.encode(
-     {'Nombre':'Carlos Medina'}
-    ),
-    );
- }  catch (error) {
-      print(error);
-      throw error;
-    }
-    }
+// final url = 'https://entrenaapp2-12fbe.firebaseio.com/ZZentrenadores/${widget.idUser}.json?auth=${widget.idToken}';
+//     try{  await http.patch(url, body: 
+//      json.encode(
+//      {'Nombre':'Carlos Medina'}
+//     ),
+//     );
+//  }  catch (error) {
+//       print(error);
+//       throw error;
+//     }
+//     }
 
-Future quiereSerCliente() async{
+// Future quiereSerCliente() async{
 
-final url = 'https://entrenaapp2-12fbe.firebaseio.com/ZZentrenadores/${widget.idUser}/Clientes.json?auth=${widget.idToken}';
-    try{  await http.patch(url, body: 
-     json.encode(
-     {'vjPlfIOxv1aLlgdDqxcNDCpzQJh2':'Alejandra Vila'}
-    ),
-    );
- }  catch (error) {
-      print(error);
-      throw error;
-    }
-    }
+// final url = 'https://entrenaapp2-12fbe.firebaseio.com/ZZentrenadores/${widget.idUser}/Clientes.json?auth=${widget.idToken}';
+//     try{  await http.patch(url, body: 
+//      json.encode(
+//      {'vjPlfIOxv1aLlgdDqxcNDCpzQJh2':'Alejandra Vila'}
+//     ),
+//     );
+//  }  catch (error) {
+//       print(error);
+//       throw error;
+//     }
+//     }
 
-  Future obtenerDatosDeClientes()async{
+//   Future obtenerDatosDeClientes()async{
 
-final url = 'https://entrenaapp2-12fbe.firebaseio.com/ZZentrenadores/${widget.idUser}/Clientes.json?auth=${widget.idToken}';
+// final url = 'https://entrenaapp2-12fbe.firebaseio.com/ZZentrenadores/${widget.idUser}/Clientes.json?auth=${widget.idToken}';
 
-final response = await http.get(url);
-        // print(response.body);
-        listaClientes = json.decode(response.body) as Map<String,dynamic>;
+// final response = await http.get(url);
+//         // print(response.body);
+//         listaClientes = json.decode(response.body) as Map<String,dynamic>;
 
        
  
-  }
+//   }
     
  List<BlogModel> blogList = List<BlogModel>();
 
@@ -117,25 +117,25 @@ final response = await http.get(url);
                 ...List<Widget>.generate(blogList.length, (int index) {
                   return GestureDetector(
                     onTap: () async{
-                  if (index==0)
-    {
-      setState(() {
-        isLoading=true;
-      });
-      await obtenerDatosDeClientes();
- Navigator.push(
-                                                                      context,
-                                                                      MaterialPageRoute(
-                                                                          builder: (context) => CargarEntrenamiento(
-                                                                               widget.idToken,listaClientes
-                                                                              )));
+//                   if (index==0)
+//     {
+//       setState(() {
+//         isLoading=true;
+//       });
+//       await obtenerDatosDeClientes();
+//  Navigator.push(
+//                                                                       context,
+//                                                                       MaterialPageRoute(
+//                                                                           builder: (context) => CargarEntrenamiento(
+//                                                                                widget.idToken,listaClientes,widget.firebaseDatabase
+//                                                                               )));
                                                                               
-                                                                              }
-      else obtenerDatosDeClientes();
+//                                                                               }
+//       else obtenerDatosDeClientes();
 
-        setState(() {
-        isLoading=false;
-      });
+//         setState(() {
+//         isLoading=false;
+//       });
 
                     },
                     child: Card(

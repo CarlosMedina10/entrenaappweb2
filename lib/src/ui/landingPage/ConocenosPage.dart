@@ -4,6 +4,7 @@ import 'package:entrenaappweb/blocs/LandingPageBloc/landingpage_bloc.dart';
 
 
 import 'package:community_material_icon/community_material_icon.dart';
+import 'package:entrenaappweb/src/ui/landingPage/CustomCard.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,7 +20,8 @@ import '../../../Style/Style.dart';
 
 class ConocenosPage extends StatefulWidget {
   final bool isOnConocenos;
-  ConocenosPage(this.isOnConocenos);
+   final List<Map<String, String>> isInit;
+  ConocenosPage(this.isOnConocenos,this.isInit);
   @override
   _ConocenosPageState createState() => _ConocenosPageState();
 }
@@ -205,49 +207,7 @@ switch(deviceType) {
     );
   }
 
-  Widget customCard( img, bool isMobile,isTablet,{text}) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Container(
-         
-          decoration: BoxDecoration(
-            
-              borderRadius: BorderRadius.circular(16.0), color: Colors.teal),
-          height: 
-            (text!=null) ?
-          (isMobile) ? 173 : (isTablet) ? (MediaQuery.of(context).size.height<500) ? 173 : MediaQuery.of(context).size.height/2.875 :  (MediaQuery.of(context).size.height<500) ? 228 :  MediaQuery.of(context).size.height/2.19 :
-           (isMobile) ? 200 : (isTablet) ? (MediaQuery.of(context).size.height<500) ? 205 : MediaQuery.of(context).size.height/2.38  :  (MediaQuery.of(context).size.height<500) ? 266 : MediaQuery.of(context).size.height/1.877
-          ,
-          
-          width:
-          (text!=null) ?
-           (isMobile) ? 173 : (isTablet) ?(MediaQuery.of(context).size.height<500) ? 173 : MediaQuery.of(context).size.height/2.875 : (MediaQuery.of(context).size.height<500) ? 228 : MediaQuery.of(context).size.height/2.19:
-           (isMobile) ? 300 : (isTablet) ? (MediaQuery.of(context).size.height<500) ? 285 : MediaQuery.of(context).size.height/1.75 :  (MediaQuery.of(context).size.height<500) ? 362 : MediaQuery.of(context).size.height/1.38 ,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(16.0),
-            child: Image(
-              fit: BoxFit.cover,
-              image: AssetImage(img),
-            ),
-          ),
-        ),
-        SizedBox(
-          height: 16.0,
-        ),
-     (text!=null) ?  Text(
-          text,
-          style: ThemText.cardText,
-        ) :  Text(
-                              "** Desliza para ver mas",
-                              style: TextStyle(
-    color: Colors.white,
-     fontSize: (isMobile) ? 12 : (isTablet) ? 14 : 16,
-   
-  ),)
-      ],
-    );
-  }
+
 
   Widget customCircleAvtar( img,bool isMobile, isTablet) {
     return Column(
@@ -277,7 +237,7 @@ Widget _buildFotos(bool isMobile, isTablet) {
           return GestureDetector(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: customCard('assets/images/${position+1}-min.jpg' ,isMobile,isTablet,text:'${listaNombres[position]}'),
+              child: CustomCard('${position+1}-min.jpg' ,isMobile,isTablet,widget.isInit,text:'${listaNombres[position]}'),
             ),
             onHorizontalDragEnd: (details) {
               animationController = AnimationController(
@@ -331,7 +291,7 @@ Widget _buildFotos(bool isMobile, isTablet) {
           return GestureDetector(
             child: Padding(
               padding: const EdgeInsets.all(0),
-              child:  customCard( "assets/images/R${position+1}.PNG",isMobile,isTablet
+              child:  CustomCard( "R${position+1}.PNG",isMobile,isTablet,widget.isInit
                  ),
             ),
             onHorizontalDragEnd: (details) {

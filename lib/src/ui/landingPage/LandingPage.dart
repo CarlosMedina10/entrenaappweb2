@@ -305,7 +305,7 @@ Widget _buildFotos(bool isMobile, isTablet) {
           return GestureDetector(
             child: Padding(
               padding: const EdgeInsets.all(0),
-              child:  customCard( "assets/images/R${position+1}.PNG",isMobile,isTablet
+              child:  CustomCard( "R${position+1}.PNG",isMobile,isTablet,widget.isInit
                  ),
             ),
             onHorizontalDragEnd: (details) {
@@ -1367,7 +1367,7 @@ switch(deviceType) {
                                 "PREGUNTAS FRECUENTES",
                                 style: TextStyle(
     color: Color(0xff0A183D),
-    fontSize: (isMobile) ? size.width/17.5 : (isTablet) ? (size.height<580) ? size.width/22.76 : size.width/17.5 :  size.width/22.76,   
+    fontSize: (isMobile) ? size.width/17.5 : (isTablet) ? (size.height<580) ? size.width/22.76 : size.width/17.5 :(size.height<580) ? size.width/35 :   size.width/22.76,   
     fontWeight: FontWeight.w700,
     letterSpacing: 0.75,
   ),
@@ -1378,7 +1378,7 @@ switch(deviceType) {
   
                             
                             SizedBox(
-                              height: (isMobile) ? 12 : (isTablet && size.height<580) ? 16 : 18.0,
+                              height: (isMobile) ? 12 : (size.height<580) ? 14 : 18.0,
                             ),
                            
                         Center(
@@ -1432,7 +1432,8 @@ switch(deviceType) {
   
           return     
           Container(
-            
+            color: Color(0xff1c3546),
+             width: MediaQuery.of(context).size.width*0.85 ,
           height: (size.height<500) ? 600 :size.height*1.2,
             child: ListView(
               

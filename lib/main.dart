@@ -20,110 +20,20 @@
 //   }
 // }
 
-// import 'dart:async';
-
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:firebase_auth_oauth/firebase_auth_oauth.dart';
 
 
-// import 'package:firebase_core/firebase_core.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter/services.dart';
-// import 'package:flutter_dialogs/flutter_dialogs.dart';
 
-// void main() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-//   await Firebase.initializeApp();
-//   runApp(MyApp());
-// }
 
-// class MyApp extends StatelessWidget {
-//   _showAlert(BuildContext context, String message) {
-//       showDialog(
-//         context: context,
-//         builder: (_) => AlertDialog(
-//           title: Text(message),
-//           content: Text(message),
-         
-//         ),
-//       );
-//     }
-//   Future<void> performLogin(BuildContext context,String provider, List<String> scopes,
-//       Map<String, String> parameters) async {
-//     try {
-//       await FirebaseAuthOAuth().openSignInFlow(provider, scopes, parameters);
-//     } catch (error) {
-//       print('hay un errorrrrr');
-//       /**
-//        * The plugin has the following error codes:
-//        * 1. FirebaseAuthError: FirebaseAuth related error
-//        * 2. PlatformError: An platform related error
-//        * 3. PluginError: An error from this plugin
-//        */
-//       _showAlert(context, "${error.code}: ${error.message}");
-     
-//     }
-//   }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: Scaffold(
-//           appBar: AppBar(
-//             title: const Text('Plugin example app'),
-//           ),
-//           body: StreamBuilder(
-//               initialData: null,
-//               stream: FirebaseAuth.instance.userChanges(),
-//               builder: (BuildContext context, AsyncSnapshot<User> snapshot) {
-//                 return Column(
-//                   children: [
-//                     Center(
-//                       child: Text(
-//                           snapshot.data == null ? "Logged out" : "Logged In"),
-//                     ),
-//                     if (snapshot.data == null || snapshot.data.isAnonymous) ...[
-//                       RaisedButton(
-//                         onPressed: () async {
-//                         await performLogin(context,
-//                               "apple.com", ["email"], {"locale": "es"});
-                              
-//                         },
-//                         child: Text("Sign in By Apple"),
-//                       ),
-//                       RaisedButton(
-//                         onPressed: () async {
-//                           await performLogin(context,
-//                               "twitter.com", ["email"], {"lang": "en"});
-//                         },
-//                         child: Text("Sign in By Twitter"),
-//                       ),
-//                       RaisedButton(
-//                         onPressed: () async {
-//                           await performLogin(context,
-//                               "github.com", ["user:email"], {"lang": "en"});
-//                         },
-//                         child: Text("Sign in By Github"),
-//                       )
-//                     ],
-//                     if (snapshot.data != null)
-//                       RaisedButton(
-//                         onPressed: () async {
-//                           await FirebaseAuth.instance.signOut();
-//                         },
-//                         child: Text("Logout"),
-//                       )
-//                   ],
-//                 );
-//               })),
-//     );
-//   }
-// }
 import 'package:entrenaappweb/src/screens/home_screen.dart';
 import 'package:entrenaappweb/src/ui/landingPage/HomePage.dart';
+import 'package:entrenaappweb/src/ui/usuarioDentro/sorteo.dart';
+import 'package:entrenaappweb/src/ui/usuarioDentro/sorteoAcabado.dart';
+import 'package:entrenaappweb/src/ui/usuarioDentro/sorteoForocoches.dart';
+import 'package:firebase/firebase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:bloc/bloc.dart';
+
 import 'package:responsive_builder/responsive_builder.dart';
 import './src/bloc/authentication_bloc/bloc.dart';
 
@@ -138,15 +48,17 @@ void main() {
    ResponsiveSizingConfig.instance.setCustomBreakpoints(
     ScreenBreakpoints(desktop: 1025, tablet: 550, watch: 200),
   );
- 
   
-    final UserRepository userRepository = UserRepository();
+
+
+  Database db = database();
+    final UserRepository userRepository = UserRepository(db);
 
   runApp(
     BlocProvider(
       create: (context) => AuthenticationBloc(userRepository)
         ..add(AppStarted()),
-      child: App(userRepository: userRepository),
+      child: App(userRepository),
     )
   );
  
@@ -156,11 +68,10 @@ void main() {
 
 class App extends StatelessWidget {
   final UserRepository _userRepository;
+  
 
-  App({Key key, @required UserRepository userRepository})
-    : assert (userRepository != null),
-      _userRepository = userRepository,
-      super(key: key);
+  App(this._userRepository,);
+   
 
   @override
   Widget build(BuildContext context) {
@@ -175,7 +86,8 @@ class App extends StatelessWidget {
             return Center(child:CircularProgressIndicator(),);
           }
           if (state is Authenticated) {
-            return  Home(state.userID,state.idToken);
+            // return  Home();
+            return Sorteo(_userRepository);
           }
           if (state is Unauthenticated) {
             // return LoginScreen(userRepository: _userRepository,);

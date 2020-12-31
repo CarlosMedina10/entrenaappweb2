@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:html' as html;
+import 'package:firebase/firebase.dart';
 import 'package:http/http.dart' as http;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:entrenaappweb/blocs/navigation_bloc.dart';
@@ -9,9 +10,8 @@ import 'package:flutter/material.dart';
 import 'home_screen.dart';
 
 class ProfileSection extends StatefulWidget {
-  final String idUser;
-  final String token;
-  ProfileSection(this.idUser,this.token);
+
+  ProfileSection();
   @override
   _ProfileSectionState createState() => _ProfileSectionState();
 }
@@ -20,7 +20,6 @@ class _ProfileSectionState extends State<ProfileSection> {
   @override
   Widget build(BuildContext context) {
  
-    print(widget.idUser);
     Size displaySize = MediaQuery.of(context).size;
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
@@ -82,7 +81,7 @@ class _ProfileSectionState extends State<ProfileSection> {
                       Container(
                       width: displaySize.width,
                       child: AutoSizeText(
-                        "Bienvenido, Carlos Medina, ${widget.idUser}",
+                        "Bienvenido, Carlos Medina,",
                         style: TextStyle(fontSize: 40),
                       )),
                 
@@ -127,12 +126,17 @@ class _ProfileSectionState extends State<ProfileSection> {
                     childAspectRatio: 3,
                     padding: EdgeInsets.all(5),
                     children: <Widget>[
-                      socialProfile(
-                          imageUrl:
-                              "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
-                          url: "https://github.com/ashishrawat2911",
-                          context: context,
-                        ),
+                      InkWell(
+                        onTap: (){
+                         
+                        } ,
+                                              child: socialProfile(
+                            imageUrl:
+                                "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+                            url: "https://github.com/ashishrawat2911",
+                            context: context,
+                          ),
+                      ),
                           
                       socialProfile(
                           imageUrl:

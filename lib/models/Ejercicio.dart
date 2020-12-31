@@ -7907,7 +7907,7 @@ factory Ejercicio.extensionDeGluteoAUnaPierna() {
   }
 factory Ejercicio.patadaDeGluteoConPesoCorporal() {
     return Ejercicio(
-        nombre: "Patada de glúteo ",
+        nombre: "Patada de glúteo",
         imagen: ['PatadaDeGluteoPesoCorporal.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(

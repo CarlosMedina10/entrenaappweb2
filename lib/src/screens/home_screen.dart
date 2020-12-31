@@ -4,15 +4,15 @@ import 'package:entrenaappweb/src/screens/menu_section.dart';
 import 'package:entrenaappweb/src/screens/personal_projects.dart';
 import 'package:entrenaappweb/src/screens/profile_screen.dart';
 import 'package:entrenaappweb/src/screens/talks_screen.dart';
+import 'package:firebase/firebase.dart';
 import 'package:flutter/material.dart';
 
 import 'blog_screen.dart';
 
 class Home extends StatefulWidget {
-  String idUser;
-  String token;
+
   
-  Home(this.idUser,this.token);
+  Home();
   @override
   _HomeState createState() => _HomeState();
 }
@@ -22,8 +22,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.idUser);
-    print(widget.token);
+ 
 
     return Scaffold(
       key: _scaffoldKey,
@@ -72,15 +71,15 @@ class _HomeState extends State<Home> {
         initialData: navigationDrawerBloc.navigationProvider.currentNavigation,
         builder: (context, snapshot) {
           if (snapshot.data == NavigationScreen.Profile) {
-            return ProfileSection(widget.idUser,widget.token);
+            return ProfileSection();
           } else if (snapshot.data == NavigationScreen.Blog) {
             return Blogs();
           } else if (snapshot.data == NavigationScreen.Talks) {
             return TalksScreen();
           } else if (snapshot.data == NavigationScreen.PersonalProject) {
-            return PersonalProjects(widget.idUser,widget.token);
+            return PersonalProjects();
           } else {
-            return ProfileSection(widget.idUser,widget.token);
+            return ProfileSection();
           }
         });
   }

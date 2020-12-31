@@ -3,6 +3,7 @@ import 'package:entrenaappweb/models/Configuracion.dart';
 import 'package:entrenaappweb/models/Ejercicio.dart';
 import 'package:entrenaappweb/models/MesocicloEntrenamiento.dart';
 import 'package:entrenaappweb/models/Patron.dart';
+import 'package:firebase/firebase.dart';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -14,7 +15,8 @@ import 'dart:convert';
 class CargarEntrenamiento extends StatefulWidget {
  final String idToken;
  final Map<String,dynamic> listaClientes;
- CargarEntrenamiento(this.idToken,this.listaClientes);
+ final Database firebaseDatabase;
+ CargarEntrenamiento(this.idToken,this.listaClientes,this.firebaseDatabase);
 
   @override
   _CargarEntrenamientoState createState() => _CargarEntrenamientoState();
@@ -582,9 +584,9 @@ print(myFile.fileName.replaceRange(myFile.fileName.length-5,myFile.fileName.leng
  });
  
  }
- Future guardarEnBBDD(MesocicloEntrenamiento mesocicloEntrenamiento,String idCliente) async{
+ Future guardarEnBBDD() async{
 
-final url = 'https://entrenaapp2-12fbe.firebaseio.com/SMy0LF7qo8UiE06ONPtoJpN2Dc82/mesociclos.json?auth=${widget.idToken}';
+final url = 'https://entrenaapp2-12fbe.firebaseio.com/NPiP66IexxYXvadZSWl3jHz8PFa2/mesociclos.json?auth=${widget.idToken}';
     try{  await http.post(url, body: 
      json.encode(
     mesocicloEntrenamiento.toJson()
@@ -592,11 +594,14 @@ final url = 'https://entrenaapp2-12fbe.firebaseio.com/SMy0LF7qo8UiE06ONPtoJpN2Dc
     );
    
  
- 
+//  print('se ha pulsadooooooo');
+//      DatabaseReference ref = widget.firebaseDatabase.ref('zzzzzzzzzzmensajes');
+//      ref.push('hehehehe');
   
  
   
-}  catch (error) {
+}  
+catch (error) {
       print(error);
       throw error;
     }
@@ -731,7 +736,7 @@ Map<String,String> clienteSeleccionado;
               setState(() {
                 entrenamientoCargado=true;
               });
-              await guardarEnBBDD(mesocicloEntrenamiento,clienteSeleccionado.keys.first);
+              await guardarEnBBDD();
               },
               child: Text('Cargar Entrenamiento',style: TextStyle(color:Colors.grey[300]),),
             ),

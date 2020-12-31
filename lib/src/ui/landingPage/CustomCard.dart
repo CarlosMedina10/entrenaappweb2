@@ -32,35 +32,61 @@ class _CustomCardState extends State<CustomCard> {
        if (element.keys.contains(widget.nombre)) {
        url= element.values.first;
        isInit=true;
-      print('$url');
+      print('$url 111111111');
        }
      });
      if (url== null) {
 
-     final fb.Reference storageReference1 = fb.FirebaseStorage.instance.refFromURL('gs://entrenaapp2-12fbe.appspot.com').child('/fotosPromocionales/${widget.nombre}');
- storageReference1.getDownloadURL().then((value) async{
-   print(value);
+ _prefs.then((value) {
+   final SharedPreferences prefs = value;
+
+    final String imgGuardadaYa = (prefs.getString('${widget.nombre}') ?? '');
+
+    if (imgGuardadaYa != '')
+    {
+      print('Esta guardadaaaaaaqa $imgGuardadaYa');
+Map<String,String> ejer = {'${widget.nombre}' : imgGuardadaYa};
+  widget.isInit.add(ejer);
+
+  
+  if (mounted)
+   setState(() {
+   url=imgGuardadaYa;
+
+   
+  isInit=true;
+   
+ });
+    } else {
+  final fb.Reference storageReference1 = fb.FirebaseStorage.instance.refFromURL('gs://entrenaapp2-12fbe.appspot.com').child('/fotosPromocionales/${widget.nombre}');
+ storageReference1.getDownloadURL().then((value) {
+   print('$value no guardado yaaaaaa');
    Map<String,String> ejer = {'${widget.nombre}' : value};
    widget.isInit.add(ejer);
    
-    final SharedPreferences prefs = await _prefs;
-       
-    String imagenes = json.encode(widget.isInit);
     
-      prefs.setString("imagenes", imagenes);
+       
+   
+    
+      prefs.setString('${widget.nombre}', value);
    
    
    
    if (mounted)
    setState(() {
-   url=value.toString();
-rrrr
+   url=value;
+
    
   isInit=true;
    
  });
  
  }); 
+    }
+
+ });
+
+ 
     } 
     
   }
@@ -90,7 +116,7 @@ rrrr
             borderRadius: BorderRadius.circular(16.0),
             child: Image(
               fit: BoxFit.cover,
-              image: NetworkImage("https://picsum.photos/250?image=9"),
+              image: NetworkImage(url),
             ),
           ),
         ),

@@ -1,27 +1,100 @@
 // Imports
 import 'dart:async';
+import 'dart:convert';
+import 'package:firebase/firebase.dart' hide User,GoogleAuthProvider,FacebookAuthProvider;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth_oauth/firebase_auth_oauth.dart';
-import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
 import 'package:flutter_facebook_login_web/flutter_facebook_login_web.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 
 
 class UserRepository {
-  final FirebaseAuth _firebaseAuth;
-  final GoogleSignIn _googleSignIn;
+  
+  Database firebaseDatabase;
 
   // Constructor
-  UserRepository({FirebaseAuth firebaseAuth, GoogleSignIn googleSignIn})
-      : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance,
-        _googleSignIn = googleSignIn ?? GoogleSignIn();
-
+  UserRepository(this.firebaseDatabase);
+     
+ final FirebaseAuth _firebaseAuth =FirebaseAuth.instance;
+ GoogleSignIn _googleSignIn;
+ final FacebookLoginWeb facebookSignIn = FacebookLoginWeb();
+ final FirebaseAuthOAuth _firebaseAuthOAuth = FirebaseAuthOAuth();
   String errorString;
+ dynamic haParticipado;
+
+
+darPremiumGratuito(String userID) async{
+   String url =
+            "https://api.revenuecat.com/v1/subscribers/$userID/entitlements/suscripcion_mensual/promotional";
+     
+      try{  await http.post(url,
+      body: json.encode({
+        "duration":"monthly"
+
+      }),
+              headers: {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer sk_LOnONfxsicGXLXdXBzMyzzueGmQBV"
+  }); 
+  print('se enviaaaaaa');
+  } catch (error){
+    throw error;
+  
+  }
+       
+        
+        }
+
+inscribirseEnElSorteo(String nombreUsuario){
+ print('se ha pulsadooooooo');
+     DatabaseReference ref1 = firebaseDatabase.ref('zzzzzzzzzzsorteo');
+     DatabaseReference ref2 = firebaseDatabase.ref(getUserID());
+     Map<String,String> inscripcion = {'nombreUsuario':nombreUsuario,'idUsuario':getUserID()};
+     ref1.push(inscripcion);
+     ref2.update({'userPro': true,'haParticipadoSorteoFC':true});
+     
+     }
+
+ Future  comprobandoInscripcion() async{
+
+     
+     DatabaseReference ref = firebaseDatabase.ref(getUserID());
+    
+   
+ ref.child('haParticipadoSorteoFC').onValue.listen((e) {
+    DataSnapshot result = e.snapshot;
+    print(result.toString());
+    print(result.exists());
+    print(result.toJson());
+  haParticipado=result.val();
+  print(haParticipado);
+    // Do something with datasnapshot
+  });
+     
+     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // SignInWithGoogle
   Future<User> signInWithGoogle() async {
 
-    GoogleSignIn _googleSignIn = GoogleSignIn(
+   _googleSignIn = GoogleSignIn(
   scopes: [
     'email',
     'https://www.googleapis.com/auth/contacts.readonly',
@@ -39,7 +112,7 @@ class UserRepository {
 
   Future<User> signInWithFb() async {
    
-      final facebookSignIn = FacebookLoginWeb();
+    
     FacebookLoginResult result = await facebookSignIn.logIn(['email',]);
     final AuthCredential credential = FacebookAuthProvider.credential(
         result.accessToken.token);
@@ -55,13 +128,14 @@ class UserRepository {
 
 Future<User> signInWithApple() async {
     // 1. perform the sign-in request
-   final user = await FirebaseAuthOAuth()
+   final user = await _firebaseAuthOAuth
           .openSignInFlow("apple.com", ["email"], {"locale": "en"});
         return user;
   }
 
   // SignInWithCredentials
   Future<void> signInWithCredentials(String email, String password) {
+    
     return _firebaseAuth.signInWithEmailAndPassword(
         email: email, password: password);
   }
@@ -74,7 +148,7 @@ Future<User> signInWithApple() async {
 
   // SignOut
   Future<void> signOut() async {
-    return Future.wait([_firebaseAuth.signOut(), _googleSignIn.signOut()]);
+    return ([_firebaseAuth.signOut(), _googleSignIn.signOut(),facebookSignIn.logOut()]);
   }
 
   // Esta logueado?
@@ -96,7 +170,7 @@ Future<User> signInWithApple() async {
     return _firebaseAuth.currentUser.photoUrl;
   }
 
-  Future<String> getUserID() async {
+  String getUserID() {
     return  _firebaseAuth.currentUser.uid;
   }
 

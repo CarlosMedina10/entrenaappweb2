@@ -123,7 +123,7 @@ switch(deviceType) {
           child: Column( 
             children: [
               NavigationBar(),
-              ConocenosPage(state.isOnConocenos),
+              ConocenosPage(state.isOnConocenos,isInit),
             ],
           ),
         ),
@@ -293,14 +293,14 @@ class _Drawer3dState extends State<Drawer3d> {
         index: id,
         children:  [
           
-          LandingPage(true,widget.isInit),ConocenosPage(false),SendEmail(false),LoginScreen(widget._userRepository,false)] 
+          LandingPage(true,widget.isInit),ConocenosPage(false,widget.isInit),SendEmail(false),LoginScreen(widget._userRepository,false)] 
             
       ) ; else if  (id== 1)   
         return IndexedStack(
         index: id,
         children:  [
           
-          LandingPage(false,widget.isInit),ConocenosPage(true),SendEmail(false),LoginScreen(widget._userRepository,false)] 
+          LandingPage(false,widget.isInit),ConocenosPage(true,widget.isInit),SendEmail(false),LoginScreen(widget._userRepository,false)] 
             
       ) ;
       else if  (id== 2)   
@@ -308,7 +308,7 @@ class _Drawer3dState extends State<Drawer3d> {
         index: id,
         children:  [
           
-          LandingPage(false,widget.isInit),ConocenosPage(false),SendEmail(true),LoginScreen(widget._userRepository,false)] 
+          LandingPage(false,widget.isInit),ConocenosPage(false,widget.isInit),SendEmail(true),LoginScreen(widget._userRepository,false)] 
             
       ) ;
       else if  (id== 3)   
@@ -316,7 +316,7 @@ class _Drawer3dState extends State<Drawer3d> {
         index: id,
         children:  [
           
-          LandingPage(false,widget.isInit),ConocenosPage(false),SendEmail(false),LoginScreen(widget._userRepository,true)] 
+          LandingPage(false,widget.isInit),ConocenosPage(false,widget.isInit),SendEmail(false),LoginScreen(widget._userRepository,true)] 
             
       ) ;
       
