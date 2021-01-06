@@ -19,7 +19,7 @@ final UserRepository userRepository;
   @override
   Widget build(BuildContext context) {
 
-    void _showDialog() {
+    void _showDialog(bool isPremium) {
     // flutter defined function
     showDialog(
       context: context,
@@ -27,7 +27,7 @@ final UserRepository userRepository;
         // return object of type Dialog
         return AlertDialog(
           title: new Text("Error"),
-          content: new Text("Ha ocurrido un error. Por favor, revisa tu conexión a internet y si el problema persiste contáctanos."),
+          content: new Text( (!isPremium) ? "Ha ocurrido un error. Por favor, revisa tu conexión a internet y si el problema persiste contáctanos." : "Enhorabuena, ya estas inscrito en el sorteo. El premium mensual gratuito no se te ha activado ya que eres o has sido premium en nuestra aplicación anteriormente por lo que ya lo has probado. Muchas gracias."),
           actions: <Widget>[
             // usually buttons at the bottom of the dialog
             new FlatButton(
@@ -76,7 +76,7 @@ final UserRepository userRepository;
      child: BlocListener<SorteoblocBloc,SorteoblocState>(
         listener: (context, state) {
          if (state is ErrorState)
-         _showDialog();
+         _showDialog(state.isPremium);
 
              
         },
@@ -93,9 +93,11 @@ final UserRepository userRepository;
           builder:(BuildContext context, SorteoblocState state){
            if (state is PaginaEspera)
            {
+
+             (!state.isFromIscribiendose) ?
                 BlocProvider.of<SorteoblocBloc>(
                                                                           context)
-                                                                      .add(Espera());
+                                                                      .add(Espera()) : null;
            
             return Scaffold(
                           body: Center(child: Column(
@@ -115,7 +117,8 @@ final UserRepository userRepository;
           }
           if (state is YaSeHaInscrito)
           {
-            return SorteoFinFC();
+            print('${state.isPremium} oooooooops');
+            return SorteoFinFC(state.isPremium);
           }
           
     

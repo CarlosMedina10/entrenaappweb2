@@ -10,9 +10,10 @@ import 'package:flutter/material.dart';
 import 'blog_screen.dart';
 
 class Home extends StatefulWidget {
-
+final String idUser;
+final String idToken;
   
-  Home();
+  Home(this.idUser,this.idToken);
   @override
   _HomeState createState() => _HomeState();
 }
@@ -77,7 +78,7 @@ class _HomeState extends State<Home> {
           } else if (snapshot.data == NavigationScreen.Talks) {
             return TalksScreen();
           } else if (snapshot.data == NavigationScreen.PersonalProject) {
-            return PersonalProjects();
+            return PersonalProjects(widget.idUser,widget.idToken);
           } else {
             return ProfileSection();
           }

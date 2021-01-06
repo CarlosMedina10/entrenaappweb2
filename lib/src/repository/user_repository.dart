@@ -23,15 +23,25 @@ class UserRepository {
  final FirebaseAuthOAuth _firebaseAuthOAuth = FirebaseAuthOAuth();
   String errorString;
  dynamic haParticipado;
+ dynamic isUserPro;
 
 
-darPremiumGratuito(String userID) async{
+darPremiumGratuito(String userID,{bool isYear=false}) async{
    String url =
             "https://api.revenuecat.com/v1/subscribers/$userID/entitlements/suscripcion_mensual/promotional";
-     
-      try{  await http.post(url,
+    String url2= 'https://api.revenuecat.com/v1/subscribers/$userID';
+      try{  
+        
+        
+        await http.get(url2,
+         headers: {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer sk_LOnONfxsicGXLXdXBzMyzzueGmQBV"
+  });
+        
+        await http.post(url,
       body: json.encode({
-        "duration":"monthly"
+        "duration": (isYear) ? "lifetime" : "monthly"
 
       }),
               headers: {
@@ -57,6 +67,23 @@ inscribirseEnElSorteo(String nombreUsuario){
      
      }
 
+ Future  comprobandoPremium() async{
+
+     
+     DatabaseReference ref = firebaseDatabase.ref(getUserID());
+    
+   
+ ref.child('userPro').onValue.listen((e) {
+    DataSnapshot result = e.snapshot;
+    print(result.toString());
+    print(result.exists());
+    print(result.toJson());
+  isUserPro=result.val();
+  print(haParticipado);
+    // Do something with datasnapshot
+  });
+     
+     }
  Future  comprobandoInscripcion() async{
 
      
@@ -94,12 +121,14 @@ inscribirseEnElSorteo(String nombreUsuario){
   // SignInWithGoogle
   Future<User> signInWithGoogle() async {
 
-   _googleSignIn = GoogleSignIn(
+  _googleSignIn =  GoogleSignIn(
+    
   scopes: [
     'email',
-    'https://www.googleapis.com/auth/contacts.readonly',
+    
   ],
 );
+_googleSignIn.signInSilently();
     final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
     final GoogleSignInAuthentication googleAuth =
         await googleUser.authentication;
@@ -148,7 +177,7 @@ Future<User> signInWithApple() async {
 
   // SignOut
   Future<void> signOut() async {
-    return ([_firebaseAuth.signOut(), _googleSignIn.signOut(),facebookSignIn.logOut()]);
+    return ([ await _firebaseAuth.signOut(),await _googleSignIn.signOut(), await facebookSignIn.logOut()]);
   }
 
   // Esta logueado?

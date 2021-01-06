@@ -21,18 +21,119 @@
 // }
 
 
+// import 'package:flutter/material.dart';
+// import 'package:flutter_web_scrollbar/flutter_web_scrollbar.dart';
+
+// void main() {
+//   runApp(MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   // This widget is the root of your application.
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       title: 'Flutter Web Basic Scroll',
+//       home: LandingPage(),
+//     );
+//   }
+// }
+
+// class LandingPage extends StatefulWidget {
+//   LandingPage({Key key}) : super(key: key);
+//   @override
+//   State<StatefulWidget> createState() {
+//     return _LandingPageState();
+//   }
+// }
+
+// class _LandingPageState extends State<LandingPage> {
+//   ScrollController _controller;
+
+//   @override
+//   void initState() {
+//     //Initialize the  scrollController
+//     _controller = ScrollController();
+//     super.initState();
+//   }
+
+//   void scrollCallBack(DragUpdateDetails dragUpdate) {
+//     setState(() {
+//       // Note: 3.5 represents the theoretical height of all my scrollable content. This number will vary for you.
+//       _controller.position.moveTo(dragUpdate.globalPosition.dy * 43.5);
+//     });
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+
+//     return Scaffold(
+//       backgroundColor: Colors.white,
+//       body: Stack(
+//         children: [
+//           Container(
+//             child: SingleChildScrollView(
+//               //Assign the controller to my scrollable widget
+//               controller: _controller,
+//               child: Column(
+//                 children: [
+//                   Container(
+//                     height: MediaQuery.of(context).size.height,
+//                     width: MediaQuery.of(context).size.width,
+//                     color: Colors.black,
+//                   ),
+//                   Container(
+//                     height: MediaQuery.of(context).size.height,
+//                     width: MediaQuery.of(context).size.width,
+//                     color: Colors.red,
+//                   ),
+//                   Container(
+//                     height: MediaQuery.of(context).size.height,
+//                     width: MediaQuery.of(context).size.width,
+//                     color: Colors.green,
+//                   ),
+//                   Container(
+//                     height: MediaQuery.of(context).size.height,
+//                     width: MediaQuery.of(context).size.width,
+//                     color: Colors.blue,
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ),
 
 
+//           FlutterWebScroller(
+//             //Pass a reference to the ScrollCallBack function into the scrollbar
+//             scrollCallBack,
+
+//             //Add optional values
+//             scrollBarBackgroundColor: Colors.white,
+//             scrollBarWidth: 20.0,
+//             dragHandleColor: Colors.red,
+//             dragHandleBorderRadius: 2.0,
+//             dragHandleHeight: 40.0,
+//             dragHandleWidth: 15.0,
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
 
 
 import 'package:entrenaappweb/src/screens/home_screen.dart';
 import 'package:entrenaappweb/src/ui/landingPage/HomePage.dart';
+import 'package:entrenaappweb/src/ui/landingPage/SucessPayment.dart';
 import 'package:entrenaappweb/src/ui/usuarioDentro/sorteo.dart';
 import 'package:entrenaappweb/src/ui/usuarioDentro/sorteoAcabado.dart';
 import 'package:entrenaappweb/src/ui/usuarioDentro/sorteoForocoches.dart';
 import 'package:firebase/firebase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:responsive_builder/responsive_builder.dart';
 import './src/bloc/authentication_bloc/bloc.dart';
@@ -40,7 +141,12 @@ import './src/bloc/authentication_bloc/bloc.dart';
 import './src/repository/user_repository.dart';
 
 
-
+GoogleSignIn _googleSignIn = GoogleSignIn(
+  scopes: <String>[
+    'email',
+   
+  ],
+);
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -77,7 +183,10 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
        title: 'EntrenaApp',
-     
+     routes: {
+        
+        '/success': (_) => Success(_userRepository),
+      },
       home:
 
       BlocBuilder<AuthenticationBloc, AuthenticationState>(
@@ -86,20 +195,178 @@ class App extends StatelessWidget {
             return Center(child:CircularProgressIndicator(),);
           }
           if (state is Authenticated) {
-            // return  Home();
+            // return  Home(state.userID,state.idToken);
             return Sorteo(_userRepository);
           }
           if (state is Unauthenticated) {
             // return LoginScreen(userRepository: _userRepository,);
-            return HomePage(_userRepository);
+            return HomePage(_userRepository,_googleSignIn);
           }
           return Container();
         },
       ),
     );
+    
   }
 }
+// Copyright 2019 The Flutter Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
 
+// ignore_for_file: public_member_api_docs
+
+// import 'dart:async';
+// import 'dart:convert' show json;
+
+// import "package:http/http.dart" as http;
+// import 'package:flutter/material.dart';
+// import 'package:google_sign_in/google_sign_in.dart';
+
+// GoogleSignIn _googleSignIn = GoogleSignIn(
+//   scopes: <String>[
+//     'email',
+   
+//   ],
+// );
+
+// void main() {
+//   runApp(
+//     MaterialApp(
+//       title: 'Google Sign In',
+//       home: SignInDemo(),
+//     ),
+//   );
+// }
+
+// class SignInDemo extends StatefulWidget {
+//   @override
+//   State createState() => SignInDemoState();
+// }
+
+// class SignInDemoState extends State<SignInDemo> {
+//   GoogleSignInAccount _currentUser;
+//   String _contactText;
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     _googleSignIn.onCurrentUserChanged.listen((GoogleSignInAccount account) {
+//       setState(() {
+//         _currentUser = account;
+//       });
+//       if (_currentUser != null) {
+//         _handleGetContact();
+//       }
+//     });
+//     _googleSignIn.signInSilently();
+//   }
+
+//   Future<void> _handleGetContact() async {
+//     setState(() {
+//       _contactText = "Loading contact info...";
+//     });
+//     final http.Response response = await http.get(
+//       'https://people.googleapis.com/v1/people/me/connections'
+//       '?requestMask.includeField=person.names',
+//       headers: await _currentUser.authHeaders,
+//     );
+//     if (response.statusCode != 200) {
+//       setState(() {
+//         _contactText = "People API gave a ${response.statusCode} "
+//             "response. Check logs for details.";
+//       });
+//       print('People API ${response.statusCode} response: ${response.body}');
+//       return;
+//     }
+//     final Map<String, dynamic> data = json.decode(response.body);
+//     final String namedContact = _pickFirstNamedContact(data);
+//     setState(() {
+//       if (namedContact != null) {
+//         _contactText = "I see you know $namedContact!";
+//       } else {
+//         _contactText = "No contacts to display.";
+//       }
+//     });
+//   }
+
+//   String _pickFirstNamedContact(Map<String, dynamic> data) {
+//     final List<dynamic> connections = data['connections'];
+//     final Map<String, dynamic> contact = connections?.firstWhere(
+//       (dynamic contact) => contact['names'] != null,
+//       orElse: () => null,
+//     );
+//     if (contact != null) {
+//       final Map<String, dynamic> name = contact['names'].firstWhere(
+//         (dynamic name) => name['displayName'] != null,
+//         orElse: () => null,
+//       );
+//       if (name != null) {
+//         return name['displayName'];
+//       }
+//     }
+//     return null;
+//   }
+
+//   Future<void> _handleSignIn() async {
+//     try {
+//       await _googleSignIn.signIn();
+//     } catch (error) {
+//       print(error);
+//     }
+//   }
+
+//   Future<void> _handleSignOut() => _googleSignIn.disconnect();
+
+//   Widget _buildBody() {
+//     if (_currentUser != null) {
+//       return Column(
+//         mainAxisAlignment: MainAxisAlignment.spaceAround,
+//         children: <Widget>[
+//           ListTile(
+//             leading: GoogleUserCircleAvatar(
+//               identity: _currentUser,
+//             ),
+//             title: Text(_currentUser.displayName ?? ''),
+//             subtitle: Text(_currentUser.email ?? ''),
+//           ),
+//           const Text("Signed in successfully."),
+//           Text(_contactText ?? ''),
+//           RaisedButton(
+//             child: const Text('SIGN OUT'),
+//             onPressed: _handleSignOut,
+//           ),
+//           RaisedButton(
+//             child: const Text('REFRESH'),
+//             onPressed: _handleGetContact,
+//           ),
+//         ],
+//       );
+//     } else {
+//       return Column(
+//         mainAxisAlignment: MainAxisAlignment.spaceAround,
+//         children: <Widget>[
+//           const Text("You are not currently signed in."),
+//           RaisedButton(
+//             child: const Text('SIGN IN'),
+//             onPressed: _handleSignIn,
+//           ),
+//         ],
+//       );
+//     }
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//         appBar: AppBar(
+//           title: const Text('Google Sign In'),
+//         ),
+//         body: ConstrainedBox(
+//           constraints: const BoxConstraints.expand(),
+//           child: _buildBody(),
+//         ));
+//   }
+// }
 // import 'package:flutter/material.dart';
 
 // import './src/widgets/navbar.dart';

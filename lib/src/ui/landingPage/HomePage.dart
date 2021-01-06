@@ -1,6 +1,7 @@
 import 'package:entrenaappweb/blocs/LandingPageBloc/landingpage_bloc.dart';
 import 'package:entrenaappweb/src/repository/user_repository.dart';
 import 'package:entrenaappweb/src/ui/login/login_screen.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 
 import '../../ui/landingPage/SendEmail.dart';
@@ -18,7 +19,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   final UserRepository _userRepository;
-  HomePage(this._userRepository);
+  final GoogleSignIn _googleSignIn;
+  HomePage(this._userRepository,this._googleSignIn);
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -26,6 +28,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   List<Map<String, String>> isInit =[];
+  @override
+  void initState() {
+    
+    widget._googleSignIn.signInSilently();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
    
@@ -147,7 +155,7 @@ Scaffold(
           child: Column( 
             children: [
               NavigationBar(),
-              LoginScreen(widget._userRepository,true)
+              LoginScreen(widget._userRepository,widget._googleSignIn,true)
             ],
           ),
         ),
@@ -158,7 +166,7 @@ Scaffold(
           if (state is IsMobileOrTablet)
 {
  
-          return Scaffold(body: Drawer3d(state.isOnPrincipal,state.isOnConocenos,state.isOnContactanos,state.isOnLogin,isMobile,isTablet,isInit,widget._userRepository));
+          return Scaffold(body: Drawer3d(state.isOnPrincipal,state.isOnConocenos,state.isOnContactanos,state.isOnLogin,isMobile,isTablet,isInit,widget._userRepository,widget._googleSignIn));
 }
     
     }),));
@@ -192,8 +200,9 @@ class Drawer3d extends StatefulWidget {
   final bool isTablet;
   final List<Map<String, String>> isInit;
   final UserRepository _userRepository;
+  final GoogleSignIn _googleSignIn;
 
-  Drawer3d(this.isOnPrincipal,this.isOnConocenos,this.isOnContactanos,this.isOnLogin,this.isMobile,this.isTablet,this.isInit,this._userRepository);
+  Drawer3d(this.isOnPrincipal,this.isOnConocenos,this.isOnContactanos,this.isOnLogin,this.isMobile,this.isTablet,this.isInit,this._userRepository,this._googleSignIn);
   @override
   _Drawer3dState createState() => _Drawer3dState();
 }
@@ -293,14 +302,14 @@ class _Drawer3dState extends State<Drawer3d> {
         index: id,
         children:  [
           
-          LandingPage(true,widget.isInit),ConocenosPage(false,widget.isInit),SendEmail(false),LoginScreen(widget._userRepository,false)] 
+          SingleChildScrollView(child: LandingPage(true,widget.isInit)),ConocenosPage(false,widget.isInit),SendEmail(false),LoginScreen(widget._userRepository,widget._googleSignIn,false)] 
             
       ) ; else if  (id== 1)   
         return IndexedStack(
         index: id,
         children:  [
           
-          LandingPage(false,widget.isInit),ConocenosPage(true,widget.isInit),SendEmail(false),LoginScreen(widget._userRepository,false)] 
+          LandingPage(false,widget.isInit),SingleChildScrollView(child: ConocenosPage(true,widget.isInit)),SendEmail(false),LoginScreen(widget._userRepository,widget._googleSignIn,false)] 
             
       ) ;
       else if  (id== 2)   
@@ -308,7 +317,7 @@ class _Drawer3dState extends State<Drawer3d> {
         index: id,
         children:  [
           
-          LandingPage(false,widget.isInit),ConocenosPage(false,widget.isInit),SendEmail(true),LoginScreen(widget._userRepository,false)] 
+          LandingPage(false,widget.isInit),ConocenosPage(false,widget.isInit),SendEmail(true),LoginScreen(widget._userRepository,widget._googleSignIn,false)] 
             
       ) ;
       else if  (id== 3)   
@@ -316,7 +325,7 @@ class _Drawer3dState extends State<Drawer3d> {
         index: id,
         children:  [
           
-          LandingPage(false,widget.isInit),ConocenosPage(false,widget.isInit),SendEmail(false),LoginScreen(widget._userRepository,true)] 
+          LandingPage(false,widget.isInit),ConocenosPage(false,widget.isInit),SendEmail(false),LoginScreen(widget._userRepository,widget._googleSignIn,true)] 
             
       ) ;
       

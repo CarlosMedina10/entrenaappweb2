@@ -3,13 +3,17 @@
 
 import 'package:entrenaappweb/blocs/CardBloc/card_bloc.dart';
 import 'package:entrenaappweb/blocs/LandingPageBloc/landingpage_bloc.dart';
+import 'package:entrenaappweb/checkout/stripe_checkout.dart';
 import 'package:entrenaappweb/src/ui/landingPage/CustomCard.dart';
+import 'package:entrenaappweb/src/widgets/buyMeACoffe.dart';
 
 
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:getwidget/getwidget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 import '../../widgets/RoundedButton.dart';
@@ -33,10 +37,8 @@ class LandingPage extends StatefulWidget {
 
 class _LandingPageState extends State<LandingPage> with TickerProviderStateMixin {
 
-  bool card1 =false;
-  bool card2 = false;
-  bool card3=false;
-  bool card4=false;
+ Future<SharedPreferences> _prefs;
+  String userID;
   int numeroTarjetas=0;
   var cardIndex = 0;
   var cardIndex2 = 0;
@@ -57,6 +59,13 @@ class _LandingPageState extends State<LandingPage> with TickerProviderStateMixin
   
     scrollController = new ScrollController();
     scrollController2 = new ScrollController();
+     _prefs = SharedPreferences.getInstance();
+     _prefs.then((value) {
+       setState(() {
+         userID =  value.getString('userID');
+       });
+     print('$userID pppppppppppppp');
+     });
     
   }
   Widget _buildFrontWidget(BuildContext context,String text, bool isMobile,isTablet,CardState state,int numeroTarjeta) {
@@ -203,7 +212,7 @@ switch(deviceType) {
           height: 
             (text!=null) ?
           (isMobile) ? 173 : (isTablet) ? (MediaQuery.of(context).size.height<500) ? 173 : MediaQuery.of(context).size.height/2.875 :  (MediaQuery.of(context).size.height<500) ? 228 :  MediaQuery.of(context).size.height/2.19 :
-           (isMobile) ? 200 : (isTablet) ? (MediaQuery.of(context).size.height<500) ? 205 : MediaQuery.of(context).size.height/2.38  :  (MediaQuery.of(context).size.height<500) ? 266 : MediaQuery.of(context).size.height/1.877
+           (isMobile) ? 400 : (isTablet) ? (MediaQuery.of(context).size.height<500) ? 205 : MediaQuery.of(context).size.height/2.38  :  (MediaQuery.of(context).size.height<500) ? 266 : MediaQuery.of(context).size.height/1.877
           ,
           
           width:
@@ -402,492 +411,601 @@ switch(deviceType) {
                                                                           context)
                                                                       .add(WantIsDesktop(true, false, false,false));
             }
-    return SingleChildScrollView(
-      child: 
-      
-      
-      Container(
-        color: Color(0xff0A183D),
-        child: Column(
-          children: [
-            //Home Music for everyone
-            (isMobile) ?
-            Container(
-            
-                height: (size.height>500) ? size.height*2.8/8 : 175,
-                    width:  size.width,
-                    alignment: Alignment.center,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16.0),
-                      child: Image(
-                        image: AssetImage("assets/images/DisenoFondo2.jpg"),
-                      ),
+    return Container(
+      color: Color(0xff0A183D),
+      child: Column(
+        children: [
+          //Home Music for everyone
+          (isMobile) ?
+          Container(
+          
+              height: (size.height>500) ? size.height*2.8/8 : 175,
+                  width:  size.width,
+                  alignment: Alignment.center,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16.0),
+                    child: Image(
+                      image: AssetImage("assets/images/DisenoFondo2.jpg"),
                     ),
-                  ) : Container(),
-            Container(
-              height: (isMobile) ? (size.height>500) ? size.height*5.2/8 : 325 : (size.height>500) ? size.height : 500,
-              width: size.width,
-           
-              child: Row(
-                children: [
-                  Container(
-                    alignment: Alignment.topCenter,
-                     width: (isMobile==false) ? (isTablet==false) ? size.width/2 : size.width*5/8 : size.width,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                      
-                          padding: EdgeInsets.only(left:size.width * 0.05),
-                          alignment: Alignment.centerLeft,
-                          width: (isMobile==false) ? (isTablet==false) ? size.width / 2 : size.width*5/8 : size.width,
-                          child: Column(
-                           mainAxisAlignment: MainAxisAlignment.start,
-                           crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                              
-                                children: [
-                                  Text(
-                                    "Entrena ",
-                                    style: TextStyle(
-    color: Colors.white,
-      fontSize: (isMobile || isTablet) ? size.width/17.5 : size.width/22.76,
-    fontWeight: FontWeight.w700,
-  ) ,
-                                  ),
-                                  Text(
-                                    "con",
-                                    style: TextStyle(
-    color: Colors.white,
-      fontSize: (isMobile || isTablet) ? size.width/17.5 : size.width/22.76,
-    fontWeight: FontWeight.w700,
-  ) ,
-                                  ),
-                                ],
-                              ),
-                              Text(
-                                "EntrenaAPP",
+                  ),
+                ) : Container(),
+          Container(
+            height: (isMobile) ? (size.height>500) ? size.height*5.2/8 : 325 : (size.height>500) ? size.height : 500,
+            width: size.width,
+         
+            child: Row(
+              children: [
+                Container(
+                  alignment: Alignment.topCenter,
+                   width: (isMobile==false) ? (isTablet==false) ? size.width/2 : size.width*5/8 : size.width,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                    
+                        padding: EdgeInsets.only(left:size.width * 0.05),
+                        alignment: Alignment.centerLeft,
+                        width: (isMobile==false) ? (isTablet==false) ? size.width / 2 : size.width*5/8 : size.width,
+                        child: Column(
+                         mainAxisAlignment: MainAxisAlignment.start,
+                         crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
                             
-                                 style: TextStyle(
+                              children: [
+                                Text(
+                                  "Entrena ",
+                                  style: TextStyle(
     color: Colors.white,
     fontSize: (isMobile || isTablet) ? size.width/17.5 : size.width/22.76,
     fontWeight: FontWeight.w700,
   ) ,
-                              ),
-                              SizedBox(height:10),
-                        Container(
-                          width: size.width/8,
-                          child: Divider(color:Colors.orange,thickness: 1.0,)),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: (isMobile) ? 5 : 10),
-                        Container(
-                       
-                           padding: EdgeInsets.only(left:size.width * 0.05,right: size.width * 0.03),
-                            width: (isMobile==false) ? (isTablet==false) ? size.width / 2 : size.width*5/8 : size.width,
-                            alignment: Alignment.center,
-                            child: Wrap(
-                              children: [
+                                ),
                                 Text(
-                                  "La única plataforma de entrenamiento que de forma gratuita te lo va a poner todo más fácil. Tan solo tienes que preocuparte por disfrutar de un entrenamiento 100% adaptado a ti y tus objetivos. Pero EntrenaAPP no es solo una aplicación de entrenamiento personalizado, también dispones de un equipo humano para ayudarte a solucionar todas las dudas que puedas tener.",
+                                  "con",
                                   style: TextStyle(
+    color: Colors.white,
+    fontSize: (isMobile || isTablet) ? size.width/17.5 : size.width/22.76,
+    fontWeight: FontWeight.w700,
+  ) ,
+                                ),
+                              ],
+                            ),
+                            Text(
+                              "EntrenaAPP",
+                          
+                               style: TextStyle(
+    color: Colors.white,
+    fontSize: (isMobile || isTablet) ? size.width/17.5 : size.width/22.76,
+    fontWeight: FontWeight.w700,
+  ) ,
+                            ),
+                            SizedBox(height:10),
+                      Container(
+                        width: size.width/4,
+                        child: Divider(color:Colors.orange,thickness: 1.0,)),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: (isMobile) ? 5 : 10),
+                      Container(
+                     
+                         padding: EdgeInsets.only(left:size.width * 0.05,right: size.width * 0.03),
+                          width: (isMobile==false) ? (isTablet==false) ? size.width / 2 : size.width*5/8 : size.width,
+                          alignment: Alignment.center,
+                          child: Wrap(
+                            children: [
+                              Text(
+                                "La única plataforma de entrenamiento que de forma gratuita te lo va a poner todo más fácil. Tan solo tienes que preocuparte por disfrutar de un entrenamiento 100% adaptado a ti y tus objetivos. Pero EntrenaAPP no es solo una aplicación de entrenamiento personalizado, también dispones de un equipo humano para ayudarte a solucionar todas las dudas que puedas tener.",
+                                style: TextStyle(
     color: Colors.white,
     fontSize: (isMobile) ? 14 : (isTablet) ? 16 : 16,
 
     letterSpacing: (isMobile) ? null : (isTablet) ? 0.5 : 1.0, 
   ),
-                                ),
-                              ],
-                            )),
-                            SizedBox(height:size.height*0.025),
-                        Container(
-                          alignment: Alignment.center,
-                          child: Text(
-                                  "¡DESCARGALA YA!",
-                              
-                                   style: TextStyle(
+                              ),
+                            ],
+                          )),
+                          SizedBox(height:size.height*0.025),
+                      Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                                "¡DESCARGALA YA!",
+                            
+                                 style: TextStyle(
     color: Colors.white,
     fontSize:  size.width/30,
     fontWeight: FontWeight.w700,
   ) ,),
-                        ),
-                        Container(
-                       
-                         
-                           width: (isMobile==false) ? (isTablet==false) ? size.width / 2 : size.width*5/8 : size.width,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              InkWell(
-                                onTap: () async{
-                                    if (await canLaunch("https://play.google.com/store/apps/details?id=com.entrena_app.carlos10medina&hl=es&gl=US")) {
-                         await launch("https://play.google.com/store/apps/details?id=com.entrena_app.carlos10medina&hl=es&gl=US");
-                               }
-                                },
-                                                              child: Container(
-                    width:(isMobile ) ? 100 : (isTablet ) ? 150 : 150,
-                    alignment: Alignment.center,
-                    child: Image(
-                            image:  AssetImage("assets/images/1.png"),
-                    ),
-                  ),
-                              ),
-                               InkWell(
-                                  onTap: () async{
-                                    if (await canLaunch("https://apps.apple.com/us/app/entrenaapp/id1533801846")) {
-                         await launch("https://apps.apple.com/us/app/entrenaapp/id1533801846");
-                               }
-                                },
-                                                                child: Container(
-                     width:(isMobile ) ? 100 : (isTablet ) ? 150 : 160,
-                    alignment: Alignment.center,
-                    child: Image(
-                            image:  AssetImage("assets/images/2.png"),
-                    ),
-                  ),
-                               ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-               (!isMobile) ?
-                  Container(
-                    width:  (isTablet==false) ? size.width / 2 : size.width*3/8,
-                    alignment: Alignment.center,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 4),
-                      child: Image(
-                        image: (isTablet) ?  AssetImage("assets/images/DisenoFondo.jpg") : AssetImage("assets/images/DisenoFondo2.jpg"),
                       ),
-                    ),
-                  ) : Container(), 
-                ],
-              ),
-            ),
-
-            //Unlimited Access
-            Container(
-
-              height: (size.height>500) ? size.height : 500,
-              width: size.width,
-              color: Colors.white,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                           
-                            width:  size.width  ,
-                          alignment: Alignment.center,
-                          child: Text(
-                                  "RUTINA DE ENTRENAMIENTO",
-                              
-                                   style: TextStyle(
-    color: Color(0xff0A183D),
-    fontSize: (isMobile) ? size.width/17.5 : size.width/22.76,
-    fontWeight: FontWeight.w700,
-  ) ,),),
-                      
-                        Container(
-                            width:  size.width  ,
-                          alignment: Alignment.center,
-                          child: Text(
-                                  "100 % personalizada",
-                              
-                                   style: TextStyle(
-    color: Color(0xff0A183D),
-    fontSize: (isMobile) ? size.width/17.5 : size.width/22.76,
-    fontWeight: FontWeight.w700,
-  ) ,),),
-  SizedBox(height: (isMobile) ? 20 : isTablet ? 25 : 40),
-                  Row(
-                    children: [
                       Container(
+                     
                        
-                        alignment: Alignment.center,
-                          width: (isMobile || isTablet) ? size.width :  size.width / 2 ,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                         width: (isMobile==false) ? (isTablet==false) ? size.width / 2 : size.width*5/8 : size.width,
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            
-                          
-                             Container(
-                         height:  (isMobile) ? (size.height<500) ? 200 : size.height*0.4 : (size.height<500) ? 275 :  size.height * 0.55,
-                        width: (isMobile||isTablet) ? size.width : size.width / 2 ,
-                        alignment: Alignment.center,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8.0),
-                          child: Image(
-                            image: AssetImage("assets/images/ImagenApp.jpg"),
-                          ),
+                            InkWell(
+                              onTap: () async{
+                                  if (await canLaunch("https://play.google.com/store/apps/details?id=com.entrena_app.carlos10medina&hl=es&gl=US")) {
+                       await launch("https://play.google.com/store/apps/details?id=com.entrena_app.carlos10medina&hl=es&gl=US");
+                             }
+                              },
+                                                            child: Container(
+                  width:(isMobile ) ? 100 : (isTablet ) ? 150 : 150,
+                  alignment: Alignment.center,
+                  child: Image(
+                          image:  AssetImage("assets/images/1.png"),
+                  ),
+                ),
+                            ),
+                             InkWell(
+                                onTap: () async{
+                                  if (await canLaunch("https://apps.apple.com/us/app/entrenaapp/id1533801846")) {
+                       await launch("https://apps.apple.com/us/app/entrenaapp/id1533801846");
+                             }
+                              },
+                                                              child: Container(
+                   width:(isMobile ) ? 100 : (isTablet ) ? 150 : 160,
+                  alignment: Alignment.center,
+                  child: Image(
+                          image:  AssetImage("assets/images/2.png"),
+                  ),
+                ),
+                             ),
+                          ],
                         ),
-                      ) ,
-                           (isMobile || isTablet) ? Container(
-                        width:  size.width,
-                        child: Wrap(
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 16.0),
-                              child: Text(
-                                "Todos nuestros entrenamientos son específicos y personalizados para cada usuario en función de sus características y objetivos personales. Y no solo eso, sino que un sistema autorregulable modificará tu entrenamiento mensual en función de tu progreso y recuperación. ¡Pruébalo!",
-                                style:  TextStyle(
+                      ),
+                    ],
+                  ),
+                ),
+             (!isMobile) ?
+                Container(
+                  width:  (isTablet==false) ? size.width / 2 : size.width*3/8,
+                  alignment: Alignment.center,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                    child: Image(
+                      image: (isTablet) ?  AssetImage("assets/images/DisenoFondo.jpg") : AssetImage("assets/images/DisenoFondo2.jpg"),
+                    ),
+                  ),
+                ) : Container(), 
+              ],
+            ),
+          ),
+
+          //Unlimited Access
+          Container(
+
+            height: (size.height>500) ? size.height : 500,
+            width: size.width,
+            color: Colors.white,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                         
+                          width:  size.width  ,
+                        alignment: Alignment.center,
+                        child: Text(
+                                "RUTINA DE ENTRENAMIENTO",
+                            
+                                 style: TextStyle(
+    color: Color(0xff0A183D),
+    fontSize: (isMobile) ? size.width/17.5 : size.width/22.76,
+    fontWeight: FontWeight.w700,
+  ) ,),),
+                    
+                      Container(
+                          width:  size.width  ,
+                        alignment: Alignment.center,
+                        child: Text(
+                                "100 % personalizada",
+                            
+                                 style: TextStyle(
+    color: Color(0xff0A183D),
+    fontSize: (isMobile) ? size.width/17.5 : size.width/22.76,
+    fontWeight: FontWeight.w700,
+  ) ,),),
+  SizedBox(height: (isMobile) ? 10 : isTablet ? 12.5 : 20),
+  Center(
+                        child: Container(
+                        
+                          width: size.width/4,
+                          child: Divider(color:Colors.orange,thickness: 1.0,)),
+                      ),
+   SizedBox(height: (isMobile) ? 10 : isTablet ? 12.5 : 20),  
+                Row(
+                  children: [
+                    Container(
+                     
+                      alignment: Alignment.center,
+                        width: (isMobile || isTablet) ? size.width :  size.width / 2 ,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          
+                        
+                           Container(
+                       height:  (isMobile) ? (size.height<500) ? 200 : size.height*0.4 : (size.height<500) ? 200 :  size.height * 0.4,
+                      width: (isMobile||isTablet) ? size.width : size.width / 2 ,
+                      alignment: Alignment.center,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        child: Image(
+                          image: AssetImage("assets/images/ImagenApp.jpg"),
+                        ),
+                      ),
+                    ) ,
+                         (isMobile || isTablet) ? Padding(
+                           padding: const EdgeInsets.symmetric(horizontal:16),
+                           child: Column(
+                             children: [
+                               Container(
+                      width:  size.width,
+                      child: Wrap(
+                        children: [
+                                Text(
+                                  "Todos nuestros entrenamientos son específicos y personalizados para cada usuario en función de sus características y objetivos personales. Y no solo eso, sino que un sistema autorregulable modificará tu entrenamiento mensual en función de tu progreso y recuperación. ¡Pruébalo!",
+                                  style:  TextStyle(
     color: Color(0xff0A183D),
     fontSize: (isMobile) ? 14 : (isTablet) ? 16 : 16,
     wordSpacing: (isMobile) ? null : (isTablet) ? 1 : 1.75,
     letterSpacing: (isMobile) ? null : (isTablet) ? 1 : 1.75,
  
   ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ) : Container()
-                          ],
-                        ),
+                                ),
+                        ],
                       ),
-                     (isMobile || isTablet) ? Container() : Container(
-                        width: (isMobile==false) ? size.width / 2 : size.width,
+                    ),
+                     SizedBox(height:8),
+              Text('Si quieres estar al tanto de todas las novedades de la aplicación y/o consultarnos tus dudas, te recomendamos que nos sigas en instagram o te unas a nuestra comunidad gratuita de telegram',style: TextStyle(color:Color(0xff0A183D),fontSize:(isMobile || isTablet) ? 12 : 16,  ),),
+              SizedBox(height:8),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [InkWell(
+                  onTap: ()async{
+
+                     if (await canLaunch("https://t.me/joinchat/R1UgehcnmgHM3xL7l-VVog")) {
+                           await launch("https://t.me/joinchat/R1UgehcnmgHM3xL7l-VVog");}
+
+
+                  },
+                  child: Icon(FontAwesomeIcons.telegram,color: Colors.blue,size:(isMobile) ? 24 : (isTablet) ? 32 : 48 ,)),SizedBox(width: 20,),
+                  InkWell(
+                    onTap: () async{
+
+                       if (await canLaunch("https://www.instagram.com/entrenaapp/?hl=es")) {
+                           await launch("https://www.instagram.com/entrenaapp/?hl=es");}
+
+                    },
+                    child: Icon(FontAwesomeIcons.instagram,color: Colors.pink,size:(isMobile) ? 24 : (isTablet) ? 32 : 48 ))],),
+                             ],
+                           ),
+                         ) : Container()
+                        ],
+                      ),
+                    ),
+                   (isMobile || isTablet) ? Container() : Container(
+                      width: (isMobile==false) ? size.width / 2 : size.width,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal:24),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Wrap(
                               children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 16.0),
-                                  child: Text(
-                                    "Todos nuestros entrenamientos son específicos y personalizados para cada usuario en función de sus características y objetivos personales. Y no solo eso, sino que un sistema autorregulable modificará tu entrenamiento mensual en función de tu progreso y recuperación. ¡Pruébalo!",
-                                    style: ThemText.describtionTex,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            // SizedBox(
-                            //   height: 22.0,
-                            // ),
-                            // RoundedButton(
-                            //   color: Color(0xffF24854),
-                            //   textTitle: "try it now",
-                            // ),
-                          ],
-                        ),
-                      ) 
-                    ],
-                  ),
-                ],
-              ),
-            ),
-        (!isMobile && !isTablet) ? 
-            Row(
-              children: [
-                Container(
-                  alignment: Alignment.center,
-                  height: (size.height<500) ? 500 : size.height,
-                  width: size.width*0.5,
-                  color: Color(0xff0A183D),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Padding(
-                            padding:
-                                 EdgeInsets.only(left: size.width/45),
-                            child: Wrap(
-                              children: [
                                 Text(
-                                  
-                                  "Plan gratuito",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-    color: Colors.white,
-    fontSize: size.width/60,   
-    fontWeight: FontWeight.w600,
-  
-  ),
+                                  "Todos nuestros entrenamientos son específicos y personalizados para cada usuario en función de sus características y objetivos personales. Y no solo eso, sino que un sistema autorregulable modificará tu entrenamiento mensual en función de tu progreso y recuperación. ¡Pruébalo!",
+                                  style: ThemText.describtionTex,
                                 ),
                               ],
                             ),
-                          ),
-                          Container(
-                    width:size.width/6,
-                    alignment: Alignment.center,
-                    child: Image(
-                            image:  AssetImage("assets/images/3.png"),
-                    ),
-                  ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 6.0,
-                      ),
-                      Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                  color: Color(0xff1B2949),
-                  child: Container(
-                    alignment: Alignment.center,
-                    height: (size.height<500) ? 300 : MediaQuery.of(context).size.height * 0.6,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 11.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          customCheckBox('Entrenamiento a tu nivel,objetivos y material', true,),
-                          customCheckBox('Acceso a la comunidad', true,),
-                          customCheckBox('Registro de progresos en la agenda **', true,),
-                          customCheckBox('Visualización de estadisticas **', true,),
-                          customCheckBox('Página de detalle de ejercicios **', true,),
-                          customCheckBox('Selección de ejercicios por patrones de mvto **', true,),
-                          customCheckBox('Crear tu entrenamiento desde 0 **', true,),
-                          SizedBox(height:10),
-                          Text('** Gastando puntos',style: TextStyle(color:Colors.white),)
-                         
-                        ],
-                      ),
-                    ),
-                  ),
-                  ),
-                  ),
-                      Padding(
-                        padding:
-                                 EdgeInsets.only(left: size.width/45),
-                        child: Wrap(
-                          children: [
-                            Text(
-                              "Más de 4000 usuarios.",
-                              style: TextStyle(
-    color: Colors.orange,
-     fontSize: (isMobile ? 14 : (isTablet) ? 16 : 20.0),
-    fontWeight: FontWeight.w600
-  ),
-                            ),
+                                 SizedBox(height:10),
+              Text('Si quieres estar al tanto de todas las novedades de la aplicación y/o consultarnos tus dudas, te recomendamos que nos sigas en instagram o te unas a nuestra comunidad gratuita de telegram',style: TextStyle(color:Color(0xff0A183D),fontSize:(isMobile || isTablet) ? 12 : 16,  ),),
+              SizedBox(height:8),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [InkWell(
+                  onTap: ()async{
+
+                     if (await canLaunch("https://t.me/joinchat/R1UgehcnmgHM3xL7l-VVog")) {
+                             await launch("https://t.me/joinchat/R1UgehcnmgHM3xL7l-VVog");}
+
+
+                  },
+                  child: Icon(FontAwesomeIcons.telegram,color: Colors.blue,size:(isMobile) ? 24 : (isTablet) ? 32 : 48 ,)),SizedBox(width: 20,),
+                  InkWell(
+                    onTap: () async{
+
+                         if (await canLaunch("https://www.instagram.com/entrenaapp/?hl=es")) {
+                             await launch("https://www.instagram.com/entrenaapp/?hl=es");}
+
+                    },
+                    child: Icon(FontAwesomeIcons.instagram,color: Colors.pink,size:(isMobile) ? 24 : (isTablet) ? 32 : 48 ))],),
                           ],
                         ),
                       ),
-                      SizedBox(
-                        height: 6.0,
-                      ),
-                 
-                    ],
-                  ),
-                ),
-                Container(
-                  alignment: Alignment.center,
-                  height: (size.height<500) ? 500 : size.height,
-                  width: size.width*0.5,
-                  color: Color(0xff0A183D),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Padding(
-                            padding:
-                                EdgeInsets.only(left: size.width/45),
-                            child: Wrap(
-                              children: [
-                                Text(
-                                  
-                                  "Subscripción mensual desde 2.49€/mes",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-    color: Colors.white,
-    fontSize: size.width/60,   
-    fontWeight: FontWeight.w600,
-  
-  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        Container(
-                    width:size.width/6,
-                    alignment: Alignment.center,
-                    child: Image(
-                            image:  AssetImage("assets/images/4.png"),
-                    ),
-                  ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 6.0,
-                      ),
-                      Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                  color: Color(0xff1B2949),
-                  child: Container(
-                    alignment: Alignment.center,
-                    height: (size.height<500) ? 300 : MediaQuery.of(context).size.height * 0.6,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 11.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          customCheckBox('Funcionamiento sin conexión a internet', true,),
-                          customCheckBox('Gestión de la fatiga', true,),
-                          customCheckBox('Reuniones para resolver dudas', true,),
-                          customCheckBox('Sin gasto de puntos', true,),
-                          customCheckBox('Sin publicidad', true,),
-                         
-                        ],
-                      ),
-                    ),
-                  ),
-                  ),
-                  ),
-                      Padding(
-                        padding:
-                                 EdgeInsets.only(left: size.width/45),
-                        child: Wrap(
-                          children: [
-                            Text(
-                              "Prueba gratis las dos primeras semanas",
-                              style: TextStyle(
-    color: Colors.orange,
-    fontSize: (isMobile ? 14 : (isTablet) ? 16 : 20.0),
-    fontWeight: FontWeight.w600
-  ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 6.0,
-                      ),
-                 
-                    ],
-                  ),
+                    ) 
+                  ],
                 ),
               ],
-            ) :
-            
-            
-            
-            
-            
-            
-            
-            
-            Column(
+            ),
+          ),
+      (!isMobile && !isTablet) ? 
+          Container(
+            height: (userID==null) ? (size.height<500) ? 500 : size.height : (size.height<500) ? 650 : size.height*1.3,
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      alignment: Alignment.center,
+                      height: (size.height<500) ? 475 : size.height*0.95,
+                      width: size.width*0.5,
+                      color: Color(0xff0A183D),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Padding(
+                                padding:
+                                     EdgeInsets.only(left: size.width/45),
+                                child: Wrap(
+                                  children: [
+                                    Text(
+                                      
+                                      "Plan gratuito",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+    color: Colors.white,
+    fontSize: size.width/60,   
+    fontWeight: FontWeight.w600,
+  
+  ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                        width:size.width/6,
+                        alignment: Alignment.center,
+                        child: Image(
+                                image:  AssetImage("assets/images/3.png"),
+                        ),
+                      ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 6.0,
+                          ),
+                          Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      color: Color(0xff1B2949),
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: (size.height<500) ? 300 : MediaQuery.of(context).size.height * 0.6,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 11.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              customCheckBox('Entrenamiento a tu nivel,objetivos y material', true,),
+                              customCheckBox('Acceso a la comunidad', true,),
+                              customCheckBox('Registro de progresos en la agenda **', true,),
+                              customCheckBox('Visualización de estadisticas **', true,),
+                              customCheckBox('Página de detalle de ejercicios **', true,),
+                              customCheckBox('Selección de ejercicios por patrones de mvto **', true,),
+                              customCheckBox('Crear tu entrenamiento desde 0 **', true,),
+                              SizedBox(height:10),
+                              Text('** Gastando puntos',style: TextStyle(color:Colors.white),)
+                             
+                            ],
+                          ),
+                        ),
+                      ),
+                      ),
+                      ),
+  //                           Padding(
+  //                             padding:
+  //                                      EdgeInsets.only(left: size.width/45),
+  //                             child: Wrap(
+  //                               children: [
+  //                                 Text(
+  //                                   "Más de 4000 usuarios.",
+  //                                   style: TextStyle(
+  //   color: Colors.orange,
+  //    fontSize: (isMobile ? 14 : (isTablet) ? 16 : 20.0),
+  //   fontWeight: FontWeight.w600
+  // ),
+  //                                 ),
+  //                               ],
+  //                             ),
+  //                           ),
+                          // SizedBox(
+                          //   height: 6.0,
+                          // ),
+                     
+                        ],
+                      ),
+                    ),
+                    Container(
+                      alignment: Alignment.center,
+                      height: (size.height<500) ? 475 : size.height*0.95,
+                      width: size.width*0.5,
+                      color: Color(0xff0A183D),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsets.only(left: size.width/45),
+                                child: Wrap(
+                                  children: [
+                                    Text(
+                                      
+                                      "Subscripción mensual por 4.99€/mes",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+    color: Colors.white,
+    fontSize: size.width/60,   
+    fontWeight: FontWeight.w600,
+  
+  ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            Container(
+                        width:size.width/6,
+                        alignment: Alignment.center,
+                        child: Image(
+                                image:  AssetImage("assets/images/4.png"),
+                        ),
+                      ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 6.0,
+                          ),
+                          Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      color: Color(0xff1B2949),
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: (size.height<500) ? 300 : MediaQuery.of(context).size.height * 0.6,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 11.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              customCheckBox('Funcionamiento sin conexión a internet', true,),
+                              customCheckBox('Gestión de la fatiga', true,),
+                              customCheckBox('Reuniones para resolver dudas', true,),
+                              customCheckBox('Sin gasto de puntos', true,),
+                              customCheckBox('Sin publicidad', true,),
+                             
+                            ],
+                          ),
+                        ),
+                      ),
+                      ),
+                      ),
+  //                           Padding(
+  //                             padding:
+  //                                      EdgeInsets.only(left: size.width/45),
+  //                             child: Wrap(
+  //                               children: [
+  //                                 Text(
+  //                                   "Prueba gratis las dos primeras semanas",
+  //                                   style: TextStyle(
+  //   color: Colors.orange,
+  //   fontSize: (isMobile ? 14 : (isTablet) ? 16 : 20.0),
+  //   fontWeight: FontWeight.w600
+  // ),
+  //                                 ),
+  //                               ],
+  //                             ),
+  //                           ),
+                          // SizedBox(
+                          //   height: 6.0,
+                          // ),
+                     
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                (userID!=null) ?
+              Column(children:[
+                Container(
+                  alignment: Alignment.center,
+                  width: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.symmetric(horizontal:16,vertical:8),
+                  child: Column(
+                    children: [
+                      Text('Super promoción inauración web.',
+                      style: TextStyle(
+    color: Colors.white,
+    fontSize: (isMobile ? 14 : (isTablet) ? 16 : 18.0),
+    fontWeight: FontWeight.w600
+  ),),
+   Text('Premium vitalicio por sólo 60 €.  ',
+                      style: TextStyle(
+    color: Colors.white,
+    fontSize: (isMobile ? 16 : (isTablet) ? 16 : 20.0),
+    fontWeight: FontWeight.w700
+  ),),
+   Text('Aprovecha todas las ventajas premium actuales y futuras para siempre. ',
+                      style: TextStyle(
+    color: Colors.white,
+    fontSize: (isMobile ? 14 : (isTablet) ? 14 : 18.0),
+    fontWeight: FontWeight.w600
+  ),),
+  FittedBox(
+      child: Text('**Este premium se asociara a la cuenta con la que has iniciado sesión en la web por última vez.',
+                        style: TextStyle(
+    color: Colors.white,
+    fontSize: (isMobile ? 10 : (isTablet) ? 10 : 12.0),)))
+                    ],
+                  )),
+              GFButton(
+    onPressed: () async{
+    
+     
+    return
+    redirectToCheckout(context);},
+    color: Color(0xFFFF813F),
+   
+        
+    boxShadow: 
+          BoxShadow(
+            color: Color.fromRGBO(190, 190, 190, 0.5),
+            blurRadius: 2.0,
+            offset: Offset.lerp(Offset(0, 0), Offset(1, 1), 1),
+          )
+        ,
+     
+     
+    padding: EdgeInsets.symmetric(horizontal:16,vertical:4),
+    text: "Comprar",
+    icon: Icon(Icons.shopping_cart),
+  ),
+              ]) : Container()
+              ],
+            ),
+          ) :
+          
+          
+          
+          
+          
+          
+          
+          
+          Container(
+            height: (userID==null) ? (size.height<500) ? 504 : size.height+4 : (size.height<500) ? 650 : size.height*1.3,
+            child: Column(
               children: [
                 Container(
                   alignment: Alignment.center,
@@ -958,18 +1076,18 @@ switch(deviceType) {
                           customCheckBox('Selección de ejercicios por patrones de mvto **', true),
                           customCheckBox('Crear tu entrenamiento desde 0 **', true,),
                           SizedBox(height:8),
-                          Container(
-                            width: size.width-42-size.width/45,
-                            alignment: Alignment.center,
-                            child: Text(
-                                "Más de 4000 usuarios.",
-                                style: TextStyle(
-    color: Colors.orange,
-     fontSize: (isMobile ? 14 : (isTablet) ? 16 : 20.0),
-    fontWeight: FontWeight.w600
-  ),
-                              ),
-                          ),
+  //                           Container(
+  //                             width: size.width-42-size.width/45,
+  //                             alignment: Alignment.center,
+  //                             child: Text(
+  //                                 "Más de 4000 usuarios.",
+  //                                 style: TextStyle(
+  //   color: Colors.orange,
+  //    fontSize: (isMobile ? 14 : (isTablet) ? 16 : 20.0),
+  //   fontWeight: FontWeight.w600
+  // ),
+  //                               ),
+  //                           ),
                           
                          
                         ],
@@ -1001,11 +1119,11 @@ switch(deviceType) {
                               children: [
                                 Text(
                                   
-                                  "Subscripción mensual desde 2.49€/mes",
+                                  "Subscripción mensual por 4.99€/mes",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
     color: Colors.white,
-         fontSize: (isMobile) ? 16 : (isTablet) ? 18 : size.width/70, 
+       fontSize: (isMobile) ? 16 : (isTablet) ? 18 : size.width/70, 
     fontWeight: FontWeight.w600,
   
   ),
@@ -1042,18 +1160,18 @@ switch(deviceType) {
                           customCheckBox('Sin gasto de puntos', true,),
                           customCheckBox('Sin publicidad', true,),
                           SizedBox(height:8),
-                                  Container(
-                                width: size.width-42-size.width/45,
-                                alignment: Alignment.center,
-                                child: Text(
-                                    "Prueba las dos primeras semanas gratis",
-                                    style: TextStyle(
-    color: Colors.orange,
-     fontSize: (isMobile ? 14 : (isTablet) ? 16 : 20.0),
-    fontWeight: FontWeight.w600
-  ),
-                                  ),
-                              ),
+  //                                   Container(
+  //                                 width: size.width-42-size.width/45,
+  //                                 alignment: Alignment.center,
+  //                                 child: Text(
+  //                                     "Prueba las dos primeras semanas gratis",
+  //                                     style: TextStyle(
+  //   color: Colors.orange,
+  //    fontSize: (isMobile ? 14 : (isTablet) ? 16 : 20.0),
+  //   fontWeight: FontWeight.w600
+  // ),
+  //                                   ),
+  //                               ),
                               
                           
                          
@@ -1068,439 +1186,602 @@ switch(deviceType) {
                     ],
                   ),
                 ),
+                (userID!=null) ?
+                Container(
+                  alignment: Alignment.center,
+                  width: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.symmetric(horizontal:16,vertical:8),
+                  child: Column(
+                    children: [
+                      Text('Super promoción inauración web.',
+                      style: TextStyle(
+    color: Colors.white,
+    fontSize: (isMobile ? 14 : (isTablet) ? 14 : 18.0),
+    fontWeight: FontWeight.w600
+  ),),
+   Text('Premium vitalicio por sólo 60 €.  ',
+                      style: TextStyle(
+    color: Colors.white,
+    fontSize: (isMobile ? 16 : (isTablet) ? 16 : 20.0),
+    fontWeight: FontWeight.w700
+  ),),
+   FittedBox(
+      child: Text('Aprovecha todas las ventajas premium actuales y futuras para siempre. ',
+                        style: TextStyle(
+    color: Colors.white,
+    fontSize: (isMobile ? 14 : (isTablet) ? 14 : 20.0),
+    fontWeight: FontWeight.w600
+  ),),
+   ),
+    FittedBox(
+      child: Text('**Este premium se asociara a la cuenta con la que has iniciado sesión en la web por última vez.',
+                        style: TextStyle(
+    color: Colors.white,
+    fontSize: (isMobile ? 10 : (isTablet) ? 12 : 16.0),
+    fontWeight: FontWeight.w600
+  ),),
+   ),
+                    ],
+                  )) : Container(),
+               (userID!=null) ?
+              GFButton(
+    onPressed: () async{
+     SharedPreferences prefs = await _prefs;
+     prefs.clear();
+     
+    return
+    redirectToCheckout(context);},
+    color: Color(0xFFFF813F),
+   
+        
+    boxShadow: 
+          BoxShadow(
+            color: Color.fromRGBO(190, 190, 190, 0.5),
+            blurRadius: 2.0,
+            offset: Offset.lerp(Offset(0, 0), Offset(1, 1), 1),
+          )
+        ,
+     
+     
+    padding: EdgeInsets.symmetric(horizontal:16,vertical:4),
+    text: "Comprar",
+    icon: Icon(Icons.shopping_cart),
+  ) : Container(),
               ],
-            )
-            
-            
-            
-            ,
-          Container(
-              alignment: Alignment.center,
-              height: (size.height<500) ? 500 : size.height,
-              width: size.width,
-              color: Colors.white,
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 36.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: size.width/2,
-                              child: Text(
-                                "PREPARACIÓN PROFESIONAL",
-                                style: TextStyle(
+            ),
+          )
+          
+          
+          
+          ,
+        Container(
+            alignment: Alignment.center,
+            height: (size.height<500) ? 500 : size.height,
+            width: size.width,
+            color: Colors.white,
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 36.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: size.width/2,
+                            child: Text(
+                              "PREPARACIÓN PROFESIONAL",
+                              style: TextStyle(
     color: Color(0xff0A183D),
     fontSize: (isMobile) ? size.width/17.5 : (isTablet) ? size.width/17.5 :  size.width/22.76,   
     fontWeight: FontWeight.w700,
     letterSpacing: 0.75,
   ),
   
-                              ),
                             ),
-                           Text(
-                              "ONE-TO-ONE",
-                              style: TextStyle(
+                          ),
+                         Text(
+                            "ONE-TO-ONE",
+                            style: TextStyle(
     color: Color(0xff0A183D),
      fontSize: (isMobile) ? size.width/17.5 : (isTablet) ? size.width/17.5 :  size.width/22.76,  
     fontWeight: FontWeight.w700,
     letterSpacing: 0.75,
   ),
   
-                            ),
-                            SizedBox(
-                              height: 18.0,
-                            ),
-                           
-                        Container(
-                          width: size.width/8,
-                          child: Divider(color:Colors.orange,thickness: 1.0,)),
-                           SizedBox(height:18),
-                             Text(
-                               "Para solicitar una plaza en mi equipo y disponer de un asesoramiento y seguimiento mas personal no dudes en ponerte en contacto conmigo. Pondré mis ganas y años de experiencia a tu servicio para que progreses de la forma mas eficiente.",
-                               style:TextStyle(
+                          ),
+                          SizedBox(
+                            height: 18.0,
+                          ),
+                         
+                      Container(
+                        width: size.width/4,
+                        child: Divider(color:Colors.orange,thickness: 1.0,)),
+                         SizedBox(height:18),
+                           Text(
+                             "Para solicitar una plaza en mi equipo y disponer de un asesoramiento y seguimiento más personal no dudes en ponerte en contacto conmigo. Pondré mis ganas y años de experiencia a tu servicio para que progreses de la forma más eficiente.",
+                             style:TextStyle(
     color: Color(0xff0A183D),
     fontSize: (isMobile) ? 14 : (isTablet) ? 16 :  16,  
     
   ),
-                             ),
-                            
-                            SizedBox(
-                              height: 25,
-                            ),
-                            
-                            RoundedButton(
-                              color: Color(0xff0A183D),
-                              textTitle: 'Solicitar información',
-                              isMobile: isMobile,
-                              isTablet: isTablet,
-                            ),
-                          (isMobile) ? Row(
-                            children: [
-                              Container(
-                    height: (size.height<500) ? 160 :  size.height/3.125,
-                    width:size.width/3,
-                    alignment: Alignment.center,
-                    child: Image(
-                                image:  AssetImage("assets/images/MostMuscular.jpg"),
-                    ),
+                           ),
+                          
+                          SizedBox(
+                            height: 25,
+                          ),
+                          
+                          RoundedButton(
+                            color: Color(0xff0A183D),
+                            textTitle: 'Solicitar información',
+                            isMobile: isMobile,
+                            isTablet: isTablet,
+                          ),
+                        (isMobile) ? Row(
+                          children: [
+                            Container(
+                  height: (size.height<500) ? 160 :  size.height/3.125,
+                  width:size.width/3,
+                  alignment: Alignment.center,
+                  child: Image(
+                              image:  AssetImage("assets/images/MostMuscular.jpg"),
                   ),
-                  SizedBox(
-                    width:size.width/12
+                ),
+                SizedBox(
+                  width:size.width/12
+                ),
+                 Container(
+                  height: (size.height<500) ? 160 :  size.height/3.125,
+                  width:size.width/3,
+                  alignment: Alignment.center,
+                  child: Image(
+                              image:  AssetImage("assets/images/B99A0068.jpg"),
                   ),
-                   Container(
-                    height: (size.height<500) ? 160 :  size.height/3.125,
-                    width:size.width/3,
-                    alignment: Alignment.center,
-                    child: Image(
-                                image:  AssetImage("assets/images/B99A0068.jpg"),
-                    ),
-                  ),
-                            ],
-                          ) : Container (),
+                ),
                           ],
-                        ),
+                        ) : Container (),
+                        ],
                       ),
                     ),
                   ),
-               (!isMobile) ? Container(
-                    width:size.width/3,
-                    alignment: Alignment.center,
-                    child: Image(
-                            image:  AssetImage("assets/images/MostMuscular.jpg"),
-                    ),
-                  ) : Container (),
-                      
-                  
-                ],
-              ),
+                ),
+             (!isMobile) ? Container(
+                  width:size.width/3,
+                  alignment: Alignment.center,
+                  child: Image(
+                          image:  AssetImage("assets/images/MostMuscular.jpg"),
+                  ),
+                ) : Container (),
+                    
+                
+              ],
             ),
-            //How it works
-            // Container(
-            //   height: size.height * 0.86,
-            //   width: size.width,
-            //   color: Color(0xff0A183D),
-            //   child: Padding(
-            //     padding:
-            //         const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
-            //     child: Column(
-            //       crossAxisAlignment: CrossAxisAlignment.start,
-            //       mainAxisAlignment: MainAxisAlignment.center,
-            //       children: [
-            //         Container(
-            //           width: size.width * 0.46,
-            //           child: Padding(
-            //             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            //             child: Text(
-            //               "How it works",
-            //               style: ThemText.whititleText,
-            //             ),
-            //           ),
-            //         ),
-            //         SizedBox(
-            //           height: 48.0,
-            //         ),
-            //         Row(
-            //           mainAxisAlignment: MainAxisAlignment.spaceAround,
-            //           children: [
-            //             customFlexible(
-            //               "Create an account",
-            //               "Lorem ipsum dolor sit amet, consectetur adipi-scing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida.",
-            //               Icons.person_pin,
-            //             ),
-            //             customFlexible(
-            //               "Choose a plan",
-            //               "Lorem ipsum dolor sit amet, consectetur adipi-scing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida.",
-            //               Icons.queue_play_next,
-            //             ),
-            //             customFlexible(
-            //               "Download Music",
-            //               "Lorem ipsum dolor sit amet, consectetur adipi-scing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida.",
-            //               Icons.library_music,
-            //             ),
-            //           ],
-            //         )
-            //       ],
-            //     ),
-            //   ),
-            // ),
+          ),
+          //How it works
+          // Container(
+          //   height: size.height * 0.86,
+          //   width: size.width,
+          //   color: Color(0xff0A183D),
+          //   child: Padding(
+          //     padding:
+          //         const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
+          //     child: Column(
+          //       crossAxisAlignment: CrossAxisAlignment.start,
+          //       mainAxisAlignment: MainAxisAlignment.center,
+          //       children: [
+          //         Container(
+          //           width: size.width * 0.46,
+          //           child: Padding(
+          //             padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          //             child: Text(
+          //               "How it works",
+          //               style: ThemText.whititleText,
+          //             ),
+          //           ),
+          //         ),
+          //         SizedBox(
+          //           height: 48.0,
+          //         ),
+          //         Row(
+          //           mainAxisAlignment: MainAxisAlignment.spaceAround,
+          //           children: [
+          //             customFlexible(
+          //               "Create an account",
+          //               "Lorem ipsum dolor sit amet, consectetur adipi-scing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida.",
+          //               Icons.person_pin,
+          //             ),
+          //             customFlexible(
+          //               "Choose a plan",
+          //               "Lorem ipsum dolor sit amet, consectetur adipi-scing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida.",
+          //               Icons.queue_play_next,
+          //             ),
+          //             customFlexible(
+          //               "Download Music",
+          //               "Lorem ipsum dolor sit amet, consectetur adipi-scing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida.",
+          //               Icons.library_music,
+          //             ),
+          //           ],
+          //         )
+          //       ],
+          //     ),
+          //   ),
+          // ),
 
-            //Our Concept
-            Container(
-              height: 
-              (isMobile) ? 
-               (size.height<500) ? 600 : size.height * 1.20 :
-               (isTablet) ? 
-                (size.height<500) ? 600 : size.height * 1.20 :
-              (size.height<500) ? 800 : size.height * 1.60,
-              width: size.width,
-              color: Colors.white,
-              child: 
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      flex:  1,
-                      
-                      child: Container(
-                          child: Column(
-                        mainAxisAlignment:  MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Algunos casos de éxito",
-                            style: TextStyle(
+          //Our Concept
+          Container(
+            height: 
+            (isMobile) ? 
+             (size.height<500) ? 600 : size.height * 1.20 :
+             (isTablet) ? 
+              (size.height<500) ? 600 : size.height * 1.20 :
+            (size.height<500) ? 800 : size.height * 1.60,
+            width: size.width,
+            color: Colors.white,
+            child: 
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 32.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    flex:  1,
+                    
+                    child: Container(
+                        child: Column(
+                      mainAxisAlignment:  MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Algunos casos de éxito",
+                          style: TextStyle(
     color: Color(0xff0A183D),
     fontSize: (isMobile) ? size.width/17.5 : (isTablet) ? size.width/17.5 : size.width/22.76, 
     fontWeight: FontWeight.w700, 
   ),
-                          ),
-                          SizedBox(height:20),
-                          Padding(
-                            padding:
-                                EdgeInsets.symmetric(horizontal: 16.0),
-                            child: Text(
-                              "“Los clientes satisfechos son la mejor publicidad para una empresa”",
-                              style: TextStyle(
+                        ),
+                        SizedBox(height:10),
+                         Center(
+                        child: Container(
+                        
+                          width: size.width/4,
+                          child: Divider(color:Colors.orange,thickness: 1.0,)),
+                      ),
+                      SizedBox(height:10),
+                        Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 16.0),
+                          child: Text(
+                            "“Los clientes satisfechos son la mejor publicidad para una empresa”",
+                            style: TextStyle(
     color: Color(0xff0A183D),
     fontSize: (isMobile) ? 14 : (isTablet) ? 16 : 16.0,
     letterSpacing: 2.75,
   ),
-                            ),
-                          )
+                          ),
+                        )
+                      ],
+                    )),
+                  ),
+                  Expanded(
+                    flex:  4,
+                    child: 
+                    Container(
+                      child: Column(
+                        children: [
+                          Container(
+                            height:(isMobile) ? (size.height<500) ? 240 : size.height*0.48 : (isTablet) ? (size.height<500) ? 240 : size.height*0.48 : (size.height<500) ? 320 : size.height*0.64,
+                            child: _buildFotos(isMobile,isTablet)),
+                          SizedBox(height:0),
+                          Container(
+                             height:(isMobile) ? (size.height<500) ? 240 : size.height*0.48 : (isTablet) ? (size.height<500) ? 240 : size.height*0.48 : (size.height<500) ? 320 : size.height*0.64,
+                            child: _buildFotos2(isMobile, isTablet)),
+                    
                         ],
-                      )),
-                    ),
-                    Expanded(
-                      flex:  4,
-                      child: 
-                      Container(
-                        child: Column(
-                          children: [
-                            Container(
-                              height:(isMobile) ? (size.height<500) ? 240 : size.height*0.48 : (isTablet) ? (size.height<500) ? 240 : size.height*0.48 : (size.height<500) ? 320 : size.height*0.64,
-                              child: _buildFotos(isMobile,isTablet)),
-                            SizedBox(height:0),
-                            Container(
-                               height:(isMobile) ? (size.height<500) ? 240 : size.height*0.48 : (isTablet) ? (size.height<500) ? 240 : size.height*0.48 : (size.height<500) ? 320 : size.height*0.64,
-                              child: _buildFotos2(isMobile, isTablet)),
-                      
-                          ],
-                          
-                        ),
-                      )
-                      // Container(
-                      //   child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      //     children: [
-                      //       Flexible(
-                      //           flex: 1,
-                      //           child:
-                      //               customCard('Soul Music', 'images/pic2.jfif')),
-                      //       Flexible(
-                      //           flex: 1,
-                      //           child: customCard(
-                      //               'Live Concerts', 'images/pic3.jfif')),
-                      //       Flexible(
-                      //           flex: 1,
-                      //           child: customCard('Dj Sets', 'images/pic4.jfif')),
-                      //       Flexible(
-                      //           flex: 1,
-                      //           child: customCard(
-                      //               'Live Streems', 'images/pic5.jfif')),
-                      //     ],
-                      //   ),
-                      // ),
-                    ),
-                  ],
-                ),
+                        
+                      ),
+                    )
+                    // Container(
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    //     children: [
+                    //       Flexible(
+                    //           flex: 1,
+                    //           child:
+                    //               customCard('Soul Music', 'images/pic2.jfif')),
+                    //       Flexible(
+                    //           flex: 1,
+                    //           child: customCard(
+                    //               'Live Concerts', 'images/pic3.jfif')),
+                    //       Flexible(
+                    //           flex: 1,
+                    //           child: customCard('Dj Sets', 'images/pic4.jfif')),
+                    //       Flexible(
+                    //           flex: 1,
+                    //           child: customCard(
+                    //               'Live Streems', 'images/pic5.jfif')),
+                    //     ],
+                    //   ),
+                    // ),
+                  ),
+                ],
               ),
             ),
+          ),
 
-          
-            Container(
-              alignment: Alignment.center,
-              height: (size.height<500) ? 800 : size.height*1.6,
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 32.0,vertical: 32),
+            color: Colors.white,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text('¿Te gustaría ayudarnos?',style: TextStyle(color:Color(0xff0A183D),fontSize: (isMobile) ? size.width/17.5 : (isTablet) ? size.width/17.5 : size.width/22.76, 
+    fontWeight: FontWeight.w700,  ),),
+               SizedBox(height:20),
+                Text('Como sabes un proyecto de este tipo necesita del apoyo de gente como tú. Por ello, puedes ayudarnos simplemente dejándonos una reseña en las tiendas de aplicaciones. ¡Te lo agradecemos!',style: TextStyle(color:Color(0xff0A183D),fontSize:(isMobile || isTablet) ? 12 : 16,  ),),
+                SizedBox(height:20),
+                
+            
+                                                               Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      
+                      InkWell(
+                      onTap: () async{
+                    if (await canLaunch("https://play.google.com/store/apps/details?id=com.entrena_app.carlos10medina&hl=es&gl=US")) {
+                           await launch("https://play.google.com/store/apps/details?id=com.entrena_app.carlos10medina&hl=es&gl=US");}
 
-            //   (isMobile||isTablet) ? 
-            //   (numeroTarjetas==4) ?
-            //   (size.height<500) ? 1150 : size.height*2.3 :
-            //    (numeroTarjetas==3) ?
-            //   (size.height<500) ? 1050 : size.height*2.1
-            //   : 
-            //  (numeroTarjetas==2) ?
-            //   (size.height<500) ? 950 : size.height*1.9
-            //   : 
-            //   (numeroTarjetas==1) ?
-            //   (size.height<500) ? 850 : size.height*1.7
-            //   : 
-            //   (size.height<500) ? 750 : size.height*1.5
-            //   : 
-            //   (card1 && card2 && card3 && card4) ?
-            //   (size.height<600) ? 600 : size.height*1.2 :
-            //   (size.height<500) ? 500 : size.height,
-              width: size.width,
-              color: Colors.white,
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 36.0),
-                        child: Column(
-                          mainAxisAlignment:  MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(height: (isMobile || (isTablet && size.height>580)) ? 25 : 5),
-                            Container(
-                              alignment: Alignment.center,
-                              width:  size.width ,
-                              child: Text(
-                                "PREGUNTAS FRECUENTES",
-                                style: TextStyle(
+                  },
+                                          child: Container(
+                                            padding: EdgeInsets.symmetric(horizontal:10,vertical:5),
+                           decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(10),
+    color: Colors.white,
+    boxShadow: [
+    BoxShadow(color: Color(0xff0A183D), spreadRadius: 2),
+    ],
+  ),
+                                            child: Row(
+                        children: [
+                          Text('Google Play'),
+                          SizedBox(width: 10,),
+                          Icon(FontAwesomeIcons.googlePlay,color:Colors.green ,size:(isMobile) ? 16 : (isTablet) ? 24 : 32 ,),
+                        ],
+                      ),
+                                          ),
+                    ),
+                    SizedBox(width: (isMobile) ? 20 : 30,),
+                    
+                    InkWell(
+                      onTap: () async{
+                         if (await canLaunch("https://apps.apple.com/us/app/entrenaapp/id1533801846")) {
+                           await launch("https://apps.apple.com/us/app/entrenaapp/id1533801846");}
+                      },
+                      child: Container(
+                                 padding: EdgeInsets.symmetric(horizontal:10,vertical:5),
+                           decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(10),
+    color: Colors.white,
+    boxShadow: [
+    BoxShadow(color: Color(0xff0A183D), spreadRadius: 2),
+    ],
+  ),
+                        child: Row(
+                                     children: [
+                            Text('App Store'),
+                            SizedBox(width: 10,),
+                            Icon(FontAwesomeIcons.appStore,color: Colors.blue,size:(isMobile) ? 16 : (isTablet) ? 24 : 32 )
+                          ],
+                        ),
+                      ),
+                    ),],),
+                                
+             
+                SizedBox(height:20),
+                Text('Si además te gustaría que este proyecto siga creciendo día a día y pueda ayudar a mucha mas gente como tú, considera comprarnos un café. More coffe more and better work :)',style: TextStyle(color:Color(0xff0A183D),fontSize:(isMobile || isTablet) ? 12 : 16,  ),),
+                SizedBox(height:10),
+                BuyCoffeButton(),
+                SizedBox(height:20),
+               
+              
+              ],
+            ),
+          ),
+             
+          Container(
+            alignment: Alignment.center,
+            height: (size.height<500) ? 800 : size.height*1.6,
+
+          //   (isMobile||isTablet) ? 
+          //   (numeroTarjetas==4) ?
+          //   (size.height<500) ? 1150 : size.height*2.3 :
+          //    (numeroTarjetas==3) ?
+          //   (size.height<500) ? 1050 : size.height*2.1
+          //   : 
+          //  (numeroTarjetas==2) ?
+          //   (size.height<500) ? 950 : size.height*1.9
+          //   : 
+          //   (numeroTarjetas==1) ?
+          //   (size.height<500) ? 850 : size.height*1.7
+          //   : 
+          //   (size.height<500) ? 750 : size.height*1.5
+          //   : 
+          //   (card1 && card2 && card3 && card4) ?
+          //   (size.height<600) ? 600 : size.height*1.2 :
+          //   (size.height<500) ? 500 : size.height,
+            width: size.width,
+            color: Colors.white,
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 36.0),
+                      child: Column(
+                        mainAxisAlignment:  MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: (isMobile || (isTablet && size.height>580)) ? 25 : 5),
+                          Container(
+                            alignment: Alignment.center,
+                            width:  size.width ,
+                            child: Text(
+                              "PREGUNTAS FRECUENTES",
+                              style: TextStyle(
     color: Color(0xff0A183D),
     fontSize: (isMobile) ? size.width/17.5 : (isTablet) ? (size.height<580) ? size.width/22.76 : size.width/17.5 :(size.height<580) ? size.width/35 :   size.width/22.76,   
     fontWeight: FontWeight.w700,
     letterSpacing: 0.75,
   ),
   
-                              ),
                             ),
-                           
+                          ),
+                         
   
-                            
-                            SizedBox(
-                              height: (isMobile) ? 12 : (size.height<580) ? 14 : 18.0,
-                            ),
-                           
-                        Center(
-                          child: Container(
                           
-                            width: size.width/4,
-                            child: Divider(color:Colors.orange,thickness: 1.0,)),
-                        ),
-                           SizedBox(height:18),
-                             Text(
-                               "En EntrenaAPP tratamos de darte respuesta de las principales preguntas que suelen surgir para que no te quedes con ninguna duda y que tu experiencia con nosotros sea perfecta.",
-                               style:TextStyle(
+                          SizedBox(
+                            height: (isMobile) ? 10 : (size.height<580) ? 14 : 18.0,
+                          ),
+                         
+                      Center(
+                        child: Container(
+                        
+                          width: size.width/4,
+                          child: Divider(color:Colors.orange,thickness: 1.0,)),
+                      ),
+                         SizedBox(height: (isMobile) ? 14 : 18),
+                           Text(
+                             "En EntrenaAPP tratamos de darte respuesta de las principales preguntas que suelen surgir para que no te quedes con ninguna duda y que tu experiencia con nosotros sea perfecta.",
+                             style:TextStyle(
     color: Color(0xff0A183D),
     fontSize: (isMobile) ? 14 : (isTablet) ? 16 :  16,  
     
   ),
-                             ),
-                            
-                            SizedBox(
-                              height: (isMobile) ? 15 : (isTablet && size.height<580) ? 20 : 25,
-                            ),
-                            
-                            // Center(
-                            //   child: RoundedButton(
-                            //     color: Color(0xff0A183D),
-                            //     textTitle: 'Ver más',
-                            //     isMobile: isMobile,
-                            //     isTablet: isTablet,
-                            //   ),
-                            // ),
-                             SizedBox(
-                              height: 25 ,
-                            ),
-                    BlocProvider<CardBloc>(create: (context) => CardBloc(),
+                           ),
+                          
+                          SizedBox(
+                            height: (isMobile) ? 15 : (isTablet && size.height<580) ? 20 : 25,
+                          ),
+                          
+                          // Center(
+                          //   child: RoundedButton(
+                          //     color: Color(0xff0A183D),
+                          //     textTitle: 'Ver más',
+                          //     isMobile: isMobile,
+                          //     isTablet: isTablet,
+                          //   ),
+                          // ),
+                           SizedBox(
+                            height: 25 ,
+                          ),
+                  BlocProvider<CardBloc>(create: (context) => CardBloc(),
      
      
      
      
-      child:BlocBuilder<CardBloc,CardState>(
+    child:BlocBuilder<CardBloc,CardState>(
+         
+          // // ignore: missing_return
+          // buildWhen: (previousState, state) =>
+          //  // ignore: unnecessary_statements
+          //  ( state is IsMobileOrTablet ||  (state is IsDesktop && !state.isOnContactanos)), 
            
-            // // ignore: missing_return
-            // buildWhen: (previousState, state) =>
-            //  // ignore: unnecessary_statements
-            //  ( state is IsMobileOrTablet ||  (state is IsDesktop && !state.isOnContactanos)), 
-             
     // return true/false to determine whether or not
     // to rebuild the widget with state
   
-          
-          builder:(BuildContext context, CardState state){
-  
-          return     
-          Container(
-            color: Color(0xff1c3546),
-             width: MediaQuery.of(context).size.width*0.85 ,
-          height: (size.height<500) ? 600 :size.height*1.2,
-            child: ListView(
-              
-              children: [
-                Center(child: _buildFrontWidget( context,"¿Dónde debo realizar el entrenamiento?",isMobile,isTablet,state,1)),
-               (state is TarjetaDeVuelta && state.numeroTarjeta==1) ? Center(child: _buildInnerBottomWidget("En cualquier lugar (gimnasio o en tu casa por ejemplo) que tenga un equipamiento razonable. No tienes porque tener toda la maquinaria ya que, en cada patrón de movimiento, vas a poder elegir los ejercicios que mejor se adapten a ti y al material que dispones para que puedas disponer de un programa específico de entrenamiento para mejorar la composición corporal.",isMobile,isTablet)) : Container(height: 1,),
-               
-               
-               Center(child: _buildFrontWidget( context,"¿En cuánto tiempo se empiezan a notar los resultados?",isMobile,isTablet,state,2)),
-               (state is TarjetaDeVuelta && state.numeroTarjeta==2) ? Center(child: _buildInnerBottomWidget("La progresión de cargas es semanal, por lo que, a nivel numérico y objetivo, empiezas a ver resultados desde la primera semana. En cuanto a peso en la báscula,perimetros corporales y plieges cutáneos, ya sea el objetivo incrementar o disminuir,con una buena alimentación también mejoras desde la primera semana.A nivel visual ya es mas complicado decir fechas ya que es algo relativo,dependera mucho del nivel de partida y de lo bien que se haga el entrenamiento y alimentación. Aun asi,en plazos de 16-20 semanas de entrenamiento haciendo bien las cosas deberiamos ver cambios por lo general.",isMobile,isTablet)) : Container(height: 1,),
-               
-               Center(child: _buildFrontWidget( context,"¿Para quién es este tipo de entrenamiento?",isMobile,isTablet,state,3)),
-               (state is TarjetaDeVuelta && state.numeroTarjeta==3) ? Center(child: _buildInnerBottomWidget("Este tipo de entrenamiento va dirigido a aquellas personas que quieren obtener una mejora física, independientemente de cual sea su nivel, ya que de detectar ese nivel se encargara la aplicación y a partir de ahí, comenzará su progresión específica. Te aseguro que no hay dos entrenamientos iguales.",isMobile,isTablet)) : Container(height: 1,),
-
-               Center(child: _buildFrontWidget( context,"¿Cómo puedo saber qué entrenamiento es el que más me conviene?",isMobile,isTablet,state,4)),
-               (state is TarjetaDeVuelta && state.numeroTarjeta==4) ? Center(child: _buildInnerBottomWidget("El entrenamiento dependerá siempre de las necesidades, objetivos y disponibilidad de cada usuario. Para descubrirlo, realizaremos un cuestionario previo que nos indicará cual es el entrenamiento inicial recomendando y, a partir de ahí, estableceremos una progresión, tanto semana a semana dentro del mesociclo de entrenamiento, con mes a mes.",isMobile,isTablet)) : Container(height: 1,),
-               
-               Center(child: _buildFrontWidget( context,"¿Que pasa cuando acabo un mesociclo entrenamiento si he entrado en la fase de formación?",isMobile,isTablet,state,5)),
-               (state is TarjetaDeVuelta && state.numeroTarjeta==5) ? Center(child: _buildInnerBottomWidget("En este caso la aplicación ya tiene tu programación de 2 o 3 meses preparada hasta que asientes unas buenas bases, simplemente tendras que pulsar sobre el botón de crear un nuevo entrenamiento de la página principal,rellenar el formulario y ya tendras tu entrenamiento (mas demandante que el anterior).",isMobile,isTablet)) : Container(height: 1,),
-                Center(child: _buildFrontWidget( context,"¿Que pasa cuando acabo un mesociclo entrenamiento si ya he pasado la fase de formación?",isMobile,isTablet,state,6)),
-               (state is TarjetaDeVuelta && state.numeroTarjeta==6) ? Center(child: _buildInnerBottomWidget("En el caso de que apruebes nuestro examen o de que ya hayas completado 2 o 3 meses con nuestra aplicación ya podemos considerar que estas preparado para entrenar con valores de MEV,MAV,MRV recomendados y programar en base a estos parametros, el feedback que le des a la aplicación y tus preferencias cada mes. Nosotros recomendamos mantener la base del entrenamiento unos meses y si acaso cambiar algunos ejercicios accesorios para poder tener una trazabilidad adecuada y poder saber si estamos progresando, cosa que es imposible si cambiamos constantemente de ejercicios (esto puedes hacer seleccionando en el cuestionario la opción de \"Seleccionar tu mismo los ejercicios en base a una estructura prefijada por un profesional\", buscando la estructura que tenias anteriormente y configurándola adecuadamente. Además recomendamos usar la opcion de gestión de la fatiga para hilar mas fino en los valores de MEV,MAV y MRV de tu mesociclo (esta opción es premium).",isMobile,isTablet)) : Container(height: 1,),
-                Center(child: _buildFrontWidget( context,"¿En base a qué parémetros se programa la intensidad?",isMobile,isTablet,state,7)),
-               (state is TarjetaDeVuelta && state.numeroTarjeta==7) ? Center(child: _buildInnerBottomWidget("Programamos en base al RIR (repeticiones en recámara)",isMobile,isTablet)) : Container(height: 1,),
-                Center(child: _buildFrontWidget( context,"¿Puedo llevar todo apuntado directamente en la aplicación o necesito seguir usando el papel y boli?",isMobile,isTablet,state,8)),
-               (state is TarjetaDeVuelta && state.numeroTarjeta==8) ? Center(child: _buildInnerBottomWidget("Cada ejercicio tiene su agenda en la que cada semana, para cada una de las series efectivas puedes apuntar la carga que has usado y las repeticiones que has realizado. Además, existe una página de detalle de cada ejercicio, donde puedes ver la ejecución, usar un cronómetro para los tiempos de descanso etc.",isMobile,isTablet)) : Container(height: 1,),
-                Center(child: _buildFrontWidget( context,"¿Cuando acabo un mesociclo de entrenamiento se quedan guardados los datos?",isMobile,isTablet,state,9)),
-               (state is TarjetaDeVuelta && state.numeroTarjeta==9) ? Center(child: _buildInnerBottomWidget("Si, estos se guardan en la sección de historial.",isMobile,isTablet)) : Container(height: 1,),
-               Center(child: _buildFrontWidget( context,"Oye, ¿y eso de que hay un equipo humano detrás?",isMobile,isTablet,state,10)),
-               (state is TarjetaDeVuelta && state.numeroTarjeta==10) ? Center(child: _buildInnerBottomWidget("Más allá de la preparación ONE-TO-ONE, en la cual puedes tener contacto directo con Carlos, usándo solo la aplicación también puedes resolver tus dudas en la comunidad gratuita que tenemos, y además en el 2021 vamos a poner en marcha la sección de reuniones con un directo semanal para que puedas consultar en directo las dudas que tengas con tu preparación a Carlos y además aprender de las dudas que plantean otros usuarios.",isMobile,isTablet)) : Container(height: 1,),
-              ],
-            ),
-          );
         
+        builder:(BuildContext context, CardState state){
+  
+        return     
+        Container(
+          color: Color(0xff1c3546),
+           width: MediaQuery.of(context).size.width*0.85 ,
+            height: (state is TarjetaDeVuelta || size.height<550) ? size.height*1.2 : null,
+          child: ListView(
+        physics: (state is TarjetaDeVuelta || size.height<550) ? null : NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+            children: [
+              Center(child: _buildFrontWidget( context,"¿Dónde debo realizar el entrenamiento?",isMobile,isTablet,state,1)),
+             (state is TarjetaDeVuelta && state.numeroTarjeta==1) ? Center(child: _buildInnerBottomWidget("En cualquier lugar (gimnasio o en tu casa por ejemplo) que tenga un equipamiento razonable. No tienes porque tener toda la maquinaria ya que, en cada patrón de movimiento, vas a poder elegir los ejercicios que mejor se adapten a ti y al material que dispones para que puedas disponer de un programa específico de entrenamiento para mejorar la composición corporal.",isMobile,isTablet)) : Container(height: 1,),
+             
+             
+             Center(child: _buildFrontWidget( context,"¿En cuánto tiempo se empiezan a notar los resultados?",isMobile,isTablet,state,2)),
+             (state is TarjetaDeVuelta && state.numeroTarjeta==2) ? Center(child: _buildInnerBottomWidget("La progresión de cargas es semanal, por lo que, a nivel numérico y objetivo, empiezas a ver resultados desde la primera semana. En cuanto a peso en la báscula,perimetros corporales y plieges cutáneos, ya sea el objetivo incrementar o disminuir,con una buena alimentación también mejoras desde la primera semana.A nivel visual ya es mas complicado decir fechas ya que es algo relativo,dependera mucho del nivel de partida y de lo bien que se haga el entrenamiento y alimentación. Aun asi,en plazos de 16-20 semanas de entrenamiento haciendo bien las cosas deberiamos ver cambios por lo general.",isMobile,isTablet)) : Container(height: 1,),
+             
+             Center(child: _buildFrontWidget( context,"¿Para quién es este tipo de entrenamiento?",isMobile,isTablet,state,3)),
+             (state is TarjetaDeVuelta && state.numeroTarjeta==3) ? Center(child: _buildInnerBottomWidget("Este tipo de entrenamiento va dirigido a aquellas personas que quieren obtener una mejora física, independientemente de cual sea su nivel, ya que de detectar ese nivel se encargara la aplicación y a partir de ahí, comenzará su progresión específica. Te aseguro que no hay dos entrenamientos iguales.",isMobile,isTablet)) : Container(height: 1,),
 
-         
+             Center(child: _buildFrontWidget( context,"¿Cómo puedo saber qué entrenamiento es el que más me conviene?",isMobile,isTablet,state,4)),
+             (state is TarjetaDeVuelta && state.numeroTarjeta==4) ? Center(child: _buildInnerBottomWidget("El entrenamiento dependerá siempre de las necesidades, objetivos y disponibilidad de cada usuario. Para descubrirlo, realizaremos un cuestionario previo que nos indicará cual es el entrenamiento inicial recomendando y, a partir de ahí, estableceremos una progresión, tanto semana a semana dentro del mesociclo de entrenamiento, con mes a mes.",isMobile,isTablet)) : Container(height: 1,),
+             
+             Center(child: _buildFrontWidget( context,"¿Que pasa cuando acabo un mesociclo entrenamiento si he entrado en la fase de formación?",isMobile,isTablet,state,5)),
+             (state is TarjetaDeVuelta && state.numeroTarjeta==5) ? Center(child: _buildInnerBottomWidget("En este caso la aplicación ya tiene tu programación de 2 o 3 meses preparada hasta que asientes unas buenas bases, simplemente tendras que pulsar sobre el botón de crear un nuevo entrenamiento de la página principal,rellenar el formulario y ya tendras tu entrenamiento (mas demandante que el anterior).",isMobile,isTablet)) : Container(height: 1,),
+              Center(child: _buildFrontWidget( context,"¿Que pasa cuando acabo un mesociclo entrenamiento si ya he pasado la fase de formación?",isMobile,isTablet,state,6)),
+             (state is TarjetaDeVuelta && state.numeroTarjeta==6) ? Center(child: _buildInnerBottomWidget("En el caso de que apruebes nuestro examen o de que ya hayas completado 2 o 3 meses con nuestra aplicación ya podemos considerar que estas preparado para entrenar con valores de MEV,MAV,MRV recomendados y programar en base a estos parametros, el feedback que le des a la aplicación y tus preferencias cada mes. Nosotros recomendamos mantener la base del entrenamiento unos meses y si acaso cambiar algunos ejercicios accesorios para poder tener una trazabilidad adecuada y poder saber si estamos progresando, cosa que es imposible si cambiamos constantemente de ejercicios (esto puedes hacer seleccionando en el cuestionario la opción de \"Seleccionar tu mismo los ejercicios en base a una estructura prefijada por un profesional\", buscando la estructura que tenias anteriormente y configurándola adecuadamente. Además recomendamos usar la opcion de gestión de la fatiga para hilar mas fino en los valores de MEV,MAV y MRV de tu mesociclo (esta opción es premium).",isMobile,isTablet)) : Container(height: 1,),
+              Center(child: _buildFrontWidget( context,"¿En base a qué parémetros se programa la intensidad?",isMobile,isTablet,state,7)),
+             (state is TarjetaDeVuelta && state.numeroTarjeta==7) ? Center(child: _buildInnerBottomWidget("Programamos en base al RIR (repeticiones en recámara)",isMobile,isTablet)) : Container(height: 1,),
+              Center(child: _buildFrontWidget( context,"¿Puedo llevar todo apuntado directamente en la aplicación o necesito seguir usando el papel y boli?",isMobile,isTablet,state,8)),
+             (state is TarjetaDeVuelta && state.numeroTarjeta==8) ? Center(child: _buildInnerBottomWidget("Cada ejercicio tiene su agenda en la que cada semana, para cada una de las series efectivas puedes apuntar la carga que has usado y las repeticiones que has realizado. Además, existe una página de detalle de cada ejercicio, donde puedes ver la ejecución, usar un cronómetro para los tiempos de descanso etc.",isMobile,isTablet)) : Container(height: 1,),
+              Center(child: _buildFrontWidget( context,"¿Cuando acabo un mesociclo de entrenamiento se quedan guardados los datos?",isMobile,isTablet,state,9)),
+             (state is TarjetaDeVuelta && state.numeroTarjeta==9) ? Center(child: _buildInnerBottomWidget("Si, estos se guardan en la sección de historial.",isMobile,isTablet)) : Container(height: 1,),
+             Center(child: _buildFrontWidget( context,"Oye, ¿y eso de que hay un equipo humano detrás?",isMobile,isTablet,state,10)),
+             (state is TarjetaDeVuelta && state.numeroTarjeta==10) ? Center(child: _buildInnerBottomWidget("Más allá de la preparación ONE-TO-ONE, en la cual puedes tener contacto directo con Carlos, usándo solo la aplicación también puedes resolver tus dudas en la comunidad gratuita que tenemos, y además en el 2021 vamos a poner en marcha la sección de reuniones con un directo semanal para que puedas consultar en directo las dudas que tengas con tu preparación a Carlos y además aprender de las dudas que plantean otros usuarios.",isMobile,isTablet)) : Container(height: 1,),
+            ],
+          ),
+        );
+      
+
+       
     
     }),)      
-        
-                        
-                          ],
-                        ),
+      
+                      
+                        ],
                       ),
                     ),
                   ),
-              
+                ),
+            
     
-                  
-                ],
-              ),
+                
+              ],
             ),
-            //Footer
-         
-         Container(
-              height: size.height * 0.15,
-              width: size.width,
-              color: Color(0xff0A183D),
-              child: Center(
-                  child: Text(
-                    "©2021 Una web creada por @carlos10medina",
-                    style:  TextStyle(
-        color: Colors.grey,
-        fontSize: (isMobile) ? 12 : 14.0      
+          ),
+          //Footer
+       
+       Container(
+            height: size.height * 0.2,
+            width: size.width,
+            color: Color(0xff0A183D),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                InkWell(
+                            onTap: () async{
+                                 if (await canLaunch("https://docs.google.com/document/d/18oJrOwZRm57BbnSwpPCtKtXdGufQwARFfQPeLiTyN28/edit")) {
+                             await launch("https://docs.google.com/document/d/18oJrOwZRm57BbnSwpPCtKtXdGufQwARFfQPeLiTyN28/edit");
+                                   }
+                            },
+                            child: Text('Términos y condiciones',style: TextStyle(color:Colors.grey[50],decoration: TextDecoration.underline),maxLines: 1,)),   
+                 SizedBox(height: 10,),
+                Text(
+                  "©2021 Una web creada por @carlos10medina",
+                  style:  TextStyle(
+      color: Colors.grey,
+      fontSize: (isMobile) ? 12 : 14.0      
     ),
-                  ),
-                ))
-          ],
-        ),
+                ),
+               
+                     
+              ],
+            ))
+        ],
       ),
     );
   }

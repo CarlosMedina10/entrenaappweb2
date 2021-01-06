@@ -24,8 +24,11 @@ import 'package:flutter/material.dart';
 import 'home_screen.dart';
 
 class PersonalProjects extends StatefulWidget {
-
-  PersonalProjects();
+ final String idUser;
+ final String idToken;
+ 
+ 
+  PersonalProjects(this.idUser,this.idToken,);
   @override
   _PersonalProjectsState createState() => _PersonalProjectsState();
 }
@@ -63,17 +66,17 @@ Map<String,dynamic> listaClientes;
 //     }
 //     }
 
-//   Future obtenerDatosDeClientes()async{
+  Future obtenerDatosDeClientes()async{
 
-// final url = 'https://entrenaapp2-12fbe.firebaseio.com/ZZentrenadores/${widget.idUser}/Clientes.json?auth=${widget.idToken}';
+final url = 'https://entrenaapp2-12fbe.firebaseio.com/ZZentrenadores/${widget.idUser}/Clientes.json?auth=${widget.idToken}';
 
-// final response = await http.get(url);
-//         // print(response.body);
-//         listaClientes = json.decode(response.body) as Map<String,dynamic>;
+final response = await http.get(url);
+        // print(response.body);
+        listaClientes = json.decode(response.body) as Map<String,dynamic>;
 
        
  
-//   }
+  }
     
  List<BlogModel> blogList = List<BlogModel>();
 
@@ -117,25 +120,26 @@ Map<String,dynamic> listaClientes;
                 ...List<Widget>.generate(blogList.length, (int index) {
                   return GestureDetector(
                     onTap: () async{
-//                   if (index==0)
-//     {
-//       setState(() {
-//         isLoading=true;
-//       });
-//       await obtenerDatosDeClientes();
-//  Navigator.push(
-//                                                                       context,
-//                                                                       MaterialPageRoute(
-//                                                                           builder: (context) => CargarEntrenamiento(
-//                                                                                widget.idToken,listaClientes,widget.firebaseDatabase
-//                                                                               )));
+                  if (index==0)
+    {
+      setState(() {
+        isLoading=true;
+      });
+      await obtenerDatosDeClientes();
+      print(listaClientes);
+ Navigator.push(
+                                                                      context,
+                                                                      MaterialPageRoute(
+                                                                          builder: (context) => CargarEntrenamiento(
+                                                                              widget.idUser, widget.idToken,listaClientes,
+                                                                              )));
                                                                               
-//                                                                               }
-//       else obtenerDatosDeClientes();
+                                                                              }
+      else obtenerDatosDeClientes();
 
-//         setState(() {
-//         isLoading=false;
-//       });
+        setState(() {
+        isLoading=false;
+      });
 
                     },
                     child: Card(

@@ -17,29 +17,29 @@ class NoSeHaInscritoAun extends SorteoblocState {
 
 }
 class YaSeHaInscrito extends SorteoblocState {
-  
+  final bool isPremium;
 
- YaSeHaInscrito();
+ YaSeHaInscrito({this.isPremium=false});
   @override
-  List<Object> get props => [];
+  List<Object> get props => [isPremium];
 
 
 }
 class ErrorState extends SorteoblocState {
-  
+  final bool isPremium;
 
- ErrorState();
+ ErrorState({this.isPremium=false});
   @override
-  List<Object> get props => [];
+  List<Object> get props => [isPremium];
 
 
 }
 class PaginaEspera extends SorteoblocState {
-  
+  final bool isFromIscribiendose;
 
- PaginaEspera();
+ PaginaEspera({this.isFromIscribiendose=false});
   @override
-  List<Object> get props => [];
+  List<Object> get props => [isFromIscribiendose];
 
 
 }

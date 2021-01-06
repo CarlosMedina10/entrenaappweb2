@@ -324,6 +324,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ) : Container(),
                  TextFormField(
                           controller: _emailController,
+                            cursorColor: Colors.orange[300],
                           decoration: InputDecoration(
                           contentPadding:  EdgeInsets.symmetric(vertical: 0, horizontal: 0) ,
                           labelText:(MediaQuery.of(context).size.height>550) ? '' : 'Correo' ,
@@ -355,15 +356,16 @@ class _RegisterPageState extends State<RegisterPage> {
                 ) : Container(),
                 TextFormField(
                           controller: _passwordController,
+                            cursorColor: Colors.orange[300],
                            decoration: InputDecoration(
-                             suffixIcon: (isTap1== false) ? InkWell(child: Icon(CommunityMaterialIcons.eye,),
+                             suffixIcon: (isTap1== false) ? InkWell(child: Icon(CommunityMaterialIcons.eye,color: Colors.orange[300],),
                              onTap: (){
                                setState(() {
                                  isTap1=true;
                                });
                              },) :
                              
-                             InkWell(child: Icon(CommunityMaterialIcons.eye_off,),
+                             InkWell(child: Icon(CommunityMaterialIcons.eye_off,color: Colors.orange[300],),
                              onTap: (){
                                setState(() {
                                  isTap1=false;
@@ -402,19 +404,20 @@ class _RegisterPageState extends State<RegisterPage> {
               
                  TextFormField(
                           controller: _verifyPasswordController,
+                          cursorColor: Colors.orange[300],
                            decoration: InputDecoration(
                             contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
                             labelText:(MediaQuery.of(context).size.height>550) ? '' : 'Verificar Contraseña',
                         border: InputBorder.none,
                         errorStyle: TextStyle(fontSize:10),
-                         suffixIcon: (isTap2== false) ? InkWell(child: Icon(CommunityMaterialIcons.eye,),
+                         suffixIcon: (isTap2== false) ? InkWell(child: Icon(CommunityMaterialIcons.eye,color: Colors.orange[300],),
                              onTap: (){
                                setState(() {
                                  isTap2=true;
                                });
                              },) :
                              
-                             InkWell(child: Icon(CommunityMaterialIcons.eye_off,),
+                             InkWell(child: Icon(CommunityMaterialIcons.eye_off,color: Colors.orange[300],),
                              onTap: (){
                                setState(() {
                                  isTap2=false;

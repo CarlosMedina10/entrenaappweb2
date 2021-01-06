@@ -47,6 +47,7 @@ dependencies:
   flutter_bloc: 
   font_awesome_flutter: ^8.10.0
   flutter_signin_button: ^1.1.0
+  
  
  
   flutter_auth_buttons: ^0.10.0
@@ -58,6 +59,11 @@ dependencies:
   firebase_storage: ^5.2.0
   community_material_icon: ^5.4.55
   firebase: ^7.3.0
+  js: ^0.6.2
+  webview_flutter: ^1.0.7
+  dio: ^3.0.10
+  getwidget: ^1.1.0
+  flutter_session: ^0.1.1
   
   
  

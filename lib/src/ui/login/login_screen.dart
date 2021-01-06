@@ -4,6 +4,7 @@
 import 'package:entrenaappweb/blocs/LandingPageBloc/landingpage_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import '../../bloc/login_bloc/bloc.dart';
 import '../../repository/user_repository.dart';
@@ -11,9 +12,10 @@ import '../../ui/login/login_form.dart';
 
 class LoginScreen extends StatelessWidget {
   final UserRepository userRepository;
+  final GoogleSignIn _googleSignIn;
   final bool isOnLogin;
 
-  LoginScreen(this.userRepository,this.isOnLogin);
+  LoginScreen(this.userRepository,this._googleSignIn,this.isOnLogin);
    
 
   @override
@@ -69,7 +71,7 @@ switch(deviceType) {
             }
     return  BlocProvider<LoginBloc>(
         create: (context) => LoginBloc(userRepository: userRepository),
-        child: LoginPage(userRepository,isMobile,isTablet),
+        child: LoginPage(userRepository,_googleSignIn,isMobile,isTablet),
         // LoginForm(userRepository: _userRepository),
       );
   

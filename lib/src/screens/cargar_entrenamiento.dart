@@ -13,10 +13,11 @@ import 'package:file_picker_cross/file_picker_cross.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:convert';
 class CargarEntrenamiento extends StatefulWidget {
+  final String idUser;
  final String idToken;
  final Map<String,dynamic> listaClientes;
- final Database firebaseDatabase;
- CargarEntrenamiento(this.idToken,this.listaClientes,this.firebaseDatabase);
+ 
+ CargarEntrenamiento(this.idUser,this.idToken,this.listaClientes,);
 
   @override
   _CargarEntrenamientoState createState() => _CargarEntrenamientoState();
@@ -586,7 +587,7 @@ print(myFile.fileName.replaceRange(myFile.fileName.length-5,myFile.fileName.leng
  }
  Future guardarEnBBDD() async{
 
-final url = 'https://entrenaapp2-12fbe.firebaseio.com/NPiP66IexxYXvadZSWl3jHz8PFa2/mesociclos.json?auth=${widget.idToken}';
+final url = 'https://entrenaapp2-12fbe.firebaseio.com/xojs5q7roaRT22UcLWRN2WSUKWP2/mesociclos.json?auth=${widget.idToken}';
     try{  await http.post(url, body: 
      json.encode(
     mesocicloEntrenamiento.toJson()
@@ -630,7 +631,9 @@ Map<String,String> clienteSeleccionado;
   }
   @override
   Widget build(BuildContext context) {
-   
+    print('entraaaaaaaaaa');
+    print(widget.idToken);
+   print(widget.idUser);
     return    Scaffold(
       body: (entrenamientoCargado==false) ? Center(
         child: Column(

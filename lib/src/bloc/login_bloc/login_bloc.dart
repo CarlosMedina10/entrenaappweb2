@@ -71,7 +71,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       yield LoginState.success();
     } catch (error) {
       print(error);
-      yield LoginState.failure();
+      yield LoginState.failure(error.toString());
     }
   }
 
@@ -82,7 +82,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       yield LoginState.success();
     } catch (error) {
       print(error);
-      yield LoginState.failure();
+      yield LoginState.failure(error.toString());
     }
   }
 
@@ -92,7 +92,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       yield LoginState.success();
     } catch (error) {
       print(error);
-      yield LoginState.failure();
+      yield LoginState.failure(error.toString());
     }
   }
 
@@ -119,7 +119,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         _userRepository.errorString = 'Contaseña incorrecta';
       }
 
-      yield LoginState.failure();
+      yield LoginState.failure(error.toString());
     }
   }
 }

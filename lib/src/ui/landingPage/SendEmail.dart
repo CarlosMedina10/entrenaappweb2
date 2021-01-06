@@ -93,86 +93,93 @@ switch(deviceType) {
             }
 
     return SingleChildScrollView(
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 32),
+          child: Center(
+            child: Container(
+              
+            
+              width: (isMobile) ? MediaQuery.of(context).size.width : (isTablet) ? MediaQuery.of(context).size.width*0.85 :  MediaQuery.of(context).size.width*0.65,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
         height: (size.height>500) ? size.height-75 : 425 ,
         child: Column(
+         
         crossAxisAlignment: CrossAxisAlignment.center,
         children:[
+        SizedBox(height:50),
         Text('Contacto',
         style:TextStyle(fontSize: 32, fontWeight:FontWeight.bold )),
         Text('En EntrenaAPP estamos a tu disposición para resolver cualquier duda'),
         Form(
-          key: _formKey,
-                  child: Container(
-            
-            
-            child: Column(
-            children: [
-              SizedBox(height:16),
-              // TextField(
-              //   controller: myControllerEmail,
-              //   decoration:InputDecoration(
-                
-              //   fillColor: Colors.grey[200],
-              //   filled: true,
-              //   hintText: 'Email',
-              //   border:InputBorder.none
-              // )),
-              // SizedBox(height:8),
-              TextFormField(
-                controller: myControllerAsunto,
-              validator: (text) {
-                if (text == null || text.isEmpty) {
-                  return 'Por favor, introduce un asunto para tu mensaje.';
-                }
-                return null;
-              },
-                decoration:InputDecoration(
+            key: _formKey,
+                    child: Container(
+              
+              
+              child: Column(
+              children: [
+                SizedBox(height:16),
+                // TextField(
+                //   controller: myControllerEmail,
+                //   decoration:InputDecoration(
                   
-                 
-                fillColor: Colors.grey[200],
-                filled: true,
-                hintText: 'Asunto',
-                border:InputBorder.none
-              )),
-              SizedBox(height:8),
-              TextFormField(
-                 validator: (text) {
-                if (text == null || text.isEmpty) {
-                  return 'Por favor,redacta tu cuestión.';
-                }
-                return null;
-              },
-                maxLines: 7,
-                controller: myControllerBody,
-                decoration:InputDecoration(
-              
-                fillColor: Colors.grey[200],
-                filled: true,
-                hintText: 'Cuestión',
-                border:InputBorder.none
-              )),
-               SizedBox(height:8),
+                //   fillColor: Colors.grey[200],
+                //   filled: true,
+                //   hintText: 'Email',
+                //   border:InputBorder.none
+                // )),
+                // SizedBox(height:8),
+                TextFormField(
+                  controller: myControllerAsunto,
+                validator: (text) {
+                  if (text == null || text.isEmpty) {
+                    return 'Por favor, introduce un asunto para tu mensaje.';
+                  }
+                  return null;
+                },
+                  decoration:InputDecoration(
+                    
+                   
+                  fillColor: Colors.grey[200],
+                  filled: true,
+                  hintText: 'Asunto',
+                  border:InputBorder.none
+                )),
+                SizedBox(height:8),
+                TextFormField(
+                   validator: (text) {
+                  if (text == null || text.isEmpty) {
+                    return 'Por favor,redacta tu cuestión.';
+                  }
+                  return null;
+                },
+                  maxLines: 7,
+                  controller: myControllerBody,
+                  decoration:InputDecoration(
+                
+                  fillColor: Colors.grey[200],
+                  filled: true,
+                  hintText: 'Cuestión',
+                  border:InputBorder.none
+                )),
+                 SizedBox(height:8),
 
-           MaterialButton(
-             height: 60,
-             color:Color(0xff0A183D),
-             minWidth: double.infinity,
-             onPressed: (){
-              if (_formKey.currentState.validate())
-              
-               
-               launchMailto(myControllerAsunto.text,myControllerBody.text,);
-             },
-             child: Text('Enviar',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
-           )
-            ],),
-          ),
+             MaterialButton(
+               height: 60,
+               color:Color(0xff0A183D),
+               minWidth: double.infinity,
+               onPressed: (){
+                if (_formKey.currentState.validate())
+                
+                 
+                 launchMailto(myControllerAsunto.text,myControllerBody.text,);
+               },
+               child: Text('Enviar',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+             )
+              ],),
+            ),
         ),
         
   ]),
       ),
+          ),
     );
 
   }
