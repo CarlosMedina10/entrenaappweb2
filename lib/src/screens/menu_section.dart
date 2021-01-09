@@ -1,7 +1,7 @@
 
-import 'package:entrenaappweb/blocs/navigation_bloc.dart';
-import 'package:entrenaappweb/src/bloc/authentication_bloc/authentication_bloc.dart';
-import 'package:entrenaappweb/src/bloc/authentication_bloc/authentication_event.dart';
+import 'package:entrenaapp/blocs/navigation_bloc.dart';
+import 'package:entrenaapp/src/bloc/authentication_bloc/authentication_bloc.dart';
+import 'package:entrenaapp/src/bloc/authentication_bloc/authentication_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

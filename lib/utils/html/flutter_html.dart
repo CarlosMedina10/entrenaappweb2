@@ -1,4 +1,4 @@
-import 'package:entrenaappweb/utils/html/image_properties.dart';
+import 'package:entrenaapp/utils/html/image_properties.dart';
 import 'package:flutter/material.dart';
 
 import 'html_parser.dart';

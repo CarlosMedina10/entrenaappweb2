@@ -124,12 +124,13 @@
 // }
 
 
-import 'package:entrenaappweb/src/screens/home_screen.dart';
-import 'package:entrenaappweb/src/ui/landingPage/HomePage.dart';
-import 'package:entrenaappweb/src/ui/landingPage/SucessPayment.dart';
-import 'package:entrenaappweb/src/ui/usuarioDentro/sorteo.dart';
-import 'package:entrenaappweb/src/ui/usuarioDentro/sorteoAcabado.dart';
-import 'package:entrenaappweb/src/ui/usuarioDentro/sorteoForocoches.dart';
+
+import 'package:entrenaapp/src/ui/landingPage/HomePage.dart';
+import 'package:entrenaapp/src/ui/landingPage/SucessPayment.dart';
+
+import 'package:entrenaapp/src/screens/home_screen.dart';
+
+
 import 'package:firebase/firebase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -139,6 +140,7 @@ import 'package:responsive_builder/responsive_builder.dart';
 import './src/bloc/authentication_bloc/bloc.dart';
 
 import './src/repository/user_repository.dart';
+import 'src/screens/home_screen.dart';
 
 
 GoogleSignIn _googleSignIn = GoogleSignIn(
@@ -195,8 +197,8 @@ class App extends StatelessWidget {
             return Center(child:CircularProgressIndicator(),);
           }
           if (state is Authenticated) {
-            // return  Home(state.userID,state.idToken);
-            return Sorteo(_userRepository);
+            return  Home(state.userID,state.idToken);
+            // return Sorteo(_userRepository);
           }
           if (state is Unauthenticated) {
             // return LoginScreen(userRepository: _userRepository,);

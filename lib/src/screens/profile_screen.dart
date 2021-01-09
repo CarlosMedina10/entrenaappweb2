@@ -3,7 +3,7 @@ import 'dart:html' as html;
 import 'package:firebase/firebase.dart';
 import 'package:http/http.dart' as http;
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:entrenaappweb/blocs/navigation_bloc.dart';
+import 'package:entrenaapp/blocs/navigation_bloc.dart';
 import 'package:flutter/material.dart';
 
 

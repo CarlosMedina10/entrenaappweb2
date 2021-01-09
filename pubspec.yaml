@@ -1,5 +1,5 @@
-name: entrenaappweb
-description: A new Flutter project.
+name: entrenaapp
+description: EntrenaAPP es una aplicación gratuita de entrenamiento personalizado a medida.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.

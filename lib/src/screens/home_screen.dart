@@ -1,9 +1,9 @@
 
-import 'package:entrenaappweb/blocs/navigation_bloc.dart';
-import 'package:entrenaappweb/src/screens/menu_section.dart';
-import 'package:entrenaappweb/src/screens/personal_projects.dart';
-import 'package:entrenaappweb/src/screens/profile_screen.dart';
-import 'package:entrenaappweb/src/screens/talks_screen.dart';
+import 'package:entrenaapp/blocs/navigation_bloc.dart';
+import 'package:entrenaapp/src/screens/menu_section.dart';
+import 'package:entrenaapp/src/screens/personal_projects.dart';
+import 'package:entrenaapp/src/screens/profile_screen.dart';
+import 'package:entrenaapp/src/screens/talks_screen.dart';
 import 'package:firebase/firebase.dart';
 import 'package:flutter/material.dart';
 

@@ -1,7 +1,7 @@
 @JS()
 library stripe;
 
-import 'package:entrenaappweb/checkout/server_stub.dart';
+import 'package:entrenaapp/checkout/server_stub.dart';
 import 'package:flutter/material.dart';
 import '../constants.dart';
 import 'package:js/js.dart';

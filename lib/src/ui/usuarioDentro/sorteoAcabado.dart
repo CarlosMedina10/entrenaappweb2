@@ -1,8 +1,8 @@
-import 'package:entrenaappweb/checkout/stripe_checkout.dart';
-import 'package:entrenaappweb/src/bloc/authentication_bloc/authentication_bloc.dart';
-import 'package:entrenaappweb/src/bloc/authentication_bloc/authentication_event.dart';
-import 'package:entrenaappweb/src/repository/user_repository.dart';
-import 'package:entrenaappweb/src/widgets/buyMeACoffe.dart';
+import 'package:entrenaapp/checkout/stripe_checkout.dart';
+import 'package:entrenaapp/src/bloc/authentication_bloc/authentication_bloc.dart';
+import 'package:entrenaapp/src/bloc/authentication_bloc/authentication_event.dart';
+
+import 'package:entrenaapp/src/widgets/buyMeACoffe.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

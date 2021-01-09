@@ -4,8 +4,8 @@
 
 
 
-import 'package:entrenaappweb/models/blog_model.dart';
-import 'package:entrenaappweb/src/screens/cargar_entrenamiento.dart';
+import 'package:entrenaapp/models/blog_model.dart';
+import 'package:entrenaapp/src/screens/cargar_entrenamiento.dart';
 import 'package:firebase/firebase.dart';
 import 'package:http/http.dart' as http;
 

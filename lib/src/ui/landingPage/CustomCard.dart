@@ -100,8 +100,8 @@ Map<String,String> ejer = {'${widget.nombre}' : imgGuardadaYa};
         Container(
          
           decoration: BoxDecoration(
-            
-              borderRadius: BorderRadius.circular(16.0), color: Color(0xff0A183D)),
+              border: Border.all(width:1),
+              borderRadius: BorderRadius.circular(16.0), color: Colors.teal),
           height: 
             (widget.text!=null) ?
           (widget.isMobile) ? 173 : (widget.isTablet) ? (MediaQuery.of(context).size.height<500) ? 173 : MediaQuery.of(context).size.height/2.875 :  (MediaQuery.of(context).size.height<500) ? 228 :  MediaQuery.of(context).size.height/2.19 :
@@ -115,7 +115,7 @@ Map<String,String> ejer = {'${widget.nombre}' : imgGuardadaYa};
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16.0),
             child: Image(
-              fit: (widget.isMobile) ?  BoxFit.contain : BoxFit.cover,
+              fit:  BoxFit.cover,
               image: NetworkImage(url),
             ),
           ),

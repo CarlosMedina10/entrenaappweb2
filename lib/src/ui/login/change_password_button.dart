@@ -1,6 +1,6 @@
 
 
-import 'package:entrenaappweb/src/ui/changePasswordScreen.dart';
+import 'package:entrenaapp/src/ui/changePasswordScreen.dart';
 import 'package:flutter/material.dart';
 import '../../repository/user_repository.dart';
 import '../../ui/changePassword.dart';

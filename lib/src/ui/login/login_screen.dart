@@ -1,7 +1,7 @@
 //imports: 
 
 
-import 'package:entrenaappweb/blocs/LandingPageBloc/landingpage_bloc.dart';
+import 'package:entrenaapp/blocs/LandingPageBloc/landingpage_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';

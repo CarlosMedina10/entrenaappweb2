@@ -1,4 +1,4 @@
-import 'package:entrenaappweb/blocs/LandingPageBloc/landingpage_bloc.dart';
+import 'package:entrenaapp/blocs/LandingPageBloc/landingpage_bloc.dart';
 
 
 import 'package:flutter/material.dart';

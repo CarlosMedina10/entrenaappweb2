@@ -1,5 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:entrenaappweb/models/talk_model.dart';
+import 'package:entrenaapp/models/talk_model.dart';
 import 'package:flutter/material.dart';
 
 

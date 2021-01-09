@@ -1,7 +1,7 @@
 
 
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:entrenaappweb/src/ui/login/apple_login_button.dart';
+import 'package:entrenaapp/src/ui/login/apple_login_button.dart';
 
 import 'package:flutter/material.dart';
 // import './signup.dart';
@@ -183,8 +183,8 @@ void _showDialog(String error) {
     return BlocListener<LoginBloc, LoginState>(listener: (context, state) {
       // tres casos, tres if:
       if (state.isFailure) {
-        print('failllll');
-        _showDialog(state.error);
+        // print('failllll');
+        // _showDialog(state.error);
         Scaffold.of(context)
           ..hideCurrentSnackBar()
           ..showSnackBar(

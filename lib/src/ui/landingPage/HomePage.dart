@@ -1,6 +1,6 @@
-import 'package:entrenaappweb/blocs/LandingPageBloc/landingpage_bloc.dart';
-import 'package:entrenaappweb/src/repository/user_repository.dart';
-import 'package:entrenaappweb/src/ui/login/login_screen.dart';
+import 'package:entrenaapp/blocs/LandingPageBloc/landingpage_bloc.dart';
+import 'package:entrenaapp/src/repository/user_repository.dart';
+import 'package:entrenaapp/src/ui/login/login_screen.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 

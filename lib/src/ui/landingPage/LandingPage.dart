@@ -1,11 +1,11 @@
 
 
 
-import 'package:entrenaappweb/blocs/CardBloc/card_bloc.dart';
-import 'package:entrenaappweb/blocs/LandingPageBloc/landingpage_bloc.dart';
-import 'package:entrenaappweb/checkout/stripe_checkout.dart';
-import 'package:entrenaappweb/src/ui/landingPage/CustomCard.dart';
-import 'package:entrenaappweb/src/widgets/buyMeACoffe.dart';
+import 'package:entrenaapp/blocs/CardBloc/card_bloc.dart';
+import 'package:entrenaapp/blocs/LandingPageBloc/landingpage_bloc.dart';
+import 'package:entrenaapp/checkout/stripe_checkout.dart';
+import 'package:entrenaapp/src/ui/landingPage/CustomCard.dart';
+import 'package:entrenaapp/src/widgets/buyMeACoffe.dart';
 
 
 
@@ -819,25 +819,25 @@ switch(deviceType) {
                       ),
                       ),
                       ),
-  //                           Padding(
-  //                             padding:
-  //                                      EdgeInsets.only(left: size.width/45),
-  //                             child: Wrap(
-  //                               children: [
-  //                                 Text(
-  //                                   "Más de 4000 usuarios.",
-  //                                   style: TextStyle(
-  //   color: Colors.orange,
-  //    fontSize: (isMobile ? 14 : (isTablet) ? 16 : 20.0),
-  //   fontWeight: FontWeight.w600
-  // ),
-  //                                 ),
-  //                               ],
-  //                             ),
-  //                           ),
-                          // SizedBox(
-                          //   height: 6.0,
-                          // ),
+                   (userID==null)  ?       Padding(
+                              padding:
+                                       EdgeInsets.only(left: size.width/45),
+                              child: Wrap(
+                                children: [
+                                  Text(
+                                    "Más de 4000 usuarios.",
+                                    style: TextStyle(
+    color: Colors.orange,
+     fontSize: (isMobile ? 14 : (isTablet) ? 16 : 20.0),
+    fontWeight: FontWeight.w600
+  ),
+                                  ),
+                                ],
+                              ),
+                            ) : Container(),
+                          SizedBox(
+                            height: 6.0,
+                          ),
                      
                         ],
                       ),
@@ -911,25 +911,25 @@ switch(deviceType) {
                       ),
                       ),
                       ),
-  //                           Padding(
-  //                             padding:
-  //                                      EdgeInsets.only(left: size.width/45),
-  //                             child: Wrap(
-  //                               children: [
-  //                                 Text(
-  //                                   "Prueba gratis las dos primeras semanas",
-  //                                   style: TextStyle(
-  //   color: Colors.orange,
-  //   fontSize: (isMobile ? 14 : (isTablet) ? 16 : 20.0),
-  //   fontWeight: FontWeight.w600
-  // ),
-  //                                 ),
-  //                               ],
-  //                             ),
-  //                           ),
-                          // SizedBox(
-                          //   height: 6.0,
-                          // ),
+           (userID == null)           ?      Padding(
+                              padding:
+                                       EdgeInsets.only(left: size.width/45),
+                              child: Wrap(
+                                children: [
+                                  Text(
+                                    "Prueba gratis las dos primeras semanas",
+                                    style: TextStyle(
+    color: Colors.orange,
+    fontSize: (isMobile ? 14 : (isTablet) ? 16 : 20.0),
+    fontWeight: FontWeight.w600
+  ),
+                                  ),
+                                ],
+                              ),
+                            ) : Container(),
+                          SizedBox(
+                            height: 6.0,
+                          ),
                      
                         ],
                       ),
@@ -1076,18 +1076,18 @@ switch(deviceType) {
                           customCheckBox('Selección de ejercicios por patrones de mvto **', true),
                           customCheckBox('Crear tu entrenamiento desde 0 **', true,),
                           SizedBox(height:8),
-  //                           Container(
-  //                             width: size.width-42-size.width/45,
-  //                             alignment: Alignment.center,
-  //                             child: Text(
-  //                                 "Más de 4000 usuarios.",
-  //                                 style: TextStyle(
-  //   color: Colors.orange,
-  //    fontSize: (isMobile ? 14 : (isTablet) ? 16 : 20.0),
-  //   fontWeight: FontWeight.w600
-  // ),
-  //                               ),
-  //                           ),
+                (userID == null)    ?        Container(
+                              width: size.width-42-size.width/45,
+                              alignment: Alignment.center,
+                              child: Text(
+                                  "Más de 4000 usuarios.",
+                                  style: TextStyle(
+    color: Colors.orange,
+     fontSize: (isMobile ? 14 : (isTablet) ? 16 : 20.0),
+    fontWeight: FontWeight.w600
+  ),
+                                ),
+                            ) : Container(),
                           
                          
                         ],
@@ -1160,18 +1160,18 @@ switch(deviceType) {
                           customCheckBox('Sin gasto de puntos', true,),
                           customCheckBox('Sin publicidad', true,),
                           SizedBox(height:8),
-  //                                   Container(
-  //                                 width: size.width-42-size.width/45,
-  //                                 alignment: Alignment.center,
-  //                                 child: Text(
-  //                                     "Prueba las dos primeras semanas gratis",
-  //                                     style: TextStyle(
-  //   color: Colors.orange,
-  //    fontSize: (isMobile ? 14 : (isTablet) ? 16 : 20.0),
-  //   fontWeight: FontWeight.w600
-  // ),
-  //                                   ),
-  //                               ),
+                            (userID == null)  ?      Container(
+                                  width: size.width-42-size.width/45,
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                      "Prueba las dos primeras semanas gratis",
+                                      style: TextStyle(
+    color: Colors.orange,
+     fontSize: (isMobile ? 14 : (isTablet) ? 16 : 20.0),
+    fontWeight: FontWeight.w600
+  ),
+                                    ),
+                                ) : Container(),
                               
                           
                          

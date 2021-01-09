@@ -1,8 +1,8 @@
 
-import 'package:entrenaappweb/blocs/SorteoBloc/sorteobloc_bloc.dart';
-import 'package:entrenaappweb/src/repository/user_repository.dart';
-import 'package:entrenaappweb/src/ui/usuarioDentro/sorteoAcabado.dart';
-import 'package:entrenaappweb/src/ui/usuarioDentro/sorteoForocoches.dart';
+import 'package:entrenaapp/blocs/SorteoBloc/sorteobloc_bloc.dart';
+import 'package:entrenaapp/src/repository/user_repository.dart';
+import 'package:entrenaapp/src/ui/usuarioDentro/sorteoAcabado.dart';
+import 'package:entrenaapp/src/ui/usuarioDentro/sorteoForocoches.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

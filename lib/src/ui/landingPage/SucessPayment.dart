@@ -1,10 +1,8 @@
-import 'package:entrenaappweb/src/bloc/authentication_bloc/authentication_bloc.dart';
-import 'package:entrenaappweb/src/bloc/authentication_bloc/authentication_event.dart';
-import 'package:entrenaappweb/src/repository/user_repository.dart';
-import 'package:entrenaappweb/src/ui/landingPage/HomePage.dart';
-import 'package:entrenaappweb/src/widgets/buyMeACoffe.dart';
+
+import 'package:entrenaapp/src/repository/user_repository.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:shared_preferences/shared_preferences.dart';

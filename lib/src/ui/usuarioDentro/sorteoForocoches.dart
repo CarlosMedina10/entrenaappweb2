@@ -1,8 +1,8 @@
-import 'package:entrenaappweb/blocs/SorteoBloc/sorteobloc_bloc.dart';
-import 'package:entrenaappweb/checkout/stripe_checkout.dart';
-import 'package:entrenaappweb/src/bloc/authentication_bloc/bloc.dart';
+import 'package:entrenaapp/blocs/SorteoBloc/sorteobloc_bloc.dart';
+import 'package:entrenaapp/checkout/stripe_checkout.dart';
+import 'package:entrenaapp/src/bloc/authentication_bloc/bloc.dart';
 
-import 'package:entrenaappweb/src/repository/user_repository.dart';
+import 'package:entrenaapp/src/repository/user_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_session/flutter_session.dart';
