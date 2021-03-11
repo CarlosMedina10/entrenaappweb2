@@ -2,7 +2,7 @@ import 'package:entrenaapp/models/Configuracion.dart';
 import 'package:entrenaapp/models/Ejercicio.dart';
 import 'package:entrenaapp/models/MesocicloEntrenamiento.dart';
 import 'package:entrenaapp/models/Patron.dart';
-import 'package:firebase/firebase.dart';
+import 'package:entrenaapp/src/repository/user_repository.dart';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -13,14 +13,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:convert';
 
 class CargarEntrenamiento extends StatefulWidget {
-  final String idUser;
-  final String idToken;
-  final Map<String, dynamic> listaClientes;
+  final UserRepository userRepository;
 
   CargarEntrenamiento(
-    this.idUser,
-    this.idToken,
-    this.listaClientes,
+    this.userRepository,
   );
 
   @override
@@ -407,231 +403,249 @@ class _CargarEntrenamientoState extends State<CargarEntrenamiento> {
   Ejercicio ejercicioSeleccionado;
 
   Patron patron;
-  Future cargarMesociclo() async {
-    FilePickerCross myFile = await FilePickerCross.importFromStorage(
-        type: FileTypeCross
-            .custom, // Available: `any`, `audio`, `image`, `video`, `custom`. Note: not available using FDE
-        fileExtension:
-            '.xlsx' // Only if FileTypeCross.custom . May be any file extension like `.dot`, `.ppt,.pptx,.odp`
+  void _showDialog() {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text("Error"),
+          content: new Text(
+              "Ha ocurrido un error al cargar tu entrenamiento. Por favor, revisa el formato ya que seguramente haya algun error. Cométamelo si no lo encuentras para ayudarte a solucionarlo :)"),
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            new TextButton(
+              child: new Text(
+                "Cerrar",
+                style: TextStyle(color: Colors.orange),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
         );
-    print(myFile.path);
-    nombreEntrenamiento = myFile.fileName;
-    print(myFile.fileName
-        .replaceRange(myFile.fileName.length - 5, myFile.fileName.length, ''));
+      },
+    );
+  }
 
-    var bytes = myFile.toUint8List();
-    var excel = Excel.decodeBytes(bytes);
-    int hoja = 0;
-    print(excel.tables.length);
-    int hojas = excel.tables.length - 1;
-    if (hojas == 2) {
-      mesocicloEntrenamiento = MesocicloEntrenamiento.mesocicloVacio2Dias();
-    } else if (hojas == 3) {
-      mesocicloEntrenamiento = MesocicloEntrenamiento.mesocicloVacio3Dias();
-    } else if (hojas == 4) {
-      mesocicloEntrenamiento = MesocicloEntrenamiento.mesocicloVacio4Dias();
-    } else if (hojas == 5) {
-      mesocicloEntrenamiento = MesocicloEntrenamiento.mesocicloVacio5Dias();
-    } else if (hojas == 6) {
-      mesocicloEntrenamiento = MesocicloEntrenamiento.mesocicloVacio6Dias();
-    }
+  Future cargarMesociclo() async {
+    try {
+      FilePickerCross myFile = await FilePickerCross.importFromStorage(
+          type: FileTypeCross
+              .custom, // Available: `any`, `audio`, `image`, `video`, `custom`. Note: not available using FDE
+          fileExtension:
+              '.xlsx' // Only if FileTypeCross.custom . May be any file extension like `.dot`, `.ppt,.pptx,.odp`
+          );
+      print(myFile.path);
+      nombreEntrenamiento = myFile.fileName;
+      print(myFile.fileName.replaceRange(
+          myFile.fileName.length - 5, myFile.fileName.length, ''));
 
-    mesocicloEntrenamiento.nombreMesociclo = myFile.fileName
-        .replaceRange(myFile.fileName.length - 5, myFile.fileName.length, '');
-    mesocicloEntrenamiento.fechaInicio = DateTime.now().toIso8601String();
-    for (var table in excel.tables.keys) {
-      print(table); //sheet Name
-      Sheet sheetObject = excel[table];
+      var bytes = myFile.toUint8List();
+      var excel = Excel.decodeBytes(bytes);
+      int hoja = 0;
+      print(excel.tables.length);
+      int hojas = excel.tables.length - 1;
+      if (hojas == 2) {
+        mesocicloEntrenamiento = MesocicloEntrenamiento.mesocicloVacio2Dias();
+      } else if (hojas == 3) {
+        mesocicloEntrenamiento = MesocicloEntrenamiento.mesocicloVacio3Dias();
+      } else if (hojas == 4) {
+        mesocicloEntrenamiento = MesocicloEntrenamiento.mesocicloVacio4Dias();
+      } else if (hojas == 5) {
+        mesocicloEntrenamiento = MesocicloEntrenamiento.mesocicloVacio5Dias();
+      } else if (hojas == 6) {
+        mesocicloEntrenamiento = MesocicloEntrenamiento.mesocicloVacio6Dias();
+      }
 
-      int row1 = 0;
+      mesocicloEntrenamiento.nombreMesociclo = myFile.fileName
+          .replaceRange(myFile.fileName.length - 5, myFile.fileName.length, '');
+      mesocicloEntrenamiento.fechaInicio = DateTime.now().toIso8601String();
+      for (var table in excel.tables.keys) {
+        print(table); //sheet Name
+        Sheet sheetObject = excel[table];
 
-      for (var row in excel.tables[table].rows) {
-        int column1 = 0;
-        for (var item in row) {
-          if (isEjercicio == false) {
-            if (item == 'Ejercicio') {
-              isEjercicio = true;
+        int row1 = 0;
 
-              buscarEjercicio(sheetObject
+        for (var row in excel.tables[table].rows) {
+          int column1 = 0;
+          for (var item in row) {
+            if (isEjercicio == false) {
+              if (item == 'Ejercicio') {
+                isEjercicio = true;
+
+                buscarEjercicio(sheetObject
+                    .cell(CellIndex.indexByColumnRow(
+                        columnIndex: column1, rowIndex: row1 + 1))
+                    .value);
+              }
+            } else if (item == 'Series') {
+              isSeries = true;
+              series = Series();
+              series.semana1 = sheetObject
                   .cell(CellIndex.indexByColumnRow(
                       columnIndex: column1, rowIndex: row1 + 1))
-                  .value);
+                  .value;
+              series.semana2 = sheetObject
+                  .cell(CellIndex.indexByColumnRow(
+                      columnIndex: column1, rowIndex: row1 + 2))
+                  .value;
+              series.semana3 = sheetObject
+                  .cell(CellIndex.indexByColumnRow(
+                      columnIndex: column1, rowIndex: row1 + 3))
+                  .value;
+              series.semana4 = sheetObject
+                  .cell(CellIndex.indexByColumnRow(
+                      columnIndex: column1, rowIndex: row1 + 4))
+                  .value;
+            } else if (item == 'Repeticiones') {
+              isReps = true;
+              repeticiones = Repeticiones();
+              repeticiones.semana1 = sheetObject
+                  .cell(CellIndex.indexByColumnRow(
+                      columnIndex: column1, rowIndex: row1 + 1))
+                  .value
+                  .toString();
+              repeticiones.semana2 = sheetObject
+                  .cell(CellIndex.indexByColumnRow(
+                      columnIndex: column1, rowIndex: row1 + 2))
+                  .value
+                  .toString();
+              repeticiones.semana3 = sheetObject
+                  .cell(CellIndex.indexByColumnRow(
+                      columnIndex: column1, rowIndex: row1 + 3))
+                  .value
+                  .toString();
+              repeticiones.semana4 = sheetObject
+                  .cell(CellIndex.indexByColumnRow(
+                      columnIndex: column1, rowIndex: row1 + 4))
+                  .value
+                  .toString();
+            } else if (item == 'RIR') {
+              isRir = true;
+              rir = Rir();
+              rir.semana1 =
+                  'RIR ${sheetObject.cell(CellIndex.indexByColumnRow(columnIndex: column1, rowIndex: row1 + 1)).value.toString()}';
+              rir.semana2 =
+                  'RIR ${sheetObject.cell(CellIndex.indexByColumnRow(columnIndex: column1, rowIndex: row1 + 2)).value.toString()}';
+              rir.semana3 =
+                  'RIR ${sheetObject.cell(CellIndex.indexByColumnRow(columnIndex: column1, rowIndex: row1 + 3)).value.toString()}';
+              rir.semana4 =
+                  'RIR ${sheetObject.cell(CellIndex.indexByColumnRow(columnIndex: column1, rowIndex: row1 + 4)).value.toString()}';
+            } else if (item == 'Tiempo de descanso') {
+              isTd = true;
+              tiempoDeDescanso = TiempoDeDescanso();
+              tiempoDeDescanso.semana1 = sheetObject
+                  .cell(CellIndex.indexByColumnRow(
+                      columnIndex: column1, rowIndex: row1 + 1))
+                  .value;
+              tiempoDeDescanso.semana2 = sheetObject
+                  .cell(CellIndex.indexByColumnRow(
+                      columnIndex: column1, rowIndex: row1 + 2))
+                  .value;
+              tiempoDeDescanso.semana3 = sheetObject
+                  .cell(CellIndex.indexByColumnRow(
+                      columnIndex: column1, rowIndex: row1 + 3))
+                  .value;
+              tiempoDeDescanso.semana4 = sheetObject
+                  .cell(CellIndex.indexByColumnRow(
+                      columnIndex: column1, rowIndex: row1 + 4))
+                  .value;
+            } else if (item == 'Comentario') {
+              isComentario = true;
+              comentario = sheetObject
+                  .cell(CellIndex.indexByColumnRow(
+                      columnIndex: column1, rowIndex: row1 + 1))
+                  .value;
             }
-          } else if (item == 'Series') {
-            isSeries = true;
-            series = Series();
-            series.semana1 = sheetObject
-                .cell(CellIndex.indexByColumnRow(
-                    columnIndex: column1, rowIndex: row1 + 1))
-                .value;
-            series.semana2 = sheetObject
-                .cell(CellIndex.indexByColumnRow(
-                    columnIndex: column1, rowIndex: row1 + 2))
-                .value;
-            series.semana3 = sheetObject
-                .cell(CellIndex.indexByColumnRow(
-                    columnIndex: column1, rowIndex: row1 + 3))
-                .value;
-            series.semana4 = sheetObject
-                .cell(CellIndex.indexByColumnRow(
-                    columnIndex: column1, rowIndex: row1 + 4))
-                .value;
-          } else if (item == 'Repeticiones') {
-            isReps = true;
-            repeticiones = Repeticiones();
-            repeticiones.semana1 = sheetObject
-                .cell(CellIndex.indexByColumnRow(
-                    columnIndex: column1, rowIndex: row1 + 1))
-                .value
-                .toString();
-            repeticiones.semana2 = sheetObject
-                .cell(CellIndex.indexByColumnRow(
-                    columnIndex: column1, rowIndex: row1 + 2))
-                .value
-                .toString();
-            repeticiones.semana3 = sheetObject
-                .cell(CellIndex.indexByColumnRow(
-                    columnIndex: column1, rowIndex: row1 + 3))
-                .value
-                .toString();
-            repeticiones.semana4 = sheetObject
-                .cell(CellIndex.indexByColumnRow(
-                    columnIndex: column1, rowIndex: row1 + 4))
-                .value
-                .toString();
-          } else if (item == 'RIR') {
-            isRir = true;
-            rir = Rir();
-            rir.semana1 =
-                'RIR ${sheetObject.cell(CellIndex.indexByColumnRow(columnIndex: column1, rowIndex: row1 + 1)).value.toString()}';
-            rir.semana2 =
-                'RIR ${sheetObject.cell(CellIndex.indexByColumnRow(columnIndex: column1, rowIndex: row1 + 2)).value.toString()}';
-            rir.semana3 =
-                'RIR ${sheetObject.cell(CellIndex.indexByColumnRow(columnIndex: column1, rowIndex: row1 + 3)).value.toString()}';
-            rir.semana4 =
-                'RIR ${sheetObject.cell(CellIndex.indexByColumnRow(columnIndex: column1, rowIndex: row1 + 4)).value.toString()}';
-          } else if (item == 'Tiempo de descanso') {
-            isTd = true;
-            tiempoDeDescanso = TiempoDeDescanso();
-            tiempoDeDescanso.semana1 = sheetObject
-                .cell(CellIndex.indexByColumnRow(
-                    columnIndex: column1, rowIndex: row1 + 1))
-                .value;
-            tiempoDeDescanso.semana2 = sheetObject
-                .cell(CellIndex.indexByColumnRow(
-                    columnIndex: column1, rowIndex: row1 + 2))
-                .value;
-            tiempoDeDescanso.semana3 = sheetObject
-                .cell(CellIndex.indexByColumnRow(
-                    columnIndex: column1, rowIndex: row1 + 3))
-                .value;
-            tiempoDeDescanso.semana4 = sheetObject
-                .cell(CellIndex.indexByColumnRow(
-                    columnIndex: column1, rowIndex: row1 + 4))
-                .value;
-          } else if (item == 'Comentario') {
-            isComentario = true;
-            comentario = sheetObject
-                .cell(CellIndex.indexByColumnRow(
-                    columnIndex: column1, rowIndex: row1 + 1))
-                .value;
-          }
 
-          column1 = column1 + 1;
-        }
-        if (isEjercicio &&
-            isSeries &&
-            isReps &&
-            isRir &&
-            isTd &&
-            isComentario) {
-          int trabajo;
-          if (repeticiones.semana1.length > 1 &&
-              int.tryParse(repeticiones.semana1[1]) != null) {
-            if (repeticiones.semana1.length >= 3) {
-              if (int.parse(repeticiones.semana1
-                      .replaceRange(2, repeticiones.semana1.length, '')) >
-                  15)
+            column1 = column1 + 1;
+          }
+          if (isEjercicio &&
+              isSeries &&
+              isReps &&
+              isRir &&
+              isTd &&
+              isComentario) {
+            int trabajo;
+            if (repeticiones.semana1.length > 1 &&
+                int.tryParse(repeticiones.semana1[1]) != null) {
+              if (repeticiones.semana1.length >= 3) {
+                if (int.parse(repeticiones.semana1
+                        .replaceRange(2, repeticiones.semana1.length, '')) >
+                    15)
+                  trabajo = 3;
+                else
+                  trabajo = 2;
+              } else if (int.parse(repeticiones.semana1) > 15)
                 trabajo = 3;
               else
                 trabajo = 2;
-            } else if (int.parse(repeticiones.semana1) > 15)
-              trabajo = 3;
-            else
+            } else if (int.parse(repeticiones.semana1[0]) > 5)
               trabajo = 2;
-          } else if (int.parse(repeticiones.semana1[0]) > 5)
-            trabajo = 2;
-          else
-            trabajo = 1;
+            else
+              trabajo = 1;
 
-          patron = Patron(
-              ejercicioSeleccionado: ejercicioSeleccionado,
-              musculosTrabajados: ejercicioSeleccionado.musculosTrabajados,
-              comentario: comentario,
-              configuracion: Configuracion(
-                  series: series,
-                  repeticiones: repeticiones,
-                  rir: rir,
-                  tiempoDeDescanso: tiempoDeDescanso,
-                  trabajo: trabajo));
-          isEjercicio = false;
-          isSeries = false;
-          isReps = false;
-          isRir = false;
-          isTd = false;
-          isComentario = false;
+            patron = Patron(
+                ejercicioSeleccionado: ejercicioSeleccionado,
+                musculosTrabajados: ejercicioSeleccionado.musculosTrabajados,
+                comentario: comentario,
+                configuracion: Configuracion(
+                    series: series,
+                    repeticiones: repeticiones,
+                    rir: rir,
+                    tiempoDeDescanso: tiempoDeDescanso,
+                    trabajo: trabajo));
+            isEjercicio = false;
+            isSeries = false;
+            isReps = false;
+            isRir = false;
+            isTd = false;
+            isComentario = false;
 
-          mesocicloEntrenamiento.diasEntrenamiento[hoja].patrones.add(patron);
-        }
-        row1 = row1 + 1;
-      }
-      hoja = hoja + 1;
-    }
-    mesocicloEntrenamiento.diasEntrenamiento.forEach((diaE) {
-      List<String> musculosTrabajados = [];
-
-      diaE.patrones.forEach((patron) {
-        patron.ejercicioSeleccionado.musculosTrabajados.forEach((key, value) {
-          print(key);
-          if (key == 'Primario1') {
-            print(value);
-
-            //  if (ejercicioSeleccionado.musculosTrabajados['Primario1']==value)
-
-            musculosTrabajados.add(
-                patron.ejercicioSeleccionado.musculosTrabajados['Primario1']);
+            mesocicloEntrenamiento.diasEntrenamiento[hoja].patrones.add(patron);
           }
+          row1 = row1 + 1;
+        }
+        hoja = hoja + 1;
+      }
+      mesocicloEntrenamiento.diasEntrenamiento.forEach((diaE) {
+        List<String> musculosTrabajados = [];
+
+        diaE.patrones.forEach((patron) {
+          patron.ejercicioSeleccionado.musculosTrabajados.forEach((key, value) {
+            print(key);
+            if (key == 'Primario1') {
+              print(value);
+
+              //  if (ejercicioSeleccionado.musculosTrabajados['Primario1']==value)
+
+              musculosTrabajados.add(
+                  patron.ejercicioSeleccionado.musculosTrabajados['Primario1']);
+            }
+          });
+          diaE.musculosTrabajados = musculosTrabajados.toSet().toList();
         });
-        diaE.musculosTrabajados = musculosTrabajados.toSet().toList();
+
+        print(diaE.nombreentrenamiento);
+        print(diaE.musculosTrabajados);
+        print(diaE.musculosTrabajados.toSet().toList());
+
+        diaE.patrones.forEach((element) {
+          print(element.ejercicioSeleccionado.nombre);
+          print(element.comentario);
+        });
       });
 
-      print(diaE.nombreentrenamiento);
-      print(diaE.musculosTrabajados);
-      print(diaE.musculosTrabajados.toSet().toList());
-
-      diaE.patrones.forEach((element) {
-        print(element.ejercicioSeleccionado.nombre);
-        print(element.comentario);
+      await widget.userRepository.guardarEnBBDD(
+          clienteSeleccionado.keys.first, mesocicloEntrenamiento);
+      setState(() {
+        entrenamientoCargado = true;
       });
-    });
-  }
-
-  Future guardarEnBBDD() async {
-    final url =
-        'https://entrenaapp2-12fbe.firebaseio.com/W8BP78bU2oSUsOkiJvQTFLicseg1/mesociclos.json?auth=${widget.idToken}';
-    try {
-      await http.post(
-        url,
-        body: json.encode(mesocicloEntrenamiento.toJson()),
-      );
-
-//  print('se ha pulsadooooooo');
-//      DatabaseReference ref = widget.firebaseDatabase.ref('zzzzzzzzzzmensajes');
-//      ref.push('hehehehe');
-
     } catch (error) {
-      print(error);
-      throw error;
+      _showDialog();
     }
   }
 
@@ -649,8 +663,7 @@ class _CargarEntrenamientoState extends State<CargarEntrenamiento> {
   Map<String, String> clienteSeleccionado;
   @override
   void initState() {
-    print(widget.idUser);
-    widget.listaClientes.forEach((key, value) {
+    widget.userRepository.listaClientes.forEach((key, value) {
       listaNombreClientes.add(value);
     });
     print(listaNombreClientes);
@@ -659,10 +672,6 @@ class _CargarEntrenamientoState extends State<CargarEntrenamiento> {
 
   @override
   Widget build(BuildContext context) {
-    print('entraaaaaaaaaa');
-    print(widget.idToken);
-
-    print(widget.idUser);
     return Scaffold(
       body: (entrenamientoCargado == false)
           ? Center(
@@ -730,7 +739,8 @@ class _CargarEntrenamientoState extends State<CargarEntrenamiento> {
                                   ))
                               .toList(),
                           onChanged: (value) {
-                            widget.listaClientes.forEach((key, value1) {
+                            widget.userRepository.listaClientes
+                                .forEach((key, value1) {
                               if (value1 == value)
                                 setState(() {
                                   clienteSeleccionado = {key: value1};
@@ -749,10 +759,6 @@ class _CargarEntrenamientoState extends State<CargarEntrenamiento> {
                     color: Color.fromRGBO(3, 9, 40, 1),
                     onPressed: () async {
                       await cargarMesociclo();
-                      setState(() {
-                        entrenamientoCargado = true;
-                      });
-                      await guardarEnBBDD();
                     },
                     child: Text(
                       'Cargar Entrenamiento',
@@ -770,7 +776,22 @@ class _CargarEntrenamientoState extends State<CargarEntrenamiento> {
                   Icon(FontAwesomeIcons.solidFileExcel,
                       size: 50, color: Colors.green),
                   SizedBox(height: 5),
-                  Text(nombreEntrenamiento)
+                  Text(nombreEntrenamiento),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  RaisedButton(
+                    color: Color.fromRGBO(3, 9, 40, 1),
+                    onPressed: () async {
+                      setState(() {
+                        entrenamientoCargado = false;
+                      });
+                    },
+                    child: Text(
+                      'Atrás',
+                      style: TextStyle(color: Colors.grey[300]),
+                    ),
+                  ),
                 ])
               // RaisedButton(
               //   onPressed: () async{

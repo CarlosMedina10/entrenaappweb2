@@ -1,11 +1,7 @@
-
-
-
-
-
-
 import 'package:entrenaapp/models/blog_model.dart';
 import 'package:entrenaapp/src/screens/cargar_entrenamiento.dart';
+
+import 'package:entrenaapp/src/repository/user_repository.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -13,24 +9,23 @@ import 'package:flutter/material.dart';
 import 'home_screen.dart';
 
 class PersonalProjects extends StatefulWidget {
- final String idUser;
- final String idToken;
- 
- 
-  PersonalProjects(this.idUser,this.idToken,);
+  final String idUser;
+  final String idToken;
+  final UserRepository userRepository;
+
+  PersonalProjects(this.idUser, this.idToken, this.userRepository);
   @override
   _PersonalProjectsState createState() => _PersonalProjectsState();
 }
 
 class _PersonalProjectsState extends State<PersonalProjects> {
-
-bool isLoading=false;
-Map<String,dynamic> listaClientes;
+  bool isLoading = false;
+  Map<String, dynamic> listaClientes;
 
 // Future quiereSerEntrenador() async{
 
 // final url = 'https://entrenaapp2-12fbe.firebaseio.com/ZZentrenadores/${widget.idUser}.json?auth=${widget.idToken}';
-//     try{  await http.patch(url, body: 
+//     try{  await http.patch(url, body:
 //      json.encode(
 //      {'Nombre':'Carlos Medina'}
 //     ),
@@ -44,7 +39,7 @@ Map<String,dynamic> listaClientes;
 // Future quiereSerCliente() async{
 
 // final url = 'https://entrenaapp2-12fbe.firebaseio.com/ZZentrenadores/${widget.idUser}/Clientes.json?auth=${widget.idToken}';
-//     try{  await http.patch(url, body: 
+//     try{  await http.patch(url, body:
 //      json.encode(
 //      {'vjPlfIOxv1aLlgdDqxcNDCpzQJh2':'Alejandra Vila'}
 //     ),
@@ -55,19 +50,16 @@ Map<String,dynamic> listaClientes;
 //     }
 //     }
 
-  Future obtenerDatosDeClientes()async{
+  Future obtenerDatosDeClientes() async {
+    final url =
+        'https://entrenaapp2-12fbe.firebaseio.com/ZZentrenadores/${widget.idUser}/Clientes.json?auth=${widget.idToken}';
 
-final url = 'https://entrenaapp2-12fbe.firebaseio.com/ZZentrenadores/${widget.idUser}/Clientes.json?auth=${widget.idToken}';
-
-final response = await http.get(url);
-        // print(response.body);
-        listaClientes = json.decode(response.body) as Map<String,dynamic>;
-
-       
- 
+    final response = await http.get(url);
+    // print(response.body);
+    listaClientes = json.decode(response.body) as Map<String, dynamic>;
   }
-    
- List<BlogModel> blogList = List<BlogModel>();
+
+  List<BlogModel> blogList = List<BlogModel>();
 
   @override
   void initState() {
@@ -81,84 +73,86 @@ final response = await http.get(url);
     Size displaySize = MediaQuery.of(context).size;
     return SingleChildScrollView(
       physics: BouncingScrollPhysics(),
-      child: 
-      (isLoading==false) ?
-      Container(
-        height: displaySize.height,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: isSmallScreen(context)
-                  ? Container()
-                  : AutoSizeText(
-                      "Gestión de clientes",
-                      style: TextStyle(fontSize: 40),
-                    ),
-            ),
-            GridView.count(
-              physics: NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              crossAxisCount: displaySize.width < 1200 ? 2 : 3,
-              crossAxisSpacing: 10,
-              childAspectRatio:isSmallScreen(context)?0.9: 1.3,
-              padding: EdgeInsets.all(5),
-              children: <Widget>[
-                ...List<Widget>.generate(blogList.length, (int index) {
-                  return GestureDetector(
-                    onTap: () async{
-                  if (index==0)
-    {
-      setState(() {
-        isLoading=true;
-      });
-      await obtenerDatosDeClientes();
-      print(listaClientes);
- Navigator.push(
-                                                                      context,
-                                                                      MaterialPageRoute(
-                                                                          builder: (context) => CargarEntrenamiento(
-                                                                              widget.idUser, widget.idToken,listaClientes,
-                                                                              )));
-                                                                              
-                                                                              }
-      else obtenerDatosDeClientes();
+      child: (isLoading == false)
+          ? Container(
+              height: displaySize.height,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: isSmallScreen(context)
+                        ? Container()
+                        : AutoSizeText(
+                            "Gestión de clientes",
+                            style: TextStyle(fontSize: 40),
+                          ),
+                  ),
+                  GridView.count(
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    crossAxisCount: displaySize.width < 1200 ? 2 : 3,
+                    crossAxisSpacing: 10,
+                    childAspectRatio: isSmallScreen(context) ? 0.9 : 1.3,
+                    padding: EdgeInsets.all(5),
+                    children: <Widget>[
+                      ...List<Widget>.generate(blogList.length, (int index) {
+                        return GestureDetector(
+                          onTap: () async {
+                            if (index == 0) {
+                              setState(() {
+                                isLoading = true;
+                              });
+                              await obtenerDatosDeClientes();
+                              print(listaClientes);
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CargarEntrenamiento(
+                                            widget.userRepository,
+                                          )));
+                            } else
+                              obtenerDatosDeClientes();
 
-        setState(() {
-        isLoading=false;
-      });
-
-                    },
-                    child: Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Container(
-                              width: displaySize.width / 2,
-                              child: AutoSizeText(
-                                blogList[index].name,
-                                maxLines: 1,
-                                overflow: TextOverflow.clip,
-                                style: TextStyle(fontSize: 30),
+                            setState(() {
+                              isLoading = false;
+                            });
+                          },
+                          child: Card(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Container(
+                                    width: displaySize.width / 2,
+                                    child: AutoSizeText(
+                                      blogList[index].name,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.clip,
+                                      style: TextStyle(fontSize: 30),
+                                    ),
+                                  ),
+                                  Image.network(blogList[index].image),
+                                ],
                               ),
                             ),
-                            Image.network(blogList[index].image),
-                          ],
-                        ),
-                      ),
-                    ),
-                  );
-                })
-              ],
+                          ),
+                        );
+                      })
+                    ],
+                  )
+                ],
+              ),
             )
-          ],
-        ),
-      ) : Center(child: CircularProgressIndicator(backgroundColor: Colors.orange,),),
+          : Center(
+              child: CircularProgressIndicator(
+                backgroundColor: Colors.orange,
+              ),
+            ),
     );
   }
 

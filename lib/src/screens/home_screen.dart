@@ -1,4 +1,3 @@
-
 import 'package:entrenaapp/blocs/navigation_bloc.dart';
 import 'package:entrenaapp/src/screens/menu_section.dart';
 import 'package:entrenaapp/src/screens/personal_projects.dart';
@@ -8,12 +7,9 @@ import 'package:flutter/material.dart';
 import 'blog_screen.dart';
 import '../repository/user_repository.dart';
 
-
-
 class Home extends StatefulWidget {
+  final UserRepository userRepository;
 
-final UserRepository userRepository;
-  
   Home(this.userRepository);
   @override
   _HomeState createState() => _HomeState();
@@ -21,19 +17,17 @@ final UserRepository userRepository;
 
 class _HomeState extends State<Home> {
   var _scaffoldKey = GlobalKey<ScaffoldState>();
-  bool isEntrenador=false;
-  
-Map<String,dynamic>  listaClientes;
- 
- @override
+  bool isEntrenador = false;
+
+  Map<String, dynamic> listaClientes;
+
+  @override
   void initState() {
-    widget.userRepository.verSiEsEntrenador().then((value) => print(value));
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
- 
-
     return Scaffold(
       key: _scaffoldKey,
       appBar: isSmallScreen(context)
