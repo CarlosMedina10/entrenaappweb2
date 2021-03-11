@@ -119,7 +119,7 @@ BlocProvider.of<AuthenticationBloc>(
         Text('¡PARTICIPA!',
         style:TextStyle(fontSize: (isMobile || isTablet) ? size.width/17.5 : size.width/22.76, fontWeight:FontWeight.bold,color: Color(0xff0A183D) )),
          SizedBox(height:(isMobile) ? 8 : 16),
-        Text('Para participar en el sorteo simplemente tienes que escribir un nombre (A ser posible tu nombre de usuario en forocoches).\n\nEl día 15 de enero se anunciara el listado de ganadores en el foro y se les enviará un correo electrónico.\nAdemás como te hemos comentado...\n¡Solo por participar ganas un mes premium gratis! (SIN dejar tu tarjeta)',style: TextStyle(fontSize: (isMobile) ? 12 : 16,color: Color(0xff0A183D))),
+        Text('Para participar en el sorteo simplemente tienes que escribir un nombre.\n\nEl día 31 de enero se anunciara el listado de ganadores y se les enviará un correo electrónico.\nAdemás como te hemos comentado...\n¡Solo por participar ganas un mes premium gratis! (SIN dejar tu tarjeta)',style: TextStyle(fontSize: (isMobile) ? 12 : 16,color: Color(0xff0A183D))),
         Form(
             key: _formKey,
                     child: Container(

@@ -2442,7 +2442,7 @@ factory Ejercicio.remoconBarraCodosSeparadosConApoyoEnBancoInclinado() {
 
 factory Ejercicio.remoconBarraCodosSeparados() {
     return Ejercicio(
-        nombre: "Remo con barra con codos separados ",
+        nombre: "Remo con barra con codos separados",
         imagen: ['RemoConCodosSeparados.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -8711,7 +8711,7 @@ factory Ejercicio.encogimientosDeTrapecioConMancuerna() {
 
   factory Ejercicio.encogimientosDeTrapecioEnMultipower() {
     return Ejercicio(
-        nombre: "Encogimientos de trapecio en multipower ",
+        nombre: "Encogimientos de trapecio en multipower",
         imagen: ['EncogimientosDeTrapecioEnMultipower.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(

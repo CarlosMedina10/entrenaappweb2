@@ -43,30 +43,7 @@ final UserRepository userRepository;
   }
      // ignore: close_sinks
     SorteoblocBloc sorteoBloc = SorteoblocBloc(userRepository);
-//  _showAlert(int mesocicloEliminado,BuildContext context,String message) {
-//     showPlatformDialog(
-//       context: context,
-//       builder: (_) => BasicDialogAlert(
-//         title: Text("¿Estas seguro?"),
-//         content:
-//             Text(message),
-//         actions: <Widget>[
-//           BasicDialogAction(
-//             title: Text("Si"),
-//             onPressed: () {
-               
-//             },
-//           ),
-//           BasicDialogAction(
-//             title: Text("No"),
-//             onPressed: () {
-//               Navigator.pop(context);
-//             },
-//           ),
-//         ],
-//       ),
-//     );
-//   }
+
    
      
      return 

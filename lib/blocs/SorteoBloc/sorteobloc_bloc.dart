@@ -26,22 +26,21 @@ class SorteoblocBloc extends Bloc<SorteoblocEvent, SorteoblocState> {
 await Future.delayed(Duration(seconds: 2));
  if (userRepository.isUserPro == null) {
          String userID =  userRepository.getUserID();
-                  print(userID);
+                 
                await userRepository.darPremiumGratuito(userID);
                   userRepository.inscribirseEnElSorteo(event.nombreUsuario);
        yield YaSeHaInscrito();
        }
        else {
-         String userID =  userRepository.getUserID();
-                  print(userID);
-          
+       
+                
                   userRepository.inscribirseEnElSorteo(event.nombreUsuario);
           yield YaSeHaInscrito(isPremium: true);
          yield ErrorState(isPremium: true);
        
          }
       } catch (error) {
-        print(error);
+      
         yield ErrorState();
       }
 

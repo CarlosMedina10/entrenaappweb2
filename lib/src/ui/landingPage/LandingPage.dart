@@ -64,7 +64,7 @@ class _LandingPageState extends State<LandingPage> with TickerProviderStateMixin
        setState(() {
          userID =  value.getString('userID');
        });
-     print('$userID pppppppppppppp');
+   
      });
     
   }
@@ -200,49 +200,6 @@ switch(deviceType) {
     );
   }
 
-  Widget customCard( img, bool isMobile,isTablet,{text}) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Container(
-         
-          decoration: BoxDecoration(
-            
-              borderRadius: BorderRadius.circular(16.0), color: Colors.teal),
-          height: 
-            (text!=null) ?
-          (isMobile) ? 173 : (isTablet) ? (MediaQuery.of(context).size.height<500) ? 173 : MediaQuery.of(context).size.height/2.875 :  (MediaQuery.of(context).size.height<500) ? 228 :  MediaQuery.of(context).size.height/2.19 :
-           (isMobile) ? 400 : (isTablet) ? (MediaQuery.of(context).size.height<500) ? 205 : MediaQuery.of(context).size.height/2.38  :  (MediaQuery.of(context).size.height<500) ? 266 : MediaQuery.of(context).size.height/1.877
-          ,
-          
-          width:
-          (text!=null) ?
-           (isMobile) ? 173 : (isTablet) ?(MediaQuery.of(context).size.height<500) ? 173 : MediaQuery.of(context).size.height/2.875 : (MediaQuery.of(context).size.height<500) ? 228 : MediaQuery.of(context).size.height/2.19:
-           (isMobile) ? MediaQuery.of(context).size.width-64 : (isTablet) ? (MediaQuery.of(context).size.height<500) ? 285 : MediaQuery.of(context).size.height/1.75 :  (MediaQuery.of(context).size.height<500) ? 362 : MediaQuery.of(context).size.height/1.38 ,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(16.0),
-            child: Image(
-              fit: BoxFit.cover,
-              image: AssetImage(img),
-            ),
-          ),
-        ),
-        SizedBox(
-          height: 16.0,
-        ),
-     (text!=null) ?  Text(
-          text,
-          style: ThemText.cardText,
-        ) :  (isMobile) ?  Text(
-                              "** Desliza para ver mas",
-                              style: TextStyle(
-    color: Color(0xff0A183D),
-     fontSize: (isMobile) ? 12 : (isTablet) ? 14 : 16,
-   
-  ),) : Container(height:1)
-      ],
-    );
-  }
 
   
 Widget _buildFotos(bool isMobile, isTablet) {
@@ -396,8 +353,8 @@ switch(deviceType) {
     break;
 }
     var size = MediaQuery.of(context).size;
-    print(size.height);
-    print(size.width);
+
+
 
        if (isMobile || isTablet)
             {
@@ -425,7 +382,7 @@ switch(deviceType) {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
                     child: Image(
-                      image: AssetImage("assets/images/DisenoFondo2.jpg"),
+                      image: AssetImage("assets/images/DisenoFondo2.png"),
                     ),
                   ),
                 ) : Container(),
@@ -519,44 +476,100 @@ switch(deviceType) {
     fontWeight: FontWeight.w700,
   ) ,),
                       ),
+                      SizedBox(height:20),
                       Container(
                      
                        
                          width: (isMobile==false) ? (isTablet==false) ? size.width / 2 : size.width*5/8 : size.width,
+                        child: 
+                                                                Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      
+                      InkWell(
+                      onTap: () async{
+                    if (await canLaunch("https://play.google.com/store/apps/details?id=com.entrena_app.carlos10medina&hl=es&gl=US")) {
+                           await launch("https://play.google.com/store/apps/details?id=com.entrena_app.carlos10medina&hl=es&gl=US");}
+
+                  },
+                                          child: Container(
+                                            padding: EdgeInsets.symmetric(horizontal:10,vertical:5),
+                           decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(10),
+    color: Colors.white,
+    boxShadow: [
+    BoxShadow(color: Colors.orange, spreadRadius: 2),
+    ],
+  ),
+                                            child: Row(
+                        children: [
+                          Text('Google Play'),
+                          SizedBox(width: 10,),
+                          Icon(FontAwesomeIcons.googlePlay,color:Colors.green ,size:(isMobile) ? 16 : (isTablet) ? 24 : 32 ,),
+                        ],
+                      ),
+                                          ),
+                    ),
+                    SizedBox(width: (isMobile) ? 20 : 30,),
+                    
+                    InkWell(
+                      onTap: () async{
+                         if (await canLaunch("https://apps.apple.com/us/app/entrenaapp/id1533801846")) {
+                           await launch("https://apps.apple.com/us/app/entrenaapp/id1533801846");}
+                      },
+                      child: Container(
+                                 padding: EdgeInsets.symmetric(horizontal:10,vertical:5),
+                           decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(10),
+    color: Colors.white,
+    boxShadow: [
+    BoxShadow(color: Colors.orange, spreadRadius: 2),
+    ],
+  ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: () async{
-                                  if (await canLaunch("https://play.google.com/store/apps/details?id=com.entrena_app.carlos10medina&hl=es&gl=US")) {
-                       await launch("https://play.google.com/store/apps/details?id=com.entrena_app.carlos10medina&hl=es&gl=US");
-                             }
-                              },
-                                                            child: Container(
-                  width:(isMobile ) ? 100 : (isTablet ) ? 150 : 150,
-                  alignment: Alignment.center,
-                  child: Image(
-                          image:  AssetImage("assets/images/1.png"),
-                  ),
-                ),
-                            ),
-                             InkWell(
-                                onTap: () async{
-                                  if (await canLaunch("https://apps.apple.com/us/app/entrenaapp/id1533801846")) {
-                       await launch("https://apps.apple.com/us/app/entrenaapp/id1533801846");
-                             }
-                              },
-                                                              child: Container(
-                   width:(isMobile ) ? 100 : (isTablet ) ? 150 : 160,
-                  alignment: Alignment.center,
-                  child: Image(
-                          image:  AssetImage("assets/images/2.png"),
-                  ),
-                ),
-                             ),
+                                     children: [
+                            Text('App Store'),
+                            SizedBox(width: 10,),
+                            Icon(FontAwesomeIcons.appStore,color: Colors.blue,size:(isMobile) ? 16 : (isTablet) ? 24 : 32 )
                           ],
                         ),
+                      ),
+                    ),],),
+                //         Row(
+                //           mainAxisAlignment: MainAxisAlignment.center,
+                //           crossAxisAlignment: CrossAxisAlignment.center,
+                //           children: [
+                //             InkWell(
+                //               onTap: () async{
+                //                   if (await canLaunch("https://play.google.com/store/apps/details?id=com.entrena_app.carlos10medina&hl=es&gl=US")) {
+                //        await launch("https://play.google.com/store/apps/details?id=com.entrena_app.carlos10medina&hl=es&gl=US");
+                //              }
+                //               },
+                //                                             child: Container(
+                //   width:(isMobile ) ? 100 : (isTablet ) ? 150 : 150,
+                //   alignment: Alignment.center,
+                //   child: Image(
+                //           image:  AssetImage("assets/images/1.png"),
+                //   ),
+                // ),
+                //             ),
+                //              InkWell(
+                //                 onTap: () async{
+                //                   if (await canLaunch("https://apps.apple.com/us/app/entrenaapp/id1533801846")) {
+                //        await launch("https://apps.apple.com/us/app/entrenaapp/id1533801846");
+                //              }
+                //               },
+                //                                               child: Container(
+                //    width:(isMobile ) ? 100 : (isTablet ) ? 150 : 160,
+                //   alignment: Alignment.center,
+                //   child: Image(
+                //           image:  AssetImage("assets/images/2.png"),
+                //   ),
+                // ),
+                //              ),
+                //           ],
+                //         ),
                       ),
                     ],
                   ),
@@ -568,7 +581,7 @@ switch(deviceType) {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 4),
                     child: Image(
-                      image: (isTablet) ?  AssetImage("assets/images/DisenoFondo.jpg") : AssetImage("assets/images/DisenoFondo2.jpg"),
+                      image: (isTablet) ?  AssetImage("assets/images/DisenoFondo.png") : AssetImage("assets/images/DisenoFondo2.png"),
                     ),
                   ),
                 ) : Container(), 
@@ -1755,7 +1768,7 @@ switch(deviceType) {
           //Footer
        
        Container(
-            height: size.height * 0.2,
+            height: (size.height<500) ? 100 : size.height * 0.2,
             width: size.width,
             color: Color(0xff0A183D),
             child: Column(

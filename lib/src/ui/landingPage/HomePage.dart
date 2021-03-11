@@ -1,20 +1,18 @@
 import 'package:entrenaapp/blocs/LandingPageBloc/landingpage_bloc.dart';
 import 'package:entrenaapp/src/repository/user_repository.dart';
 import 'package:entrenaapp/src/ui/login/login_screen.dart';
+import 'package:entrenaapp/src/ui/particle_flutter/particle_background.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
-
 import '../../ui/landingPage/SendEmail.dart';
 import 'package:drawerbehavior/drawer_scaffold.dart';
 import 'package:drawerbehavior/drawerbehavior.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mailto/mailto.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import '../../ui/landingPage/NavigationBar.dart';
 import '../../ui/landingPage/LandingPage.dart';
 import '../../ui/landingPage/ConocenosPage.dart';
-import 'package:url_launcher/url_launcher.dart';
+
 
 
 class HomePage extends StatefulWidget {
@@ -115,14 +113,19 @@ switch(deviceType) {
                 
                 return
             Scaffold(
-                          body: SingleChildScrollView(
+                          body: 
+                Stack(
+          children: <Widget>[         
+            ParticleBackgroundPage(),  
+                      SingleChildScrollView(
         child: Column( 
           children: [
               NavigationBar(),
               LandingPage(state.isOnPrincipal,isInit),
           ],
-        ),
-      ),
+        ))
+        ]),
+      
             ) ; }
          if (state.isOnConocenos){
          return
@@ -176,21 +179,7 @@ Scaffold(
     
     
     
-    
-//     Scaffold(
-//       body: (isMobile==true || isTablet== true) ? Drawer3d() :  SingleChildScrollView(
-//         child: Column( 
-//           children: [
-//             NavigationBar(),
-//             LandingPage(),
-//           ],
-//         ),
-//       ) 
-      
-      
-//     );
-//   }
-// }
+
 class Drawer3d extends StatefulWidget {
  final  bool isOnPrincipal;
   final bool isOnConocenos;

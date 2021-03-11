@@ -4,23 +4,32 @@ import 'package:entrenaapp/src/screens/menu_section.dart';
 import 'package:entrenaapp/src/screens/personal_projects.dart';
 import 'package:entrenaapp/src/screens/profile_screen.dart';
 import 'package:entrenaapp/src/screens/talks_screen.dart';
-import 'package:firebase/firebase.dart';
 import 'package:flutter/material.dart';
-
 import 'blog_screen.dart';
+import '../repository/user_repository.dart';
+
+
 
 class Home extends StatefulWidget {
-final String idUser;
-final String idToken;
+
+final UserRepository userRepository;
   
-  Home(this.idUser,this.idToken);
+  Home(this.userRepository);
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
   var _scaffoldKey = GlobalKey<ScaffoldState>();
-
+  bool isEntrenador=false;
+  
+Map<String,dynamic>  listaClientes;
+ 
+ @override
+  void initState() {
+    widget.userRepository.verSiEsEntrenador().then((value) => print(value));
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
  
@@ -78,7 +87,7 @@ class _HomeState extends State<Home> {
           } else if (snapshot.data == NavigationScreen.Talks) {
             return TalksScreen();
           } else if (snapshot.data == NavigationScreen.PersonalProject) {
-            return PersonalProjects(widget.idUser,widget.idToken);
+            return ProfileSection();
           } else {
             return ProfileSection();
           }

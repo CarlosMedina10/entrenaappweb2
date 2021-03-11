@@ -24,6 +24,8 @@ class UserRepository {
   String errorString;
  dynamic haParticipado;
  dynamic isUserPro;
+ bool esEntrenador;
+ Map<String,dynamic> listaClientes;
 
 
 darPremiumGratuito(String userID,{bool isYear=false}) async{
@@ -48,7 +50,7 @@ darPremiumGratuito(String userID,{bool isYear=false}) async{
     "Content-Type": "application/json",
     "Authorization": "Bearer sk_LOnONfxsicGXLXdXBzMyzzueGmQBV"
   }); 
-  print('se enviaaaaaa');
+ 
   } catch (error){
     throw error;
   
@@ -58,7 +60,7 @@ darPremiumGratuito(String userID,{bool isYear=false}) async{
         }
 
 inscribirseEnElSorteo(String nombreUsuario){
- print('se ha pulsadooooooo');
+
      DatabaseReference ref1 = firebaseDatabase.ref('zzzzzzzzzzsorteo');
      DatabaseReference ref2 = firebaseDatabase.ref(getUserID());
      Map<String,String> inscripcion = {'nombreUsuario':nombreUsuario,'idUsuario':getUserID()};
@@ -66,7 +68,44 @@ inscribirseEnElSorteo(String nombreUsuario){
      ref2.update({'userPro': true,'haParticipadoSorteoFC':true});
      
      }
+   Future verSiEsEntrenador()async{
 
+
+    DatabaseReference ref = firebaseDatabase.ref('ZZentrenadores/${getUserID()}');
+    
+   
+ ref.onValue.listen((e) {
+   print('${e.snapshot.val()} kkkk');
+    DataSnapshot result = e.snapshot;
+    
+
+    if (result != null){
+ DatabaseReference ref = firebaseDatabase.ref('ZZentrenadores/${getUserID()}/Clientes');
+    
+   
+ ref.onValue.listen((e) {
+   print(e.snapshot.val());
+   listaClientes.addEntries(e.snapshot.val());
+   
+   esEntrenador=true; 
+    });}
+    else esEntrenador= false;
+  
+ 
+    // Do something with datasnapshot
+  });
+
+// final url = 'https://entrenaapp2-12fbe.firebaseio.com/ZZentrenadores/${widget.idUser}/Clientes.json?auth=${widget.idToken}';
+
+// final response = await http.get(url);
+//         // print(response.body);
+//         listaClientes = json.decode(response.body) as Map<String,dynamic>;
+
+//         return listaClientes;
+
+       
+ 
+  }
  Future  comprobandoPremium() async{
 
      
@@ -79,7 +118,7 @@ inscribirseEnElSorteo(String nombreUsuario){
     print(result.exists());
     print(result.toJson());
   isUserPro=result.val();
-  print(haParticipado);
+ 
     // Do something with datasnapshot
   });
      
@@ -92,11 +131,9 @@ inscribirseEnElSorteo(String nombreUsuario){
    
  ref.child('haParticipadoSorteoFC').onValue.listen((e) {
     DataSnapshot result = e.snapshot;
-    print(result.toString());
-    print(result.exists());
-    print(result.toJson());
+    
   haParticipado=result.val();
-  print(haParticipado);
+ 
     // Do something with datasnapshot
   });
      

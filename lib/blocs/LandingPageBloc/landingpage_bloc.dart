@@ -18,8 +18,7 @@ class LandingpageBloc extends Bloc<LandingpageEvent, LandingpageState> {
 
 
     if (event is WantIsDesktop)
-    { print('${event.isOnPrincipal} oooo');
-      print('${event.isOnConocenos} ooops');
+    { 
      if (event.isOnPrincipal)
     yield IsDesktop(true,false,false,false);
       if (event.isOnConocenos)

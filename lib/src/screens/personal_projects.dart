@@ -6,21 +6,10 @@
 
 import 'package:entrenaapp/models/blog_model.dart';
 import 'package:entrenaapp/src/screens/cargar_entrenamiento.dart';
-import 'package:firebase/firebase.dart';
 import 'package:http/http.dart' as http;
-
-import 'package:excel/excel.dart';
-import 'package:file_picker_cross/file_picker_cross.dart';
 import 'dart:convert';
-
-import '../../models/MesocicloEntrenamiento.dart';
-import '../../models/Ejercicio.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-
 import 'package:flutter/material.dart';
-
-
-
 import 'home_screen.dart';
 
 class PersonalProjects extends StatefulWidget {
