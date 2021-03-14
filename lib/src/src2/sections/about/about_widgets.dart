@@ -1,30 +1,39 @@
-import 'package:entrenaapp/models/Configuracion.dart';
-import 'package:entrenaapp/models/Ejercicio.dart';
-import 'package:entrenaapp/models/MesocicloEntrenamiento.dart';
-import 'package:entrenaapp/models/Patron.dart';
 import 'package:entrenaapp/src/repository/user_repository.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-
-import 'package:excel/excel.dart';
-import 'package:file_picker_cross/file_picker_cross.dart';
+import 'package:entrenaapp/src/src2/components/typewriter.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'dart:convert';
 
-class CargarEntrenamiento extends StatefulWidget {
-  final UserRepository userRepository;
-
-  CargarEntrenamiento(
-    this.userRepository,
-  );
+class AboutManImage extends StatelessWidget {
 
   @override
-  _CargarEntrenamientoState createState() => _CargarEntrenamientoState();
+  Widget build(BuildContext context) {
+    return Image.asset('images/man.png');
+  }
 }
 
-class _CargarEntrenamientoState extends State<CargarEntrenamiento> {
-    bool entrenamientoCargado = false;
+class AboutContent extends StatefulWidget {
+  final Color color;
+  final bool isMobile;
+  final UserRepository userRepository;
+
+  const AboutContent(this.userRepository,{this.color = Colors.white, this.isMobile = false});
+  @override
+  _AboutContentState createState() => _AboutContentState();
+}
+
+class _AboutContentState extends State<AboutContent>
+    with TickerProviderStateMixin {
+ 
+  static bool showStack1 = false;
+  static bool showStack2 = false;
+
+
+  static bool aboutSeen = false;
+  static bool stack1Seen = false;
+  static bool stack2Seen = false;
+
+   bool entrenamientoCargado = false;
     String nombreEntrenamiento;
   void _showDialog() {
     // flutter defined function
@@ -57,7 +66,7 @@ class _CargarEntrenamientoState extends State<CargarEntrenamiento> {
 
   List<String> listaNombreClientes = [];
   Map<String, String> clienteSeleccionado;
-  @override
+ @override
   void initState() {
     widget.userRepository.listaClientes.forEach((key, value) {
       listaNombreClientes.add(value);
@@ -65,11 +74,41 @@ class _CargarEntrenamientoState extends State<CargarEntrenamiento> {
     print(listaNombreClientes);
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: (entrenamientoCargado == false)
+    return AnimatedSize(
+      vsync: this,
+      duration: kThemeAnimationDuration,
+      alignment: Alignment.topCenter,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+         
+        
+            Typewriter(
+              "Desde aquí puedes subir el entrenamiento que has hecho en formato excel a tus clientes.\n\n"
+              'Simplemente selecciona un cliente y selecciona el entrenamiento que has preparado para el.\n',
+              animate: !aboutSeen,
+              duration: const Duration(seconds: 2),
+              textStyle: TextStyle(
+                color: widget.color,
+                fontSize: 16,
+                letterSpacing: 1.2,
+                height: 1.3,
+              ),
+              onEnd: () {
+                if (mounted) {
+                  setState(() {
+                    showStack1 = true;
+                    aboutSeen = true;
+                  });
+                }
+              },
+            ),
+          if (showStack1) ...[
+         (entrenamientoCargado == false)
           ? Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -209,6 +248,58 @@ class _CargarEntrenamientoState extends State<CargarEntrenamiento> {
               //   child: Text('Cargar Entrenamiento'),
               // ),
               ),
+          ],
+        //   if (showStack2)
+        //     widget.isMobile
+        //         ? Column(
+        //             crossAxisAlignment: CrossAxisAlignment.start,
+        //             mainAxisSize: MainAxisSize.min,
+        //             children: stack
+        //                 .map<Widget>(
+        //                   (s) => Padding(
+        //                     padding: const EdgeInsets.symmetric(vertical: 8),
+        //                     child: _buildStackItem(s),
+        //                   ),
+        //                 )
+        //                 .toList(),
+        //           )
+        //         : Wrap(
+        //             spacing: 80,
+        //             runSpacing: 12,
+        //             children: stack.map<Widget>(_buildStackItem).toList(),
+        //           ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildStackItem(String item) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        CircleAvatar(
+          radius: 3,
+          backgroundColor: widget.color,
+        ),
+        SizedBox(width: 5),
+        Typewriter(
+          item,
+          animate: !stack2Seen,
+          duration: const Duration(seconds: 1),
+          textStyle: TextStyle(
+            color: widget.color,
+            fontSize: 16,
+            letterSpacing: 1.4,
+          ),
+          onEnd: () {
+            if (mounted) {
+              setState(() {
+                stack2Seen = true;
+              });
+            }
+          },
+        ),
+      ],
     );
   }
 }

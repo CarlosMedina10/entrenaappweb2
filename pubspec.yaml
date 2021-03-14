@@ -55,8 +55,13 @@ dependencies:
   webview_flutter: ^1.0.7
   dio: ^3.0.10
   getwidget: ^1.1.0
-  flutter_session: ^0.1.1
+  flutter_typeahead: ^1.8.5
+  flutter_keyboard_visibility:
   
+  
+
+ 
+ 
   
  
   equatable:

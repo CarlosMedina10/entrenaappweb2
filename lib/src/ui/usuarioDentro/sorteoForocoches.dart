@@ -5,7 +5,7 @@ import 'package:entrenaapp/src/bloc/authentication_bloc/bloc.dart';
 import 'package:entrenaapp/src/repository/user_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_session/flutter_session.dart';
+
 import 'package:getwidget/getwidget.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 

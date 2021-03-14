@@ -21,6 +21,8 @@ class ComprobandoBloc extends Bloc<ComprobandoEvent, ComprobandoState> {
    
    if (event is Espera)
     { 
+  await userRepository.cargandoDatos();
+  print(userRepository.imgUrl);
    await userRepository.verSiEsEntrenador();
     
    

@@ -7,6 +7,7 @@ import 'package:entrenaapp/src/screens/cargar_entrenamiento.dart';
 import '../../widgets/RoundedButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../src2/components/responsive/layout_wrapper.dart';
 
 class Comprobando extends StatelessWidget {
   final UserRepository userRepository;
@@ -75,56 +76,57 @@ class Comprobando extends StatelessWidget {
                 }
 
                 if (state is EsEntrenador) {
-                  return CargarEntrenamiento(userRepository);
+                    return LayoutWrapper(userRepository);
                 }
                 if (state is NoEsEntrenador) {
-                  return Scaffold(
-                    body: Center(
-                        child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.error_sharp,
-                          color: Colors.red,
-                        ),
-                        SizedBox(height: 20),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                              'Esta sección es sólo para entrenadores que trabajan con Entrenaapp para mejorar la productividad y satisfacción de sus clientes. Contáctanos si estas interesado en saber mas :)'),
-                        ),
-                        SizedBox(
-                          height: 25,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            RoundedButton(
-                              color: Color(0xff0A183D),
-                              textTitle: 'Solicitar información',
-                              isMobile: false,
-                              isTablet: false,
-                            ),
-                            SizedBox(width: 20),
-                            InkWell(
-                              onTap: () =>
-                                  BlocProvider.of<AuthenticationBloc>(context)
-                                      .add(LoggedOut()),
-                              child: Row(
-                                children: [
-                                  Text('Salir'),
-                                  SizedBox(width: 10),
-                                  Icon(Icons.exit_to_app),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ],
-                    )),
-                  );
+                  return LayoutWrapper(userRepository);
+                  // return Scaffold(
+                  //   body: Center(
+                  //       child: Column(
+                  //     mainAxisAlignment: MainAxisAlignment.center,
+                  //     crossAxisAlignment: CrossAxisAlignment.center,
+                  //     children: [
+                  //       Icon(
+                  //         Icons.error_sharp,
+                  //         color: Colors.red,
+                  //       ),
+                  //       SizedBox(height: 20),
+                  //       Padding(
+                  //         padding: const EdgeInsets.all(8.0),
+                  //         child: Text(
+                  //             'Esta sección es sólo para entrenadores que trabajan con Entrenaapp para mejorar la productividad y satisfacción de sus clientes. Contáctanos si estas interesado en saber mas :)'),
+                  //       ),
+                  //       SizedBox(
+                  //         height: 25,
+                  //       ),
+                  //       Row(
+                  //         mainAxisAlignment: MainAxisAlignment.center,
+                  //         crossAxisAlignment: CrossAxisAlignment.center,
+                  //         children: [
+                  //           RoundedButton(
+                  //             color: Color(0xff0A183D),
+                  //             textTitle: 'Solicitar información',
+                  //             isMobile: false,
+                  //             isTablet: false,
+                  //           ),
+                  //           SizedBox(width: 20),
+                  //           InkWell(
+                  //             onTap: () =>
+                  //                 BlocProvider.of<AuthenticationBloc>(context)
+                  //                     .add(LoggedOut()),
+                  //             child: Row(
+                  //               children: [
+                  //                 Text('Salir'),
+                  //                 SizedBox(width: 10),
+                  //                 Icon(Icons.exit_to_app),
+                  //               ],
+                  //             ),
+                  //           )
+                  //         ],
+                  //       ),
+                  //     ],
+                  //   )),
+                  // );
                   ;
                 }
               }),
