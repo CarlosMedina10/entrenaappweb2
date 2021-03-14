@@ -44,6 +44,7 @@ class Patron {
   Map<String, dynamic> musculosTrabajados;
   String comentario;
   ListaConfiguraciones configuraciones;
+  int numeroPatron;
 
   Patron(
       {this.configuracion,
@@ -51,7 +52,8 @@ class Patron {
       this.ejercicios,
       this.ejercicioSeleccionado,
       this.objetivo,
-      this.musculosTrabajados,this.comentario,this.configuraciones});
+     
+      this.musculosTrabajados,this.comentario,this.configuraciones,this.numeroPatron});
 
   // static Patron empujeHorizontal = Patron(configuracion:configuracionejercicios:[Ejercicio.pressBanca,Ejercicio.pressPlanoConMancuernas,Ejercicio.pressPlanoEnMaquina]  ,ejercicioSeleccionado:Ejercicio.pressBanca,objetivo: 'Haz Esternocostal con ejercicio de empuje plano' );
 
@@ -70,7 +72,7 @@ class Patron {
 // static Patron elevacionPosterior = Patron(configuracion:configuracion,ejercicios:[Ejercicio.pajaroPosteriorConMancuernas]  ,ejercicioSeleccionado:Ejercicio.pajaroPosteriorConMancuernas,objetivo: 'Ejercicio de elevacion posterior para trabajar la porcion posterior del deltoides' );
 // static Patron abduccionHorizontal = Patron(configuracion:configuracion,ejercicios:[Ejercicio.posteriorEnMaquinaContractoraInversa]  ,ejercicioSeleccionado:Ejercicio.posteriorEnMaquinaContractoraInversa,objetivo: 'Ejercicio de abduccion horizontal para trabajar la porcion posterior del deltoides.' );
 
-  
+
   factory Patron.empujeHorizontal(Configuracion configuracion, {String comentario='No',ListaConfiguraciones listaConfiguraciones}) {
     return Patron(
       
@@ -87,8 +89,8 @@ class Patron {
           
           Ejercicio.fondosDePechoEnBarra(),
           Ejercicio.fondosDePechoEnBarrasParalelas(),
-          Ejercicio.pressVerticalEnMaquinaAgarreNeutro(),
-          Ejercicio.pressVerticalEnMaquina(),
+          Ejercicio.pressHorizontalEnMaquinaAgarreNeutro(),
+          Ejercicio.pressHorizontalEnMaquina(),
           Ejercicio.pressPlanoEnMultipower(),
          
           
@@ -98,6 +100,7 @@ class Patron {
         objetivo: 'Trabajamos el pectoral mayor con énfasis en el haz esternocostal con ejercicio de empuje horizontal.',
         musculosTrabajados:{'Primario1':'Pecho','Secundario1':'Hombro Frontal','Secundario2':'Triceps'},
         comentario: comentario,
+        numeroPatron: 1,
         );
   }
   
@@ -125,6 +128,7 @@ class Patron {
             'Trabajamos el pectoral mayor con énfasis en el haz clavicular con ejercicio de empuje en banco inclinado.',
          musculosTrabajados:{'Primario1':'Pecho','Secundario1':'Hombro Frontal','Secundario2':'Triceps'},   
          comentario: comentario,   
+         numeroPatron: 2
             );
   }
   factory Patron.empujeDeclinado(Configuracion configuracion, {String comentario='No',ListaConfiguraciones listaConfiguraciones}) {
@@ -144,6 +148,8 @@ class Patron {
             'Trabajamos el pectoral mayor con énfasis en el haz esternocostal con ejercicio de empuje horizontal.',
          musculosTrabajados:{'Primario1':'Pecho','Secundario1':'Hombro Frontal','Secundario2':'Triceps'},
             comentario: comentario,
+            numeroPatron: 3
+
             
             );
   }
@@ -165,6 +171,7 @@ class Patron {
             'Trabajo del pectoral mayor con énfasis en el haz clavicular con ejercicio de de flexión de hombro y aducción horizontal. También metemos bastante trabajo al deltoides frontal al hacer una flexión de hombro.',
         musculosTrabajados:{'Primario1':'Pecho','Secundario1':'Hombro Frontal',},
             comentario: comentario,    
+            numeroPatron: 5
             );
   }
   factory Patron.aduccionHorizontal(Configuracion configuracion, {String comentario='No',ListaConfiguraciones listaConfiguraciones}) {
@@ -189,7 +196,8 @@ class Patron {
         objetivo:
             'Trabajo del pectoral mayor (en concreto del haz esternocostal) con ejercicio de aducción horizontal.',
         musculosTrabajados:{'Primario1':'Pecho',},
-            comentario: comentario,    
+            comentario: comentario,
+            numeroPatron: 4   
             );
   }
  factory Patron.aduccionDeHombroYAduccionHorizontal(Configuracion configuracion, {String comentario='No',ListaConfiguraciones listaConfiguraciones}) {
@@ -212,6 +220,7 @@ class Patron {
             'Trabajo del pectoral mayor (en concreto del haz esternocostal) con ejercicio de aducción de hombro y aducción horizontal.',
         musculosTrabajados:{'Primario1':'Pecho',} ,
             comentario: comentario,   
+            numeroPatron: 6
             );
   }
  
@@ -240,7 +249,8 @@ factory Patron.visagraCadera(Configuracion configuracion, {String comentario='No
         objetivo:
             'Ejercicio basado en el movimiento de visagra de cadera con el trabajamos toda la cadena posterior del cuerpo (espalda,femoral,trapecios,hombro posterior etc).',
         musculosTrabajados:{'Primario1':'Espalda','Secundario1':'Femoral','Secundario2':'Trapecio','Secundario3':'Hombro Posterior'},
-            comentario: comentario,    
+            comentario: comentario,   
+            numeroPatron: 7 
             );
   }
 
@@ -264,6 +274,7 @@ factory Patron.aduccionDeHombro(Configuracion configuracion, {String comentario=
         objetivo: 'Trabajo del dorsal ancho (en concreto este patrón de movimiento es el mejor para trabajar la zona baja del dorsal) con un movimiento de aducción de hombro',
         musculosTrabajados:{'Primario1':'Espalda','Secundario1':'Biceps'},
             comentario: comentario,
+            numeroPatron: 8
         );
   }
   factory Patron.extensionDeHombroFlexionDeCodo(Configuracion configuracion, {String comentario='No',ListaConfiguraciones listaConfiguraciones}) {
@@ -318,6 +329,7 @@ factory Patron.aduccionDeHombro(Configuracion configuracion, {String comentario=
         objetivo: 'Trabajo del dorsal ancho (en concreto este patrón de movimiento es el mejor para trabajar la parte alta del dorsal ancho) con un movimiento de extensión de hombro',
         musculosTrabajados:{'Primario1':'Espalda','Secundario1':'Hombro Posterior','Secundario2':'Biceps'},
             comentario: comentario,
+            numeroPatron: 9
         );
   }
   factory Patron.apximacionDeEscapulas(Configuracion configuracion, {String comentario='No',ListaConfiguraciones listaConfiguraciones}) {
@@ -343,6 +355,7 @@ factory Patron.aduccionDeHombro(Configuracion configuracion, {String comentario=
         objetivo: 'Trabajo de la parte alta de la espalda(trapecio medio, romboides, hombro posterior etc)',
         musculosTrabajados:{'Primario1':'Espalda','Secundario1':'Hombro Posterior','Secundario2':'Trapecio','Secundario3':'Biceps'},
             comentario: comentario,
+            numeroPatron: 10
         );
   }
 factory Patron.extensionDeHombroSinFlexionDeCodo(Configuracion configuracion, {String comentario='No',ListaConfiguraciones listaConfiguraciones}) {
@@ -362,6 +375,7 @@ factory Patron.extensionDeHombroSinFlexionDeCodo(Configuracion configuracion, {S
         objetivo: 'Trabajo del dorsal ancho (en concreto este patrón de movimiento es el mejor para trabajar la parte alta del dorsal ancho) con un movimiento de extensión de hombro en el que además no se flexiona el codo como en un remo con mancuerna, por ejemplo.',
         musculosTrabajados:{'Primario1':'Espalda','Secundario1':'Hombro Posterior'},
             comentario: comentario,
+            numeroPatron: 11
         );
   }
 factory Patron.aduccionYExtensionDeHombro(Configuracion configuracion, {String comentario='No',ListaConfiguraciones listaConfiguraciones}) {
@@ -379,6 +393,7 @@ factory Patron.aduccionYExtensionDeHombro(Configuracion configuracion, {String c
         objetivo: 'Movimiento que combina la aducción con la extensión de hombro con el que trabajamos el dorsal ancho.',
         musculosTrabajados:{'Primario1':'Espalda','Secundario1':'Hombro Posterior','Secundario2':'Biceps'},
             comentario: comentario,
+            numeroPatron: 12
         );
   }
 
@@ -400,6 +415,7 @@ factory Patron.extensionDeHombroYAproximacionDeEscapulas(Configuracion configura
         objetivo: 'Movimiento que combina la extensión de hombro con la aproximación escapular para trabajar los aproximadores de escápulas junto con el dorsal ancho.',
         musculosTrabajados:{'Primario1':'Espalda','Secundario1':'Hombro Posterior','Secundario2':'Biceps','Secundario3':'Trapecio'},
             comentario: comentario,
+            numeroPatron: 13
         );
   }
 
@@ -431,49 +447,35 @@ factory Patron.empujeVertical(Configuracion configuracion, {String comentario='N
           'Secundario2': 'Pecho',
         },
             comentario: comentario,
+            numeroPatron: 14
         
         );
   }
-  
- factory Patron.hombroLateralEstiramiento(Configuracion configuracion, {String comentario='No',ListaConfiguraciones listaConfiguraciones}) {
+  factory Patron.flexionDeHombro(Configuracion configuracion, {String comentario='No',ListaConfiguraciones listaConfiguraciones}){
+    
+
     return Patron(
          configuraciones: listaConfiguraciones,
         configuracion:configuracion,
-        ejerciciosComodin: [Ejercicio.comodinElevacionLateralTumbado()],
-        ejercicios: [Ejercicio.elevacionLateralTumbadoConMancuerna(),
-       
-        ],
-        
-        objetivo:
-            'Trabajo de la cabeza lateral del deltoides en estiramiento.',
-        musculosTrabajados:{'Primario1':'Hombro Lateral',},
-            comentario: comentario,    
-            );
-  }
-  factory Patron.hombroLateralAcortamiento(Configuracion configuracion, {String comentario='No',ListaConfiguraciones listaConfiguraciones}) {
-    return Patron(
-         configuraciones: listaConfiguraciones,
-        configuracion:configuracion,
-        ejerciciosComodin: [Ejercicio.comodinElevacionLateral()],
+     
         ejercicios: [
-          
-          Ejercicio.remoAlMentonAgarreAncho(),
-          Ejercicio.elevacionLateralConBarra(),
-          Ejercicio.elevacionLateralConMancuerna(),
-          Ejercicio.elevacionLateralConMancuernaAUnaMano(),
-          Ejercicio.elevacionLateralSentadoConMancuerna(),
-          Ejercicio.elevacionesLateralesCrucifixConMancuerna(),
-          Ejercicio.elevacionLateralConBandaElastica(),
-          Ejercicio.elevacionLateralConBandaElasticaTecnica112()
+          Ejercicio.elevacionFrontalConBarraRecta(),
+          Ejercicio.elevacionFrontalConMancuernas(),
+          Ejercicio.elevacionFrontalEnPolea(),
+          Ejercicio.elevacionFrontalConBandaElastica()
         
         ],
        
         objetivo:
-            'Trabajo de la cabeza lateral del deltoides en acortamiento',
-        musculosTrabajados:{'Primario1':'Hombro Lateral',},
-            comentario: comentario,    
+            'Movimiento de flexión de hombro para trabajar el deltoides anterior ',
+        musculosTrabajados:{'Primario1':'Hombro Frontal',},
+            comentario: comentario,  
+            numeroPatron: 15      
             );
-  }
+  
+
+
+   }
   factory Patron.hombroLateralTensionConstante(Configuracion configuracion, {String comentario='No',ListaConfiguraciones listaConfiguraciones}) {
     return Patron(
          configuraciones: listaConfiguraciones,
@@ -502,35 +504,56 @@ factory Patron.empujeVertical(Configuracion configuracion, {String comentario='N
         objetivo:
             'Trabajo de la cabeza lateral del deltoides con tensión constante.',
         musculosTrabajados:{'Primario1':'Hombro Lateral',},
-            comentario: comentario,        
+            comentario: comentario, 
+            numeroPatron: 16       
             );
   }
-  
-   
-   factory Patron.flexionDeHombro(Configuracion configuracion, {String comentario='No',ListaConfiguraciones listaConfiguraciones}){
-    
-
+   factory Patron.hombroLateralAcortamiento(Configuracion configuracion, {String comentario='No',ListaConfiguraciones listaConfiguraciones}) {
     return Patron(
          configuraciones: listaConfiguraciones,
         configuracion:configuracion,
-     
+        ejerciciosComodin: [Ejercicio.comodinElevacionLateral()],
         ejercicios: [
-          Ejercicio.elevacionFrontalConBarraRecta(),
-          Ejercicio.elevacionFrontalConMancuernas(),
-          Ejercicio.elevacionFrontalEnPolea(),
-          Ejercicio.elevacionFrontalConBandaElastica()
+          
+          Ejercicio.remoAlMentonAgarreAncho(),
+          Ejercicio.elevacionLateralConBarra(),
+          Ejercicio.elevacionLateralConMancuerna(),
+          Ejercicio.elevacionLateralConMancuernaAUnaMano(),
+          Ejercicio.elevacionLateralSentadoConMancuerna(),
+          Ejercicio.elevacionesLateralesCrucifixConMancuerna(),
+          Ejercicio.elevacionLateralConBandaElastica(),
+          Ejercicio.elevacionLateralConBandaElasticaTecnica112()
         
         ],
        
         objetivo:
-            'Movimiento de flexión de hombro para trabajar el deltoides anterior ',
-        musculosTrabajados:{'Primario1':'Hombro Frontal',},
-            comentario: comentario,        
+            'Trabajo de la cabeza lateral del deltoides en acortamiento',
+        musculosTrabajados:{'Primario1':'Hombro Lateral',},
+            comentario: comentario,  
+            numeroPatron: 17
             );
+  }
+ factory Patron.hombroLateralEstiramiento(Configuracion configuracion, {String comentario='No',ListaConfiguraciones listaConfiguraciones}) {
+    return Patron(
+         configuraciones: listaConfiguraciones,
+        configuracion:configuracion,
+        ejerciciosComodin: [Ejercicio.comodinElevacionLateralTumbado()],
+        ejercicios: [Ejercicio.elevacionLateralTumbadoConMancuerna(),
+       
+        ],
+        
+        objetivo:
+            'Trabajo de la cabeza lateral del deltoides en estiramiento.',
+        musculosTrabajados:{'Primario1':'Hombro Lateral',},
+            comentario: comentario, 
+            numeroPatron: 18  
+            );
+  }
+ 
   
-
-
-   }
+  
+   
+   
    
    
      factory Patron.abduccionHorizontal(Configuracion configuracion, {String comentario='No',ListaConfiguraciones listaConfiguraciones}) {
@@ -557,7 +580,8 @@ factory Patron.empujeVertical(Configuracion configuracion, {String comentario='N
         objetivo:
             'Movimiento de abducción horizontal para trabajar el deltoides posterior.',
          musculosTrabajados:{'Primario1':'Hombro Posterior',} ,
-            comentario: comentario,      
+            comentario: comentario,  
+            numeroPatron: 19    
             );
   }
    
@@ -590,7 +614,8 @@ factory Patron.empujeVertical(Configuracion configuracion, {String comentario='N
         objetivo:
             'Trabajo del bíceps (especialmente de la cabeza corta) con el hombro en flexión.',
         musculosTrabajados:{'Primario1':'Biceps',},
-            comentario: comentario,        
+            comentario: comentario,
+            numeroPatron: 20        
             );
   }
    
@@ -617,7 +642,8 @@ factory Patron.empujeVertical(Configuracion configuracion, {String comentario='N
         
         objetivo: 'Trabajo del bíceps con el hombro en posición anatómica',
         musculosTrabajados:{'Primario1':'Biceps',},
-            comentario: comentario,    
+            comentario: comentario,
+            numeroPatron: 21    
         );
   } 
   
@@ -638,7 +664,8 @@ factory Patron.empujeVertical(Configuracion configuracion, {String comentario='N
             'Trabajo del bíceps (especialmente de la cabeza larga) con el hombro en extensión',
             
         musculosTrabajados:{'Primario1':'Biceps',},
-            comentario: comentario,        
+            comentario: comentario,
+            numeroPatron: 22        
             );
   }
    
@@ -663,7 +690,8 @@ factory Patron.empujeCerrado(Configuracion configuracion, {String comentario='No
         
         objetivo: 'Trabajo del tríceps con ejercicio de empuje con agarre cerrado.',
         musculosTrabajados:{'Primario1':'Triceps','Secundario1':'Pecho'},
-            comentario: comentario,    
+            comentario: comentario,
+            numeroPatron: 23    
         
         );
   }
@@ -696,7 +724,8 @@ factory Patron.empujeCerrado(Configuracion configuracion, {String comentario='No
        
         objetivo: 'Trabajo de tríceps (énfasis en la cabeza medial) con el hombro en flexion',
         musculosTrabajados:{'Primario1':'Triceps',},
-            comentario: comentario,    
+            comentario: comentario, 
+            numeroPatron: 24   
         
         );
   }   
@@ -716,7 +745,8 @@ factory Patron.empujeCerrado(Configuracion configuracion, {String comentario='No
         
         objetivo: 'Trabajo de tríceps (énfasis en la cabeza larga) con el hombro en extensión',
          musculosTrabajados:{'Primario1':'Triceps',},
-            comentario: comentario,    
+            comentario: comentario, 
+            numeroPatron: 25   
         
         );
   }
@@ -743,7 +773,8 @@ factory Patron.empujeCerrado(Configuracion configuracion, {String comentario='No
         
         objetivo: 'Trabajo del cuádriceps (también del femoral y glúteo) con un ejercicio pesado que combina la extensión de rodilla y de cadera.',
          musculosTrabajados:{'Primario1':'Cuadriceps','Secundario1':'Gluteo','Secundario2':'Femoral',},
-            comentario: comentario,    
+            comentario: comentario,   
+            numeroPatron: 26 
         
         );
   }
@@ -768,7 +799,8 @@ factory Patron.empujeCerrado(Configuracion configuracion, {String comentario='No
         
         objetivo: 'Trabajo del cuádriceps con un ejercicio pesado de extensión de rodilla.',
          musculosTrabajados:{'Primario1':'Cuadriceps',},
-            comentario: comentario,    
+            comentario: comentario, 
+            numeroPatron: 27   
         
         );
   }
@@ -785,7 +817,7 @@ factory Patron.empujeCerrado(Configuracion configuracion, {String comentario='No
         Ejercicio.extensionDeCuadricepsEnMaquina(),
         Ejercicio.prensaHorizontalEnMaquinaConPiesAbajo(),
         Ejercicio.prensaVerticalEnMaquina(),
-        Ejercicio.stepUpEnMultipower(),
+       
         Ejercicio.zancadasEnMultipower(),
         Ejercicio.sentadillaBulgaraEnMultipower(),
         Ejercicio.sentadillaSissy(),
@@ -798,7 +830,8 @@ factory Patron.empujeCerrado(Configuracion configuracion, {String comentario='No
         
         objetivo: 'Trabajo del cuádriceps con un ejercicio ligero de extensión de rodilla.',
          musculosTrabajados:{'Primario1':'Cuadriceps',},
-            comentario: comentario,    
+            comentario: comentario, 
+            numeroPatron: 28   
         
         );
   }
@@ -825,7 +858,8 @@ factory Patron.extensionDeRodillaLigera1(Configuracion configuracion, {String co
         
         objetivo: 'Trabajo del cuádriceps con un ejercicio ligero de extensión de rodilla.',
          musculosTrabajados:{'Primario1':'Cuadriceps',},
-            comentario: comentario,    
+            comentario: comentario,  
+            
         
         );
   }
@@ -838,7 +872,7 @@ factory Patron.extensionDeRodillaLigera2(Configuracion configuracion, {String co
         Ejercicio.extensionDeCuadricepsEnMaquina(),
         Ejercicio.prensaHorizontalEnMaquinaConPiesAbajo(),
         Ejercicio.prensaVerticalEnMaquina(),
-        Ejercicio.stepUpEnMultipower(),
+       
       
         Ejercicio.sentadillaSissy(),
      
@@ -873,7 +907,8 @@ factory Patron.extensionDeRodillaLigera2(Configuracion configuracion, {String co
         
         objetivo: 'Trabajo del fermoral con ejercicio basado en la flexión de rodilla',
          musculosTrabajados:{'Primario1':'Femoral',},
-            comentario: comentario,    
+            comentario: comentario,   
+            numeroPatron: 29 
         
         );
   }
@@ -902,7 +937,8 @@ factory Patron.extensionDeRodillaLigera2(Configuracion configuracion, {String co
         
         objetivo: 'Movimiento de extensión de cadera manteniendo rígidas o semirígidas las rodillas para priorizar el trabajo de femoral sobre el glúteo',
          musculosTrabajados:{'Primario1':'Femoral','Secundario1':'Gluteo'},
-            comentario: comentario,    
+            comentario: comentario, 
+            numeroPatron: 30   
         
         );
   }
@@ -926,7 +962,8 @@ factory Patron.extensionDeRodillaLigera2(Configuracion configuracion, {String co
         
         objetivo: 'Ejercicio basado en la extensión de cadera con carga axial priorizando el trabajo de glúteo mayor sobre el femoral.',
          musculosTrabajados:{'Primario1':'Gluteo','Secundario1':'Femoral'},
-            comentario: comentario,    
+            comentario: comentario,  
+            numeroPatron: 31  
         
         );
   }
@@ -947,7 +984,8 @@ factory Patron.extensionDeRodillaLigera2(Configuracion configuracion, {String co
         
         objetivo: 'Ejercicio basado en la extensión de cadera con carga horizontal priorizando el trabajo de glúteo mayor.',
          musculosTrabajados:{'Primario1':'Gluteo','Secundario1':'Femoral'},
-            comentario: comentario,    
+            comentario: comentario, 
+            numeroPatron: 32   
         
         );
   }
@@ -965,7 +1003,7 @@ factory Patron.extensionDeRodillaLigera2(Configuracion configuracion, {String co
         ],
         ejercicios: [Ejercicio.hipThrustAUnaPierna(),
         Ejercicio.sentadillaBulgaraEnfasisGluteo(),
-        
+         Ejercicio.stepUpEnMultipower(),
         Ejercicio.sentadillaBulgaraConMancuernasEnfasisGluteoGym(),
         
         Ejercicio.patadaDeGluteoConPesoCorporal(),
@@ -982,6 +1020,7 @@ factory Patron.extensionDeRodillaLigera2(Configuracion configuracion, {String co
         objetivo: 'Ejercicio ligero basado en la extensión de cadera para trabajar el glúteo mayor.',
          musculosTrabajados:{'Primario1':'Gluteo','Secundario1':'Femoral'},
             comentario: comentario,    
+            numeroPatron: 33
         
         );
   }
@@ -1009,7 +1048,8 @@ factory Patron.extensionDeRodillaLigera2(Configuracion configuracion, {String co
         
         objetivo: 'Ejercicio ligero basado en la abducción de cadera para trabajar el glúteo medio.',
          musculosTrabajados:{'Primario1':'Gluteo',},
-            comentario: comentario,    
+            comentario: comentario,  
+            numeroPatron: 34  
         
         );
   }
@@ -1028,7 +1068,8 @@ factory Patron.aduccionDeCadera(Configuracion configuracion, {String comentario=
         
         objetivo: 'Ejercicio ligero basado en la aduccion de cadera para trabajar los aductores.',
          musculosTrabajados:{'Primario1':'Gluteo',},
-            comentario: comentario,    
+            comentario: comentario,
+            numeroPatron: 35    
         
         );
   }
@@ -1052,7 +1093,8 @@ factory Patron.aduccionDeCadera(Configuracion configuracion, {String comentario=
         
         objetivo: 'Trabajo directo de los trapecios.',
          musculosTrabajados:{'Primario1':'Trapecio',},
-            comentario: comentario,    
+            comentario: comentario,
+            numeroPatron: 36    
         
         );
   }
@@ -1074,7 +1116,8 @@ factory Patron.aduccionDeCadera(Configuracion configuracion, {String comentario=
         
         objetivo: 'Ejercicio de gemelo con la rodilla extendida para trabajar tanto el sóleo como el gastrocnemio.',
          musculosTrabajados:{'Primario1':'Gemelo',},
-            comentario: comentario,    
+            comentario: comentario, 
+            numeroPatron: 37   
         
         );
   }
@@ -1095,7 +1138,8 @@ factory Patron.aduccionDeCadera(Configuracion configuracion, {String comentario=
         objetivo: 'Ejercicio de gemelo con la rodilla flexionada para enfatizar el trabajo del sóleo ya que al flexionar la rodilla desactivamos el gastrocnemio.' ,
         
          musculosTrabajados:{'Primario1':'Gemelo',},
-            comentario: comentario,    
+            comentario: comentario,   
+            numeroPatron: 38 
         
         );
   }
@@ -1120,7 +1164,8 @@ factory Patron.aduccionDeCadera(Configuracion configuracion, {String comentario=
         
         objetivo: 'Trabajo del recto abdominal con ejercicio de flexion de columna (o antiextensión de esta).',
          musculosTrabajados:{'Primario1':'Abs',},
-            comentario: comentario,    
+            comentario: comentario,  
+            numeroPatron: 39  
         
         );
   }
@@ -1143,6 +1188,7 @@ factory Patron.aduccionDeCadera(Configuracion configuracion, {String comentario=
         objetivo: 'Trabajo de los músculos oblicuos con ejercicio de rotación de tronco (o antirotación de este).',
          musculosTrabajados:{'Primario1':'Abs',},
             comentario: comentario,    
+            numeroPatron: 40
         
         );
   } 
@@ -1213,10 +1259,13 @@ factory Patron.aduccionDeCadera(Configuracion configuracion, {String comentario=
     ejercicioSeleccionado = json['ejercicioSeleccionado'] != null
         ? new Ejercicio.fromJson(json['ejercicioSeleccionado'])
         : null;
-    objetivo = json['objetivo'];
+    if (json['objetivo'] != null)
+    objetivo = json['objetivo']; 
+    if (json['musculosTrabajados'] != null)
     musculosTrabajados = json['musculosTrabajados'];
     if (json['comentario'] != null)
     comentario=json['comentario']; else comentario='No';
+    
   }
 
   Map<String, dynamic> toJson() {
@@ -1224,15 +1273,16 @@ factory Patron.aduccionDeCadera(Configuracion configuracion, {String comentario=
     if (this.configuracion != null) {
       data['configuracion'] = this.configuracion.toJson();
     }
-    if (this.ejercicios != null) {
-      data['ejercicios'] = this.ejercicios.map((v) => v.toJson()).toList();
-    }
+    // if (this.ejercicios != null) {
+    //   data['ejercicios'] = this.ejercicios.map((v) => v.toJson()).toList();
+    // }
     if (this.ejercicioSeleccionado != null) {
       data['ejercicioSeleccionado'] = this.ejercicioSeleccionado.toJson();
     }
-    data['objetivo'] = this.objetivo;
-    data['musculosTrabajados']= this.musculosTrabajados;
-    data['comentario'] = this.comentario;
+    // data['objetivo'] = this.objetivo;
+    // data['musculosTrabajados']= this.musculosTrabajados;
+    data['comentario'] = (this.comentario!='No') ? this.comentario : null;
+
     return data;
   }
 }
