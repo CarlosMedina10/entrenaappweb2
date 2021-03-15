@@ -2,6 +2,7 @@
 import 'dart:html' as html;
 
 import 'package:entrenaapp/src/repository/user_repository.dart';
+import 'package:entrenaapp/src/src2/sections/ejercicios/ejercicios_mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:entrenaapp/src/src2/body.dart';
 import 'package:entrenaapp/src/src2/components/drawer.dart';
@@ -28,7 +29,7 @@ class _MobilePageState extends State<MobilePage> {
      final pages = [
     HomeSectionMobile(widget.userRepository),
     AboutSectionMobile(widget.userRepository),
-  ];
+    EjerciciosSectionMobile(widget.userRepository)  ];
 
     return Scaffold(
       appBar: MobileNavbar(),

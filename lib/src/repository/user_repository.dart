@@ -207,6 +207,7 @@ class UserRepository {
           Ejercicio.curlConcentradoEnBancoInclinadoConMancuerna(),
           Ejercicio.curlDeBicepsEnBancoScottConMancuerna(),
           Ejercicio.curlDeBicepsMartilloEnBancoScottConMancuerna(),
+          Ejercicio.curlDeBicepsEnMaquinaScott(),
           Ejercicio.curlDeBicepsTumbadoEnPoleaAlta(),
           Ejercicio.curlDeBicepsEnPoleaAltaADosManos(),
           Ejercicio.curlDeBicepsConcentradoConBandaElastica(),

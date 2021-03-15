@@ -3,14 +3,14 @@
 
 
 
-import 'dart:io';
+
 
 import 'package:file_picker_cross/file_picker_cross.dart';
 import 'package:path/path.dart';
 import 'package:excel/excel.dart';
 import 'package:entrenaapp/src/repository/user_repository.dart';
 import 'package:entrenaapp/src/src2/components/typewriter.dart';
-
+import 'dart:html' as html;
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:mailto/mailto.dart';
@@ -115,7 +115,7 @@ class _IntroductionState extends State<Introduction>
               animate: !nameSeen,
               textStyle: TextStyle(
                 color: Colors.blueGrey[900],
-                fontSize: 30,
+                fontSize: 24,
                 fontWeight: FontWeight.w700,
               ),
               onEnd: () {
@@ -174,7 +174,7 @@ class _IntroductionState extends State<Introduction>
           ],
           if (showHireMe) ...[
             SizedBox(height: 30),
-            _HireMeButton(),
+            _HireMeButton(widget.userRepository),
           ],
         ],
       ),
@@ -183,6 +183,8 @@ class _IntroductionState extends State<Introduction>
 }
 
 class _HireMeButton extends StatefulWidget {
+ final UserRepository userRepository;
+  _HireMeButton(this.userRepository);
   @override
   __HireMeButtonState createState() => __HireMeButtonState();
 }
@@ -190,43 +192,60 @@ class _HireMeButton extends StatefulWidget {
 class __HireMeButtonState extends State<_HireMeButton> {
   bool hovered = false;
   launchMailto() async {
-     FilePickerCross myFile = await FilePickerCross.importFromStorage(
-          type: FileTypeCross
-              .custom, // Available: `any`, `audio`, `image`, `video`, `custom`. Note: not available using FDE
-          fileExtension:
-              '.xlsx' // Only if FileTypeCross.custom . May be any file extension like `.dot`, `.ppt,.pptx,.odp`
-          );
-     
-      print(myFile.fileName.replaceRange(
-          myFile.fileName.length - 5, myFile.fileName.length, ''));
+//    List<String> listaMusculos= ['Pecho','Espalda','Hombro Frontal','Hombro Lateral','Hombro Posterior','Biceps','Triceps','Cuadriceps','Femoral','Gluteo','Trapecio','Gemelo','Abs'];
+// FilePickerCross myFile = await FilePickerCross.importFromStorage(
+//   type: FileTypeCross.any,       // Available: `any`, `audio`, `image`, `video`, `custom`. Note: not available using FDE
+//   fileExtension: '.txt, .md'     // Only if FileTypeCross.custom . May be any file extension like `.dot`, `.ppt,.pptx,.odp`
+// );
+// print(myFile.path);
 
-      var bytes = myFile.toUint8List();
-      var excel = Excel.decodeBytes(bytes);
-          Sheet sheetObject = excel['Día 1'];
-      
-   
-      
-      
-      var cell = sheetObject.cell(CellIndex.indexByString("A"));
-      cell.value = 8; // dynamic values support provided;
-  
-      
-      
-        excel.encode().then((onValue) {
-        File(join("assets/nº1 2021 Fuerza y masa Adrian Varela.xlsx"))
-        ..createSync(recursive: true)
-        ..writeAsBytesSync(onValue);
-    });
-    // final mailtoLink = Mailto(
-    //   to: ['carlos10zrg@hotmail.com'],
-    //   subject: 'Asesoramiento personalizado',
-    //   body:
-    //       'Hola Carlos, me gustaria recibir información sobre EntrenaAPP para entrenadores. Un Saludo.',
-    // );
-    // // Convert the Mailto instance into a string.
-    // // Use either Dart's string interpolation
-    // // or the toString() method.
-    // await launch('$mailtoLink');
+//     var bytes = myFile.toUint8List();
+//     var excel = Excel.decodeBytes(bytes);
+//       Sheet sheetObject = excel['Hoja de datos (importante)'];
+//       int rowindex=7;
+//       int columnindex=2;
+//       listaMusculos.forEach((musculo) { 
+//      widget.userRepository.listaEjercicios.forEach((ejercicio) {
+//         if (ejercicio.musculosTrabajados['Primario1']==musculo){
+//           print(ejercicio.nombre);
+//   var cell = sheetObject.cell(CellIndex.indexByColumnRow(columnIndex:columnindex,rowIndex:rowindex));
+//  cell.value = ejercicio.nombre; 
+//   rowindex=rowindex+1;
+
+//   }
+ 
+ 
+//  }); 
+//  rowindex=7;
+//  columnindex=columnindex+1;
+ 
+//  });
+//   excel.encode().then((excel_bytes) {
+//    final blob = html.Blob([excel_bytes]);
+//    final url = html.Url.createObjectUrlFromBlob(blob);
+//    final anchor = html.document.createElement('a') as html.AnchorElement
+//      ..href = url
+//      ..style.display = 'none'
+//      ..download = 'nº1 Fuerza y masa (1 de 3).xlsx';
+//    html.document.body.children.add(anchor);
+
+//    // download the file
+//    anchor.click();
+
+//    // cleanup
+//    // html.document.body.children.remove(anchor);
+//    // html.Url.revokeObjectUrl(url);
+//  });
+    final mailtoLink = Mailto(
+      to: ['carlos10zrg@hotmail.com'],
+      subject: 'Asesoramiento personalizado',
+      body:
+          'Hola Carlos, me gustaria recibir información sobre EntrenaAPP para entrenadores. Un Saludo.',
+    );
+    // Convert the Mailto instance into a string.
+    // Use either Dart's string interpolation
+    // or the toString() method.
+    await launch('$mailtoLink');
   }
 
   @override

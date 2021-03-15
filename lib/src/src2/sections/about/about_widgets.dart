@@ -8,7 +8,7 @@ class AboutManImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset('images/man.png');
+    return Image.asset('assets/images/man.png');
   }
 }
 

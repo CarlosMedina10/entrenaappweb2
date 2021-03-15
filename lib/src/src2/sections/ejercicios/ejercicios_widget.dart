@@ -15,7 +15,6 @@ class Ejercicios extends StatefulWidget {
 
 class _EjerciciosState extends State<Ejercicios>
     with SingleTickerProviderStateMixin {
- 
   bool seleccionado = false;
   final TextEditingController _typeAheadController = TextEditingController();
 
@@ -53,76 +52,53 @@ class _EjerciciosState extends State<Ejercicios>
   @override
   void initState() {
     widget.userRepository.listaEjerciciosString = [];
-  
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        // call this method here to hide soft keyboard
-        FocusScope.of(context).requestFocus(new FocusNode());
-      },
-      child: Center(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              // Text(
-              //   '¿Que ejercicio quieres elegir?',
-              //   style: TextStyle(color: Colors.grey[50]),
-              // ),
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            // Text(
+            //   '¿Que ejercicio quieres elegir?',
+            //   style: TextStyle(color: Colors.grey[50]),
+            // ),
 
-              Container(
-                width: MediaQuery.of(context).size.width * 0.5,
-                child: new Theme(
-                    data: Theme.of(context).copyWith(
-                      canvasColor: Color.fromRGBO(3, 9, 40, 1),
-                    ),
-                    child: new DropdownButton<String>(
-                      underline: SizedBox(),
-                      iconEnabledColor: Color.fromRGBO(3, 9, 40, 1),
-                      isExpanded: true,
-                      hint: Container(
-                          width: MediaQuery.of(context).size.width * 0.5,
-                          child: Text('Seleccionar grupo muscular',
-                              style: TextStyle(
-                                color: Color.fromRGBO(3, 9, 40, 1),
-                                fontSize:
-                                    (MediaQuery.of(context).size.width < 500)
-                                        ? 16
-                                        : 24,
-                                fontWeight: FontWeight.w500,
-                              ))),
-                      selectedItemBuilder: (context) {
-                        return listaGruposMusculares
-                            .map((nombre) => DropdownMenuItem(
-                                  value: nombre,
-                                  child: Text(
-                                    '$nombre',
-                                    style: TextStyle(
-                                      color: Color.fromRGBO(3, 9, 40, 1),
-                                      fontSize:
-                                          (MediaQuery.of(context).size.width <
-                                                  500)
-                                              ? 16
-                                              : 24,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ))
-                            .toList();
-                      },
-                      items: listaGruposMusculares
+            Container(
+              
+              child: new Theme(
+                  data: Theme.of(context).copyWith(
+                    canvasColor: Color.fromRGBO(3, 9, 40, 1),
+                  ),
+                  child: new DropdownButton<String>(
+                    underline: SizedBox(),
+                    iconEnabledColor: Color.fromRGBO(3, 9, 40, 1),
+                    isExpanded: true,
+                    hint: Container(
+                       
+                        child: Text('Seleccionar grupo muscular',
+                            style: TextStyle(
+                              color: Color.fromRGBO(3, 9, 40, 1),
+                              fontSize:
+                                  (MediaQuery.of(context).size.width < 500)
+                                      ? 16
+                                      : 24,
+                              fontWeight: FontWeight.w500,
+                            ))),
+                    selectedItemBuilder: (context) {
+                      return listaGruposMusculares
                           .map((nombre) => DropdownMenuItem(
                                 value: nombre,
                                 child: Text(
                                   '$nombre',
                                   style: TextStyle(
-                                    color: Colors.grey[300],
+                                    color: Color.fromRGBO(3, 9, 40, 1),
                                     fontSize:
                                         (MediaQuery.of(context).size.width <
                                                 500)
@@ -132,196 +108,113 @@ class _EjerciciosState extends State<Ejercicios>
                                   ),
                                 ),
                               ))
-                          .toList(),
-                      onChanged: (value) {
-                        setState(() {
-                          grupoMuscularSeleccionado = value;
-                          print(grupoMuscularSeleccionado);
-                          widget.userRepository.listaEjerciciosString = [];
-                          widget.userRepository
-                              .crearListaString(grupoMuscularSeleccionado);
-                        });
-                      },
-                      value: (grupoMuscularSeleccionado != null)
-                          ? grupoMuscularSeleccionado
-                          : null,
-                    )),
-              ),
-              SizedBox(height: 20),
-              TypeAheadFormField(
-                // initialValue: 'Busca un ejercicio',
-                textFieldConfiguration: TextFieldConfiguration(
-                  style: TextStyle(
-                    color: Color.fromRGBO(3, 9, 40, 1),
-                  ),
-                  decoration: InputDecoration(
-                      suffixIcon: Icon(Icons.search, color: Colors.orange),
-                      labelText: 'Busca un Ejercicio',
-                      filled: true,
-                      labelStyle: TextStyle(
-                        color: Colors.orange[600],
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      enabledBorder: InputBorder.none,
-                      border: InputBorder.none),
-                  controller: this._typeAheadController,
-                ),
-                suggestionsCallback: (pattern) {
-                  return widget.userRepository.getSuggestions(pattern);
-                },
-
-                itemBuilder: (context, suggestion) {
-                  return ListTile(
-                    title: Text(
-                      suggestion,
-                      style: TextStyle(
-                        color: Color.fromRGBO(3, 9, 40, 1),
-                      ),
-                    ),
-                  );
-                },
-                transitionBuilder: (context, suggestionsBox, controller) {
-                  controller.addStatusListener((status) {
-                    if (status == AnimationStatus.forward)
+                          .toList();
+                    },
+                    items: listaGruposMusculares
+                        .map((nombre) => DropdownMenuItem(
+                              value: nombre,
+                              child: Text(
+                                '$nombre',
+                                style: TextStyle(
+                                  color: Colors.grey[300],
+                                  fontSize:
+                                      (MediaQuery.of(context).size.width <
+                                              500)
+                                          ? 16
+                                          : 24,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ))
+                        .toList(),
+                    onChanged: (value) {
                       setState(() {
-                        seleccionado = true;
+                        grupoMuscularSeleccionado = value;
+                        print(grupoMuscularSeleccionado);
+                        widget.userRepository.listaEjerciciosString = [];
+                        widget.userRepository
+                            .crearListaString(grupoMuscularSeleccionado);
                       });
-                  });
-
-                  return suggestionsBox;
-                },
-                onSuggestionSelected: (suggestion) {
-                  // FocusScope.of(context).requestFocus(new FocusNode());
-                  this._typeAheadController.text = suggestion;
-                  print(_typeAheadController.text);
-                  actualizarImagen(_typeAheadController.text);
-                },
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Selecciona un ejercicio';
-                  }
-                },
-              ),
-              SizedBox(height: 20),
-              Container(
-                width: 350,
-                height: 350,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(image: NetworkImage(url1))
-                    // image: (userRepository.imgUrl != 'No')
-                    //     ? NetworkImage(userRepository.imgUrl)
-                    //     : (userRepository.sexo == 'Hombre')
-                    //         ? AssetImage('assets/images/hombre.png')
-                    //         : AssetImage('assets/images/mujer.png')),
+                    },
+                    value: (grupoMuscularSeleccionado != null)
+                        ? grupoMuscularSeleccionado
+                        : null,
+                  )),
+            ),
+            SizedBox(height: 20),
+            TypeAheadFormField(
+              // initialValue: 'Busca un ejercicio',
+              textFieldConfiguration: TextFieldConfiguration(
+                style: TextStyle(
+                  color: Color.fromRGBO(3, 9, 40, 1),
+                ),
+                decoration: InputDecoration(
+                    suffixIcon: Icon(Icons.search, color: Colors.orange),
+                    labelText: 'Busca un Ejercicio',
+                    filled: true,
+                    labelStyle: TextStyle(
+                      color: Colors.orange[600],
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
                     ),
-              )
-            ],
-          ),
+                    enabledBorder: InputBorder.none,
+                    border: InputBorder.none),
+                controller: this._typeAheadController,
+              ),
+              suggestionsCallback: (pattern) {
+                return widget.userRepository.getSuggestions(pattern);
+              },
+
+              itemBuilder: (context, suggestion) {
+                return ListTile(
+                  title: Text(
+                    suggestion,
+                    style: TextStyle(
+                      color: Color.fromRGBO(3, 9, 40, 1),
+                    ),
+                  ),
+                );
+              },
+              transitionBuilder: (context, suggestionsBox, controller) {
+                controller.addStatusListener((status) {
+                  if (status == AnimationStatus.forward)
+                    setState(() {
+                      seleccionado = true;
+                    });
+                });
+
+                return suggestionsBox;
+              },
+              onSuggestionSelected: (suggestion) {
+                // FocusScope.of(context).requestFocus(new FocusNode());
+                this._typeAheadController.text = suggestion;
+                print(_typeAheadController.text);
+                actualizarImagen(_typeAheadController.text);
+              },
+              validator: (value) {
+                if (value.isEmpty) {
+                  return 'Selecciona un ejercicio';
+                }
+              },
+            ),
+            SizedBox(height: 20),
+            Container(
+              width: 200,
+              height: 200,
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(image: NetworkImage(url1))
+                  // image: (userRepository.imgUrl != 'No')
+                  //     ? NetworkImage(userRepository.imgUrl)
+                  //     : (userRepository.sexo == 'Hombre')
+                  //         ? AssetImage('assets/images/hombre.png')
+                  //         : AssetImage('assets/images/mujer.png')),
+                  ),
+            )
+          ],
         ),
       ),
     );
-    // return AnimatedSize(
-    //   vsync: this,
-    //   duration: kThemeAnimationDuration,
-    //   alignment: Alignment.topCenter,
-    //   child: Column(
-    //     crossAxisAlignment: CrossAxisAlignment.start,
-    //     mainAxisAlignment: MainAxisAlignment.center,
-    //     mainAxisSize: MainAxisSize.min,
-    //     children: [
-
-    //   if (showName) ...[
-    //         SizedBox(height: 16),
-    //         Typewriter(
-    //           (widget.userRepository.sexo=='Hombre') ? 'Bienvenido' : 'Bienvenida',
-    //           animate: !nameSeen,
-    //            textStyle: TextStyle(
-    //             color: Colors.blueGrey[900],
-    //             fontSize: 40,
-    //             fontWeight: FontWeight.w700,
-    //           ),
-    //           onEnd: () {
-    //             if (mounted) {
-    //               setState(() {
-    //                 showPosition = true;
-    //                 nameSeen = true;
-    //               });
-    //             }
-    //           },
-    //         ),
-    //       ],
-    //         SizedBox(height: 16),
-    //         Typewriter(
-    //        '${widget.userRepository.nombreUsuario}',
-    //           animate: !nameSeen,
-    //           textStyle: TextStyle(
-    //             color: Colors.blueGrey[900],
-    //             fontSize: 30,
-    //             fontWeight: FontWeight.w700,
-    //           ),
-    //           onEnd: () {
-    //             if (mounted) {
-    //               setState(() {
-    //                 showPosition = true;
-    //                 nameSeen = true;
-    //               });
-    //             }
-    //           },
-    //         ),
-
-    //       if (showPosition) ...[
-    //         SizedBox(height: 16),
-    //         Typewriter(
-    //           'Estas en la sección para entrenadores de Entrenaapp',
-    //           animate: !positionSeen,
-    //           textStyle: TextStyle(
-    //             color: Colors.blueGrey[900],
-    //             fontSize: 20,
-    //             fontWeight: FontWeight.w500,
-    //           ),
-    //           onEnd: () {
-    //             if (mounted) {
-    //               setState(() {
-    //                 showAbstract = true;
-    //                 positionSeen = true;
-    //               });
-    //             }
-    //           },
-    //         ),
-    //       ],
-    //       if (showAbstract) ...[
-    //         SizedBox(height: 24),
-    //         Typewriter(
-    //           "Esperamos ayudarte a mejorar tu poductividad y la satisfacción de tus clientes"
-    //           ,
-    //           animate: !abstractSeen,
-    //           textStyle: TextStyle(
-    //             color: Colors.grey,
-    //             fontSize: 16,
-    //             letterSpacing: 1.2,
-    //             height: 1.3,
-    //           ),
-    //           onEnd: () {
-    //             Future.delayed(Duration(milliseconds: 500), () {
-    //               if (mounted) {
-    //                 setState(() {
-    //                   showHireMe = true;
-    //                   abstractSeen = true;
-    //                 });
-    //               }
-    //             });
-    //           },
-    //         ),
-    //       ],
-    //       if (showHireMe) ...[
-    //         SizedBox(height: 30),
-    //         _HireMeButton(),
-    //       ],
-    //     ],
-    //   ),
-    // );
   }
 }
 
@@ -389,8 +282,6 @@ class __HireMeButtonState extends State<_HireMeButton> {
     );
   }
 }
-
- 
 
 class HeroImage extends StatelessWidget {
   final Color borderColor;

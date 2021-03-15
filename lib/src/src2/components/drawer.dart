@@ -22,12 +22,11 @@ class _AppDrawerState extends State<AppDrawer> {
   );
 
   final items = [
-    'Home',
-    'About',
-    'Experience',
-    'Projects',
-    'Blog',
-    'Resume',
+    'Inicio',
+    'Subir entrenamiento',
+    'Ver ejercicio',
+    
+    'Salir',
   ];
 
   @override
@@ -62,9 +61,10 @@ class _AppDrawerState extends State<AppDrawer> {
               children: items.map((item) {
                 return InkWell(
                   onTap: () {
-                    switch (item) {
-                      case 'Home':
-                      case 'About':
+                 switch (item) {
+                      case 'Inicio':
+                      case 'Subir entrenamiento':
+                      case 'Ver ejercicio':
                         if (mounted) {
                           setState(() {
                             selectedIndex = items.indexOf(item);
@@ -75,13 +75,9 @@ class _AppDrawerState extends State<AppDrawer> {
                           }
                         }
                         break;
-                      case 'Resume':
+                      case 'Salir':
                         break;
-                      case 'Blog':
-                        UrlHelper.launchUrl(
-                          'https://medium.com/@debrahkwesibuabeng2',
-                        );
-                        break;
+                   
                       default:
                       // setState(() {
                       //   selectedIndex = items.indexOf(item);
@@ -94,7 +90,7 @@ class _AppDrawerState extends State<AppDrawer> {
 
                     Navigator.pop(context);
                   },
-                  child: item == 'Resume'
+                  child: item == 'Salir'
                       ? SizedBox(width: 160, child: ResumeButton())
                       : Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -111,7 +107,7 @@ class _AppDrawerState extends State<AppDrawer> {
                               ),
                             ),
                             SizedBox(height: 4),
-                            if (item != 'Resume')
+                            if (item != 'Salir')
                               AnimatedContainer(
                                 duration: Duration(milliseconds: 300),
                                 height: 2,

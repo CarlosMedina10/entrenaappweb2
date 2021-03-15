@@ -56,8 +56,8 @@ dependencies:
   dio: ^3.0.10
   getwidget: ^1.1.0
   flutter_typeahead: ^1.8.5
-  flutter_keyboard_visibility:
-  
+  flutter_keyboard_visibility_web: 
+
   
 
  

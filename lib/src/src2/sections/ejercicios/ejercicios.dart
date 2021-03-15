@@ -8,7 +8,14 @@ class EjerciciosSection extends StatelessWidget {
 EjerciciosSection(this.userRepository);
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return 
+    GestureDetector(
+      onTap: () {
+        // call this method here to hide soft keyboard
+        FocusScope.of(context).requestFocus(new FocusNode());
+      },
+      child:
+    Center(
       child: Row(
         children: [
           Spacer(flex: 2),
@@ -25,6 +32,6 @@ EjerciciosSection(this.userRepository);
           Spacer(flex: 2),
         ],
       ),
-    );
+    ));
   }
 }
