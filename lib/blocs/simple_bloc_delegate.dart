@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
-class SimpleBlocDelegate extends FormBlocObserver {
+
+class SimpleBlocDelegate extends BlocObserver {
   @override
   void onEvent(Bloc bloc, Object event) {
     super.onEvent(bloc, event);

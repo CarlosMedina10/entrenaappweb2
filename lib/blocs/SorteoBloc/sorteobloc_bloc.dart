@@ -50,6 +50,7 @@ await Future.delayed(Duration(seconds: 2));
     { 
 
       await userRepository.comprobandoInscripcion();
+      userRepository.getPurchaserInfo(userRepository.getUserID());
        Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
        var prefs = await _prefs;
        prefs.setString('userID', userRepository.getUserID());

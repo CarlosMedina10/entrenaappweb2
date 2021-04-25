@@ -1,16 +1,9 @@
-import 'package:entrenaapp/models/Configuracion.dart';
-import 'package:entrenaapp/models/Ejercicio.dart';
-import 'package:entrenaapp/models/MesocicloEntrenamiento.dart';
-import 'package:entrenaapp/models/Patron.dart';
+
 import 'package:entrenaapp/src/repository/user_repository.dart';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-
-import 'package:excel/excel.dart';
-import 'package:file_picker_cross/file_picker_cross.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'dart:convert';
+
 
 class CargarEntrenamiento extends StatefulWidget {
   final UserRepository userRepository;

@@ -13,7 +13,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 class Success  extends StatefulWidget {
  final UserRepository userRepository;
-Success(this.userRepository);
+ final String sessionId;
+Success(this.userRepository,this.sessionId);
   @override
   _SuccesState createState() => _SuccesState();
 }
@@ -25,8 +26,11 @@ class _SuccesState extends State<Success> {
   void initState() {
       Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
       _prefs.then((value) {
-       userID= value.getString('userID');
 
+         print(widget.sessionId + 'hola'); 
+ 
+       userID= value.getString('userID');
+    widget.userRepository.userPremiumStripe(userID, widget.sessionId);
     widget.userRepository.darPremiumGratuito(userID,isYear:true);
       });
 

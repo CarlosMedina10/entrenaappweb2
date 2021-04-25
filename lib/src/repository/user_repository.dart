@@ -1,12 +1,14 @@
 // Imports
 import 'dart:async';
 import 'dart:convert';
+import 'package:entrenaapp/constants.dart';
 import 'package:entrenaapp/models/Configuracion.dart';
 import 'package:entrenaapp/models/Ejercicio.dart';
 import 'package:entrenaapp/models/MesocicloEntrenamiento.dart';
 import 'package:entrenaapp/models/Patron.dart';
 import 'package:excel/excel.dart';
-import 'package:file_picker_cross/file_picker_cross.dart';
+import 'package:file_picker/file_picker.dart';
+
 
 import 'package:firebase/firebase.dart'
     hide User, GoogleAuthProvider, FacebookAuthProvider;
@@ -427,20 +429,84 @@ class UserRepository {
 
   Patron patron;
   Map<String, dynamic> listaClientes;
+ List<String> tokensUsuario;
+     final String serverToken =
+      'AAAAcDD_suw:APA91bFZN8LoUqmSeAjydp4a_o2QU5yoZ5pJ5uQ5AXVvQTMVyTEc3K4tX-Ddi5CnHB5XJngl1ARYuSynDcCq7err1mDypgyE5srvLZJPsbo5kJMfAtoG7wZwgeTTq2ByYS2xG75xpmXG';
+   obtenerTokensUsuario(String idUsuario,nombreUsuario) async {
+    tokensUsuario = [];
+    try {
+      firebaseDatabase
+          .ref('tokenPushNotifications/$idUsuario')
+           .onValue.listen((e) {
+             print(e.snapshot.val());
+        var v1 = json.encode(e.snapshot.val());
+        print(v1);
+        Map<String, dynamic> v2 = json.decode(v1);
+        if (v2 != null) {
+          v2.forEach((key, value) {
+           
+           
+             print(key);
+             print(value['token']);
+            
+            tokensUsuario.add(value['token']);
+           
+
+        //     //  print(value['mobileID']);
+          });
+        }
+        enviarNotificacion(nombreUsuario);
+        // print(tokensAEnviar);
+        // return tokensAEnviar;
+      });
+    } catch (error) {
+      print('$error');
+      throw (error);
+    }
+  }
+
+
+enviarNotificacion(String nombreUsuario){
+  tokensUsuario.forEach((element) async {
+      print(element);
+      final String token = element;
+// print(token);
+      await http.post(
+        Uri.parse('https://fcm.googleapis.com/fcm/send'),
+        headers: <String, String>{
+          'Content-Type': 'application/json',
+          'Authorization': 'key=$serverToken',
+        },
+        body: jsonEncode(
+          <String, dynamic>{
+            'notification': <String, dynamic>{
+              'body': 'Hola $nombreUsuario, acabo de subirte tu entrenamiento de este mes. Cualquier duda comentamela',
+              'title': '¡Ya tienes tu entrenamiento!'
+            },
+            'priority': 'high',
+            'data': <String, dynamic>{
+              'click_action': 'FLUTTER_NOTIFICATION_CLICK',
+              'status': 'done'
+            },
+            'to': token,
+          },
+        ),
+      );
+    });
+  }
+
 Future<String> cargarMesociclo(String idClienteSeleccionado) async {
     try {
-      FilePickerCross myFile = await FilePickerCross.importFromStorage(
-          type: FileTypeCross
-              .custom, // Available: `any`, `audio`, `image`, `video`, `custom`. Note: not available using FDE
-          fileExtension:
-              '.xlsx' // Only if FileTypeCross.custom . May be any file extension like `.dot`, `.ppt,.pptx,.odp`
-          );
-      print(myFile.path);
-      nombreEntrenamiento = myFile.fileName;
-      print(myFile.fileName.replaceRange(
-          myFile.fileName.length - 5, myFile.fileName.length, ''));
+    FilePickerResult file = await FilePicker.platform.pickFiles(
+          type: FileType.custom,
+          allowedExtensions: ['xlsx', ],
+        );
+      print(file.files.single.path);
+      nombreEntrenamiento = file.files.single.name;
+      print(file.files.single.name.replaceRange(
+          file.files.single.name.length - 5, file.files.single.name.length, ''));
 
-      var bytes = myFile.toUint8List();
+      var bytes = file.files.single.bytes;
       var excel = Excel.decodeBytes(bytes);
       int hoja = 0;
       print(excel.tables.length);
@@ -457,8 +523,8 @@ Future<String> cargarMesociclo(String idClienteSeleccionado) async {
         mesocicloEntrenamiento = MesocicloEntrenamiento.mesocicloVacio6Dias();
       }
 
-      mesocicloEntrenamiento.nombreMesociclo = myFile.fileName
-          .replaceRange(myFile.fileName.length - 5, myFile.fileName.length, '');
+      mesocicloEntrenamiento.nombreMesociclo = file.files.single.name
+          .replaceRange(file.files.single.name.length - 5, file.files.single.name.length, '');
       mesocicloEntrenamiento.fechaInicio = DateTime.now().toIso8601String();
       for (var table in excel.tables.keys) {
         print(table); //sheet Name
@@ -655,17 +721,83 @@ Future<String> cargarMesociclo(String idClienteSeleccionado) async {
       }
     });
   }
+  getPurchaserInfo(String userID, ) async {
+
+ 
+ String url = 'https://api.revenuecat.com/v1/subscribers/$userID';
+    try {
+   var purchaserInfo =   await http.get(Uri.parse(url), headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer sk_LOnONfxsicGXLXdXBzMyzzueGmQBV"
+      });
+
+      print(purchaserInfo.body);
+  } catch (error) {
+      throw error;
+    }
+  }
+   getSession(String sessionID, ) async {
+
+ 
+ String url = 'https://api.stripe.com/v1/checkout/sessions/$sessionID';
+    try {
+   var session =   await http.get(Uri.parse(url), headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer $secretKey"
+      });
+       print(session.body);
+       print('biennnnnnnn');
+Map<String,dynamic> body = json.decode(session.body);
+ 
+   print(body['subscription']);
+   deleteSuscription(body['subscription']);
+      
+  } catch (error) {
+      throw error;
+    }
+  }
+   deleteSuscription(String suscriptionID, ) async {
+
+ 
+ String url = 'https://api.stripe.com/v1/subscriptions/$suscriptionID';
+    try {
+     await http.delete(Uri.parse(url), headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer $secretKey"
+      });
+
+    print('todo biennnnn');
+  } catch (error) {
+      throw error;
+    }
+  }
+  userPremiumStripe(String userID,sessionId ) async {
+
+    String url = 'https://api.revenuecat.com/v1/receipts';
+    try {
+      await http.post(Uri.parse(url), 
+       body: json.encode({"fetch_token":sessionId,"app_user_id":userID }),
+      headers: {
+        "Content-Type": "application/json",
+        "X-Platform":"stripe",
+        "Authorization": "Bearer sk_LOnONfxsicGXLXdXBzMyzzueGmQBV"
+      });
+      getSession(sessionId);
+  } catch (error) {
+      throw error;
+    }
+  }
   darPremiumGratuito(String userID, {bool isYear = false}) async {
     String url =
         "https://api.revenuecat.com/v1/subscribers/$userID/entitlements/suscripcion_mensual/promotional";
     String url2 = 'https://api.revenuecat.com/v1/subscribers/$userID';
     try {
-      await http.get(url2, headers: {
+      await http.get(Uri.parse(url2), headers: {
         "Content-Type": "application/json",
         "Authorization": "Bearer sk_LOnONfxsicGXLXdXBzMyzzueGmQBV"
       });
 
-      await http.post(url,
+      await http.post(Uri.parse(url),
           body: json.encode({"duration": (isYear) ? "lifetime" : "monthly"}),
           headers: {
             "Content-Type": "application/json",
@@ -838,7 +970,7 @@ crearListaString(String musculoSeleccionado){
     final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
     final GoogleSignInAuthentication googleAuth =
         await googleUser.authentication;
-    final AuthCredential credential = GoogleAuthProvider.getCredential(
+    final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
 
     await _firebaseAuth.signInWithCredential(credential);

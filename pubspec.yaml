@@ -31,13 +31,13 @@ dependencies:
   responsive_builder: ^0.3.0
   html: ^0.14.0+4
   auto_size_text: ^2.1.0
-  flutter_form_bloc: ^0.19.0
+  
   excel: ^1.1.5
-  file_picker_cross: ^4.2.6
-  http: ^0.12.2
-  firebase_auth_oauth: ^0.2.2
+  
+  http: ^0.13.0
+  firebase_auth_oauth: ^1.0.1
   flutter_dialogs: ^1.1.0
-  firebase_auth: ^0.18.0+1
+  firebase_auth: ^1.0.1
   google_sign_in: ^4.1.0
   flutter_facebook_login_web: ^0.2.1+1
   flutter_bloc: 
@@ -46,17 +46,23 @@ dependencies:
   flutter_auth_buttons: ^0.10.0
   drawerbehavior: ^2.0.0+4
   mailto: ^1.0.0
-  url_launcher: ^5.7.10
-  shared_preferences: ^0.5.12+4
-  firebase_storage: ^5.2.0
+  url_launcher: ^6.0.3
+  shared_preferences: ^2.0.5
+  firebase_storage: ^8.0.1
   community_material_icon: ^5.4.55
-  firebase: ^7.3.0
+  firebase: ^9.0.1
   js: ^0.6.2
   webview_flutter: ^1.0.7
-  dio: ^3.0.10
+  dio: ^4.0.0
   getwidget: ^1.1.0
-  flutter_typeahead: ^1.8.5
-  flutter_keyboard_visibility_web: 
+  flutter_typeahead: ^3.1.1
+  editable: ^2.0.0
+  firebase_messaging: ^9.1.0
+  firebase_core: ^1.0.2
+  file_picker: ^3.0.0
+  data_tables: ^1.3.2
+
+
 
   
 

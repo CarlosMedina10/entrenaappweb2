@@ -54,8 +54,8 @@ class _PersonalProjectsState extends State<PersonalProjects> {
     final url =
         'https://entrenaapp2-12fbe.firebaseio.com/ZZentrenadores/${widget.idUser}/Clientes.json?auth=${widget.idToken}';
 
-    final response = await http.get(url);
-    // print(response.body);
+    final response = await http.get(Uri.parse(url));
+    // print(response.body);url
     listaClientes = json.decode(response.body) as Map<String, dynamic>;
   }
 

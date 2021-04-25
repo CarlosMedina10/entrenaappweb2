@@ -1,8 +1,6 @@
 import 'package:entrenaapp/src/repository/user_repository.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:mailto/mailto.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 /// Introductory texts with the Hire Me button as well
@@ -164,7 +162,14 @@ class _EjerciciosState extends State<Ejercicios>
               suggestionsCallback: (pattern) {
                 return widget.userRepository.getSuggestions(pattern);
               },
-
+              noItemsFoundBuilder: (context) => ListTile(
+                  title: Text(
+                    'No se encontraron ejercicios',
+                    style: TextStyle(
+                      color: Color.fromRGBO(3, 9, 40, 1),
+                    ),
+                  ),
+                ),
               itemBuilder: (context, suggestion) {
                 return ListTile(
                   title: Text(
@@ -218,70 +223,9 @@ class _EjerciciosState extends State<Ejercicios>
   }
 }
 
-class _HireMeButton extends StatefulWidget {
-  @override
-  __HireMeButtonState createState() => __HireMeButtonState();
-}
 
-class __HireMeButtonState extends State<_HireMeButton> {
-  bool hovered = false;
-  launchMailto() async {
-    final mailtoLink = Mailto(
-      to: ['carlos10zrg@hotmail.com'],
-      subject: 'Asesoramiento personalizado',
-      body:
-          'Hola Carlos, me gustaria recibir información sobre EntrenaAPP para entrenadores. Un Saludo.',
-    );
-    // Convert the Mailto instance into a string.
-    // Use either Dart's string interpolation
-    // or the toString() method.
-    await launch('$mailtoLink');
-  }
 
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      hoverColor: Colors.transparent,
-      splashColor: Colors.transparent,
-      onTap: () {
-        launchMailto();
-      },
-      onHover: (value) {
-        if (mounted) {
-          setState(() {
-            hovered = value;
-          });
-        }
-      },
-      child: AnimatedContainer(
-        height: 50,
-        width: 200,
-        duration: kThemeAnimationDuration,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          border: Border.all(width: 1.4, color: Colors.teal),
-          borderRadius: BorderRadius.all(Radius.circular(50)),
-          color: hovered ? Colors.teal.withOpacity(1.0) : Colors.transparent,
-        ),
-        child: AnimatedDefaultTextStyle(
-          duration: kThemeAnimationDuration,
-          style: TextStyle(
-            color: hovered ? Colors.white : Colors.teal,
-            fontSize: 17,
-            fontWeight: FontWeight.w500,
-            fontFamily: 'Ubuntu',
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Text(
-              'Solicitar información',
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
+ 
 
 class HeroImage extends StatelessWidget {
   final Color borderColor;

@@ -1,21 +1,12 @@
 
-
-
-
-
-
-
-import 'package:file_picker_cross/file_picker_cross.dart';
-import 'package:path/path.dart';
-import 'package:excel/excel.dart';
 import 'package:entrenaapp/src/repository/user_repository.dart';
 import 'package:entrenaapp/src/src2/components/typewriter.dart';
-import 'dart:html' as html;
+
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:mailto/mailto.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_typeahead/flutter_typeahead.dart';
+
 
 /// Introductory texts with the Hire Me button as well
 class Introduction extends StatefulWidget {

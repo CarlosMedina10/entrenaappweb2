@@ -9,13 +9,14 @@ import 'package:js/js.dart';
 void redirectToCheckout(BuildContext _,) async {
  
   final stripe = Stripe(apiKey);
+
   stripe.redirectToCheckout(CheckoutOptions(
     lineItems: [
       LineItem(price: nikesPriceId, quantity: 1),
     ],
-    mode: 'payment',
-    successUrl: 'https://carlosmedina10.github.io/#/success',
-    cancelUrl: 'https://carlosmedina10.github.io/#/',
+    mode: 'subscription',
+    successUrl: 'http://localhost:5555/#/success?session_id={CHECKOUT_SESSION_ID}',
+    cancelUrl: 'http://localhost:5555/#/',
 
   ));
 }
@@ -23,7 +24,7 @@ void redirectToCheckout(BuildContext _,) async {
 @JS()
 class Stripe {
   external Stripe(String key);
-
+ 
   external redirectToCheckout(CheckoutOptions options);
 }
 

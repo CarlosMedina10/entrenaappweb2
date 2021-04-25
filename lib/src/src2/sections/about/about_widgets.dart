@@ -197,10 +197,12 @@ class _AboutContentState extends State<AboutContent>
                       await widget.userRepository.cargarMesociclo(clienteSeleccionado.keys.first).then((value) {
                         nombreEntrenamiento=value;
                         print(value);
-                        if (value!=null)
+                        if (value!=null) {
                           setState(() {
         entrenamientoCargado = true;
+       
       });
+        widget.userRepository.obtenerTokensUsuario(clienteSeleccionado.keys.first,clienteSeleccionado.values.first);}
                       }); } catch (error) {
                         print(error);
                         _showDialog();
