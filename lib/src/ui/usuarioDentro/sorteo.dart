@@ -1,6 +1,6 @@
 
 import 'package:entrenaapp/blocs/SorteoBloc/sorteobloc_bloc.dart';
-import 'package:entrenaapp/src/repository/user_repository.dart';
+import 'package:entrenaapp/repository/user_repository.dart';
 import 'package:entrenaapp/src/ui/usuarioDentro/sorteoAcabado.dart';
 import 'package:entrenaapp/src/ui/usuarioDentro/sorteoForocoches.dart';
 import 'package:flutter/material.dart';
@@ -67,6 +67,7 @@ final UserRepository userRepository;
           buildWhen: (prevState, currState) =>
                 (currState is! ErrorState),
           
+          // ignore: missing_return
           builder:(BuildContext context, SorteoblocState state){
            if (state is PaginaEspera)
            {

@@ -1,16 +1,11 @@
-
-
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:entrenaapp/blocs/authentication_bloc/bloc.dart';
+import 'package:entrenaapp/blocs/register_bloc/bloc.dart';
+import 'package:entrenaapp/repository/user_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../bloc/register_bloc/bloc.dart';
-import '../../bloc/authentication_bloc/bloc.dart';
 import '../../ui/register/register_button.dart';
-import 'package:flutter/material.dart';
 import '../../ui/login/bezierContainer.dart';
-import '../../repository/user_repository.dart';
-
-import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:community_material_icon/community_material_icon.dart';
 

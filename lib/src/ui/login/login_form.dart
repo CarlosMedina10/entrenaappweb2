@@ -1,32 +1,16 @@
 
 
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:entrenaapp/blocs/authentication_bloc/bloc.dart';
+import 'package:entrenaapp/blocs/login_bloc/bloc.dart';
+import 'package:entrenaapp/repository/user_repository.dart';
 import 'package:entrenaapp/src/ui/login/apple_login_button.dart';
-
 import 'package:flutter/material.dart';
-// import './signup.dart';
-
-import 'package:flutter_signin_button/flutter_signin_button.dart';
-import 'dart:math';
-// import './welcomePage.dart';
-
-// import '../models/http_exception.dart';
-// import './inicio.dart';
-// import './estructuracion_entrenamiento.dart';
-// import './principal.dart';
-// import './semana_entrenamiento.dart';
-// import 'color_loader_3.dart';
-// import './ressetPassword.dart';
-
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:url_launcher/url_launcher.dart';
-import './bezierContainer.dart';
-import '../../repository/user_repository.dart';
 import '../../ui/login/google_login_button.dart';
 import '../../ui/login/facebook_login_button.dart';
-import '../../bloc/login_bloc/bloc.dart';
-import '../../bloc/authentication_bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../ui/login/login_button.dart';
 import '../../ui/login/create_account_button.dart';

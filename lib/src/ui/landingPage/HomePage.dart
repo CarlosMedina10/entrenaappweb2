@@ -1,7 +1,6 @@
 import 'package:entrenaapp/blocs/LandingPageBloc/landingpage_bloc.dart';
-import 'package:entrenaapp/src/repository/user_repository.dart';
+import 'package:entrenaapp/repository/user_repository.dart';
 import 'package:entrenaapp/src/ui/login/login_screen.dart';
-import 'package:entrenaapp/src/ui/particle_flutter/particle_background.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../../ui/landingPage/SendEmail.dart';
 import 'package:drawerbehavior/drawer_scaffold.dart';
@@ -98,6 +97,7 @@ switch(deviceType) {
     // to rebuild the widget with state
   
           
+          // ignore: missing_return
           builder:(BuildContext context, LandingpageState state){
   
                
@@ -116,7 +116,7 @@ switch(deviceType) {
                           body: 
                 Stack(
           children: <Widget>[         
-            ParticleBackgroundPage(),  
+          
                       SingleChildScrollView(
         child: Column( 
           children: [

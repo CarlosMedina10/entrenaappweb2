@@ -1,5 +1,5 @@
+import 'package:entrenaapp/repository/user_repository.dart';
 import 'package:flutter/material.dart';
-import '../../repository/user_repository.dart';
 import '../../ui/register/register_screen.dart';
 
 class CreateAccountButton extends StatelessWidget {

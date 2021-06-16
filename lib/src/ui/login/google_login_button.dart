@@ -1,8 +1,8 @@
+import 'package:entrenaapp/blocs/login_bloc/bloc.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import '../../bloc/login_bloc/bloc.dart';
+
 
 
 class GoogleLoginButton extends StatelessWidget {

@@ -1,7 +1,6 @@
+import 'package:entrenaapp/blocs/verifypassword_bloc/verifypassword_bloc_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../repository/user_repository.dart';
-import '../bloc/verifypassword_bloc/verifypassword_bloc_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 class ResetPasswordPage extends StatefulWidget {
 

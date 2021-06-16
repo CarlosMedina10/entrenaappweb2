@@ -1,13 +1,11 @@
-//imports: 
-
 
 import 'package:entrenaapp/blocs/LandingPageBloc/landingpage_bloc.dart';
+import 'package:entrenaapp/blocs/login_bloc/bloc.dart';
+import 'package:entrenaapp/repository/user_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import '../../bloc/login_bloc/bloc.dart';
-import '../../repository/user_repository.dart';
 import '../../ui/login/login_form.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -54,8 +52,7 @@ switch(deviceType) {
     break;
 }
     var size = MediaQuery.of(context).size;
-    print(size.height);
-    print(size.width);
+ 
 
        if (isMobile || isTablet)
             {

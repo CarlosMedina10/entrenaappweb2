@@ -36,8 +36,7 @@ class _CustomCardState extends State<CustomCard> {
        }
      });
      if (url== null) {
-print(url);
-print(widget.nombre);
+
  _prefs.then((value) {
    final SharedPreferences prefs = value;
 
@@ -54,17 +53,17 @@ Map<String,String> ejer = {'${widget.nombre}' : imgGuardadaYa};
    setState(() {
    url=imgGuardadaYa;
 
-   print(url);
+  
 
    
   isInit=true;
    
  });
     } else {
-      print(widget.nombre);
+      
   final fb.Reference storageReference1 = fb.FirebaseStorage.instance.refFromURL('gs://entrenaapp2-12fbe.appspot.com').child('/fotosPromocionales/${widget.nombre}');
  storageReference1.getDownloadURL().then((value) {
-  print(value);
+
    Map<String,String> ejer = {'${widget.nombre}' : value};
    widget.isInit.add(ejer);
    

@@ -1,13 +1,9 @@
 import 'package:entrenaapp/blocs/ComprobandoBloc/comprobando_bloc.dart';
-import 'package:entrenaapp/src/bloc/authentication_bloc/bloc.dart';
-import 'package:entrenaapp/src/repository/user_repository.dart';
-import 'package:entrenaapp/src/screens/home_screen.dart';
-import 'package:entrenaapp/src/ui/landingPage/HomePage.dart';
-import 'package:entrenaapp/src/screens/cargar_entrenamiento.dart';
-import '../../widgets/RoundedButton.dart';
+import 'package:entrenaapp/repository/user_repository.dart';
+import 'package:entrenaapp/src/entrenadores_screens/components/responsive/layout_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../src2/components/responsive/layout_wrapper.dart';
+
 
 class Comprobando extends StatelessWidget {
   final UserRepository userRepository;
@@ -54,6 +50,7 @@ class Comprobando extends StatelessWidget {
           },
           child: BlocBuilder<ComprobandoBloc, ComprobandoState>(
               buildWhen: (prevState, currState) => (currState is! ErrorState),
+              // ignore: missing_return
               builder: (BuildContext context, ComprobandoState state) {
                 if (state is PaginaEspera) {
                   BlocProvider.of<ComprobandoBloc>(context).add(Espera());

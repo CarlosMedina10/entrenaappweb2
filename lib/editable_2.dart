@@ -20,6 +20,7 @@ rowBlueprint(int rowCount, columns, rows) {
     sampleRow.add(item);
   }
   rows = [...sampleRow];
+  print('$rows sampleeee');
   return rows;
 }
 
@@ -33,18 +34,6 @@ addOneRow(columns, rows) {
   return rows;
 }
 
+
+
 ///Create an empty column for saveIcon
-Widget iconColumn(showSaveIcon, thPaddingTop, thPaddingBottom) {
-  return Visibility(
-    visible: showSaveIcon,
-    child: Flexible(
-      fit: FlexFit.loose,
-      child: Padding(
-        padding: EdgeInsets.only(
-          top: thPaddingTop,
-          bottom: thPaddingBottom,
-        ),
-      ),
-    ),
-  );
-}

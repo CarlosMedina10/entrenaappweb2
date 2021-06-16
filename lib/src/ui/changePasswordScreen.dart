@@ -1,7 +1,7 @@
+import 'package:entrenaapp/blocs/verifypassword_bloc/verifypassword_bloc_bloc.dart';
+import 'package:entrenaapp/repository/user_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../bloc/verifypassword_bloc/verifypassword_bloc_bloc.dart';
-import '../repository/user_repository.dart';
 import './changePassword.dart';
 
 class VerifypasswordScreen extends StatelessWidget {

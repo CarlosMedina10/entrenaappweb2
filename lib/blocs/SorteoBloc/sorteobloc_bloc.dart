@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:entrenaapp/src/repository/user_repository.dart';
+import 'package:entrenaapp/repository/user_repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -18,12 +18,12 @@ class SorteoblocBloc extends Bloc<SorteoblocEvent, SorteoblocState> {
   ) async* {
    if (event is VaAInscribirse)
     {
-      try{
+      try {
 
         yield PaginaEspera(isFromIscribiendose: true);
         
-        userRepository.comprobandoPremium();
-await Future.delayed(Duration(seconds: 2));
+     await  userRepository.comprobandoPremium();
+
  if (userRepository.isUserPro == null) {
          String userID =  userRepository.getUserID();
                  
@@ -50,13 +50,13 @@ await Future.delayed(Duration(seconds: 2));
     { 
 
       await userRepository.comprobandoInscripcion();
-      userRepository.getPurchaserInfo(userRepository.getUserID());
+      // userRepository.getPurchaserInfo(userRepository.getUserID());
        Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
        var prefs = await _prefs;
        prefs.setString('userID', userRepository.getUserID());
    
     
-      await Future.delayed(Duration(seconds: 2));
+     
       if (userRepository.haParticipado==true) 
         yield YaSeHaInscrito(); else yield NoSeHaInscritoAun() ;
     }

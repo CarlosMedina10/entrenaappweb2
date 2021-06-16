@@ -1,15 +1,13 @@
 import 'package:entrenaapp/blocs/SorteoBloc/sorteobloc_bloc.dart';
+import 'package:entrenaapp/blocs/authentication_bloc/bloc.dart';
 import 'package:entrenaapp/checkout/stripe_checkout.dart';
-import 'package:entrenaapp/src/bloc/authentication_bloc/bloc.dart';
-
-import 'package:entrenaapp/src/repository/user_repository.dart';
+import 'package:entrenaapp/repository/user_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:getwidget/getwidget.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-import 'package:url_launcher/url_launcher.dart';
+
 
 class SorteoInicioFC extends StatefulWidget {
   final UserRepository userRepository;

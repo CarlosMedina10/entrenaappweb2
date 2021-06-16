@@ -3,45 +3,17 @@
 // Use of this source code is governed by a MIT license that can be
 // found in the LICENSE file.
 
-library editable;
+
+import 'dart:convert';
+
+import 'package:firebase/firebase.dart';
+
 import './editable_2.dart';
 import 'package:flutter/material.dart';
 
 
 class Editable extends StatefulWidget {
-  /// Builds an editable table using predefined row and column counts
-  /// Or using a row and header data set provided
-  ///
-  /// if no data is provided for [row] and [column],
-  /// [rowCount] and [columnCount] properties must be set
-  /// this will generate an empty table
-  ///
-  /// it is useful for rendering data from an API or to create a spreadsheet-like
-  /// data table
-  ///
-  /// example:
-  ///
-  /// ```dart
-  ///  Widget build(BuildContext context) {
-  ///   return Scaffold(
-  ///     body: Column(
-  ///       children: <Widget>[
-  ///           Expanded(
-  ///           flex: 1,
-  ///           child: EdiTable(
-  ///               showCreateButton: true,
-  ///               tdStyle: TextStyle(fontSize: 20),
-  ///               showSaveIcon: false,
-  ///               borderColor: Colors.lightBlue,
-  ///               columnCount: 4,
-  ///               rowCount: 8
-  ///              ),
-  ///           ).
-  ///         ]
-  ///       ),
-  ///   );
-  /// }
-  /// ```
+
   Editable(
       {Key key,
       this.columns,
@@ -49,6 +21,7 @@ class Editable extends StatefulWidget {
       this.columnRatio = 0.20,
       this.onSubmitted,
       this.onRowSaved,
+      this.onDelete,
       this.columnCount = 0,
       this.rowCount = 0,
       this.borderColor = Colors.grey,
@@ -64,10 +37,10 @@ class Editable extends StatefulWidget {
       this.borderWidth = 0.5,
       this.thWeight = FontWeight.w600,
       this.thSize = 18,
-      this.showSaveIcon = false,
-      this.saveIcon = Icons.save,
-      this.saveIconColor = Colors.black12,
-      this.saveIconSize = 18,
+      this.showDeleteIcon = false,
+      this.deleteIcon = Icons.delete,
+      this.deleteIconColor = Colors.black12,
+      this.deleteIconSize = 18,
       this.tdAlignment = TextAlign.start,
       this.tdStyle,
       this.tdEditableMaxLines = 1,
@@ -80,10 +53,15 @@ class Editable extends StatefulWidget {
       this.createButtonColor,
       this.createButtonShape,
       this.createButtonLabel,
-      this.stripeColor1 = Colors.white,
-      this.stripeColor2 = Colors.black12,
+      this.color1 = Colors.white,
+      this.color2 = Colors.black12,
+      this.color3 = Colors.white,
+      this.color4 = Colors.black12,
       this.zebraStripe = false,
-      this.focusedBorder})
+      this.focusedBorder,
+      this.height,
+      this.gender,
+      this.formKey})
       : super(key: key);
 
   /// A data set to create headers
@@ -207,7 +185,7 @@ class Editable extends StatefulWidget {
   /// Toogles the save button,
   /// if [true] displays an icon to save rows,
   /// adds an addition column to the right
-  final bool showSaveIcon;
+  final bool showDeleteIcon;
 
   /// Icon for to save row data
   /// example:
@@ -215,13 +193,13 @@ class Editable extends StatefulWidget {
   /// ```dart
   /// saveIcon : Icons.add
   /// ````
-  final IconData saveIcon;
+  final IconData deleteIcon;
 
   /// Color for the save Icon
-  final Color saveIconColor;
+  final Color  deleteIconColor;
 
   /// Size for the saveIcon
-  final double saveIconSize;
+  final double deleteIconSize;
 
   /// displays a button that adds a new row onPressed
   final bool showCreateButton;
@@ -247,17 +225,17 @@ class Editable extends StatefulWidget {
   /// Label for the create new row button
   final Widget createButtonLabel;
 
-  /// The first row alternate color, if stripe is set to true
-  final Color stripeColor1;
-
-  /// The Second row alternate color, if stripe is set to true
-  final Color stripeColor2;
+ final Color color1;
+ final Color color2;
+ final Color color3;
+ final Color color4;
 
   /// enable zebra-striping, set to false by default
   /// if enabled, you can style the colors [stripeColor1] and [stripeColor2]
   final bool zebraStripe;
 
   final InputBorder focusedBorder;
+
 
   ///[onSubmitted] callback is triggered when the enter button is pressed on a table data cell
   /// it returns a value of the cell data
@@ -266,6 +244,13 @@ class Editable extends StatefulWidget {
   /// [onRowSaved] callback is triggered when a [saveButton] is pressed.
   /// returns only values if row is edited, otherwise returns a string ['no edit']
   final ValueChanged<dynamic> onRowSaved;
+
+    final ValueChanged<dynamic> onDelete;
+
+
+    final String height;
+    final String gender;
+    final GlobalKey<FormState> formKey;
 
   @override
   EditableState createState() => EditableState(
@@ -282,14 +267,20 @@ class EditableState extends State<Editable> {
 
   ///Get all edited rows
   List get editedRows => _editedRows;
-
+  List get editedRows2 => _editedRows2;
+  String get editedKey => _editedKey;
+  Database firebaseDatabase = database();
   ///Create a row after the last row
   createRow() => addOneRow(columns, rows);
+
+
   EditableState({this.rows, this.columns, this.columnCount, this.rowCount});
 
   /// Temporarily holds all edited rows
   List _editedRows = [];
-
+  List _editedRows2 = [];
+  String _editedKey;
+   bool cargando =false;
   @override
   Widget build(BuildContext context) {
     /// initial Setup of columns and row, sets count of column and row
@@ -300,44 +291,104 @@ class EditableState extends State<Editable> {
     rows = rows ?? rowBlueprint(rowCount, columns, rows);
 
     /// Builds saveIcon widget
-    Widget _saveIcon(index) {
+    Widget _deleteIcon(index) {
+      return IconButton(
+        padding: EdgeInsets.only(right: widget.tdPaddingRight),
+        hoverColor: Colors.transparent,
+        icon: Icon(
+          widget.deleteIcon,
+          color: widget.deleteIconColor,
+          size: widget.deleteIconSize,
+        ),
+        onPressed: () async{
+      setState((){
+     cargando=true;
+      });
+   
+    DatabaseReference ref =
+      firebaseDatabase.ref('W8BP78bU2oSUsOkiJvQTFLicseg1/seguimiento');
+      await ref.remove();
+      print(rows);
+     
+    rows.removeAt(index);
+       
+      
+      print(rows);
+ 
+List rows2 = [];
+
+rows.forEach((element) {
+  rows2.add(element);
+});
+print(rows2);
+ print('acaba');
+   
+  
+  int i=0;
+ rows2.forEach((element) {
+   print(element);
+if (element!= {}) {
+  
+  element.forEach((key,value) async{
+  
+  
+       firebaseDatabase.ref(
+                  'W8BP78bU2oSUsOkiJvQTFLicseg1/seguimiento/$i/$key').set(value);
+                  
+       
+          
+           
+  });
+ i=i+1;
+}
+
+print('esta aquí');
+
+  });
+ 
+setState(() {
+      cargando=false;
+    });
+
+        },
+      );
+    }
+ /// Builds saveIcon widget
+    Widget _saveIcon() {
       return Flexible(
         fit: FlexFit.loose,
-        child: Visibility(
-          visible: widget.showSaveIcon,
-          child: IconButton(
-            padding: EdgeInsets.only(right: widget.tdPaddingRight),
-            hoverColor: Colors.transparent,
-            icon: Icon(
-              widget.saveIcon,
-              color: widget.saveIconColor,
-              size: widget.saveIconSize,
-            ),
-            onPressed: () {
-              int rowIndex = editedRows.indexWhere(
-                  (element) => element['row'] == index ? true : false);
-              if (rowIndex != -1) {
-                widget.onRowSaved(editedRows[rowIndex]);
-              } else {
-                widget.onRowSaved('no edit');
-              }
-            },
+        child: IconButton(
+          padding: EdgeInsets.only(right: widget.tdPaddingRight),
+          hoverColor: Colors.transparent,
+          icon: Icon(
+            Icons.save,
+            color: Color(0xff0A183D),
+            size: 32,
           ),
+          onPressed: () {
+            int i;
+         print(editedRows2);
+         editedRows2.forEach((element) {
+           element.forEach(
+             (key,value) {
+             if (key=='row')
+                i = value;
+             else {
+       firebaseDatabase.ref(
+                  'W8BP78bU2oSUsOkiJvQTFLicseg1/seguimiento/$i/$key').set(value);
+             }
+                  });
+         });
+          },
         ),
       );
     }
-
     /// Generates table columns
     List<Widget> _tableHeaders() {
-      print(columnCount);
-      print(columns[0]['widthFactor']);
-      print(columns[1]['widthFactor']);
-      print(columns[2]['widthFactor']);
-      print(columns[3]['widthFactor']);
+
       return List<Widget>.generate(columnCount + 1, (index) {
         return columnCount + 1 == (index + 1)
-            ? iconColumn(widget.showSaveIcon, widget.thPaddingTop,
-                widget.thPaddingBottom)
+            ? Container()
             : 
            
             THeader(
@@ -374,9 +425,10 @@ class EditableState extends State<Editable> {
             });
             var list = rows[index];
             return columnCount + 1 == (rowIndex + 1)
-                ? _saveIcon(index)
+                ? _deleteIcon(index)
                 : RowBuilder(
                     index: index,
+                    rowIndex:rowIndex,
                     col: ckeys[rowIndex],
                     trHeight: widget.trHeight,
                     borderColor: widget.borderColor,
@@ -394,34 +446,41 @@ class EditableState extends State<Editable> {
                     isEditable: ceditable[rowIndex],
                     zebraStripe: widget.zebraStripe,
                     focusedBorder: widget.focusedBorder,
-                    stripeColor1: widget.stripeColor1,
-                    stripeColor2: widget.stripeColor2,
+                    color1: widget.color1,
+                    color2: widget.color2,
+                    color3: widget.color1,
+                    color4: widget.color2,
                     onChanged: (value) {
                        
-                      print('changedddddddddd');
-                      print('$index index' );
-                      print(ckeys[index]);
+                     
+                              print('cambiaaaaa');
+                       _editedKey = ckeys[rowIndex];
                     
-                      ///checks if row has been edited previously
-                      var result = editedRows.indexWhere((element) {
-                        return element['row'] != index ? false : true;
-                      });
+                   
 
                       ///adds a new edited data to a temporary holder
-                      if (result != -1) {
-                        print('ppp');
-                  
-                        editedRows[result][ckeys[rowIndex]] = value;
-
-                        // Si hay algún otro borrarlo. El fallo es porque despues no hay un result
-                      } else {
+                      
                         var temp = {};
                         temp['row'] = index;
                         temp[ckeys[rowIndex]] = value;
                          editedRows.clear();
                  
                         editedRows.add(temp);
+                       
+                   var result = editedRows2.indexWhere((element) {
+                        return element['row'] != index ? false : true;
+                      });
+
+                      ///adds a new edited data to a temporary holder
+                      if (result != -1) {
+                        editedRows2[result][ckeys[rowIndex]] = value;
+                      } else {
+                        var temp = {};
+                        temp['row'] = index;
+                        temp[ckeys[rowIndex]] = value;
+                        editedRows2.add(temp);
                       }
+               
                     },
                   );
           }),
@@ -433,35 +492,142 @@ class EditableState extends State<Editable> {
       color: Colors.transparent,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: SingleChildScrollView(
+        child:
+        
+        (cargando==false) ?  SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child:
-              Column(crossAxisAlignment: widget.createButtonAlign, children: [
+              Form(
+                 key: widget.formKey,
+                              child: Column(crossAxisAlignment: widget.createButtonAlign, children: [
             //Table Header
+            _saveIcon(),
             createButton(),
             Container(
-              padding: EdgeInsets.only(bottom: widget.thPaddingBottom),
-              decoration: BoxDecoration(
-                  border: Border(
-                      bottom: BorderSide(
-                          color: widget.borderColor,
-                          width: widget.borderWidth))),
-              child: Row(
-                  crossAxisAlignment: widget.thVertAlignment,
-                  mainAxisSize: MainAxisSize.min,
-                  children: _tableHeaders()),
+                width: MediaQuery.of(context).size.width*0.125,
+                child:
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+            Column(
+              children: [
+                Text('Altura:',style: widget.thStyle ?? TextStyle(fontWeight: widget.thWeight, fontSize: widget.thSize) ,),
+              Text('(cm)',style: widget.thStyle ?? TextStyle(fontWeight: widget.thWeight, fontSize: widget.thSize) ,),
+              ],
+            ),
+            SizedBox(width: 10,),
+            Container(
+                width: 100,
+                child: TextFormField(
+                    textAlign: widget.tdAlignment,
+                    style: widget.tdStyle,
+                    initialValue: (widget.height == 'null') ? '' : widget.height,
+                    onFieldSubmitted: widget.onSubmitted,
+                    onChanged: (_){
+                    print('hay cambio');
+                    },
+                    textAlignVertical: TextAlignVertical.center,
+                    maxLines: widget.tdEditableMaxLines,
+                    decoration: InputDecoration(
+                      filled: widget.zebraStripe,
+             
+                      contentPadding: EdgeInsets.only(
+                          left: widget.tdPaddingLeft,
+                          right: widget.tdPaddingRight,
+                          top: widget.tdPaddingTop,
+                          bottom: widget.tdPaddingBottom),
+                      border: InputBorder.none,
+                      focusedBorder: widget.focusedBorder,
+                      errorMaxLines: 5
+                    ),
+                  validator: (value){
+                      if (int.tryParse(value)!=null){
+                      if (int.parse(value) < 100)
+                      return 'Tu altura en cm no puede ser menor que 100';
+                      if (int.parse(value) > 250)
+                      return 'Tu altura en cm no puede ser mayor que 250';
+                      else return null; }
+                      else return 'Debes escribir un número entero';
+
+                    }
+                  ),
+            ),
+            
+       
+            ],)),
+             Container(
+                 width: MediaQuery.of(context).size.width*0.125,
+                 child:
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+            Text('Sexo:',style: widget.thStyle ?? TextStyle(fontWeight: widget.thWeight, fontSize: widget.thSize) ,),
+            SizedBox(width: 10,),
+            Container(
+                width: 100,
+                child: TextFormField(
+                  
+                    textAlign: widget.tdAlignment,
+                    style: widget.tdStyle,
+                    initialValue: (widget.gender == 'null') ? '' : widget.gender,
+                    onFieldSubmitted: widget.onSubmitted,
+                    onChanged: (value){
+                      
+                    
+                    },
+                    textAlignVertical: TextAlignVertical.center,
+                    maxLines: widget.tdEditableMaxLines,
+                    decoration: InputDecoration(
+                      filled: widget.zebraStripe,
+             
+                      contentPadding: EdgeInsets.only(
+                          left: widget.tdPaddingLeft,
+                          right: widget.tdPaddingRight,
+                          top: widget.tdPaddingTop,
+                          bottom: widget.tdPaddingBottom),
+                      border: InputBorder.none,
+                      focusedBorder: widget.focusedBorder,
+                      errorMaxLines: 5
+                    ),
+                    validator: (value){
+                      if (value.toLowerCase() =='hombre' || value.toLowerCase() == 'mujer')
+                      return null;
+                      else return 'Debes escribir tu sexo (hombre o mujer)';
+
+                    },
+                  ),
+            )
+       
+            ],)),
+            Container(
+                padding: EdgeInsets.only(bottom: widget.thPaddingBottom),
+                decoration: BoxDecoration(
+                    border: Border(
+                        bottom: BorderSide(
+                            color: widget.borderColor,
+                            width: widget.borderWidth))),
+                child: Row(
+                    crossAxisAlignment: widget.thVertAlignment,
+                    mainAxisSize: MainAxisSize.min,
+                    children: _tableHeaders()),
             ),
 
             Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: _tableRows(),
-                ),
-              ),
+                child: 
+            
+                SingleChildScrollView(
+                  child: 
+                  
+                  
+                  Column(
+                    children: _tableRows(),
+                  )
+                )
             )
           ]),
-        ),
-      ),
+              ),
+        ): Center(child: CircularProgressIndicator(backgroundColor: Colors.orange,)),
+      ) 
     );
   }
 
@@ -473,7 +639,7 @@ class EditableState extends State<Editable> {
         padding: EdgeInsets.only(left: 4.0, bottom: 4),
         child: InkWell(
           onTap: () {
-            rows = addOneRow(columns, rows);
+             rows = addOneRow(columns, rows);
             rowCount = rowCount + 1;
             setState(() {});
           },
@@ -567,6 +733,7 @@ class RowBuilder extends StatefulWidget {
     double borderWidth,
     this.cellData,
     this.index,
+    this.rowIndex,
     this.col,
     this.tdPaddingLeft,
     this.tdPaddingTop,
@@ -577,8 +744,10 @@ class RowBuilder extends StatefulWidget {
     this.onChanged,
     this.widthRatio,
     this.isEditable,
-    this.stripeColor1,
-    this.stripeColor2,
+    this.color1,
+    this.color2,
+    this.color3,
+    this.color4,
     this.zebraStripe,
     this.focusedBorder,
   })   : _trHeight = trHeight,
@@ -596,14 +765,17 @@ class RowBuilder extends StatefulWidget {
   final TextAlign tdAlignment;
   final TextStyle tdStyle;
   final int index;
+  final int rowIndex;
   final col;
   final double tdPaddingLeft;
   final double tdPaddingTop;
   final double tdPaddingBottom;
   final double tdPaddingRight;
   final int tdEditableMaxLines;
-  final Color stripeColor1;
-  final Color stripeColor2;
+  final Color color1;
+  final Color color2;
+  final Color color3;
+  final Color color4;
   final bool zebraStripe;
   final InputBorder focusedBorder;
   final ValueChanged<String> onSubmitted;
@@ -616,6 +788,7 @@ class RowBuilder extends StatefulWidget {
 class _RowBuilderState extends State<RowBuilder> {
   @override
   Widget build(BuildContext context) {
+
     double width = MediaQuery.of(context).size.width;
     return Flexible(
       fit: FlexFit.loose,
@@ -626,25 +799,25 @@ class _RowBuilderState extends State<RowBuilder> {
         decoration: BoxDecoration(
             color: !widget.zebraStripe
                 ? null
-                : (widget.index % 2 == 1.0
-                    ? widget.stripeColor2
-                    : widget.stripeColor1),
+                : (widget.rowIndex<=2
+                    ? widget.color2
+                    : widget.color1),
             border: Border.all(
                 color: widget._borderColor, width: widget._borderWidth)),
         child: widget.isEditable
             ? TextFormField(
                 textAlign: widget.tdAlignment,
                 style: widget.tdStyle,
-                initialValue: widget.cellData.toString(),
+                initialValue: (widget.cellData.toString() == 'null') ? '' : widget.cellData.toString(),
                 onFieldSubmitted: widget.onSubmitted,
                 onChanged: widget.onChanged,
                 textAlignVertical: TextAlignVertical.center,
                 maxLines: widget.tdEditableMaxLines,
                 decoration: InputDecoration(
                   filled: widget.zebraStripe,
-                  fillColor: widget.index % 2 == 1.0
-                      ? widget.stripeColor2
-                      : widget.stripeColor1,
+                  fillColor:(widget.rowIndex<=2
+                    ? widget.color2
+                    : widget.color1),
                   contentPadding: EdgeInsets.only(
                       left: widget.tdPaddingLeft,
                       right: widget.tdPaddingRight,
@@ -665,12 +838,12 @@ class _RowBuilderState extends State<RowBuilder> {
                 decoration: BoxDecoration(
                   color: !widget.zebraStripe
                       ? null
-                      : (widget.index % 2 == 1.0
-                          ? widget.stripeColor2
-                          : widget.stripeColor1),
+                      :    (widget.rowIndex<=2
+                    ? widget.color2
+                    : widget.color1),
                 ),
                 child: Text(
-                  widget.cellData.toString(),
+                  (widget.cellData.toString() == 'null') ? '' : widget.cellData.toString(),
                   textAlign: widget.tdAlignment,
                   style: widget.tdStyle ??
                       TextStyle(
@@ -682,3 +855,4 @@ class _RowBuilderState extends State<RowBuilder> {
     );
   }
 }
+

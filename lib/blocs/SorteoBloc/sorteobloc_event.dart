@@ -15,3 +15,8 @@ class Espera extends SorteoblocEvent {
 Espera();
 List<Object> get props => [];
 }
+class VerSiSeHaParticipado extends SorteoblocEvent {
+final bool haParticipado;
+VerSiSeHaParticipado(this.haParticipado);
+List<Object> get props => [haParticipado];
+}

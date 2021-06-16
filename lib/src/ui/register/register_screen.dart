@@ -1,7 +1,7 @@
+import 'package:entrenaapp/blocs/register_bloc/bloc.dart';
+import 'package:entrenaapp/repository/user_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../bloc/register_bloc/bloc.dart';
-import '../../repository/user_repository.dart';
 import '../../ui/register/register_form.dart';
 
 class RegisterScreen extends StatelessWidget {

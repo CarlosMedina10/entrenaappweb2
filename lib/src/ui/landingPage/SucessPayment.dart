@@ -1,8 +1,6 @@
 
-import 'package:entrenaapp/src/repository/user_repository.dart';
-
+import 'package:entrenaapp/repository/user_repository.dart';
 import 'package:flutter/material.dart';
-
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -27,7 +25,7 @@ class _SuccesState extends State<Success> {
       Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
       _prefs.then((value) {
 
-         print(widget.sessionId + 'hola'); 
+         
  
        userID= value.getString('userID');
     widget.userRepository.userPremiumStripe(userID, widget.sessionId);

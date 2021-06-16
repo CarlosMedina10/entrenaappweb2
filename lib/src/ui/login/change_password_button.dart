@@ -1,9 +1,9 @@
 
 
+import 'package:entrenaapp/repository/user_repository.dart';
 import 'package:entrenaapp/src/ui/changePasswordScreen.dart';
 import 'package:flutter/material.dart';
-import '../../repository/user_repository.dart';
-import '../../ui/changePassword.dart';
+
 
 class CreateChangePasswordButton extends StatelessWidget {
   final UserRepository _userRepository;
