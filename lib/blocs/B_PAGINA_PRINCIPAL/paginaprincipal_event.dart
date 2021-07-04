@@ -13,11 +13,11 @@ abstract class PaginaprincipalEvent extends Equatable {
 
 class UserStarted extends PaginaprincipalEvent{
   final String userID;
-  final idToken;
-  final PushNotificationService pushNotificationService;
-  UserStarted(this.userID,this.idToken,this.pushNotificationService);
+ 
+  
+  UserStarted(this.userID,);
   @override
-   List<Object> get props => [userID,idToken,pushNotificationService];
+   List<Object> get props => [userID,];
 }
 class UserAAcabadoDeVerPromo extends PaginaprincipalEvent{
   final isNewUser;
@@ -45,10 +45,11 @@ class UserQuiereConfigurar extends PaginaprincipalEvent{
   final double bmi;
   final double puntuacionFinal;
   final double puntuacionExperiencia;
+  final num userBmi;
   final String sexo;
   final bool isReevaluate;
   
-  UserQuiereConfigurar(this.isUserInit,{this.bmi,this.puntuacionFinal,this.puntuacionExperiencia,this.sexo,this.isReevaluate});
+  UserQuiereConfigurar(this.isUserInit,{this.bmi,this.puntuacionFinal,this.puntuacionExperiencia,this.userBmi,this.sexo,this.isReevaluate});
   @override
    List<Object> get props => [isUserInit,bmi,puntuacionFinal,puntuacionExperiencia,sexo,isReevaluate];
 }

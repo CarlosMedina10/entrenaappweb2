@@ -1,11 +1,10 @@
 import 'dart:async';
-import 'package:entrena_app_2/models/MesocicloEntrenamiento.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:bloc/bloc.dart';
-import 'dart:convert';
-import 'package:entrena_app_2/models/Diadeentrenamiento.dart';
+import 'package:entrenaapp/models/Diadeentrenamiento.dart';
+import 'package:entrenaapp/models/MesocicloEntrenamiento.dart';
+import 'package:entrenaapp/repository/repo_principal.dart';
 import 'package:equatable/equatable.dart';
-import '../../Repositorios/repo_principal.dart';
+
 
 
 part 'mesociclo_bloc_event.dart';
@@ -171,12 +170,7 @@ if (event.semanaEntrenamiento == 0) {
     
     if (event is UserHaAcabadoDeEditarMesociclo)
 { 
-     if (!_principalRepository.isUserPro)
-    {
-    try { await _principalRepository.guardarPuntos(-50); } catch (error) {
-        yield UserEligiendoEntrenamiento(event.mesocicloEntrenamiento.semanaActual);
-    }
-    }
+    
    await _principalRepository.entrenamientoApi.actualizarMesociclo(event.mesocicloEntrenamiento.id, event.mesocicloEntrenamiento);
      await _principalRepository.obtenerUltimoMesociclo();
 

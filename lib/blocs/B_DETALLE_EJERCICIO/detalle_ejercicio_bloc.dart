@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:entrena_app_2/Repositorios/repo_principal.dart';
-import 'package:entrena_app_2/widgets/detalle_ejercicios.dart';
+import 'package:entrenaapp/repository/repo_principal.dart';
+
 import 'package:equatable/equatable.dart';
 import '../../models/Ejercicio.dart';
 part 'detalle_ejercicio_event.dart';
@@ -63,13 +63,10 @@ class DetalleEjercicioBloc extends Bloc<DetalleEjercicioEvent, DetalleEjercicioS
      else  yield DetalleEjercicioS(event.serie+2,parar:false,cargando:true,isCompleted: false);
  try {
    
-     if (!principalRepository.isUserPro) {
- // La funcion guardar puntos suma los puntos actuales a los que le mandamos. Por ejemplo con un anuncio bonificado mandamos 10 puntos o con una compra 100. En las acciones restamos puntos.
-  await principalRepository.guardarPuntos(-1);
-  }
+   
 
 
-   principalRepository.entrenamientoApi.actualizarCargayRepeticionesPro(event.carga,event.repeticiones, event.numeroDia, event.numeroEjercicio, event.semanaActual, event.serie,);
+   principalRepository.entrenamientoApi.actualizarCargayRepeticiones(event.carga,event.repeticiones, event.numeroDia, event.numeroEjercicio, event.semanaActual, event.serie,);
      if (!event.parar) 
     yield DetalleEjercicioS(event.serie+1,parar:event.parar,cargando:false,isCompleted: true);
     else yield DetalleEjercicioS(event.serie+2,parar:event.parar,cargando:false,isCompleted: true);
@@ -93,13 +90,10 @@ class DetalleEjercicioBloc extends Bloc<DetalleEjercicioEvent, DetalleEjercicioS
     
  try {
    
-     if (!principalRepository.isUserPro) {
- // La funcion guardar puntos suma los puntos actuales a los que le mandamos. Por ejemplo con un anuncio bonificado mandamos 10 puntos o con una compra 100. En las acciones restamos puntos.
-  await principalRepository.guardarPuntos(-1);
-  }
+ 
 
 
-    await principalRepository.entrenamientoApi.actualizarComentarioPro(event.comentario, event.numeroDia, event.numeroEjercicio, event.semanaActual);
+    await principalRepository.entrenamientoApi.actualizarComentario(event.comentario, event.numeroDia, event.numeroEjercicio, event.semanaActual);
      
     yield Acabado();
    

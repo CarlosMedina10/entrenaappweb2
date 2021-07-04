@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:entrena_app_2/Repositorios/repo_principal.dart';
+import 'package:entrenaapp/repository/repo_principal.dart';
+
 import 'package:equatable/equatable.dart';
 import '../B_CARD_EJERCICIO/card_ejercicio_bloc.dart';
 
@@ -133,11 +134,8 @@ StreamSubscription otherBlocSubscription1;
    if (event.semanaActual == 0) {
      yield Cargando();
  try {
-    if (!principalRepository.isUserPro) {
- // La funcion guardar puntos suma los puntos actuales a los que le mandamos. Por ejemplo con un anuncio bonificado mandamos 10 puntos o con una compra 100. En las acciones restamos puntos.
-  await principalRepository.guardarPuntos(-1);
-  }
-   principalRepository.entrenamientoApi.actualizarComentarioPro(event.comentario, event.numeroDia, event.numeroEjercicio, event.semanaActual);
+    
+   principalRepository.entrenamientoApi.actualizarComentario(event.comentario, event.numeroDia, event.numeroEjercicio, event.semanaActual);
     
     yield ViendoBotonComentarios(event.comentario);} catch (error){
      yield OcurrioErrorComentario(principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.comentarios.semana1);
@@ -147,11 +145,8 @@ StreamSubscription otherBlocSubscription1;
     if (event.semanaActual == 1) {
       yield Cargando();
  try {
-    if (!principalRepository.isUserPro) {
- // La funcion guardar puntos suma los puntos actuales a los que le mandamos. Por ejemplo con un anuncio bonificado mandamos 10 puntos o con una compra 100. En las acciones restamos puntos.
-  await principalRepository.guardarPuntos(-1);
-  }
- principalRepository.entrenamientoApi.actualizarComentarioPro(event.comentario, event.numeroDia, event.numeroEjercicio, event.semanaActual);
+    
+ principalRepository.entrenamientoApi.actualizarComentario(event.comentario, event.numeroDia, event.numeroEjercicio, event.semanaActual);
     
     yield ViendoBotonComentarios(event.comentario);} catch (error){
      yield OcurrioErrorComentario(principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.comentarios.semana2);
@@ -162,11 +157,8 @@ StreamSubscription otherBlocSubscription1;
     yield Cargando();
  try {
    
-    if (!principalRepository.isUserPro) {
- // La funcion guardar puntos suma los puntos actuales a los que le mandamos. Por ejemplo con un anuncio bonificado mandamos 10 puntos o con una compra 100. En las acciones restamos puntos.
-  await principalRepository.guardarPuntos(-1);
-  }
- principalRepository.entrenamientoApi.actualizarComentarioPro(event.comentario, event.numeroDia, event.numeroEjercicio, event.semanaActual);
+    
+ principalRepository.entrenamientoApi.actualizarComentario(event.comentario, event.numeroDia, event.numeroEjercicio, event.semanaActual);
     
     yield ViendoBotonComentarios(event.comentario);} catch (error){
       yield OcurrioErrorComentario(principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.comentarios.semana3);
@@ -176,11 +168,8 @@ StreamSubscription otherBlocSubscription1;
     if (event.semanaActual == 3) {
     yield Cargando();
  try {
-    if (!principalRepository.isUserPro) {
- // La funcion guardar puntos suma los puntos actuales a los que le mandamos. Por ejemplo con un anuncio bonificado mandamos 10 puntos o con una compra 100. En las acciones restamos puntos.
-  await principalRepository.guardarPuntos(-1);
-  }
-    principalRepository.entrenamientoApi.actualizarComentarioPro(event.comentario, event.numeroDia, event.numeroEjercicio, event.semanaActual);
+    
+    principalRepository.entrenamientoApi.actualizarComentario(event.comentario, event.numeroDia, event.numeroEjercicio, event.semanaActual);
     
     yield ViendoBotonComentarios(event.comentario);} catch (error){
      yield OcurrioErrorComentario(principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.comentarios.semana4);
@@ -200,13 +189,10 @@ StreamSubscription otherBlocSubscription1;
      yield Cargando();
  try {
    
-     if (!principalRepository.isUserPro) {
- // La funcion guardar puntos suma los puntos actuales a los que le mandamos. Por ejemplo con un anuncio bonificado mandamos 10 puntos o con una compra 100. En las acciones restamos puntos.
- await principalRepository.guardarPuntos(-1);
-  }
+ 
 
 
-   principalRepository.entrenamientoApi.actualizarCargayRepeticionesPro(event.carga,event.repeticiones, event.numeroDia, event.numeroEjercicio, event.semanaActual, event.serie);
+   principalRepository.entrenamientoApi.actualizarCargayRepeticiones(event.carga,event.repeticiones, event.numeroDia, event.numeroEjercicio, event.semanaActual, event.serie);
     
     yield ViendoCargayRepeticiones(event.carga,event.repeticiones);}
      catch (error){
@@ -218,11 +204,8 @@ StreamSubscription otherBlocSubscription1;
     yield Cargando();
     try {
       
-       if (!principalRepository.isUserPro) {
- 
-  await principalRepository.guardarPuntos(-1);
-  }
-       principalRepository.entrenamientoApi.actualizarCargayRepeticionesPro(event.carga,event.repeticiones, event.numeroDia, event.numeroEjercicio, event.semanaActual, event.serie);
+      
+       principalRepository.entrenamientoApi.actualizarCargayRepeticiones(event.carga,event.repeticiones, event.numeroDia, event.numeroEjercicio, event.semanaActual, event.serie);
     
     yield ViendoCargayRepeticiones(event.carga,event.repeticiones);} catch (error){
       yield OcurrioError(principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.apuntescarga.semana2[event.serie],principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.apuntesreps.semana2[event.serie]);
@@ -231,11 +214,8 @@ StreamSubscription otherBlocSubscription1;
   yield Cargando();
   try {
     
-     if (!principalRepository.isUserPro) {
- // La funcion guardar puntos suma los puntos actuales a los que le mandamos. Por ejemplo con un anuncio bonificado mandamos 10 puntos o con una compra 100. En las acciones restamos puntos.
-  await principalRepository.guardarPuntos(-1);
-  }
-     principalRepository.entrenamientoApi.actualizarCargayRepeticionesPro(event.carga,event.repeticiones, event.numeroDia, event.numeroEjercicio, event.semanaActual, event.serie);
+    
+     principalRepository.entrenamientoApi.actualizarCargayRepeticiones(event.carga,event.repeticiones, event.numeroDia, event.numeroEjercicio, event.semanaActual, event.serie);
     
     yield ViendoCargayRepeticiones(event.carga,event.repeticiones);} catch (error){
       yield OcurrioError(principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.apuntescarga.semana3[event.serie],principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.apuntesreps.semana3[event.serie]);
@@ -244,12 +224,9 @@ StreamSubscription otherBlocSubscription1;
       print('actualizaaaaa');
     yield Cargando();
      try {
-        if (!principalRepository.isUserPro) {
- // La funcion guardar puntos suma los puntos actuales a los que le mandamos. Por ejemplo con un anuncio bonificado mandamos 10 puntos o con una compra 100. En las acciones restamos puntos.
-  await principalRepository.guardarPuntos(-1);
-  }
        
-      principalRepository.entrenamientoApi.actualizarCargayRepeticionesPro(event.carga,event.repeticiones, event.numeroDia, event.numeroEjercicio, event.semanaActual, event.serie);
+       
+      principalRepository.entrenamientoApi.actualizarCargayRepeticiones(event.carga,event.repeticiones, event.numeroDia, event.numeroEjercicio, event.semanaActual, event.serie);
     
     yield ViendoCargayRepeticiones(event.carga,event.repeticiones);} catch (error){
       print(error);
@@ -270,11 +247,8 @@ StreamSubscription otherBlocSubscription1;
      yield Cargando();
     try {
       
-           if (!principalRepository.isUserPro) {
- 
-  await principalRepository.guardarPuntos(-1);
-  }
-   principalRepository.entrenamientoApi.actualizarCargaPro(event.carga, event.numeroDia, event.numeroEjercicio, event.semanaActual, event.serie);
+   
+   principalRepository.entrenamientoApi.actualizarCarga(event.carga, event.numeroDia, event.numeroEjercicio, event.semanaActual, event.serie);
     String repeticiones=principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.apuntesreps.semana1[event.serie];
     yield ViendoCargayRepeticiones(event.carga,repeticiones);} catch (error){
       yield OcurrioError(principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.apuntescarga.semana1[event.serie],principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.apuntesreps.semana1[event.serie]);
@@ -282,12 +256,9 @@ StreamSubscription otherBlocSubscription1;
     } else if (event.semanaActual == 1) {
     yield Cargando();
    try {
-          if (!principalRepository.isUserPro) {
- 
-  await principalRepository.guardarPuntos(-1);
-  }
+  
      
-      principalRepository.entrenamientoApi.actualizarCargaPro(event.carga, event.numeroDia, event.numeroEjercicio, event.semanaActual, event.serie);
+      principalRepository.entrenamientoApi.actualizarCarga(event.carga, event.numeroDia, event.numeroEjercicio, event.semanaActual, event.serie);
     String repeticiones=principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.apuntesreps.semana2[event.serie];
     yield ViendoCargayRepeticiones(event.carga,repeticiones);
     } catch (error){
@@ -296,13 +267,10 @@ StreamSubscription otherBlocSubscription1;
     } else if (event.semanaActual == 2) {
     yield Cargando();
       try {
-             if (!principalRepository.isUserPro) {
- 
-  await principalRepository.guardarPuntos(-1);
-  }
+     
         
         
-        principalRepository.entrenamientoApi.actualizarCargaPro(event.carga, event.numeroDia, event.numeroEjercicio, event.semanaActual, event.serie);
+        principalRepository.entrenamientoApi.actualizarCarga(event.carga, event.numeroDia, event.numeroEjercicio, event.semanaActual, event.serie);
     String repeticiones=principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.apuntesreps.semana3[event.serie];
     yield ViendoCargayRepeticiones(event.carga,repeticiones);} catch (error){
       yield OcurrioError(principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.apuntescarga.semana3[event.serie],principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.apuntesreps.semana3[event.serie]);
@@ -310,12 +278,9 @@ StreamSubscription otherBlocSubscription1;
     } else if (event.semanaActual == 3) {
     yield Cargando();
       try {
-             if (!principalRepository.isUserPro) {
- 
-  await principalRepository.guardarPuntos(-1);
-  }
+     
         
-      principalRepository.entrenamientoApi.actualizarCargaPro(event.carga, event.numeroDia, event.numeroEjercicio, event.semanaActual, event.serie);
+      principalRepository.entrenamientoApi.actualizarCarga(event.carga, event.numeroDia, event.numeroEjercicio, event.semanaActual, event.serie);
     String repeticiones=principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.apuntesreps.semana4[event.serie];
     yield ViendoCargayRepeticiones(event.carga,repeticiones);} catch (error){
       yield OcurrioError(principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.apuntescarga.semana4[event.serie],principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.apuntesreps.semana4[event.serie]);
@@ -333,11 +298,8 @@ StreamSubscription otherBlocSubscription1;
  if (event.semanaActual == 0) {
    yield Cargando();
    try {
-          if (!principalRepository.isUserPro) {
- 
-  await principalRepository.guardarPuntos(-1);
-  }
-     principalRepository.entrenamientoApi.actualizarRepeticionesPro(event.repeticiones, event.numeroDia, event.numeroEjercicio, event.semanaActual, event.serie);
+
+     principalRepository.entrenamientoApi.actualizarRepeticiones(event.repeticiones, event.numeroDia, event.numeroEjercicio, event.semanaActual, event.serie);
     String carga=principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.apuntescarga.semana1[event.serie];
     yield ViendoCargayRepeticiones(carga,event.repeticiones);} catch (error){
       yield OcurrioError(principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.apuntescarga.semana1[event.serie],principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.apuntesreps.semana1[event.serie]);
@@ -345,11 +307,8 @@ StreamSubscription otherBlocSubscription1;
     } else if (event.semanaActual == 1) {
       yield Cargando();
      try {
-            if (!principalRepository.isUserPro) {
- 
-  await principalRepository.guardarPuntos(-1);
-  }
-        principalRepository.entrenamientoApi.actualizarRepeticionesPro(event.repeticiones, event.numeroDia, event.numeroEjercicio, event.semanaActual, event.serie);
+
+        principalRepository.entrenamientoApi.actualizarRepeticiones(event.repeticiones, event.numeroDia, event.numeroEjercicio, event.semanaActual, event.serie);
     String carga=principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.apuntescarga.semana2[event.serie];
     yield ViendoCargayRepeticiones(carga,event.repeticiones);} catch (error){
       yield OcurrioError(principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.apuntescarga.semana2[event.serie],principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.apuntesreps.semana2[event.serie]);
@@ -357,11 +316,8 @@ StreamSubscription otherBlocSubscription1;
     } else if (event.semanaActual == 2) {
   yield Cargando();
   try {
-         if (!principalRepository.isUserPro) {
- 
-  await principalRepository.guardarPuntos(-1);
-  }
-     principalRepository.entrenamientoApi.actualizarRepeticionesPro(event.repeticiones, event.numeroDia, event.numeroEjercicio, event.semanaActual, event.serie);
+  
+     principalRepository.entrenamientoApi.actualizarRepeticiones(event.repeticiones, event.numeroDia, event.numeroEjercicio, event.semanaActual, event.serie);
     String carga=principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.apuntescarga.semana3[event.serie];
     yield ViendoCargayRepeticiones(carga,event.repeticiones);} catch (error){
       yield OcurrioError(principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.apuntescarga.semana3[event.serie],principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.apuntesreps.semana3[event.serie]);
@@ -369,11 +325,8 @@ StreamSubscription otherBlocSubscription1;
     } else if (event.semanaActual == 3) {
       yield Cargando();
       try {
-             if (!principalRepository.isUserPro) {
- 
-  await principalRepository.guardarPuntos(-1);
-  }
-        principalRepository.entrenamientoApi.actualizarRepeticionesPro(event.repeticiones, event.numeroDia, event.numeroEjercicio, event.semanaActual, event.serie);
+  
+        principalRepository.entrenamientoApi.actualizarRepeticiones(event.repeticiones, event.numeroDia, event.numeroEjercicio, event.semanaActual, event.serie);
     String carga=principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.apuntescarga.semana4[event.serie];
     yield ViendoCargayRepeticiones(carga,event.repeticiones);} catch (error){
       yield OcurrioError(principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.apuntescarga.semana4[event.serie],principalRepository.historialEntrenamiento.historialEntrenamiento[principalRepository.historialEntrenamiento.historialEntrenamiento.length-1].diasEntrenamiento[event.numeroDia].patrones[event.numeroEjercicio].ejercicioSeleccionado.apuntesreps.semana4[event.serie]);

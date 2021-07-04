@@ -396,11 +396,11 @@ class Configuracion {
     tiempoDeDescanso = json['tiempo de descanso'] != null
         ? new TiempoDeDescanso.fromJson(json['tiempo de descanso'])
         : null;
-     trabajo = json['trabajo'];
-     serieDescendente = json['serieDescendente'];
-     restPause = json['restPause'];
-     superserie = json['superserie'];
-     serieAlterna = json['serieAlterna'];
+    
+    //  serieDescendente = json['serieDescendente'];
+    //  restPause = json['restPause'];
+    //  superserie = json['superserie'];
+    //  serieAlterna = json['serieAlterna'];
      
   }
 
@@ -418,11 +418,11 @@ class Configuracion {
     if (this.tiempoDeDescanso != null) {
       data['tiempo de descanso'] = this.tiempoDeDescanso.toJson();
     }
-    data['trabajo'] = this.trabajo;
-    data['serieDescendente'] = this.serieDescendente;
-    data['restPause'] = this.restPause;
-    data['superserie'] = this.superserie;
-    data['serieAlterna'] = this.serieAlterna;
+    // data['trabajo'] = this.trabajo;
+    // data['serieDescendente'] = this.serieDescendente;
+    // data['restPause'] = this.restPause;
+    // data['superserie'] = this.superserie;
+    // data['serieAlterna'] = this.serieAlterna;
 
     return data;
   }

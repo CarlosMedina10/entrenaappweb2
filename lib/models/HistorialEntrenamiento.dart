@@ -466,7 +466,7 @@
 
 
 
-import './MesocicloEntrenamiento.dart';
+import 'MesocicloEntrenamiento.dart';
 
 
 

@@ -1,8 +1,11 @@
 import 'package:flutter/foundation.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class Ejercicio {
   @required
   String nombre;
+  @required
+  String nombreEs;
   @required
   List<String> imagen;
   @required
@@ -22,6 +25,7 @@ class Ejercicio {
 
   Ejercicio(
       {this.nombre,
+      this.nombreEs,
       this.imagen,
       this.descripcion,
       this.apuntescarga,
@@ -40,7 +44,8 @@ class Ejercicio {
 
   factory Ejercicio.pressBanca() {
     return Ejercicio(
-        nombre: "Press de banca",
+        nombre: "_Ejercicios.press_banca".tr(),
+        nombreEs: "Press de banca",
         imagen: ['PressBanca.gif'],
         descripcion: '',
         material: ['gym', 'barra', 'bancoplano'],
@@ -54,7 +59,8 @@ class Ejercicio {
   }
   factory Ejercicio.pressPlanoConMancuernas() {
     return Ejercicio(
-        nombre: "Press plano con mancuernas",
+        nombre: "_Ejercicios.press_plano_con_mancuernas".tr(),
+        nombreEs: "Press plano con mancuernas",
         imagen: ['PressPlanoConMancuernas.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas', 'bancoplano'],
@@ -69,7 +75,8 @@ class Ejercicio {
 
   factory Ejercicio.pressPlanoConMancuernasAgarreNeutro() {
     return Ejercicio(
-        nombre: "Press plano con mancuernas agarre neutro",
+      nombre:  "_Ejercicios.press_plano_con_mancuernas_agarre_neutro".tr(),
+        nombreEs: "Press plano con mancuernas agarre neutro",
         imagen: ['PressPlanoConMancuernasAgarreNeutro.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas', 'bancoplano'],
@@ -84,7 +91,8 @@ class Ejercicio {
 
   factory Ejercicio.fondosDePechoEnBarrasParalelas() {
     return Ejercicio(
-        nombre: "Fondos de pecho en barras paralelas",
+      nombre: "_Ejercicios.fondos_de_pecho_en_barras_paralelas".tr(),
+        nombreEs: "Fondos de pecho en barras paralelas",
         imagen: ['FondosDePecho.gif'],
         descripcion: 'Si vas sobrado de peso puedes lastrarte.',
         material: ['paralelas'],
@@ -99,7 +107,8 @@ class Ejercicio {
 
   factory Ejercicio.fondosDePechoEnBarra() {
     return Ejercicio(
-        nombre: "Fondos de pecho en barra",
+        nombre: "_Ejercicios.fondos_de_pecho_en_barra".tr(),
+        nombreEs: "Fondos de pecho en barra",
         imagen: ['FondosParaPechoEnBarra.gif'],
         descripcion: '',
         material: ['paralelas'],
@@ -114,7 +123,8 @@ class Ejercicio {
 
   factory Ejercicio.pressPlanoEnMultipower() {
     return Ejercicio(
-        nombre: "Press plano en multipower",
+        nombre: "_Ejercicios.press_plano_en_multipower".tr(),
+        nombreEs: "Press plano en multipower",
         imagen: ['PressPlanoEnMultipower.gif'],
         descripcion: '',
         material: [
@@ -130,7 +140,8 @@ class Ejercicio {
 
   factory Ejercicio.pressHorizontalEnMaquina() {
     return Ejercicio(
-        nombre: "Press Horizontal sentado en máquina",
+        nombre: "_Ejercicios.press_horizontal_sentado_en_máquina".tr(),
+        nombreEs: "Press Horizontal sentado en máquina",
         imagen: ['PressVerticalEnMaquina.gif'],
         descripcion: '',
         material: [
@@ -146,7 +157,8 @@ class Ejercicio {
 
   factory Ejercicio.pressHorizontalEnMaquinaAgarreNeutro() {
     return Ejercicio(
-        nombre: "Press horizontal sentado en máquina agarre neutro",
+        nombre: "_Ejercicios.press_horizontal_sentado_en_máquina_agarre_neutro".tr(),
+        nombreEs: "Press horizontal sentado en máquina agarre neutro",
         imagen: ['PressVerticalEnMaquinaAgarreNeutro.gif'],
         descripcion: '',
         material: [
@@ -162,7 +174,8 @@ class Ejercicio {
 
   factory Ejercicio.flexionesPlanas() {
     return Ejercicio(
-        nombre: "Flexiones planas",
+        nombre: "_Ejercicios.flexiones_planas".tr(),
+        nombreEs: "Flexiones planas",
         imagen: ['FlexionesPlanas.gif'],
         descripcion: 'Puedes añadir una carga externa',
         material: [
@@ -180,7 +193,8 @@ class Ejercicio {
 
   factory Ejercicio.flexionesPlanasConElasticos() {
     return Ejercicio(
-        nombre: "Flexiones planas con banda elástica",
+       nombre: "_Ejercicios.flexiones_planas_con_banda_elástica".tr(),
+        nombreEs: "Flexiones planas con banda elástica",
         imagen: ['FlexionesBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -194,7 +208,8 @@ class Ejercicio {
 
   factory Ejercicio.pressVerticalConElasticos() {
     return Ejercicio(
-        nombre: "Press vertical con bandas elásticas",
+       nombre: "_Ejercicios.press_vertical_con_bandas_elásticas".tr(),
+        nombreEs: "Press vertical con bandas elásticas",
         imagen: ['PressVerticalBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -207,10 +222,39 @@ class Ejercicio {
   }
   factory Ejercicio.pressPlanoConBandasElasticas() {
     return Ejercicio(
-        nombre: "Press plano con bandas elásticas",
+      nombre: "_Ejercicios.press_plano_con_bandas_elásticas".tr(),
+        nombreEs: "Press plano con bandas elásticas",
         imagen: ['PressPlanoBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos', 'bancoplano'],
+        musculosTrabajados: {
+          'Primario1': 'Pecho',
+          'Secundario1': 'Hombro Frontal',
+          'Secundario2': 'Triceps'
+        },
+        patron: 1);
+  }
+factory Ejercicio.pressPlanoConkettlebel() {
+    return Ejercicio(
+       nombre: "_Ejercicios.press_plano_con_kettlebel".tr(),
+        nombreEs: "Press plano con kettlebel",
+        imagen: ['PressConKetbell.gif'],
+        descripcion: '',
+        material: ['kettlebell'],
+        musculosTrabajados: {
+          'Primario1': 'Pecho',
+          'Secundario1': 'Hombro Frontal',
+          'Secundario2': 'Triceps'
+        },
+        patron: 1);
+  }
+  factory Ejercicio.pressPlanoConkettlebelRangoExtenso() {
+    return Ejercicio(
+        nombre: "_Ejercicios.press_plano_con_kettlebel_torso_inclinado".tr(),
+        nombreEs: "Press plano con kettlebel torso inclinado",
+        imagen: ['PressConKetbellRangoExtenso.gif'],
+        descripcion: '',
+        material: ['kettlebell'],
         musculosTrabajados: {
           'Primario1': 'Pecho',
           'Secundario1': 'Hombro Frontal',
@@ -222,7 +266,8 @@ class Ejercicio {
 
   factory Ejercicio.pressInclinadoConBarra() {
     return Ejercicio(
-        nombre: "Press inclinado con barra",
+       nombre: "_Ejercicios.press_inclinado_con_barra".tr(),
+        nombreEs: "Press inclinado con barra",
         imagen: ['PressInclinado.gif'],
         descripcion: '',
         material: ['gym', 'barra', 'bancoregulable'],
@@ -237,7 +282,8 @@ class Ejercicio {
 
   factory Ejercicio.pressInclinadoConMancuernas() {
     return Ejercicio(
-        nombre: "Press inclinado con mancuernas",
+        nombre: "_Ejercicios.press_inclinado_con_mancuernas".tr(),
+        nombreEs: "Press inclinado con mancuernas",
         imagen: ['PressInclinadoConMancuernas.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas', 'bancoregulable'],
@@ -251,7 +297,8 @@ class Ejercicio {
   }
   factory Ejercicio.flexionesDeclinadas() {
     return Ejercicio(
-        nombre: "Flexiones declinadas",
+        nombre: "_Ejercicios.flexiones_declinadas".tr(),
+        nombreEs: "Flexiones declinadas",
         imagen: ['FlexionesDeclinadas.gif'],
         descripcion: 'Puedes añadir una carga externa',
         material: ['barra', 'polea', 'mancuernas'],
@@ -265,7 +312,8 @@ class Ejercicio {
 
   factory Ejercicio.pressInclinadoConvergente() {
     return Ejercicio(
-        nombre: "Press inclinado convergente",
+        nombre: "_Ejercicios.press_inclinado_convergente".tr(),
+        nombreEs: "Press inclinado convergente",
         imagen: ['PressInclinadoConvergente.gif'],
         descripcion: '',
         material: [
@@ -281,7 +329,8 @@ class Ejercicio {
 
   factory Ejercicio.pressInclinadoEnMaquina() {
     return Ejercicio(
-        nombre: "Press inclinado en máquina",
+        nombre: "_Ejercicios.press_inclinado_en_máquina".tr(),
+        nombreEs: "Press inclinado en máquina",
         imagen: ['PressInclinadoEnMaquina.gif'],
         descripcion: '',
         material: [
@@ -297,7 +346,8 @@ class Ejercicio {
 
   factory Ejercicio.pressInclinadoEnMultipower() {
     return Ejercicio(
-        nombre: "Press inclinado en multipower",
+        nombre: "_Ejercicios.press_inclinado_en_multipower".tr(),
+        nombreEs: "Press inclinado en multipower",
         imagen: ['PressInclinadoEnMultipower.gif'],
         descripcion: '',
         material: [
@@ -312,7 +362,8 @@ class Ejercicio {
   }
   factory Ejercicio.pressInclinadoConBandasElasticas() {
     return Ejercicio(
-        nombre: "Press inclinado con bandas elásticas",
+   nombre: "_Ejercicios.press_inclinado_con_bandas_elásticas".tr(),
+        nombreEs: "Press inclinado con bandas elásticas",
         imagen: ['PressInclinadoBandaElastica.gif'],
         descripcion: '',
         material: [
@@ -325,11 +376,25 @@ class Ejercicio {
         },
         patron: 2);
   }
-
+ factory Ejercicio.flexionesDeclinadasEnTrx() {
+    return Ejercicio(
+        nombre: "_Ejercicios.flexiones_declinadas_en_trx".tr(),
+        nombreEs: "Flexiones declinadas en TRX",
+        imagen: ['FlexionesEnTRX.gif'],
+        descripcion: 'Puedes añadir una carga externa',
+        material: ['trx'],
+        musculosTrabajados: {
+          'Primario1': 'Pecho',
+          'Secundario1': 'Hombro Frontal',
+          'Secundario2': 'Triceps'
+        },
+        patron: 2);
+  }
 // Empuje Declinado
   factory Ejercicio.pressDeclinado() {
     return Ejercicio(
-        nombre: "Press declinado",
+      nombre: "_Ejercicios.press_declinado".tr(),
+        nombreEs: "Press declinado",
         imagen: ['PressDeclinado.gif'],
         descripcion: '',
         material: ['gym', 'barra', 'bancoregulable'],
@@ -344,7 +409,8 @@ class Ejercicio {
 
   factory Ejercicio.pressDeclinadoConMancuernas() {
     return Ejercicio(
-        nombre: "Press declinado con mancuernas",
+         nombre: "_Ejercicios.press_declinado_con_mancuernas".tr(),
+        nombreEs: "Press declinado con mancuernas",
         imagen: ['03011301-Dumbbell-Decline-Bench-Press_Chest_180.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas', 'bancoregulable'],
@@ -359,7 +425,8 @@ class Ejercicio {
 
   factory Ejercicio.pressDeclinadoEnMaquina() {
     return Ejercicio(
-        nombre: "Press declinado en máquina",
+      nombre: "_Ejercicios.press_declinado_en_máquina".tr(),
+        nombreEs: "Press declinado en máquina",
         imagen: ['PressDeclinadoEnMaquina.gif'],
         descripcion: '',
         material: [
@@ -374,7 +441,8 @@ class Ejercicio {
   }
   factory Ejercicio.pressDeclinadoEnMultipower() {
     return Ejercicio(
-        nombre: "Press declinado en multipower",
+      nombre: "_Ejercicios.press_declinado_en_multipower".tr(),
+        nombreEs: "Press declinado en multipower",
         imagen: ['PressDeclinadoEnMultipower.gif'],
         descripcion: '',
         material: [
@@ -390,10 +458,26 @@ class Ejercicio {
 
   factory Ejercicio.flexionesInclinadas() {
     return Ejercicio(
-        nombre: "Flexiones inclinadas",
+      nombre: "_Ejercicios.flexiones_inclinadas".tr(),
+        nombreEs: "Flexiones inclinadas",
         imagen: ['FlexionesInclinadas.gif'],
         descripcion: 'Puedes añadir una carga externa',
         material: ['barra', 'polea', 'mancuernas'],
+        musculosTrabajados: {
+          'Primario1': 'Pecho',
+          'Secundario1': 'Hombro Frontal',
+          'Secundario2': 'Triceps'
+        },
+        patron: 3);
+  }
+  
+  factory Ejercicio.flexionesInclinadasEnTrx() {
+    return Ejercicio(
+      nombre: "_Ejercicios.flexiones_inclinadas_en_trx".tr(),
+        nombreEs: "Flexiones inclinadas en TRX",
+        imagen: ['11161301-Suspender-Incline-Push-up_Chest_180.gif'],
+        descripcion: 'Puedes añadir una carga externa',
+        material: ['trx'],
         musculosTrabajados: {
           'Primario1': 'Pecho',
           'Secundario1': 'Hombro Frontal',
@@ -405,7 +489,8 @@ class Ejercicio {
 // Aduccion Horizontal plana para barra recta lo solucionaremos con un ej comodin (aperturas con carga externa)
   factory Ejercicio.flexionesPliometricas() {
     return Ejercicio(
-        nombre: "Flexiones archer",
+      nombre: "_Ejercicios.flexiones_archer".tr(),
+        nombreEs: "Flexiones archer",
         imagen: ['FlexionesAlternas.gif'],
         descripcion: '',
         material: ['barra', 'mancuernas'],
@@ -416,7 +501,8 @@ class Ejercicio {
   }
   factory Ejercicio.wipersIsometricos() {
     return Ejercicio(
-        nombre: "Wipers isométricos",
+      nombre: "_Ejercicios.wipers_isométricos".tr(),
+        nombreEs: "Wipers isométricos",
         imagen: ['05001301-Isometric-Wipers_Chest_360.gif'],
         descripcion: '',
         material: ['barra', 'mancuernas'],
@@ -427,7 +513,8 @@ class Ejercicio {
   }
   factory Ejercicio.aperturasPlanasConMancuernas() {
     return Ejercicio(
-        nombre: "Aperturas planas con mancuernas",
+        nombre: "_Ejercicios.aperturas_planas_con_mancuernas".tr(),
+        nombreEs: "Aperturas planas con mancuernas",
         imagen: ['AperturasPlanasConMancuernas.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas', 'bancoplano'],
@@ -440,7 +527,8 @@ class Ejercicio {
 
   factory Ejercicio.crucesEnMaquina() {
     return Ejercicio(
-        nombre: "Cruces en máquina",
+       nombre: "_Ejercicios.cruces_en_máquina".tr(),
+        nombreEs: "Cruces en máquina",
         imagen: ['CrucesEnMaquina.gif'],
         descripcion: '',
         material: [
@@ -454,7 +542,8 @@ class Ejercicio {
 
   factory Ejercicio.peckDeck() {
     return Ejercicio(
-        nombre: "Peck deck",
+      nombre: "_Ejercicios.peck_deck".tr(),
+        nombreEs: "Peck deck",
         imagen: ['PeckDeck.gif'],
         descripcion: '',
         material: [
@@ -467,7 +556,8 @@ class Ejercicio {
   }
   factory Ejercicio.crucesEnPoleaAAlturaMedia() {
     return Ejercicio(
-        nombre: "Cruces en polea a altura central",
+      nombre: "_Ejercicios.cruces_en_polea_a_altura_central".tr(),
+        nombreEs: "Cruces en polea a altura central",
         imagen: ['CrucesEnPoleaAAlturaMedia.gif'],
         descripcion: '',
         material: [
@@ -481,7 +571,8 @@ class Ejercicio {
   }
   factory Ejercicio.aperturasPlanasEnPolea() {
     return Ejercicio(
-        nombre: "Aperturas planas en cruce de poleas",
+      nombre: "_Ejercicios.aperturas_planas_en_cruce_de_poleas".tr(),
+        nombreEs: "Aperturas planas en cruce de poleas",
         imagen: ['AperturasPlanasEnPolea.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja', 'bancoplano'],
@@ -493,7 +584,8 @@ class Ejercicio {
   }
   factory Ejercicio.crucesConElasticoAAlturaMedia() {
     return Ejercicio(
-        nombre: "Cruces con elásticos a altura media",
+      nombre: "_Ejercicios.cruces_con_elásticos_a_altura_media".tr(),
+        nombreEs: "Cruces con elásticos a altura media",
         imagen: ['CrucesAlturaMediaBandaElastica.gif'],
         descripcion: '',
         material: [
@@ -505,11 +597,27 @@ class Ejercicio {
         patron: 4);
   }
 
+  factory Ejercicio.kettlebellPlyoPressUp() {
+    return Ejercicio(
+       nombre: "_Ejercicios.kettlebell_plyo_press-up".tr(),
+        nombreEs: "Kettlebell Plyo Press-Up",
+        imagen: ['FlexionesPliometricasConKetbell.gif'],
+        descripcion: '',
+        material: [
+          'kettlebell',
+        ],
+        musculosTrabajados: {
+          'Primario1': 'Pecho',
+        },
+        patron: 4);
+  }
+
 // Aduccion Horizontal inclinada para barra recta lo solucionaremos con un ej comodin (aperturas con carga externa)
 
   factory Ejercicio.aperturasInclinadasConMancuernas() {
     return Ejercicio(
-        nombre: "Aperturas inclinadas con mancuernas",
+      nombre: "_Ejercicios.aperturas_inclinadas_con_mancuernas".tr(),
+        nombreEs: "Aperturas inclinadas con mancuernas",
         imagen: ['AperturasBayasiConMancuernas.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas', 'bancoregulable'],
@@ -521,7 +629,8 @@ class Ejercicio {
   }
   factory Ejercicio.aperturasInclinadasEnCruceDePoleas() {
     return Ejercicio(
-        nombre: "Aperturas inclinadas en cruce de poleas",
+      nombre: "_Ejercicios.aperturas_inclinadas_en_cruce_de_poleas".tr(),
+        nombreEs: "Aperturas inclinadas en cruce de poleas",
         imagen: ['AperturasInclinadasEnCruceDePoleas.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja', 'bancoregulable'],
@@ -534,7 +643,8 @@ class Ejercicio {
 
   factory Ejercicio.crucesEnPoleaDesdeAbajo() {
     return Ejercicio(
-        nombre: "Cruces en polea desde abajo",
+      nombre: "_Ejercicios.cruces_en_polea_desde_abajo".tr(),
+        nombreEs: "Cruces en polea desde abajo",
         imagen: ['CrucesEnPoleaDesdeAbajo.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja'],
@@ -547,7 +657,8 @@ class Ejercicio {
 
   factory Ejercicio.crucesConElasticosDesdeAbajo() {
     return Ejercicio(
-        nombre: "Cruces con elásticos desde abajo",
+      nombre: "_Ejercicios.cruces_con_elásticos_desde_abajo".tr(),
+        nombreEs: "Cruces con elásticos desde abajo",
         imagen: ['CrucesDesdeAbajoBandaElastica.gif'],
         descripcion: '',
         material: [
@@ -562,7 +673,8 @@ class Ejercicio {
 // Aduccion de hombro + aduccion horizontal
   factory Ejercicio.aperturasDeclinadasConMancuernas() {
     return Ejercicio(
-        nombre: "Aperturas declinadas con mancuernas",
+      nombre: "_Ejercicios.aperturas_declinadas_con_mancuernas".tr(),
+        nombreEs: "Aperturas declinadas con mancuernas",
         imagen: ['03021301-Dumbbell-Decline-Fly_Chest_180.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas', 'bancoregulable'],
@@ -573,7 +685,8 @@ class Ejercicio {
   }
   factory Ejercicio.aperturasDeclinadasEnPolea() {
     return Ejercicio(
-        nombre: "Aperturas declinadas en polea",
+      nombre: "_Ejercicios.aperturas_declinadas_en_polea".tr(),
+        nombreEs: "Aperturas declinadas en polea",
         imagen: ['01581301-Cable-Decline-Fly_Chest_180.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja', 'bancoregulable'],
@@ -584,7 +697,8 @@ class Ejercicio {
   }
   factory Ejercicio.crucesEnPoleaDesdeArriba() {
     return Ejercicio(
-        nombre: "Cruces en polea desde arriba",
+      nombre: "_Ejercicios.cruces_en_polea_desde_arriba".tr(),
+        nombreEs: "Cruces en polea desde arriba",
         imagen: ['CrucesEnPoleaDesdeArriba.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleaalta'],
@@ -595,7 +709,8 @@ class Ejercicio {
   }
   factory Ejercicio.crucesConElasticosDesdeArriba() {
     return Ejercicio(
-        nombre: "Cruces con elásticos desde arriba",
+      nombre: "_Ejercicios.cruces_con_elásticos_desde_arriba".tr(),
+        nombreEs: "Cruces con elásticos desde arriba",
         imagen: ['CrucesEnPoleaDesdeArribaBandaElastica.gif'],
         descripcion: '',
         material: [
@@ -606,11 +721,25 @@ class Ejercicio {
         },
         patron: 6);
   }
+
+  factory Ejercicio.crucesEnTrx() {
+    return Ejercicio(
+        nombre: "_Ejercicios.cruces_en_trx".tr(),
+        nombreEs: "Cruces en TRX",
+        imagen: ['10741301-Suspender-Fly_Chest_180.gif'],
+        descripcion: '',
+        material: ['trx'],
+        musculosTrabajados: {
+          'Primario1': 'Pecho',
+        },
+        patron: 6);
+  }
 // flexion de hombro
 
   factory Ejercicio.pullOverBarraRecta() {
     return Ejercicio(
-        nombre: "Pull over con barra recta",
+       nombre: "_Ejercicios.pull_over_con_barra_recta".tr(),
+        nombreEs: "Pull over con barra recta",
         imagen: ['PullOver.gif'],
         descripcion: '',
         material: ['gym', 'barra', 'bancoplano'],
@@ -623,7 +752,8 @@ class Ejercicio {
   }
   factory Ejercicio.pullOverConMancuerna() {
     return Ejercicio(
-        nombre: "Pull over con mancuerna",
+      nombre: "_Ejercicios.pull_over_con_mancuerna".tr(),
+        nombreEs: "Pull over con mancuerna",
         imagen: ['PullOverConMancuerna.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas', 'bancoplano'],
@@ -636,7 +766,8 @@ class Ejercicio {
   }
   factory Ejercicio.pullOverPoleaAlta() {
     return Ejercicio(
-        nombre: "Pull over en polea alta",
+      nombre: "_Ejercicios.pull_over_en_polea_alta".tr(),
+        nombreEs: "Pull over en polea alta",
         imagen: ['PullOverEnPolea.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleaalta'],
@@ -649,7 +780,8 @@ class Ejercicio {
 
   factory Ejercicio.pullOverPoleaAltaTumbadoEnBancoInclinado() {
     return Ejercicio(
-        nombre: "Pull over en polea alta tumbado en banco inclinado",
+      nombre: "_Ejercicios.pull_over_en_polea_alta_tumbado_en_banco_inclinado".tr(),
+        nombreEs: "Pull over en polea alta tumbado en banco inclinado",
         imagen: ['PullOverPoleaAltaEnBancoInclinado.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleaalta', 'bancoregulable'],
@@ -662,7 +794,8 @@ class Ejercicio {
   }
   factory Ejercicio.pullOverPoleaBajaTumbado() {
     return Ejercicio(
-        nombre: "Pull over en polea baja tumbado",
+       nombre: "_Ejercicios.pull_over_en_polea_baja_tumbado".tr(),
+        nombreEs: "Pull over en polea baja tumbado",
         imagen: ['PullOverTumbadoEnPolea.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja', 'bancoplano'],
@@ -679,7 +812,8 @@ class Ejercicio {
 
   factory Ejercicio.rackPull() {
     return Ejercicio(
-        nombre: "Rack Pull",
+      nombre: "_Ejercicios.rack_pull".tr(),
+        nombreEs: "Rack Pull",
         imagen: ['RackPull.gif'],
         descripcion: '',
         material: [
@@ -697,7 +831,8 @@ class Ejercicio {
 
   factory Ejercicio.pesoMuerto() {
     return Ejercicio(
-        nombre: "Peso Muerto",
+      nombre: "_Ejercicios.peso_muerto".tr(),
+        nombreEs: "Peso Muerto",
         imagen: ['PesoMuerto.gif'],
         descripcion: '',
         material: ['gym', 'barra'],
@@ -713,7 +848,8 @@ class Ejercicio {
 
   factory Ejercicio.pesoMuertoHexagonal() {
     return Ejercicio(
-        nombre: "Peso Muerto con barra hexagonal",
+      nombre: "_Ejercicios.peso_muerto_con_barra_hexagonal".tr(),
+        nombreEs: "Peso Muerto con barra hexagonal",
         imagen: ['08111301-Trap-Bar-Deadlift_Thighs_180.gif'],
         descripcion: '',
         material: [
@@ -730,7 +866,8 @@ class Ejercicio {
   }
   factory Ejercicio.pesoMuertoAgarreSnatch() {
     return Ejercicio(
-        nombre: "Peso Muerto agarre snatch",
+       nombre: "_Ejercicios.peso_muerto_agarre_snatch".tr(),
+        nombreEs: "Peso Muerto agarre snatch",
         imagen: ['PesoMuertoAgarreAncho.gif'],
         descripcion: '',
         material: ['gym', 'barra'],
@@ -745,7 +882,8 @@ class Ejercicio {
   }
   factory Ejercicio.pesoMuertoConMancuernas() {
     return Ejercicio(
-        nombre: "Peso muerto con mancuernas",
+      nombre: "_Ejercicios.peso_muerto_con_mancuernas".tr(),
+        nombreEs: "Peso muerto con mancuernas",
         imagen: ['PesoMuertoConMancuernas.gif'],
         descripcion: '',
         material: ['mancuernas'],
@@ -760,7 +898,8 @@ class Ejercicio {
   }
   factory Ejercicio.pesoMuertoEnMultipower() {
     return Ejercicio(
-        nombre: "Peso muerto en multipower",
+      nombre: "_Ejercicios.peso_muerto_en_multipower".tr(),
+        nombreEs: "Peso muerto en multipower",
         imagen: ['PesoMuertoEnMultipowe.gif'],
         descripcion: '',
         material: ['gym'],
@@ -775,7 +914,8 @@ class Ejercicio {
 
   factory Ejercicio.pesoMuertoEnPolea() {
     return Ejercicio(
-        nombre: "Peso Muerto en polea",
+      nombre: "_Ejercicios.peso_muerto_en_polea".tr(),
+        nombreEs: "Peso Muerto en polea",
         imagen: ['01571301-Cable-Deadlift_Thighs_180.gif'],
         descripcion: '',
         material: ['polea', 'poleabaja'],
@@ -790,7 +930,8 @@ class Ejercicio {
 
   factory Ejercicio.pesoMuertoBandasElasticas() {
     return Ejercicio(
-        nombre: "Peso Muerto con bandas elásticas",
+      nombre: "_Ejercicios.peso_muerto_con_bandas_elásticas".tr(),
+        nombreEs: "Peso Muerto con bandas elásticas",
         imagen: ['PesoMuertoBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -806,7 +947,8 @@ class Ejercicio {
 
   factory Ejercicio.remoAUnaManoConBarra() {
     return Ejercicio(
-        nombre: "Remo a una mano con barra",
+       nombre: "_Ejercicios.remo_a_una_mano_con_barra".tr(),
+        nombreEs: "Remo a una mano con barra",
         imagen: ['RemoAUnaMano.gif'],
         descripcion: '',
         material: ['barra'],
@@ -821,7 +963,8 @@ class Ejercicio {
 
   factory Ejercicio.remoSupinoConBarra() {
     return Ejercicio(
-        nombre: "Remo supino con barra",
+      nombre: "_Ejercicios.remo_supino_con_barra".tr(),
+        nombreEs: "Remo supino con barra",
         imagen: ['RemoSupino.gif'],
         descripcion: '',
         material: ['gym', 'barra'],
@@ -835,7 +978,8 @@ class Ejercicio {
   }
   factory Ejercicio.remoEnPuntaAgarreCerrado() {
     return Ejercicio(
-        nombre: "Remo en punta agarre cerrado",
+      nombre: "_Ejercicios.remo_en_punta_agarre_cerrado".tr(),
+        nombreEs: "Remo en punta agarre cerrado",
         imagen: ['RemoEnPuntaAgarreCerrado.gif'],
         descripcion: '',
         material: ['gym', 'barra'],
@@ -850,7 +994,8 @@ class Ejercicio {
 
   factory Ejercicio.remoConMancuerna() {
     return Ejercicio(
-        nombre: "Remo con mancuerna",
+      nombre: "_Ejercicios.remo_con_mancuerna".tr(),
+        nombreEs: "Remo con mancuerna",
         imagen: ['RemoConMancuerna.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas'],
@@ -864,7 +1009,8 @@ class Ejercicio {
   }
   factory Ejercicio.sealRow() {
     return Ejercicio(
-        nombre: "Seal row",
+      nombre: "_Ejercicios.seal_row".tr(),
+        nombreEs: "Seal row",
         imagen: [
           '33201101-Dumbbell-Hammer-Grip-Incline-Bench-Two-Arm-Row_Back_small.png'
         ],
@@ -880,7 +1026,8 @@ class Ejercicio {
   }
   factory Ejercicio.remoSupinoConMancuernasEnBancoInclinado() {
     return Ejercicio(
-        nombre: "Remo supino con mancuernas con apoyo en banco inclinado",
+      nombre: "_Ejercicios.remo_supino_con_mancuernas_con_apoyo_en_banco_inclinado".tr(),
+        nombreEs: "Remo supino con mancuernas con apoyo en banco inclinado",
         imagen: ['SealRowConMancuernas.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas', 'bancoregulable'],
@@ -894,7 +1041,8 @@ class Ejercicio {
   }
   factory Ejercicio.remoNeutroConMancuernas() {
     return Ejercicio(
-        nombre: "Remo neutro con mancuernas de pie",
+      nombre: "_Ejercicios.remo_neutro_con_mancuernas_de_pie".tr(),
+        nombreEs: "Remo neutro con mancuernas de pie",
         imagen: ['02931301-Dumbbell-Bent-Over-Row_Back-FIX_180.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas'],
@@ -909,7 +1057,8 @@ class Ejercicio {
 
   factory Ejercicio.remoNeutroSupinacionConMancuernas() {
     return Ejercicio(
-        nombre: "Remo con mancuernas con neutrosupinación de pie",
+      nombre: "_Ejercicios.remo_con_mancuernas_con_neutrosupinación_de_pie".tr(),
+        nombreEs: "Remo con mancuernas con neutrosupinación de pie",
         imagen: [
           '23251301-Dumbbell-Pronated-to-Neutral-Grip-Row-(female)_Back_180.gif'
         ],
@@ -926,7 +1075,8 @@ class Ejercicio {
 
   factory Ejercicio.jalonEnMaquinaAgarreSupino() {
     return Ejercicio(
-        nombre: "Jalón dorsal en máquina agarre supino",
+      nombre: "_Ejercicios.jalón_dorsal_en_máquina_agarre_supino".tr(),
+        nombreEs: "Jalón dorsal en máquina agarre supino",
         imagen: ['JalonDorsalEnMaquinaAgarreSupino.gif'],
         descripcion: '',
         material: [
@@ -941,7 +1091,8 @@ class Ejercicio {
   }
   factory Ejercicio.remoEnMaquinaAgarreNeutro() {
     return Ejercicio(
-        nombre: "Remo en máquina agarre neutro",
+       nombre: "_Ejercicios.remo_en_máquina_agarre_neutro".tr(),
+        nombreEs: "Remo en máquina agarre neutro",
         imagen: ['RemoEnMaquinaAgarreNeutro.gif'],
         descripcion: '',
         material: [
@@ -956,7 +1107,8 @@ class Ejercicio {
   }
   factory Ejercicio.remoEnMaquinaAgarreSupino() {
     return Ejercicio(
-        nombre: "Remo en máquina agarre supino",
+      nombre: "_Ejercicios.remo_en_máquina_agarre_supino".tr(),
+        nombreEs: "Remo en máquina agarre supino",
         imagen: ['RemoEnMaquinaAgarreSupino.gif'],
         descripcion: '',
         material: [
@@ -971,7 +1123,8 @@ class Ejercicio {
   }
   factory Ejercicio.remoSupinoEnMultipower() {
     return Ejercicio(
-        nombre: "Remo supino en multipower",
+      nombre: "_Ejercicios.remo_supino_en_multipower".tr(),
+        nombreEs: "Remo supino en multipower",
         imagen: ['RemoSupinoEnMultipower.gif'],
         descripcion: '',
         material: [
@@ -987,7 +1140,8 @@ class Ejercicio {
 
   factory Ejercicio.remoEnPoleaBajaAUnaMano() {
     return Ejercicio(
-        nombre: "Remo en polea a una mano",
+      nombre: "_Ejercicios.remo_en_polea_a_una_mano".tr(),
+        nombreEs: "Remo en polea a una mano",
         imagen: ['RemoEnPoleaAUnaMano.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja'],
@@ -1000,7 +1154,8 @@ class Ejercicio {
   }
   factory Ejercicio.remoEnPoleaBajaSentadoAUnaMano() {
     return Ejercicio(
-        nombre: "Remo en polea baja sentado a una mano",
+      nombre: "_Ejercicios.remo_en_polea_baja_sentado_a_una_mano".tr(),
+        nombreEs: "Remo en polea baja sentado a una mano",
         imagen: ['RemoAUnaManoEnPoleaBaja.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja'],
@@ -1013,7 +1168,8 @@ class Ejercicio {
   }
   factory Ejercicio.remoEnPoleaBajaSentadoAgarreSupino() {
     return Ejercicio(
-        nombre: "Remo en polea baja sentado agarre supino",
+      nombre: "_Ejercicios.remo_en_polea_baja_sentado_agarre_supino".tr(),
+        nombreEs: "Remo en polea baja sentado agarre supino",
         imagen: ['RemoEnPoleaAgarreSupino.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja'],
@@ -1026,7 +1182,8 @@ class Ejercicio {
   }
   factory Ejercicio.remoEnPoleaBajaSentadoAgarreNeutroCerrado() {
     return Ejercicio(
-        nombre: "Remo en polea baja sentado agarre neutro cerrado",
+      nombre: "_Ejercicios.remo_en_polea_baja_sentado_agarre_neutro_cerrado".tr(),
+        nombreEs: "Remo en polea baja sentado agarre neutro cerrado",
         imagen: ['RemoEnPoleaAgarreNeutroCerrado.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja'],
@@ -1040,7 +1197,8 @@ class Ejercicio {
 
   factory Ejercicio.jalonDorsalAgarreSupino() {
     return Ejercicio(
-        nombre: "Jalón dorsal agarre supino",
+      nombre: "_Ejercicios.jalón_dorsal_agarre_supino".tr(),
+        nombreEs: "Jalón dorsal agarre supino",
         imagen: ['JalonDorsalSupino.gif'],
         descripcion: '',
         material: [
@@ -1058,7 +1216,8 @@ class Ejercicio {
 
   factory Ejercicio.jalonDorsalAgarreCerrado() {
     return Ejercicio(
-        nombre: "Jalón dorsal agarre neutro cerrado",
+       nombre: "_Ejercicios.jalón_dorsal_agarre_neutro_cerrado".tr(),
+        nombreEs: "Jalón dorsal agarre neutro cerrado",
         imagen: ['JalonDorsalEnPoleaAgarreCerrado.gif'],
         descripcion: '',
         material: [
@@ -1075,7 +1234,8 @@ class Ejercicio {
   }
   factory Ejercicio.jalonDorsalAUnaMano() {
     return Ejercicio(
-        nombre: "Jalón dorsal en polea a una mano",
+       nombre: "_Ejercicios.jalón_dorsal_en_polea_a_una_mano".tr(),
+        nombreEs: "Jalón dorsal en polea a una mano",
         imagen: ['JalonEnPoleaAUnaMano.gif'],
         descripcion: '',
         material: [
@@ -1092,7 +1252,8 @@ class Ejercicio {
   }
   factory Ejercicio.dominadasAgarreNeutroCerrado() {
     return Ejercicio(
-        nombre: "Dominadas con agarre neutro cerrado",
+      nombre: "_Ejercicios.dominadas_con_agarre_neutro".tr(),
+        nombreEs: "Dominadas con agarre neutro cerrado",
         imagen: ['DominadasCerradas.gif'],
         descripcion: 'Si vas sobrado puedes lastrarte peso.',
         material: ['gym', 'dominadas'],
@@ -1106,7 +1267,8 @@ class Ejercicio {
   }
   factory Ejercicio.dominadasAsistidasAgarreNeutroCerrado() {
     return Ejercicio(
-        nombre: "Dominadas asistidas con agarre neutro cerrado",
+      nombre: "_Ejercicios.dominadas_asistidas_con_agarre_neutro_cerrado".tr(),
+        nombreEs: "Dominadas asistidas con agarre neutro cerrado",
         imagen: ['DominadasAsistidasAgarreNeutro.gif'],
         descripcion: 'Si vas sobrado puedes hacerlas libres',
         material: [
@@ -1122,7 +1284,8 @@ class Ejercicio {
 
   factory Ejercicio.dominadasAgarreSupino() {
     return Ejercicio(
-        nombre: "Dominadas con agarre supino",
+      nombre: "_Ejercicios.dominadas_con_agarre_supino".tr(),
+        nombreEs: "Dominadas con agarre supino",
         imagen: ['DominadasSupinas.gif'],
         descripcion: 'Si vas sobrado puedes lastrarte peso.',
         material: ['gym', 'dominadas'],
@@ -1136,7 +1299,8 @@ class Ejercicio {
   }
   factory Ejercicio.dominadasAsistidasAgarreSupino() {
     return Ejercicio(
-        nombre: "Dominadas asistidas con agarre supino",
+      nombre: "_Ejercicios.dominadas_asistidas_con_agarre_supino".tr(),
+        nombreEs: "Dominadas asistidas con agarre supino",
         imagen: ['DominadasAsistidasSupinas.gif'],
         descripcion: 'Si vas sobrado puedes hacerlas libres.',
         material: [
@@ -1151,7 +1315,8 @@ class Ejercicio {
   }
   factory Ejercicio.remoSentadoConBandasElasticas() {
     return Ejercicio(
-        nombre: "Remo sentado con banda elástica",
+      nombre: "_Ejercicios.remo_sentado_con_banda_elástica".tr(),
+        nombreEs: "Remo sentado con banda elástica",
         imagen: ['RemoSentadoBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -1164,7 +1329,8 @@ class Ejercicio {
   }
   factory Ejercicio.remoAUnaManoConBandaElastica() {
     return Ejercicio(
-        nombre: "Remo a una mano con banda elástica",
+      nombre: "_Ejercicios.remo_a_una_mano_con_banda_elástica".tr(),
+        nombreEs: "Remo a una mano con banda elástica",
         imagen: ['RemoAUnaManoBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -1178,7 +1344,8 @@ class Ejercicio {
 
   factory Ejercicio.remoADosManosConBandaElastica() {
     return Ejercicio(
-        nombre: "Remo a dos manos con banda elástica",
+      nombre: "_Ejercicios.remo_a_dos_manos_con_banda_elástica".tr(),
+        nombreEs: "Remo a dos manos con banda elástica",
         imagen: ['RemoBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -1192,7 +1359,8 @@ class Ejercicio {
 
   factory Ejercicio.jalonSupinoConBandaElastica() {
     return Ejercicio(
-        nombre: "Jalón supino con banda elástica",
+      nombre: "_Ejercicios.jalón_supino_con_banda_elástica".tr(),
+        nombreEs: "Jalón supino con banda elástica",
         imagen: ['JalonSupinoBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -1205,7 +1373,8 @@ class Ejercicio {
   }
   factory Ejercicio.jalonNeutroConBandaElastica() {
     return Ejercicio(
-        nombre: "Jalón neutro con banda elástica",
+      nombre: "_Ejercicios.jalón_neutro_con_banda_elástica".tr(),
+        nombreEs: "Jalón neutro con banda elástica",
         imagen: ['JalonNeutroBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -1216,10 +1385,39 @@ class Ejercicio {
         },
         patron: 9);
   }
+  factory Ejercicio.remoEnTrx() {
+    return Ejercicio(
+      nombre: "_Ejercicios.remo_en_trx".tr(),
+        nombreEs: "Remo en TRX",
+        imagen: ['RemoSupinoEnTRX.gif'],
+        descripcion: '',
+        material: ['trx'],
+        musculosTrabajados: {
+          'Primario1': 'Espalda',
+          'Secundario1': 'Hombro Posterior',
+          'Secundario2': 'Biceps'
+        },
+        patron: 9);
+  }
+  factory Ejercicio.remoConKettlebel() {
+    return Ejercicio(
+      nombre: "_Ejercicios.remo_con_kettlebel".tr(),
+        nombreEs: "Remo con kettlebel",
+        imagen: ['RemoConKetbell.gif'],
+        descripcion: '',
+        material: ['kettlebell'],
+        musculosTrabajados: {
+          'Primario1': 'Espalda',
+          'Secundario1': 'Hombro Posterior',
+          'Secundario2': 'Biceps'
+        },
+        patron: 9);
+  }
   // Aduccion de hombro
   factory Ejercicio.jalonDorsalEnMaquinaDivergente() {
     return Ejercicio(
-        nombre: "Jalón dorsal en máquina divergente",
+      nombre: "_Ejercicios.jalón_dorsal_en_máquina_divergente".tr(),
+        nombreEs: "Jalón dorsal en máquina divergente",
         imagen: ['JalonDorsalMaquinaDivergente.gif'],
         descripcion: '',
         material: [
@@ -1231,7 +1429,8 @@ class Ejercicio {
 
   factory Ejercicio.jalonDorsalEnCruceDePoleas() {
     return Ejercicio(
-        nombre: "Jalón dorsal en cruce de poleas",
+      nombre: "_Ejercicios.jalón_dorsal_en_cruce_de_poleas".tr(),
+        nombreEs: "Jalón dorsal en cruce de poleas",
         imagen: ['AduccionesEnPoleaAlta.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleaalta'],
@@ -1241,7 +1440,8 @@ class Ejercicio {
 
   factory Ejercicio.jalonTrasnuca() {
     return Ejercicio(
-        nombre: "Jalón trasnuca",
+      nombre: "_Ejercicios.jalón_trasnuca".tr(),
+        nombreEs: "Jalón trasnuca",
         imagen: ['JalonTrasnuca.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleaalta'],
@@ -1250,7 +1450,8 @@ class Ejercicio {
   }
   factory Ejercicio.dominadasTrasnuca() {
     return Ejercicio(
-        nombre: "Dominadas trasnuca",
+      nombre: "_Ejercicios.dominadas_trasnuca".tr(),
+        nombreEs: "Dominadas trasnuca",
         imagen: ['DominadasTrasnuca.gif'],
         descripcion: 'Si vas sobrado puedes lastrarte peso.',
         material: ['gym', 'dominadas'],
@@ -1260,7 +1461,8 @@ class Ejercicio {
   }
   factory Ejercicio.dominadasAgarreNeutroAmplio() {
     return Ejercicio(
-        nombre: "Dominadas con agarre neutro amplio",
+      nombre: "_Ejercicios.dominadas_con_agarre_neutro_amplio".tr(),
+        nombreEs: "Dominadas con agarre neutro amplio",
         imagen: ['DominadasConAgarreNeutroAmplio.gif'],
         descripcion: 'Si vas sobrado puedes lastrarte peso.',
         material: ['gym', 'dominadas'],
@@ -1270,17 +1472,29 @@ class Ejercicio {
   }
   factory Ejercicio.aduccionDeHombroConBandaElastica() {
     return Ejercicio(
-        nombre: "Aducción de hombro con banda elástica",
+      nombre: "_Ejercicios.aducción_de_hombro_con_banda_elástica".tr(),
+        nombreEs: "Aducción de hombro con banda elástica",
         imagen: ['AduccionDeHombroBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
         musculosTrabajados: {'Primario1': 'Espalda', 'Secundario1': 'Biceps'},
         patron: 8);
   }
+  factory Ejercicio.dominadasTRX() {
+    return Ejercicio(
+      nombre: "_Ejercicios.dominadas_con_trx".tr(),
+        nombreEs: "Dominadas con TRX",
+        imagen: ['10881301-Suspender-Pull-up_Back_360.gif'],
+        descripcion: '',
+        material: ['trx'],
+        musculosTrabajados: {'Primario1': 'Espalda', 'Secundario1': 'Biceps'},
+        patron: 8);
+  }
 // Aproximacion de escapulas
   factory Ejercicio.remoconBarraCodosSeparadosConApoyoEnBancoInclinado() {
     return Ejercicio(
-        nombre: "Remo con barra con codos separados apoyado en banco inclinado",
+      nombre: "_Ejercicios.remo_con_barra_con_codos_separados_apoyado_en_banco_inclinado".tr(),
+        nombreEs: "Remo con barra con codos separados apoyado en banco inclinado",
         imagen: ['RemoCodosSeparadosApoyoEnBanco.gif'],
         descripcion: '',
         material: ['gym', 'barra', 'bancoregulable'],
@@ -1296,7 +1510,8 @@ class Ejercicio {
 
   factory Ejercicio.remoconBarraCodosSeparados() {
     return Ejercicio(
-        nombre: "Remo con barra con codos separados",
+      nombre: "_Ejercicios.remo_con_barra_con_codos_separados".tr(),
+        nombreEs: "Remo con barra con codos separados",
         imagen: ['RemoConCodosSeparados.gif'],
         descripcion: '',
         material: ['gym', 'barra'],
@@ -1311,7 +1526,8 @@ class Ejercicio {
   }
   factory Ejercicio.remoConMancuernaCodosSeparadosEnBancoInclinado() {
     return Ejercicio(
-        nombre:
+      nombre: "_Ejercicios.remo_con_mancuerna_con_codos_separados_apoyo_en_banco_inclinado".tr(),
+        nombreEs:
             "Remo con mancuerna con codos separados apoyo en banco inclinado",
         imagen: ['RemoConMancuernasConCodosSeparados.gif'],
         descripcion: '',
@@ -1327,7 +1543,8 @@ class Ejercicio {
   }
   factory Ejercicio.remoConMancuernaCodosSeparados() {
     return Ejercicio(
-        nombre: "Remo con mancuerna con codos separados",
+      nombre: "_Ejercicios.remo_con_mancuerna_con_codos_separados".tr(),
+        nombreEs: "Remo con mancuerna con codos separados",
         imagen: ['23261301-Dumbbell-Pronated-Grip-Row-_(female)_Back_180.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas'],
@@ -1342,7 +1559,8 @@ class Ejercicio {
   }
   factory Ejercicio.remoAltoEnMaquina() {
     return Ejercicio(
-        nombre: "Remo alto en máquina",
+      nombre: "_Ejercicios.remo_alto_en_máquina".tr(),
+        nombreEs: "Remo alto en máquina",
         imagen: ['RemoAltoEnMaquina.gif'],
         descripcion: '',
         material: [
@@ -1359,7 +1577,8 @@ class Ejercicio {
 
   factory Ejercicio.remoConCodosSeparadosEnMultipower() {
     return Ejercicio(
-        nombre: "Remo con codos separados en multipower",
+       nombre: "_Ejercicios.remo_con_codos_separados_en_multipower".tr(),
+        nombreEs: "Remo con codos separados en multipower",
         imagen: ['RemoConCodosSeparadosEnMultipower.gif'],
         descripcion: '',
         material: [
@@ -1376,7 +1595,8 @@ class Ejercicio {
   }
   factory Ejercicio.remoConCodosSeparadosEnMaquina() {
     return Ejercicio(
-        nombre: "Remo en máquina con codos separados",
+      nombre: "_Ejercicios.remo_en_máquina_con_codos_separados".tr(),
+        nombreEs: "Remo en máquina con codos separados",
         imagen: ['RemoEnMaquinaConCodosSeparados.gif'],
         descripcion: '',
         material: [
@@ -1393,7 +1613,8 @@ class Ejercicio {
 
   factory Ejercicio.remoEnPuntaAgarreAncho() {
     return Ejercicio(
-        nombre: "Remo en punta con codos separados",
+      nombre: "_Ejercicios.remo_en_punta_con_codos_separados".tr(),
+        nombreEs: "Remo en punta con codos separados",
         imagen: ['RemoEnPuntaAgarreAbierto.gif'],
         descripcion: '',
         material: [
@@ -1411,7 +1632,8 @@ class Ejercicio {
 
   factory Ejercicio.remoConCodosSeparadosEnPoleaBaja() {
     return Ejercicio(
-        nombre: "Remo con codos separados en polea baja",
+       nombre: "_Ejercicios.remo_con_codos_separados_en_polea_baja".tr(),
+        nombreEs: "Remo con codos separados en polea baja",
         imagen: ['RemoConCodosSeparadosEnPoleaBaja.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja'],
@@ -1426,7 +1648,8 @@ class Ejercicio {
 
   factory Ejercicio.facePull() {
     return Ejercicio(
-        nombre: "Face Pull",
+      nombre: "_Ejercicios.face_pull".tr(),
+        nombreEs: "Face Pull",
         imagen: ['FacePull.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleaalta'],
@@ -1440,7 +1663,8 @@ class Ejercicio {
   }
   factory Ejercicio.facePullBandaElastica() {
     return Ejercicio(
-        nombre: "Face pull con banda elástica",
+      nombre: "_Ejercicios.face_pull_con_banda_elástica".tr(),
+        nombreEs: "Face pull con banda elástica",
         imagen: ['FacePullBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -1454,7 +1678,8 @@ class Ejercicio {
   }
   factory Ejercicio.remoAltoConBandaElastica() {
     return Ejercicio(
-        nombre: "Remo alto con banda elástica",
+      nombre: "_Ejercicios.remo_alto_con_banda_elástica".tr(),
+        nombreEs: "Remo alto con banda elástica",
         imagen: ['RemoAltoConCodosSeparadosBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -1468,7 +1693,8 @@ class Ejercicio {
   }
   factory Ejercicio.remoConCodosSeparadosConBandaElastica() {
     return Ejercicio(
-        nombre: "Remo con codos separados con banda elástica",
+            nombre: "_Ejercicios.remo_con_codos_separados_con_banda_elástica".tr(),
+        nombreEs: "Remo con codos separados con banda elástica",
         imagen: ['RemoConCodosSeparadosBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -1480,10 +1706,41 @@ class Ejercicio {
         },
         patron: 10);
   }
+  factory Ejercicio.remoConCodosSeparadosConTRX() {
+    return Ejercicio(
+        nombre: "_Ejercicios.remo_con_codos_separados_con_trx".tr(),
+        nombreEs: "Remo con codos separados con TRX",
+        imagen: ['RemoInvertidoTRX.gif'],
+        descripcion: '',
+        material: ['trx'],
+        musculosTrabajados: {
+          'Primario1': 'Espalda',
+          'Secundario1': 'Hombro Posterior',
+          'Secundario2': 'Trapecio',
+          'Secundario3': 'Biceps'
+        },
+        patron: 10);
+  }
+   factory Ejercicio.facePullConTRX() {
+    return Ejercicio(
+      nombre: "_Ejercicios.face_pull_con_trx".tr(),
+        nombreEs: "Face Pull con TRX",
+        imagen: ['11131301-Suspender-Face-Pull_Shoulders_180.gif'],
+        descripcion: '',
+        material: ['trx'],
+        musculosTrabajados: {
+          'Primario1': 'Espalda',
+          'Secundario1': 'Hombro Posterior',
+          'Secundario2': 'Trapecio',
+          'Secundario3': 'Biceps'
+        },
+        patron: 10);
+  }
 // Aduccion + Extension
   factory Ejercicio.jalonDorsalProno() {
     return Ejercicio(
-        nombre: "Jalón dorsal prono",
+      nombre: "_Ejercicios.jalón_dorsal_prono".tr(),
+        nombreEs: "Jalón dorsal prono",
         imagen: ['JalonDorsalPronoEnPolea.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleaalta'],
@@ -1496,7 +1753,8 @@ class Ejercicio {
   }
   factory Ejercicio.dominadasPronas() {
     return Ejercicio(
-        nombre: "Dominadas agarre prono",
+      nombre: "_Ejercicios.dominadas_agarre_prono".tr(),
+        nombreEs: "Dominadas agarre prono",
         imagen: ['Dominadas.gif'],
         descripcion:
             'Si vas sobrado puedes lastrarte peso, si no cambia el ejercicio a dominadas asistidas',
@@ -1511,7 +1769,8 @@ class Ejercicio {
   }
   factory Ejercicio.dominadasAsistidasPronas() {
     return Ejercicio(
-        nombre: "Dominadas asistidas agarre prono",
+      nombre: "_Ejercicios.dominadas_asistidas_agarre_prono".tr(),
+        nombreEs: "Dominadas asistidas agarre prono",
         imagen: ['DominadasAsistidasPronas.gif'],
         descripcion: '',
         material: [
@@ -1526,7 +1785,8 @@ class Ejercicio {
   }
   factory Ejercicio.dominadasAsistidasEnCasaPronas() {
     return Ejercicio(
-        nombre: "Dominadas asistidas agarre prono (subido en banco)",
+      nombre: "_Ejercicios.dominadas_asistidas_agarre_prono_(subido_en_banco)".tr(),
+        nombreEs: "Dominadas asistidas agarre prono (subido en banco)",
         imagen: ['Dominadas.gif'],
         descripcion:
             'Si vas sobrado puedes lastrarte peso, si no cambia el ejercicio a dominadas asistidas',
@@ -1542,7 +1802,8 @@ class Ejercicio {
 
   factory Ejercicio.remoConBarra() {
     return Ejercicio(
-        nombre: "Remo con barra",
+      nombre: "_Ejercicios.remo_con_barra".tr(),
+        nombreEs: "Remo con barra",
         imagen: ['Remo.gif'],
         descripcion: '',
         material: ['gym', 'barra'],
@@ -1558,7 +1819,8 @@ class Ejercicio {
 
   factory Ejercicio.remoPendlay() {
     return Ejercicio(
-        nombre: "Remo pendlay",
+      nombre: "_Ejercicios.remo_pendlay".tr(),
+        nombreEs: "Remo pendlay",
         imagen: ['RemoPendlay.gif'],
         descripcion: '',
         material: ['gym', 'barra'],
@@ -1574,7 +1836,8 @@ class Ejercicio {
 
   factory Ejercicio.remoConMancuernasAgarrePronoDePie() {
     return Ejercicio(
-        nombre: "Remo con mancuernas agarre prono",
+       nombre: "_Ejercicios.remo_con_mancuernas_agarre_prono".tr(),
+        nombreEs: "Remo con mancuernas agarre prono",
         imagen: ['23261301-Dumbbell-Pronated-Grip-Row-_(female)_Back_180.gif'],
         descripcion: '',
         material: ['mancuernas'],
@@ -1590,7 +1853,8 @@ class Ejercicio {
 
   factory Ejercicio.remoEnMultipower() {
     return Ejercicio(
-        nombre: "Remo en multipower",
+       nombre: "_Ejercicios.remo_en_multipower".tr(),
+        nombreEs: "Remo en multipower",
         imagen: ['RemoEnMultipower.gif'],
         descripcion: '',
         material: ['gym'],
@@ -1605,7 +1869,8 @@ class Ejercicio {
 
   factory Ejercicio.remoPendlayEnMultipower() {
     return Ejercicio(
-        nombre: "Remo pendlay en multipower",
+      nombre: "_Ejercicios.remo_pendlay_en_multipower".tr(),
+        nombreEs: "Remo pendlay en multipower",
         imagen: ['RemoPendlayEnMultipower.gif'],
         descripcion: '',
         material: ['gym'],
@@ -1620,7 +1885,8 @@ class Ejercicio {
 
   factory Ejercicio.remoEnPoleaBaja() {
     return Ejercicio(
-        nombre: "Remo en polea baja",
+      nombre: "_Ejercicios.remo_en_polea_baja".tr(),
+        nombreEs: "Remo en polea baja",
         imagen: ['RemoEnPoleaBaja.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja'],
@@ -1635,7 +1901,8 @@ class Ejercicio {
 
   factory Ejercicio.remoEnPoleaBajaAgarreAncho() {
     return Ejercicio(
-        nombre: "Remo en polea baja agarre ancho",
+      nombre: "_Ejercicios.remo_en_polea_baja_agarre_ancho".tr(),
+        nombreEs: "Remo en polea baja agarre ancho",
         imagen: ['RemoEnPoleaBajaAgarreAncho.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja'],
@@ -1654,7 +1921,8 @@ class Ejercicio {
 
   factory Ejercicio.pressMilitarSentado() {
     return Ejercicio(
-        nombre: "Press militar sentado",
+       nombre: "_Ejercicios.press_militar_sentado".tr(),
+        nombreEs: "Press militar sentado",
         imagen: ['PressMilitar.gif'],
         descripcion: '',
         material: ['gym', 'barra', 'bancoregulable'],
@@ -1668,7 +1936,8 @@ class Ejercicio {
   }
   factory Ejercicio.pressMilitarDePie() {
     return Ejercicio(
-        nombre: "Press militar de pie",
+      nombre: "_Ejercicios.press_militar_de_pie".tr(),
+        nombreEs: "Press militar de pie",
         imagen: ['PressMilitarDePie.gif'],
         descripcion: '',
         material: ['gym', 'barra'],
@@ -1683,7 +1952,8 @@ class Ejercicio {
 
   factory Ejercicio.pressMilitarTrasnuca() {
     return Ejercicio(
-        nombre: "Press militar trasnuca",
+        nombre: "_Ejercicios.press_militar_trasnuca".tr(),
+        nombreEs: "Press militar trasnuca",
         imagen: ['PressMilitarTrasnuca.gif'],
         descripcion: '',
         material: ['gym', 'barra'],
@@ -1698,7 +1968,8 @@ class Ejercicio {
 
   factory Ejercicio.pressDeHombroConMancuernas() {
     return Ejercicio(
-        nombre: "Press de hombro con mancuernas",
+      nombre: "_Ejercicios.press_de_hombro_con_mancuernas".tr(),
+        nombreEs: "Press de hombro con mancuernas",
         imagen: ['PressDeHombroConMancuernas.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas'],
@@ -1713,7 +1984,8 @@ class Ejercicio {
 
   factory Ejercicio.pressDeHombroConMancuernasAgarreNeutro() {
     return Ejercicio(
-        nombre: "Press de hombro con mancuernas agarre neutro",
+      nombre: "_Ejercicios.press_de_hombro_con_mancuernas_agarre_neutro".tr(),
+        nombreEs: "Press de hombro con mancuernas agarre neutro",
         imagen: ['PressDeHombroAgarreNeutroConMancuernas.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas'],
@@ -1727,7 +1999,8 @@ class Ejercicio {
   }
   factory Ejercicio.pressArnold() {
     return Ejercicio(
-        nombre: "Press arnold",
+        nombre: "_Ejercicios.press_arnold".tr(),
+        nombreEs: "Press arnold",
         imagen: ['21371301-Dumbbell-Arnold-Press_Shoulders_180.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas'],
@@ -1742,7 +2015,8 @@ class Ejercicio {
 
   factory Ejercicio.pressDeHombroEnMaquina() {
     return Ejercicio(
-        nombre: "Press de hombro en máquina",
+      nombre: "_Ejercicios.press_de_hombro_en_máquina".tr(),
+        nombreEs: "Press de hombro en máquina",
         imagen: ['PressDeHombroEnMaquina.gif'],
         descripcion: '',
         material: [
@@ -1758,7 +2032,8 @@ class Ejercicio {
 
   factory Ejercicio.pressMilitarEnMultipower() {
     return Ejercicio(
-        nombre: "Press militar en multipower",
+      nombre: "_Ejercicios.press_militar_en_multipower".tr(),
+        nombreEs: "Press militar en multipower",
         imagen: ['PressMilitarEnMultipower.gif'],
         descripcion: '',
         material: [
@@ -1774,7 +2049,8 @@ class Ejercicio {
 
   factory Ejercicio.pressMilitarTrasnucaEnMultipower() {
     return Ejercicio(
-        nombre: "Press militar trasnuca en multipower",
+      nombre: "_Ejercicios.press_militar_trasnuca_en_multipower".tr(),
+        nombreEs: "Press militar trasnuca en multipower",
         imagen: ['PressTrasnucaEnMultipower.gif'],
         descripcion: '',
         material: [
@@ -1790,7 +2066,8 @@ class Ejercicio {
   }
   factory Ejercicio.pressMilitarEnPolea() {
     return Ejercicio(
-        nombre: "Press militar en polea",
+      nombre: "_Ejercicios.press_militar_en_polea".tr(),
+        nombreEs: "Press militar en polea",
         imagen: ['01481301-Cable-Alternate-Shoulder-Press_Shoulders_180.gif'],
         descripcion: '',
         material: [
@@ -1805,7 +2082,8 @@ class Ejercicio {
   }
   factory Ejercicio.pressMilitarConBandasElasticas() {
     return Ejercicio(
-        nombre: "Press militar con banda elástica",
+      nombre: "_Ejercicios.press_militar_con_banda_elástica".tr(),
+        nombreEs: "Press militar con banda elástica",
         imagen: [
           'PressMilitarBandaElastica.gif',
           'PressMilitarBandaElastica2.gif'
@@ -1821,11 +2099,68 @@ class Ejercicio {
         },
         patron: 14);
   }
+
+  factory Ejercicio.pressMilitarConTRX() {
+    return Ejercicio(
+       nombre: "_Ejercicios.press_militar_con_trx".tr(),
+        nombreEs: "Press militar con TRX",
+        imagen: [
+          '11151301-Suspender-Handstand-Push-up_Upper-arms_360.gif',
+        ],
+        descripcion: '',
+        material: [
+          'trx',
+        ],
+        musculosTrabajados: {
+          'Primario1': 'Hombro Frontal',
+          'Secundario1': 'Triceps',
+          'Secundario2': 'Pecho',
+        },
+        patron: 14);
+  }
+  factory Ejercicio.pressMilitarConKettblell() {
+    return Ejercicio(
+        nombre: "_Ejercicios.press_militar_con_kettlebell".tr(),
+        nombreEs: "Press militar con kettlebell",
+        imagen: [
+          'PressMilitarConKetbell.gif',
+        ],
+        descripcion: '',
+        material: [
+          'kettlebell',
+        ],
+        musculosTrabajados: {
+          'Primario1': 'Hombro Frontal',
+          'Secundario1': 'Triceps',
+          'Secundario2': 'Pecho',
+        },
+        patron: 14);
+  }
+
+   factory Ejercicio.pressArnoldConKettblell() {
+    return Ejercicio(
+      nombre: "_Ejercicios.press_arnold_con_kettlebell".tr(),
+        nombreEs: "Press arnold con kettlebell",
+        imagen: [
+          'PressArnoldConKetbell .gif',
+        ],
+        descripcion: '',
+        material: [
+          'kettlebell',
+        ],
+        musculosTrabajados: {
+          'Primario1': 'Hombro Frontal',
+          'Secundario1': 'Triceps',
+          'Secundario2': 'Pecho',
+        },
+        patron: 14);
+  }
 // flexion de hombro
 
   factory Ejercicio.elevacionFrontalConBarraRecta() {
     return Ejercicio(
-        nombre: "Elevación frontal con barra recta",
+      nombre: "_Ejercicios.elevación_frontal_con_barra_recta".tr(),
+        nombreEs: "Elevación frontal con barra recta",
         imagen: ['ElevacionFrontal.gif'],
         descripcion: '',
         material: ['gym', 'barra'],
@@ -1836,7 +2171,8 @@ class Ejercicio {
   }
   factory Ejercicio.elevacionFrontalConMancuernas() {
     return Ejercicio(
-        nombre: "Elevación frontal con mancuernas",
+      nombre: "_Ejercicios.elevación_frontal_con_mancuernas".tr(),
+        nombreEs: "Elevación frontal con mancuernas",
         imagen: ['ElevacionFrontalConMancuernas.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas'],
@@ -1848,7 +2184,8 @@ class Ejercicio {
 
   factory Ejercicio.elevacionFrontalEnPolea() {
     return Ejercicio(
-        nombre: "Elevación frontal en polea",
+      nombre: "_Ejercicios.elevación_frontal_en_polea".tr(),
+        nombreEs: "Elevación frontal en polea",
         imagen: ['ElevacionFrontalEnPolea.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja'],
@@ -1859,10 +2196,35 @@ class Ejercicio {
   }
   factory Ejercicio.elevacionFrontalConBandaElastica() {
     return Ejercicio(
-        nombre: "Elevación frontal con banda elástica",
+       nombre: "_Ejercicios.elevación_frontal_con_banda_elástica".tr(),
+        nombreEs: "Elevación frontal con banda elástica",
         imagen: ['ElevacionFrontalBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
+        musculosTrabajados: {
+          'Primario1': 'Hombro Frontal',
+        },
+        patron: 15);
+  }
+  factory Ejercicio.elevacionFrontalConTrx() {
+    return Ejercicio(
+       nombre: "_Ejercicios.elevación_frontal_con_trx".tr(),
+        nombreEs: "Elevación frontal con TRX",
+        imagen: ['10751301-Suspender-Front-Raise_Shoulders_180.gif'],
+        descripcion: '',
+        material: ['trx'],
+        musculosTrabajados: {
+          'Primario1': 'Hombro Frontal',
+        },
+        patron: 15);
+  }
+   factory Ejercicio.elevacionFrontalConKettlebell() {
+    return Ejercicio(
+       nombre: "_Ejercicios.elevación_frontal_con_kettlebell".tr(),
+        nombreEs: "Elevación frontal con kettlebell",
+        imagen: ['ElevacionFrontalConKetbell.gif'],
+        descripcion: '',
+        material: ['kettlebell'],
         musculosTrabajados: {
           'Primario1': 'Hombro Frontal',
         },
@@ -1874,7 +2236,8 @@ class Ejercicio {
 
   factory Ejercicio.elevacionLateralConMancuernaEnBancoInclinado() {
     return Ejercicio(
-        nombre: "Elevación lateral con mancuerna en banco inclinado",
+      nombre: "_Ejercicios.elevación_lateral_con_mancuerna_en_banco_inclinado".tr(),
+        nombreEs: "Elevación lateral con mancuerna en banco inclinado",
         imagen: [
           'ElevacionLateralEnBancoInclinado.gif',
         ],
@@ -1888,7 +2251,8 @@ class Ejercicio {
 
   factory Ejercicio.elevacionLateralEnMaquina() {
     return Ejercicio(
-        nombre: "Elevación lateral en máquina",
+      nombre: "_Ejercicios.elevación_lateral_en_máquina".tr(),
+        nombreEs: "Elevación lateral en máquina",
         imagen: [
           'ElevacionesLateralesEnMaquina.gif',
         ],
@@ -1902,7 +2266,8 @@ class Ejercicio {
 
   factory Ejercicio.elevacionLateralEnCruceDePoleas() {
     return Ejercicio(
-        nombre: "Elevación lateral en cruce de poleas",
+      nombre: "_Ejercicios.elevación_lateral_en_cruce_de_poleas".tr(),
+        nombreEs: "Elevación lateral en cruce de poleas",
         imagen: [
           'ElevacionLateralEnCruceDePoleas.gif',
         ],
@@ -1918,7 +2283,8 @@ class Ejercicio {
 
   factory Ejercicio.elevacionLateralEnPoleaAUnaMano() {
     return Ejercicio(
-        nombre: "Elevación lateral en polea a una mano",
+      nombre: "_Ejercicios.elevación_lateral_en_polea_a_una_mano".tr(),
+        nombreEs: "Elevación lateral en polea a una mano",
         imagen: [
           'ElevacionLateralEnPoleaAUnaMano.gif',
         ],
@@ -1929,10 +2295,13 @@ class Ejercicio {
         },
         patron: 16);
   }
+
+  
   //- Acortamiento
   factory Ejercicio.remoAlMentonAgarreAncho() {
     return Ejercicio(
-        nombre: "Remo al mentón agarre abierto",
+      nombre: "_Ejercicios.remo_al_mentón_agarre_abierto".tr(),
+        nombreEs: "Remo al mentón agarre abierto",
         imagen: [
           'RemoAlMentonAgarreAmplio.gif',
           'RemoAlMentonAgarreAmplio2.gif'
@@ -1947,7 +2316,8 @@ class Ejercicio {
   }
   factory Ejercicio.elevacionLateralConBarra() {
     return Ejercicio(
-        nombre: "Elevación lateral con barra",
+      nombre: "_Ejercicios.elevación_lateral_con_barra".tr(),
+        nombreEs: "Elevación lateral con barra",
         imagen: [
           '32371301-Landmine-Lateral-Raise_Shoulders_180.gif',
         ],
@@ -1960,7 +2330,8 @@ class Ejercicio {
   }
   factory Ejercicio.elevacionesLateralesCrucifixConMancuerna() {
     return Ejercicio(
-        nombre: "Elevación lateral crucifix con mancuernas",
+       nombre: "_Ejercicios.elevación_lateral_crucifix_con_mancuernas".tr(),
+        nombreEs: "Elevación lateral crucifix con mancuernas",
         imagen: [
           'ElevacionesLateralesCrucifixConMancuernas.gif',
         ],
@@ -1974,7 +2345,8 @@ class Ejercicio {
 
   factory Ejercicio.elevacionLateralConMancuerna() {
     return Ejercicio(
-        nombre: "Elevación lateral con mancuerna",
+      nombre: "_Ejercicios.elevación_lateral_con_mancuerna".tr(),
+        nombreEs: "Elevación lateral con mancuerna",
         imagen: [
           'ElevacionLateralConMancuerna.gif',
         ],
@@ -1988,7 +2360,8 @@ class Ejercicio {
 
   factory Ejercicio.elevacionLateralConMancuernaAUnaMano() {
     return Ejercicio(
-        nombre: "Elevación lateral con mancuerna a una mano",
+      nombre: "_Ejercicios.elevación_lateral_con_mancuerna_a_una_mano".tr(),
+        nombreEs: "Elevación lateral con mancuerna a una mano",
         imagen: [
           'ElevacionLateralConMancuernaAUnaMano.gif',
         ],
@@ -2001,7 +2374,8 @@ class Ejercicio {
   }
   factory Ejercicio.elevacionLateralSentadoConMancuerna() {
     return Ejercicio(
-        nombre: "Elevación lateral sentado con mancuerna",
+       nombre: "_Ejercicios.elevación_lateral_sentado_con_mancuerna".tr(),
+        nombreEs: "Elevación lateral sentado con mancuerna",
         imagen: [
           'ElevacionLateralSentado.gif',
         ],
@@ -2015,7 +2389,8 @@ class Ejercicio {
 
   factory Ejercicio.comodinElevacionLateral() {
     return Ejercicio(
-        nombre: "Elevación lateral",
+       nombre: "_Ejercicios.comodin_elevación_lateral".tr(),
+        nombreEs: "Elevación lateral",
         imagen: ['ElevacionLateralConMancuerna.gif'],
         descripcion: 'Usa una carga externa, por ejemplo una botella de agua',
         material: ['comodin'],
@@ -2027,7 +2402,8 @@ class Ejercicio {
   }
   factory Ejercicio.elevacionLateralConBandaElastica() {
     return Ejercicio(
-        nombre: "Elevación lateral con banda elástica",
+      nombre: "_Ejercicios.elevación_lateral_con_banda_elástica".tr(),
+        nombreEs: "Elevación lateral con banda elástica",
         imagen: ['ElevacionesLateralesBandaElastica.gif'],
         descripcion: '',
         material: ['gym', 'elasticos'],
@@ -2039,7 +2415,8 @@ class Ejercicio {
 
   factory Ejercicio.elevacionLateralConBandaElasticaTecnica112() {
     return Ejercicio(
-        nombre: "Elevación lateral con banda elástica (Técnica 1-1/2)",
+      nombre: "_Ejercicios.elevación_lateral_con_banda_elástica_(Técnica_1-1/2)".tr(),
+        nombreEs: "Elevación lateral con banda elástica (Técnica 1-1/2)",
         imagen: ['ElevacionesLateralesBandaElastica.gif'],
         descripcion:
             'Sube, bajas a mitad,subes y bajas hasta abajo, eso es una repetición',
@@ -2049,11 +2426,28 @@ class Ejercicio {
         },
         patron: 17);
   }
+
+  factory Ejercicio.elevacionLateralEnTrx() {
+    return Ejercicio(
+        nombre: "_Ejercicios.elevación_lateral_en_trx".tr(),
+        nombreEs: "Elevación lateral en TRX",
+        imagen: [
+          '11071301-Suspender-Y-Lateral-Raise_Shoulders_180.gif',
+        ],
+        descripcion: '',
+        material: ['trx'],
+        musculosTrabajados: {
+          'Primario1': 'Hombro Lateral',
+        },
+        patron: 17);
+  }
+
   // -Estiramiento
 
   factory Ejercicio.elevacionLateralTumbadoConMancuerna() {
     return Ejercicio(
-        nombre: "Elevación lateral tumbado con mancuerna",
+      nombre: "_Ejercicios.elevación_lateral_tumbado_con_mancuerna".tr(),
+        nombreEs: "Elevación lateral tumbado con mancuerna",
         imagen: [
           'ElevacionLateralTumbado.gif',
         ],
@@ -2067,7 +2461,8 @@ class Ejercicio {
 
   factory Ejercicio.comodinElevacionLateralTumbado() {
     return Ejercicio(
-        nombre: "Elevación lateral tumbado",
+      nombre: "_Ejercicios.comodin_elevación_lateral_tumbado".tr(),
+        nombreEs: "Elevación lateral tumbado",
         imagen: ['ElevacionLateralTumbado.gif'],
         descripcion: 'con carga externa (una botella de agua por ejemplo)',
         material: ['elasticos', 'barra', 'polea'],
@@ -2081,7 +2476,8 @@ class Ejercicio {
 
   factory Ejercicio.esquiador() {
     return Ejercicio(
-        nombre: "Esquiador con barra recta",
+      nombre: "_Ejercicios.esquiador_con_barra_recta".tr(),
+        nombreEs: "Esquiador con barra recta",
         imagen: ['Esquiador.gif'],
         descripcion: '',
         material: ['barra'],
@@ -2093,7 +2489,8 @@ class Ejercicio {
   }
   factory Ejercicio.abduccionHorizontalDeHombroConMancuerna() {
     return Ejercicio(
-        nombre: "Abducción horizontal de hombro con mancuerna",
+      nombre: "_Ejercicios.abducción_horizontal_de_hombro_con_mancuerna".tr(),
+        nombreEs: "Abducción horizontal de hombro con mancuerna",
         imagen: [
           'AbduccionHorizontalDeHombroConMancuerna.gif',
         ],
@@ -2107,7 +2504,8 @@ class Ejercicio {
 
   factory Ejercicio.pajaroConMancuernasSentado() {
     return Ejercicio(
-        nombre: "Pájaro con mancuernas sentado",
+      nombre: "_Ejercicios.pájaro_con_mancuernas_sentado".tr(),
+        nombreEs: "Pájaro con mancuernas sentado",
         imagen: ['PajaroConMancuernas.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas'],
@@ -2119,7 +2517,8 @@ class Ejercicio {
 
   factory Ejercicio.pajaroConMancuernasDePie() {
     return Ejercicio(
-        nombre: "Pájaro con mancuernas de pie",
+      nombre: "_Ejercicios.pájaro_con_mancuernas_de_pie".tr(),
+        nombreEs: "Pájaro con mancuernas de pie",
         imagen: ['PajaroPosteriorConMancuernasDePie.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas'],
@@ -2131,7 +2530,8 @@ class Ejercicio {
 
   factory Ejercicio.pajaroConMancuernasEnBancoPlano() {
     return Ejercicio(
-        nombre: "Pájaro con mancuernas tumbado",
+      nombre: "_Ejercicios.pájaro_con_mancuernas_tumbado".tr(),
+        nombreEs: "Pájaro con mancuernas tumbado",
         imagen: ['PajaroPosteriorConMancuernasApoyoEnBanco.gif'],
         descripcion: '',
         material: ['mancuernas', 'bancoplano'],
@@ -2143,7 +2543,8 @@ class Ejercicio {
 
   factory Ejercicio.pajaroConMancuernasEnBancoInclinado() {
     return Ejercicio(
-        nombre: "Pájaro con mancuernas con apoyo en banco inclinado",
+      nombre: "_Ejercicios.pájaro_con_mancuernas_con_apoyo_en_banco_inclinado".tr(),
+        nombreEs: "Pájaro con mancuernas con apoyo en banco inclinado",
         imagen: ['PajaroPosteriorConMancuernasEnBancoInclinado.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas', 'bancoregulable'],
@@ -2154,7 +2555,8 @@ class Ejercicio {
   }
   factory Ejercicio.abduccionHorizontalEnMaquinaContractoraInversa() {
     return Ejercicio(
-        nombre: "Hombro posterior en máquina contractora inversa",
+      nombre: "_Ejercicios.hombro_posterior_en_máquina_contractora_inversa".tr(),
+        nombreEs: "Hombro posterior en máquina contractora inversa",
         imagen: [
           'AbduccionHorizontalEnMaquinaContractoraInversa.gif',
         ],
@@ -2168,7 +2570,8 @@ class Ejercicio {
 
   factory Ejercicio.abduccionHorizontalEnCruceDePoleas() {
     return Ejercicio(
-        nombre: "Hombro posterior en cruce de poleas alto",
+      nombre: "_Ejercicios.hombro_posterior_en_cruce_de_poleas_alto".tr(),
+        nombreEs: "Hombro posterior en cruce de poleas alto",
         imagen: [
           'AbduccionHorizontalEnPoleaAlta.gif',
         ],
@@ -2182,7 +2585,8 @@ class Ejercicio {
 
   factory Ejercicio.abduccionHorizontalEnCruceDePoleasTumbado() {
     return Ejercicio(
-        nombre: "Hombro posterior en cruce de poleas tumbado",
+      nombre: "_Ejercicios.hombro_posterior_en_cruce_de_poleas_tumbado".tr(),
+        nombreEs: "Hombro posterior en cruce de poleas tumbado",
         imagen: [
           'AbduccionHorizontalTumbado.gif',
         ],
@@ -2196,7 +2600,8 @@ class Ejercicio {
 
   factory Ejercicio.pajaroPosteriorEnPoleaBaja() {
     return Ejercicio(
-        nombre: "Pájaro posterior en cruce de poleas de pie",
+      nombre: "_Ejercicios.pájaro_posterior_en_cruce_de_poleas_de_pie".tr(),
+        nombreEs: "Pájaro posterior en cruce de poleas de pie",
         imagen: [
           'PajaroPosteriorEnPolea.gif',
         ],
@@ -2210,7 +2615,8 @@ class Ejercicio {
 
   factory Ejercicio.pajaroPosteriorEnPoleaBajaSentado() {
     return Ejercicio(
-        nombre: "Pájaro posterior sentado en cruce de poleas de pie",
+      nombre: "_Ejercicios.pájaro_posterior_sentado_en_cruce_de_poleas_de_pie".tr(),
+        nombreEs: "Pájaro posterior sentado en cruce de poleas de pie",
         imagen: [
           'PajaroPosteriorEnCruceDePoleasSentado.gif',
         ],
@@ -2224,7 +2630,8 @@ class Ejercicio {
 
   factory Ejercicio.pajaroPosteriorConBandaElastica() {
     return Ejercicio(
-        nombre: "Pájaro posterior con banda elástica",
+      nombre: "_Ejercicios.pájaro_posterior_con_banda_elástica".tr(),
+        nombreEs: "Pájaro posterior con banda elástica",
         imagen: [
           'PajaroPosteriorBandaElastica.gif',
         ],
@@ -2238,13 +2645,44 @@ class Ejercicio {
 
   factory Ejercicio.abduccionDeHombroConBandaElastica() {
     return Ejercicio(
-        nombre: "Abducción horizontal de hombro con banda elástica",
+      nombre: "_Ejercicios.abducción_horizontal_de_hombro_con_banda_elástica".tr(),
+        nombreEs: "Abducción horizontal de hombro con banda elástica",
         imagen: [
           'AbduccionDeHombroBandaElastica.gif',
           'AbduccionHorizontalBandaElastica2.gif'
         ],
         descripcion: '',
         material: ['elasticos'],
+        musculosTrabajados: {
+          'Primario1': 'Hombro Posterior',
+        },
+        patron: 19);
+  }
+  factory Ejercicio.pajaroConTrxDePie() {
+    return Ejercicio(
+      nombre: "_Ejercicios.pájaro_con_trx_de_pie".tr(),
+        nombreEs: "Pájaro con TRX de pie",
+        imagen: [
+          '10901301-Suspender-Reverse-Fly_Shoulders_180.gif',
+        ],
+        descripcion: '',
+        material: ['trx'],
+        musculosTrabajados: {
+          'Primario1': 'Hombro Posterior',
+        },
+        patron: 19);
+  }
+
+
+  factory Ejercicio.pajaroConTrxTumbado() {
+    return Ejercicio(
+       nombre: "_Ejercicios.pájaro_con_trx_tumbado".tr(),
+        nombreEs: "Pájaro con TRX tumbado",
+        imagen: [
+          '11301301-Suspender-Reverse-Fly-Wake-up_Back_180.gif',
+        ],
+        descripcion: '',
+        material: ['trx'],
         musculosTrabajados: {
           'Primario1': 'Hombro Posterior',
         },
@@ -2257,7 +2695,9 @@ class Ejercicio {
 
   factory Ejercicio.curlArana() {
     return Ejercicio(
-        nombre: "Curl araña",
+      
+        nombre: "_Ejercicios.curl_araña".tr(),
+        nombreEs: "Curl araña",
         imagen: ['CurlAraña.gif'],
         descripcion: '',
         material: ['gym', 'barra', 'bancoregulable'],
@@ -2268,7 +2708,8 @@ class Ejercicio {
   }
   factory Ejercicio.curlConcentradoConBarra() {
     return Ejercicio(
-        nombre: "Curl concentrado con barra",
+       nombre: "_Ejercicios.curl_concentrado_con_barra".tr(),
+        nombreEs: "Curl concentrado con barra",
         imagen: ['CurlConcentrado.gif'],
         descripcion: '',
         material: ['barra'],
@@ -2280,7 +2721,8 @@ class Ejercicio {
 
   factory Ejercicio.curlBancoScoot() {
     return Ejercicio(
-        nombre: "Curl de bíceps en banco scott",
+        nombre: "_Ejercicios.curl_de_bíceps_en_banco_scott".tr(),
+        nombreEs: "Curl de bíceps en banco scott",
         imagen: ['CurlScott.gif'],
         descripcion: '',
         material: ['gym'],
@@ -2292,7 +2734,8 @@ class Ejercicio {
 
   factory Ejercicio.curlAranaConMancuernas() {
     return Ejercicio(
-        nombre: "Curl araña con mancuernas",
+      nombre: "_Ejercicios.curl_araña_con_mancuernas".tr(),
+        nombreEs: "Curl araña con mancuernas",
         imagen: ['CurlArañaConMancuernas.gif'],
         descripcion: '',
         material: ['gym', 'bancoregulable'],
@@ -2303,7 +2746,8 @@ class Ejercicio {
   }
   factory Ejercicio.curlConcentradoConMancuerna() {
     return Ejercicio(
-        nombre: "Curl concentrado con mancuerna",
+        nombre: "_Ejercicios.curl_concentrado_con_mancuerna".tr(),
+        nombreEs: "Curl concentrado con mancuerna",
         imagen: ['CurlConcentradoConMancuerna.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas'],
@@ -2315,7 +2759,8 @@ class Ejercicio {
 
   factory Ejercicio.curlConcentradoEnBancoInclinadoConMancuerna() {
     return Ejercicio(
-        nombre: "Curl concentrado con mancuerna apoyado en banco inclinado",
+      nombre: "_Ejercicios.curl_concentrado_con_mancuerna_apoyado_en_banco_inclinado".tr(),
+        nombreEs: "Curl concentrado con mancuerna apoyado en banco inclinado",
         imagen: ['CurlConcentradoEnBancoInclinado.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas', 'bancoregulable'],
@@ -2326,7 +2771,8 @@ class Ejercicio {
   }
   factory Ejercicio.curlDeBicepsMartilloEnBancoScottConMancuerna() {
     return Ejercicio(
-        nombre: "Curl martillo en banco scott con mancuerna",
+      nombre: "_Ejercicios.curl_martillo_en_banco_scott_con_mancuerna".tr(),
+        nombreEs: "Curl martillo en banco scott con mancuerna",
         imagen: ['CurlMartilloBancoScottMancuernas.gif'],
         descripcion: '',
         material: ['gym'],
@@ -2338,7 +2784,8 @@ class Ejercicio {
 
   factory Ejercicio.curlDeBicepsEnBancoScottConMancuerna() {
     return Ejercicio(
-        nombre: "Curl de bíceps en banco scott con mancuerna",
+       nombre: "_Ejercicios.curl_de_bíceps_en_banco_scott_con_mancuerna".tr(),
+        nombreEs: "Curl de bíceps en banco scott con mancuerna",
         imagen: ['CurlScottConMancuernas.gif'],
         descripcion: '',
         material: ['gym'],
@@ -2350,7 +2797,8 @@ class Ejercicio {
 
   factory Ejercicio.curlDeBicepsEnMaquinaScott() {
     return Ejercicio(
-        nombre: "Curl de bíceps en máquina scott",
+      nombre: "_Ejercicios.curl_de_bíceps_en_máquina_scott".tr(),
+        nombreEs: "Curl de bíceps en máquina scott",
         imagen: ['05921301-Lever-Preacher-Curl_Upper-Arms_180.gif'],
         descripcion: '',
         material: ['gym'],
@@ -2362,7 +2810,8 @@ class Ejercicio {
 
   factory Ejercicio.curlDeBicepsTumbadoEnPoleaAlta() {
     return Ejercicio(
-        nombre: "Curl de bíceps tumbado en polea alta",
+      nombre: "_Ejercicios.curl_de_bíceps_tumbado_en_polea_alta".tr(),
+        nombreEs: "Curl de bíceps tumbado en polea alta",
         imagen: ['CurlDeBicepsEnPoleaAltaTumbado.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleaalta', 'bancoplano'],
@@ -2374,7 +2823,8 @@ class Ejercicio {
   }
   factory Ejercicio.curlDeBicepsEnPoleaAltaADosManos() {
     return Ejercicio(
-        nombre: "Curl de bíceps en polea alta a dos manos",
+      nombre: "_Ejercicios.curl_de_bíceps_en_polea_alta_a_dos_manos".tr(),
+        nombreEs: "Curl de bíceps en polea alta a dos manos",
         imagen: ['CurlDeBicepsEnPoleaADosManos.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleaalta'],
@@ -2385,10 +2835,37 @@ class Ejercicio {
   }
   factory Ejercicio.curlDeBicepsConcentradoConBandaElastica() {
     return Ejercicio(
-        nombre: "Curl concentrado con banda elástica",
+       nombre: "_Ejercicios.curl_concentrado_con_banda_elástica".tr(),
+        nombreEs: "Curl concentrado con banda elástica",
         imagen: ['CurlConcentradoBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
+        principiantes: false,
+        musculosTrabajados: {
+          'Primario1': 'Biceps',
+        },
+        patron: 20);
+  }
+  factory Ejercicio.curlDeBicepsConTrx() {
+    return Ejercicio(
+      nombre: "_Ejercicios.curl_de_bíceps_con_trx".tr(),
+        nombreEs: "Curl de bíceps con TRX",
+        imagen: ['11081301-Suspender-Arm-Curl-to-Ears_Upper-arms_360.gif'],
+        descripcion: '',
+        material: ['trx'],
+        principiantes: false,
+        musculosTrabajados: {
+          'Primario1': 'Biceps',
+        },
+        patron: 20);
+  }
+   factory Ejercicio.curlDeBicepsConTrxAUnaMano() {
+    return Ejercicio(
+       nombre: "_Ejercicios.curl_de_bíceps_con_trx_a_una_mano".tr(),
+        nombreEs: "Curl de bíceps con TRX a una mano",
+        imagen: ['11231301-Suspender-One-Arm-Biceps-Curl_Upper-arms_180.gif'],
+        descripcion: '',
+        material: ['trx'],
         principiantes: false,
         musculosTrabajados: {
           'Primario1': 'Biceps',
@@ -2399,7 +2876,8 @@ class Ejercicio {
 
   factory Ejercicio.curlConBarraRectaYBandaElastica() {
     return Ejercicio(
-        nombre: "Curl con barra recta + banda elástica",
+      nombre: "_Ejercicios.curl_con_barra_recta_y_banda_elástica".tr(),
+        nombreEs: "Curl con barra recta + banda elástica",
         imagen: ['CurlConBarra+BandaElastica.gif'],
         descripcion: '',
         material: ['gym'],
@@ -2412,7 +2890,8 @@ class Ejercicio {
 
   factory Ejercicio.curlConBarraRecta() {
     return Ejercicio(
-        nombre: "Curl de bíceps con barra recta",
+      nombre: "_Ejercicios.curl_de_bíceps_con_barra_recta".tr(),
+        nombreEs: "Curl de bíceps con barra recta",
         imagen: ['CurlDeBiceps.gif'],
         descripcion: '',
         material: ['gym', 'barra'],
@@ -2425,7 +2904,8 @@ class Ejercicio {
 
   factory Ejercicio.curlConBarraZ() {
     return Ejercicio(
-        nombre: "Curl de bíceps barra Z",
+         nombre: "_Ejercicios.curl_de_bíceps_barra_z".tr(),
+        nombreEs: "Curl de bíceps barra Z",
         imagen: ['22381301-EZ-Barbell-Curl-(female)_Upper-Arms_180.gif'],
         descripcion: '',
         material: ['barra'],
@@ -2436,7 +2916,8 @@ class Ejercicio {
   }
   factory Ejercicio.curlDeBicepsConMancuernasDePie() {
     return Ejercicio(
-        nombre: "Curl de bíceps con mancuernas de pie",
+       nombre: "_Ejercicios.curl_de_bíceps_con_mancuernas_de_pie".tr(),
+        nombreEs: "Curl de bíceps con mancuernas de pie",
         imagen: ['CurlDeBicepsConMancuernasDePie.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas'],
@@ -2448,7 +2929,8 @@ class Ejercicio {
 
   factory Ejercicio.curlMartilloConMancuerna() {
     return Ejercicio(
-        nombre: "Curl martillo con mancuernas",
+       nombre: "_Ejercicios.curl_martillo_con_mancuernas".tr(),
+        nombreEs: "Curl martillo con mancuernas",
         imagen: ['CurlMartilloConMancuernas.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas'],
@@ -2460,7 +2942,8 @@ class Ejercicio {
 
   factory Ejercicio.curlDeBicepsConBarraEnPoleaBaja() {
     return Ejercicio(
-        nombre: "Curl de bíceps con barra en polea baja",
+      nombre: "_Ejercicios.curl_de_bíceps_con_barra_en_polea_baja".tr(),
+        nombreEs: "Curl de bíceps con barra en polea baja",
         imagen: ['CurlDeBicepsEnPoleaBaja.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja'],
@@ -2472,7 +2955,8 @@ class Ejercicio {
 
   factory Ejercicio.curlDeBicepsConCuerdaEnPoleaBaja() {
     return Ejercicio(
-        nombre: "Curl de bíceps con cuerda en polea baja",
+        nombre: "_Ejercicios.curl_de_bíceps_con_cuerda_en_polea_baja".tr(),
+        nombreEs: "Curl de bíceps con cuerda en polea baja",
         imagen: ['CurlDeBicepsEnPoleaBajaConCuerda.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja'],
@@ -2484,7 +2968,8 @@ class Ejercicio {
 
   factory Ejercicio.curlDeBicepsTumbadoEnPoleaBaja() {
     return Ejercicio(
-        nombre: "Curl de bíceps tumbado en polea baja",
+      nombre: "_Ejercicios.curl_de_bíceps_tumbado_en_polea_baja".tr(),
+        nombreEs: "Curl de bíceps tumbado en polea baja",
         imagen: ['CurlDeBicepsEnPoleaBajaTumbado.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja', 'bancoplano'],
@@ -2497,7 +2982,8 @@ class Ejercicio {
 
   factory Ejercicio.curlDeBicepsConBandaElastica() {
     return Ejercicio(
-        nombre: "Curl de bíceps con banda elástica",
+        nombre: "_Ejercicios.curl_de_bíceps_con_banda_elástica".tr(),
+        nombreEs: "Curl de bíceps con banda elástica",
         imagen: [
           'CurlDeBicepsBandaElastica.gif',
           'CurlDeBicepsBandaElastica2.gif'
@@ -2511,7 +2997,8 @@ class Ejercicio {
   }
   factory Ejercicio.curlDeBicepsConElasticoSentado() {
     return Ejercicio(
-        nombre: "Curl de bíceps con elástico sentado",
+      nombre: "_Ejercicios.curl_de_bíceps_con_elástico_sentado".tr(),
+        nombreEs: "Curl de bíceps con elástico sentado",
         imagen: ['31231301-Resistance-Band-Seated-Biceps-Curl_Chest_180.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -2522,7 +3009,8 @@ class Ejercicio {
   }
   factory Ejercicio.curlDeBicepsMartilloConBandaElastica() {
     return Ejercicio(
-        nombre: "Curl martillo con banda elástica",
+        nombre: "_Ejercicios.curl_martillo_con_banda_elástica".tr(),
+        nombreEs: "Curl martillo con banda elástica",
         imagen: ['CurlMartilloBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -2534,10 +3022,24 @@ class Ejercicio {
 
   factory Ejercicio.curlDeBicepsConBandaElasticaAgarreReverso() {
     return Ejercicio(
-        nombre: "Curl de bíceps con banda elástica agarre reverso",
+        nombre: "_Ejercicios.curl_de_bíceps_con_banda_elástica_agarre_reverso".tr(),
+        nombreEs: "Curl de bíceps con banda elástica agarre reverso",
         imagen: ['CurlDeBicepsAgarreReversoBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
+        musculosTrabajados: {
+          'Primario1': 'Biceps',
+        },
+        patron: 21);
+  }
+
+  factory Ejercicio.curlDeBicepsConKettlebellAgarreReverso() {
+    return Ejercicio(
+        nombre: "_Ejercicios.curl_de_bíceps_con_kettlebell_agarre_reverso".tr(),
+        nombreEs: "Curl de bíceps con kettlebell agarre reverso",
+        imagen: ['05261301-Kettlebell-Double-Alternating-Hang-Clean_Forearms_180.gif'],
+        descripcion: '',
+        material: ['kettlebell'],
         musculosTrabajados: {
           'Primario1': 'Biceps',
         },
@@ -2547,7 +3049,8 @@ class Ejercicio {
 
   factory Ejercicio.curlDeArrastreConBarraRecta() {
     return Ejercicio(
-        nombre: "Curl de arrastre con barra recta",
+      nombre: "_Ejercicios.curl_de_arrastre_con_barra_recta".tr(),
+        nombreEs: "Curl de arrastre con barra recta",
         imagen: ['Barbell-Drag-Curl.jpg'],
         descripcion: 'Echa los codos hacia atras cuando subas.',
         material: ['gym', 'barra'],
@@ -2559,7 +3062,8 @@ class Ejercicio {
   }
   factory Ejercicio.curlDeBicepsEnBancoInclinadoConMancuernasAgarreNeutro() {
     return Ejercicio(
-        nombre:
+      nombre: "_Ejercicios.curl_de_bíceps_en_banco_inclinado_con_mancuernas_agarre_neutro".tr(),
+        nombreEs:
             "Curl de bíceps en banco inclinado con mancuernas agarre neutro",
         imagen: ['CurlConMancuernasEnBancoInclinadoAgarreNeutro.gif'],
         descripcion: '',
@@ -2572,7 +3076,8 @@ class Ejercicio {
 
   factory Ejercicio.curlDeBicepsEnBancoInclinadoConMancuernas() {
     return Ejercicio(
-        nombre: "Curl de bíceps en banco inclinado con mancuernas",
+        nombre: "_Ejercicios.curl_de_bíceps_en_banco_inclinado_con_mancuernas".tr(),
+        nombreEs: "Curl de bíceps en banco inclinado con mancuernas",
         imagen: ['CurlDeBicepsEnBancoInclinadoConMancuernas.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas', 'bancoregulable'],
@@ -2584,7 +3089,8 @@ class Ejercicio {
 
   factory Ejercicio.curlDeBicepsEnPoleaBajaHombroExtension() {
     return Ejercicio(
-        nombre: "Curl de bíceps en polea baja a una mano",
+       nombre: "_Ejercicios.curl_de_bíceps_en_polea_baja_a_una_mano".tr(),
+        nombreEs: "Curl de bíceps en polea baja a una mano",
         imagen: ['CurlDeBicepsEnPoleaAUnaMano.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja'],
@@ -2598,7 +3104,8 @@ class Ejercicio {
   // Empuje cerrado
   factory Ejercicio.pressCerrado() {
     return Ejercicio(
-        nombre: "Press cerrado",
+      nombre: "_Ejercicios.press_cerrado".tr(),
+        nombreEs: "Press cerrado",
         imagen: ['PressCerrado.gif'],
         descripcion: '',
         material: ['gym', 'barra', 'bancoplano'],
@@ -2608,7 +3115,8 @@ class Ejercicio {
   }
   factory Ejercicio.pressCerradoConMancuernas() {
     return Ejercicio(
-        nombre: "Press cerrado con mancuernas",
+      nombre: "_Ejercicios.press_cerrado_con_mancuernas".tr(),
+        nombreEs: "Press cerrado con mancuernas",
         imagen: ['PressCerradoMancuernas.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas', 'bancoplano'],
@@ -2619,7 +3127,8 @@ class Ejercicio {
 
   factory Ejercicio.fondosDeTriceps() {
     return Ejercicio(
-        nombre: "Fondos de tríceps",
+        nombre: "_Ejercicios.fondos_de_tríceps".tr(),
+        nombreEs: "Fondos de tríceps",
         imagen: ['Fondos.gif', 'Fondos2.gif'],
         descripcion: '',
         material: ['gym', 'paralelas'],
@@ -2629,7 +3138,8 @@ class Ejercicio {
   }
   factory Ejercicio.fondosDeTricepsEnMaquina() {
     return Ejercicio(
-        nombre: "Fondos de tríceps en máquina",
+      nombre: "_Ejercicios.fondos_de_tríceps_en_máquina".tr(),
+        nombreEs: "Fondos de tríceps en máquina",
         imagen: [
           'FondosEnMaquina.gif',
           'FondosEnMaquina3.gif',
@@ -2644,7 +3154,8 @@ class Ejercicio {
   }
   factory Ejercicio.pressCerradoEnMultipower() {
     return Ejercicio(
-        nombre: "Press cerrado en multipower",
+        nombre: "_Ejercicios.press_cerrado_en_multipower".tr(),
+        nombreEs: "Press cerrado en multipower",
         imagen: [
           'PressCerradoEnMultipower.gif',
         ],
@@ -2658,7 +3169,8 @@ class Ejercicio {
 
   factory Ejercicio.flexionesCerradas() {
     return Ejercicio(
-        nombre: "Flexiones cerradas",
+      nombre: "_Ejercicios.flexiones_cerradas".tr(),
+        nombreEs: "Flexiones cerradas",
         imagen: [
           'FlexionesCerradas.gif',
         ],
@@ -2671,7 +3183,8 @@ class Ejercicio {
 
   factory Ejercicio.flexionesCerradasConBandaElastica() {
     return Ejercicio(
-        nombre: "Flexiones cerradas con banda elástica",
+        nombre: "_Ejercicios.flexiones_cerradas_con_banda_elástica".tr(),
+        nombreEs: "Flexiones cerradas con banda elástica",
         imagen: [
           'FlexionesCerradasBandaElastica.gif',
         ],
@@ -2683,10 +3196,40 @@ class Ejercicio {
         patron: 23);
   }
 
+ factory Ejercicio.fondosDeTricepsConTrx() {
+    return Ejercicio(
+        nombre: "_Ejercicios.fondos_de_tríceps_con_trx".tr(),
+        nombreEs: "Fondos de tríceps con TRX",
+        imagen: [
+          '10721301-Suspender-Chest-Dip_Chest_360.gif',
+        ],
+        descripcion: '',
+        material: [
+          'trx',
+        ],
+        musculosTrabajados: {'Primario1': 'Triceps', 'Secundario1': 'Pecho'},
+        patron: 23);
+  }
+
+  factory Ejercicio.pressCerradoConTrx() {
+    return Ejercicio(
+       nombre: "_Ejercicios.press_cerrado_con_trx".tr(),
+        nombreEs: "Press cerrado con TRX",
+        imagen: [
+          '11111301-Suspender-Close-grip-Chest-Press_Chest_180.gif',
+        ],
+        descripcion: '',
+        material: [
+          'trx',
+        ],
+        musculosTrabajados: {'Primario1': 'Triceps', 'Secundario1': 'Pecho'},
+        patron: 23);
+  }
 // Extension de codo HombroFlexion
   factory Ejercicio.extensionDeTricepsConBarraRecta() {
     return Ejercicio(
-        nombre: "Extensión de tríceps con barra recta",
+      nombre: "_Ejercicios.extensión_de_tríceps_con_barra_recta".tr(),
+        nombreEs: "Extensión de tríceps con barra recta",
         imagen: ['ExtensionDeTriceps.gif'],
         descripcion: '',
         material: ['gym', 'barra'],
@@ -2698,7 +3241,8 @@ class Ejercicio {
   }
   factory Ejercicio.pressFrances() {
     return Ejercicio(
-        nombre: "Press francés con barra recta",
+        nombre: "_Ejercicios.press_francés_con_barra_recta".tr(),
+        nombreEs: "Press francés con barra recta",
         imagen: ['PressFrances.gif'],
         descripcion: '',
         material: ['gym', 'barra', 'bancoplano'],
@@ -2710,7 +3254,8 @@ class Ejercicio {
   }
   factory Ejercicio.pressFrancesBarraZ() {
     return Ejercicio(
-        nombre: "Press francés con barra Z",
+        nombre: "_Ejercicios.press_francés_con_barra_z".tr(),
+        nombreEs: "Press francés con barra Z",
         imagen: ['04501301-EZ-Barbell-JM-Bench-Press_Upper-Arms_180.gif'],
         descripcion: '',
         material: [
@@ -2725,7 +3270,8 @@ class Ejercicio {
 
   factory Ejercicio.extensionDeTricepsConMancuerna() {
     return Ejercicio(
-        nombre: "Extensión de tríceps con mancuerna a dos manos de pie",
+        nombre: "_Ejercicios.extensión_de_tríceps_con_mancuerna_a_dos_manos_de_pie".tr(),
+        nombreEs: "Extensión de tríceps con mancuerna a dos manos de pie",
         imagen: ['ExtensionDeTricepsConMancuernaAdosManosDePie.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas'],
@@ -2738,7 +3284,8 @@ class Ejercicio {
 
   factory Ejercicio.extensionDeTricepsConMancuernaAUnaMano() {
     return Ejercicio(
-        nombre: "Extensión de tríceps con mancuerna de pie a una mano",
+      nombre: "_Ejercicios.extensión_de_tríceps_con_mancuerna_de_pie_a_una_mano".tr(),
+        nombreEs: "Extensión de tríceps con mancuerna de pie a una mano",
         imagen: ['ExtensionDeTricepsConMancuernaAUnaMano.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas'],
@@ -2750,7 +3297,8 @@ class Ejercicio {
 
   factory Ejercicio.extensionDeTricepsConMancuernaSentado() {
     return Ejercicio(
-        nombre: "Extensión de tríceps con mancuerna sentado",
+        nombre: "_Ejercicios.extensión_de_tríceps_con_mancuerna_sentado".tr(),
+        nombreEs: "Extensión de tríceps con mancuerna sentado",
         imagen: ['ExtensionDeTricepsConMancuernaSentado.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas'],
@@ -2762,7 +3310,8 @@ class Ejercicio {
 
   factory Ejercicio.pressFrancesConMancuernas() {
     return Ejercicio(
-        nombre: "Press francés con mancuernas",
+        nombre: "_Ejercicios.press_francés_con_mancuernas".tr(),
+        nombreEs: "Press francés con mancuernas",
         imagen: ['PressFrancesConMancuernas.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas', 'bancoplano'],
@@ -2775,7 +3324,8 @@ class Ejercicio {
 
   factory Ejercicio.extensionDeTricepsEnMaquina() {
     return Ejercicio(
-        nombre: "Extensión de tríceps en máquina",
+      nombre: "_Ejercicios.extensión_de_tríceps_en_máquina".tr(),
+        nombreEs: "Extensión de tríceps en máquina",
         imagen: ['ExtensionDeTricepsEnMaquina.gif'],
         descripcion: '',
         material: [
@@ -2788,7 +3338,8 @@ class Ejercicio {
   }
   factory Ejercicio.extensionDeTricepsEnPoleaAltaConBarraRecta() {
     return Ejercicio(
-        nombre: "Extensión de tríceps en polea alta con barra recta",
+      nombre: "_Ejercicios.extensión_de_tríceps_en_polea_alta_con_barra_recta".tr(),
+        nombreEs: "Extensión de tríceps en polea alta con barra recta",
         imagen: ['ExtensionDeTricepsEnPoleaAltaConBarraRecta.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleaalta'],
@@ -2800,7 +3351,8 @@ class Ejercicio {
 
   factory Ejercicio.extensionDeTricepsEnPoleaAltaConCuerda() {
     return Ejercicio(
-        nombre: "Extensión de tríceps en polea alta con cuerda",
+        nombre: "_Ejercicios.extensión_de_tríceps_en_polea_alta_con_cuerda".tr(),
+        nombreEs: "Extensión de tríceps en polea alta con cuerda",
         imagen: ['ExtensionDeTricepsEnPoleaAltaConCuerda.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleaalta'],
@@ -2812,7 +3364,8 @@ class Ejercicio {
 
   factory Ejercicio.extensionDeTricepsEnPoleaBajaADosManos() {
     return Ejercicio(
-        nombre: "Extensión de tríceps en polea baja a dos manos",
+        nombre: "_Ejercicios.extensión_de_tríceps_en_polea_baja_a_dos_manos".tr(),
+        nombreEs: "Extensión de tríceps en polea baja a dos manos",
         imagen: ['ExtensionDeTricepsEnPoleaBajaADosManos.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja'],
@@ -2824,7 +3377,8 @@ class Ejercicio {
 
   factory Ejercicio.extensionDeTricepsEnPoleaBajaAUnaMano() {
     return Ejercicio(
-        nombre: "Extensión de tríceps en polea baja a una mano",
+        nombre: "_Ejercicios.extensión_de_tríceps_en_polea_baja_a_una_mano".tr(),
+        nombreEs: "Extensión de tríceps en polea baja a una mano",
         imagen: ['ExtensionDeTricepsEnPoleaAUnaMano.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja'],
@@ -2836,7 +3390,8 @@ class Ejercicio {
 
   factory Ejercicio.extensionDeTricepsElasticoAbajao() {
     return Ejercicio(
-        nombre: "Extensión de tríceps con elastico apoyado abajo",
+         nombre: "_Ejercicios.extensión_de_tríceps_con_elastico_apoyado_abajo".tr(),
+        nombreEs: "Extensión de tríceps con elastico apoyado abajo",
         imagen: [
           'ExtensionDeTricepsEnPoleaAltaBandaElastica.gif',
         ],
@@ -2852,7 +3407,8 @@ class Ejercicio {
 
   factory Ejercicio.extensionDeTricepsConElasticoArriba() {
     return Ejercicio(
-        nombre: "Extensión de tríceps con banda elástica arriba",
+        nombre: "_Ejercicios.extensión_de_tríceps_con_banda_elástica_arriba".tr(),
+        nombreEs: "Extensión de tríceps con banda elástica arriba",
         imagen: [
           'ExtensionDeTricepsEnPoleaBajaBandaElastica.gif',
         ],
@@ -2867,7 +3423,8 @@ class Ejercicio {
   }
   factory Ejercicio.extensionDeTricepsConBandaElasticaAUnaMano() {
     return Ejercicio(
-        nombre: "Extensión de tríceps con banda elástica arriba a una mano",
+        nombre: "_Ejercicios.extensión_de_tríceps_con_banda_elástica_arriba_a_una_mano".tr(),
+        nombreEs: "Extensión de tríceps con banda elástica arriba a una mano",
         imagen: [
           'ExtensionDeTricepsPoleaAltaAUnaManoBandaElastica.gif',
         ],
@@ -2882,7 +3439,8 @@ class Ejercicio {
   }
   factory Ejercicio.pressFrancesConBandaElastica() {
     return Ejercicio(
-        nombre: "Press francés con banda elástica",
+        nombre: "_Ejercicios.press_francés_con_banda_elástica".tr(),
+        nombreEs: "Press francés con banda elástica",
         imagen: [
           'PressFrancesBandaElastica.gif',
         ],
@@ -2893,11 +3451,57 @@ class Ejercicio {
         },
         patron: 24);
   }
+  factory Ejercicio.extensionDeTricepsConTrx() {
+    return Ejercicio(
+        nombre: "_Ejercicios.extensión_de_tríceps_con_trx".tr(),
+        nombreEs: "Extensión de tríceps con TRX",
+        imagen: [
+          '11041301-Suspender-Triceps-Extension_Upper-Arms_360.gif',
+        ],
+        descripcion: '',
+        material: ['trx'],
+        musculosTrabajados: {
+          'Primario1': 'Triceps',
+        },
+        patron: 24);
+  }
+
+   factory Ejercicio.extensionDeTricepsTumbadoConTrx() {
+    return Ejercicio(
+        nombre: "_Ejercicios.extensión_de_tríceps_tumbado_con_trx".tr(),
+        nombreEs: "Extensión de tríceps tumbado con TRX",
+        imagen: [
+          '11491301-Suspender-Triceps-Extension-Push-up_Upper-arms_180.gif',
+        ],
+        descripcion: '',
+        material: ['trx'],
+        musculosTrabajados: {
+          'Primario1': 'Triceps',
+        },
+        patron: 24);
+  }
+
+
+  factory Ejercicio.tricepsKickback() {
+    return Ejercicio(
+        nombre: "_Ejercicios.tríceps_kickback_con_trx".tr(),
+        nombreEs: "Tríceps kickback con TRX",
+        imagen: [
+          '11501301-Suspender-Triceps-Kickback_Upper-arms_180.gif',
+        ],
+        descripcion: '',
+        material: ['trx'],
+        musculosTrabajados: {
+          'Primario1': 'Triceps',
+        },
+        patron: 24);
+  }
 // Extension de codo HombroExtension
 
   factory Ejercicio.patadaDeTricepsConMancuerna() {
     return Ejercicio(
-        nombre: "Patada de tríceps con mancuerna",
+        nombre: "_Ejercicios.patada_de_tríceps_con_mancuerna".tr(),
+        nombreEs: "Patada de tríceps con mancuerna",
         imagen: [
           'PatadaDeTricepsConMancuerna.gif',
           'PatadaDeTricepsConMancuerna2.gif'
@@ -2911,7 +3515,8 @@ class Ejercicio {
   }
   factory Ejercicio.fondosEntreBancos() {
     return Ejercicio(
-        nombre: "Fondos de tríceps entre bancos con peso corporal",
+        nombre: "_Ejercicios.fondos_de_tríceps_entre_bancos_con_peso_corporal".tr(),
+        nombreEs: "Fondos de tríceps entre bancos con peso corporal",
         imagen: ['FondosConPesoCorporal.gif'],
         descripcion: 'Si lo necesitas,ponte carga encima.',
         material: ['gym', 'mancuernas', 'barra', 'polea', 'elasticos'],
@@ -2923,7 +3528,8 @@ class Ejercicio {
 
   factory Ejercicio.fondosDeTricepsEnMaquinaDeDominadasAsistidas() {
     return Ejercicio(
-        nombre: "Fondos de tríceps en máquina de dominadas asistidas",
+        nombre: "_Ejercicios.fondos_de_tríceps_en_máquina_de_dominadas_asistidas".tr(),
+        nombreEs: "Fondos de tríceps en máquina de dominadas asistidas",
         imagen: ['FondosDeTricepsEnMaquina2.gif'],
         descripcion: '',
         material: [
@@ -2936,7 +3542,8 @@ class Ejercicio {
   }
   factory Ejercicio.patadaDeTricepsEnPoleaBaja() {
     return Ejercicio(
-        nombre: "Patada de tríceps en polea baja",
+        nombre: "_Ejercicios.patada_de_tríceps_en_polea_baja".tr(),
+        nombreEs: "Patada de tríceps en polea baja",
         imagen: ['PatadaDeTricepsEnPolea.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja'],
@@ -2948,7 +3555,8 @@ class Ejercicio {
 
   factory Ejercicio.patadaDeTricepsConBandaElastica() {
     return Ejercicio(
-        nombre: "Patada de tríceps con banda elástica",
+        nombre: "_Ejercicios.patada_de_tríceps_con_banda_elástica".tr(),
+        nombreEs: "Patada de tríceps con banda elástica",
         imagen: ['PatadaDeTricepsBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -2963,7 +3571,8 @@ class Ejercicio {
 
   factory Ejercicio.sentadilla() {
     return Ejercicio(
-        nombre: "Sentadilla con barra",
+        nombre: "_Ejercicios.sentadilla_con_barra".tr(),
+        nombreEs: "Sentadilla con barra",
         imagen: ['Sentadilla.gif'],
         descripcion: '',
         material: ['gym', 'barra'],
@@ -2977,7 +3586,8 @@ class Ejercicio {
   }
   factory Ejercicio.sentadillaConMancuernas() {
     return Ejercicio(
-        nombre: "Sentadilla con mancuernas",
+        nombre: "_Ejercicios.sentadilla_con_mancuernas".tr(),
+        nombreEs: "Sentadilla con mancuernas",
         imagen: ['SentadillaConMancuernas.gif'],
         descripcion: '',
         material: ['mancuernas'],
@@ -2991,7 +3601,8 @@ class Ejercicio {
   }
   factory Ejercicio.sentadillaConMancuernasAUnaPierna() {
     return Ejercicio(
-        nombre: "Sentadilla con mancuernas a una pierna",
+        nombre: "_Ejercicios.sentadilla_con_mancuernas_a_una_pierna".tr(),
+        nombreEs: "Sentadilla con mancuernas a una pierna",
         imagen: ['SentadillaAUnaPiernaConMancuerna.gif'],
         descripcion: '',
         material: ['mancuernas'],
@@ -3006,7 +3617,8 @@ class Ejercicio {
 
   factory Ejercicio.sentadillaEnMultipower() {
     return Ejercicio(
-        nombre: "Sentadilla en multipower",
+        nombre: "_Ejercicios.sentadilla_en_multipower".tr(),
+        nombreEs: "Sentadilla en multipower",
         imagen: ['SentadillaEnMultipower.gif'],
         descripcion: '',
         material: ['gym'],
@@ -3019,7 +3631,8 @@ class Ejercicio {
   }
   factory Ejercicio.sentadillaAUnaPiernaPesoCorporal() {
     return Ejercicio(
-        nombre: "Sentadilla a una pierna con peso corporal",
+      nombre: "_Ejercicios.sentadilla_a_una_pierna_con_peso_corporal".tr(),
+        nombreEs: "Sentadilla a una pierna con peso corporal",
         imagen: ['SentadillaAUnaPierna.gif'],
         descripcion:
             'Puedes añadir carga externa si lo necesitas,por ejemplo con una mochila',
@@ -3036,11 +3649,28 @@ class Ejercicio {
 
   factory Ejercicio.sentadillaConGomaElastica() {
     return Ejercicio(
-        nombre: "Sentadilla con banda elástica",
+        nombre: "_Ejercicios.sentadilla_con_banda_elástica".tr(),
+        nombreEs: "Sentadilla con banda elástica",
         imagen: ['SentadillasBandaElastica.gif'],
-        descripcion: '',
+        descripcion: 'Puedes añadir mas carga externa si lo necesitas,por ejemplo con una mochila',
         material: [
           'elasticos',
+        ],
+        musculosTrabajados: {
+          'Primario1': 'Cuadriceps',
+          'Secundario1': 'Gluteo',
+          'Secundario2': 'Femoral',
+        },
+        patron: 26);
+  }
+  factory Ejercicio.sentadillaConTrx() {
+    return Ejercicio(
+      nombre: "_Ejercicios.sentadilla_con_trx".tr(),
+        nombreEs: "Sentadilla con trx",
+        imagen: ['11431301-Suspender-Squat_Thighs_180.gif'],
+        descripcion: 'Puedes añadir mas carga externa si lo necesitas,por ejemplo con una mochila',
+        material: [
+          'trx',
         ],
         musculosTrabajados: {
           'Primario1': 'Cuadriceps',
@@ -3054,7 +3684,8 @@ class Ejercicio {
 
   factory Ejercicio.sentadillaFrontal() {
     return Ejercicio(
-        nombre: "Sentadilla frontal",
+        nombre: "_Ejercicios.sentadilla_frontal".tr(),
+        nombreEs: "Sentadilla frontal",
         imagen: ['SentadillaFrontal.gif', 'SentadillaFrontal2.gif'],
         descripcion: '',
         material: ['gym', 'barra'],
@@ -3066,7 +3697,8 @@ class Ejercicio {
   }
   factory Ejercicio.sentadillaHackConBarra() {
     return Ejercicio(
-        nombre: "Sentadilla hack con barra",
+        nombre: "_Ejercicios.sentadilla_hack_con_barra".tr(),
+        nombreEs: "Sentadilla hack con barra",
         imagen: [
           'SentadillaHack.gif',
         ],
@@ -3081,7 +3713,8 @@ class Ejercicio {
 
   factory Ejercicio.splitSquat() {
     return Ejercicio(
-        nombre: "Split squat",
+        nombre: "_Ejercicios.split_squat".tr(),
+        nombreEs: "Split squat",
         imagen: [
           'SplitSquat.gif',
         ],
@@ -3096,7 +3729,8 @@ class Ejercicio {
 
   factory Ejercicio.sentadillaFrontalConMancuerna() {
     return Ejercicio(
-        nombre: "Sentadilla frontal con mancuerna",
+        nombre: "_Ejercicios.sentadilla_frontal_con_mancuerna".tr(),
+        nombreEs: "Sentadilla frontal con mancuerna",
         imagen: ['SentadillaFrontalConMancuerna.gif'],
         descripcion: '',
         material: ['mancuernas'],
@@ -3109,7 +3743,8 @@ class Ejercicio {
 
   factory Ejercicio.sentadillaEnMultipowerCaderaPerpendicular() {
     return Ejercicio(
-        nombre: "Sentadilla en multipower bajando con cadera perpendicular",
+        nombre: "_Ejercicios.sentadilla_en_multipower_bajando_con_cadera_perpendicular".tr(),
+        nombreEs: "Sentadilla en multipower bajando con cadera perpendicular",
         imagen: ['SentadillaEnMultipowerCaderaPerpendicular.gif'],
         descripcion: 'Baja con la cadera perpendicular al suelo',
         material: ['gym'],
@@ -3121,7 +3756,8 @@ class Ejercicio {
 
   factory Ejercicio.prensaInclinada() {
     return Ejercicio(
-        nombre: "Prensa inclinada",
+      nombre: "_Ejercicios.prensa_inclinada".tr(),
+        nombreEs: "Prensa inclinada",
         imagen: ['PrensaInclinada.gif'],
         descripcion: '',
         material: ['gym'],
@@ -3134,7 +3770,8 @@ class Ejercicio {
 
   factory Ejercicio.sentadillaFrontalEnMultipower() {
     return Ejercicio(
-        nombre: "Sentadilla frontal en multipower",
+        nombre: "_Ejercicios.sentadilla_frontal_en_multipower".tr(),
+        nombreEs: "Sentadilla frontal en multipower",
         imagen: ['SentadillaFrontalEnMultipower.gif'],
         descripcion: '',
         material: ['gym'],
@@ -3146,7 +3783,8 @@ class Ejercicio {
   }
   factory Ejercicio.sentadillaHackEnMultipower() {
     return Ejercicio(
-        nombre: "Sentadilla hack en multipower",
+        nombre: "_Ejercicios.sentadilla_hack_en_multipower".tr(),
+        nombreEs: "Sentadilla hack en multipower",
         imagen: ['SentadillaHackEnMultipower.gif'],
         descripcion: '',
         material: ['gym'],
@@ -3159,7 +3797,8 @@ class Ejercicio {
 
   factory Ejercicio.sentadillaHack() {
     return Ejercicio(
-        nombre: "Sentadilla hack",
+        nombre: "_Ejercicios.sentadilla_hack".tr(),
+        nombreEs: "Sentadilla hack",
         imagen: ['SentadillaHackEnMaquina.gif'],
         descripcion: '',
         material: ['gym'],
@@ -3170,7 +3809,8 @@ class Ejercicio {
   }
   factory Ejercicio.prensaHorizontalEnMaquina() {
     return Ejercicio(
-        nombre: "Prensa horizontal en máquina",
+        nombre: "_Ejercicios.prensa_horizontal_en_máquina".tr(),
+        nombreEs: "Prensa horizontal en máquina",
         imagen: ['PrensaEnMaquina.gif'],
         descripcion: '',
         material: ['gym'],
@@ -3181,7 +3821,8 @@ class Ejercicio {
   }
   factory Ejercicio.prensaVerticalEnMultipower() {
     return Ejercicio(
-        nombre: "Prensa vertical en multipower",
+        nombre: "_Ejercicios.prensa_vertical_en_multipower".tr(),
+        nombreEs: "Prensa vertical en multipower",
         imagen: ['PrensaEnMultipower.gif'],
         descripcion: '',
         material: ['gym'],
@@ -3194,7 +3835,8 @@ class Ejercicio {
 
   factory Ejercicio.sentadillaFrontalEnPolea() {
     return Ejercicio(
-        nombre: "Sentadilla frontal en polea",
+       nombre: "_Ejercicios.sentadilla_frontal_en_polea".tr(),
+        nombreEs: "Sentadilla frontal en polea",
         imagen: ['33541101-Cable-Front-Squat-(VERSION-2)_Thighs_small.png'],
         descripcion: '',
         material: [
@@ -3208,10 +3850,11 @@ class Ejercicio {
 
   factory Ejercicio.sentadillaBulgaraConBandaElastica() {
     return Ejercicio(
-        nombre: "Sentadilla búlgara con bandas elásticas",
+        nombre: "_Ejercicios.sentadilla_búlgara_con_bandas_elásticas".tr(),
+        nombreEs: "Sentadilla búlgara con bandas elásticas",
         imagen: ['SentadillaBulgaraBandaElastica.gif'],
         descripcion:
-            'Baja con la cadera perpendicular al suelo para trabajar el cuadriceps con un movimiento basado en la flexion de rodilla',
+            'Baja con la cadera perpendicular al suelo para trabajar el cuadriceps con un movimiento basado en la flexión de rodilla. Si lo necesitas, puedes añadir carga con una mochila o una garrafa de agua',
         material: ['elasticos'],
         musculosTrabajados: {
           'Primario1': 'Cuadriceps',
@@ -3221,14 +3864,45 @@ class Ejercicio {
 
   factory Ejercicio.zancadasConBandaElastica() {
     return Ejercicio(
-        nombre: "Zancadas con banda elástica",
+        nombre: "_Ejercicios.zancadas_con_banda_elástica".tr(),
+        nombreEs: "Zancadas con banda elástica",
         imagen: [
           'ZancadasBandaElastica.gif',
           '24241301-Resistance-Band-Lunge_Thighs_180.gif'
         ],
         descripcion:
-            'Baja con la cadera perpendicular al suelo para trabajar el cuadriceps con un movimiento basado en la flexion de rodilla',
+            'Baja con la cadera perpendicular al suelo para trabajar el cuadriceps con un movimiento basado en la flexión de rodilla. Si lo necesitas, puedes añadir carga con una mochila o una garrafa de agua',
         material: ['elasticos'],
+        musculosTrabajados: {
+          'Primario1': 'Cuadriceps',
+        },
+        patron: 27);
+  }
+  factory Ejercicio.sentadillaBulgaraConTrx() {
+    return Ejercicio(
+       nombre: "_Ejercicios.sentadilla_búlgara_con_trx".tr(),
+        nombreEs: "Sentadilla búlgara con TRX",
+        imagen: [
+          'SentadillaBulgaraEnTRX.gif',
+        ],
+        descripcion:
+            'Baja con la cadera perpendicular al suelo para trabajar el cuadriceps con un movimiento basado en la flexión de rodilla. Si lo necesitas, puedes añadir carga con una mochila o una garrafa de agua',
+        material: ['trx'],
+        musculosTrabajados: {
+          'Primario1': 'Cuadriceps',
+        },
+        patron: 27);
+  }
+  factory Ejercicio.sentadillaFrontalConKettlebell() {
+    return Ejercicio(
+        nombre: "_Ejercicios.sentadilla_frontal_con_kettlebell".tr(),
+        nombreEs: "Sentadilla frontal con kettlebell",
+        imagen: [
+          'SentadillaFrontalConKetbell.gif',
+        ],
+        descripcion:
+            'Si lo necesitas, puedes añadir carga con una mochila.',
+        material: ['kettlebell'],
         musculosTrabajados: {
           'Primario1': 'Cuadriceps',
         },
@@ -3238,7 +3912,8 @@ class Ejercicio {
 
   factory Ejercicio.sentadillaBulgaraConBarraRecta() {
     return Ejercicio(
-        nombre: "Sentadilla búlgara con barra",
+        nombre: "_Ejercicios.sentadilla_búlgara_con_barra".tr(),
+        nombreEs: "Sentadilla búlgara con barra",
         imagen: ['SentadillaBulgara2.gif'],
         descripcion:
             'Baja con la cadera perpendicular al suelo para trabajar el cuadriceps con un movimiento basado en la flexion de rodilla',
@@ -3252,7 +3927,8 @@ class Ejercicio {
 
   factory Ejercicio.zancadasConBarra() {
     return Ejercicio(
-        nombre: "Zancadas con barra",
+        nombre: "_Ejercicios.zancadas_con_barra".tr(),
+        nombreEs: "Zancadas con barra",
         imagen: ['Zancadas.gif'],
         descripcion:
             'Baja con la cadera perpendicular al suelo para trabajar el cuadriceps con un movimiento basado en la flexion de rodilla',
@@ -3266,7 +3942,8 @@ class Ejercicio {
 
   factory Ejercicio.sentadillaBulgaraConMancuernas() {
     return Ejercicio(
-        nombre: "Sentadilla búlgara con mancuernas",
+        nombre: "_Ejercicios.sentadilla_búlgara_con_mancuernas".tr(),
+        nombreEs: "Sentadilla búlgara con mancuernas",
         imagen: ['SentadillaBulgaraConMancuerna.gif'],
         descripcion:
             'Baja con la cadera perpendicular al suelo para trabajar el cuadriceps con un movimiento basado en la flexion de rodilla',
@@ -3280,7 +3957,8 @@ class Ejercicio {
 
   factory Ejercicio.zancadasConMancuernas() {
     return Ejercicio(
-        nombre: "Zancadas con mancuernas",
+        nombre: "_Ejercicios.zancadas_con_mancuernas".tr(),
+        nombreEs: "Zancadas con mancuernas",
         imagen: ['ZancadasConMancuerna.gif'],
         descripcion:
             'Baja con la cadera perpendicular al suelo para trabajar el cuadriceps con un movimiento basado en la flexion de rodilla',
@@ -3294,7 +3972,8 @@ class Ejercicio {
 
   factory Ejercicio.extensionDeCuadricepsEnMaquina() {
     return Ejercicio(
-        nombre: "Extensión de cuádriceps",
+        nombre: "_Ejercicios.extensión_de_cuádriceps".tr(),
+        nombreEs: "Extensión de cuádriceps",
         imagen: ['ExtensionDeCuadricepsEnMaquina.gif'],
         descripcion: '',
         material: [
@@ -3308,7 +3987,8 @@ class Ejercicio {
 
   factory Ejercicio.prensaHorizontalEnMaquinaConPiesAbajo() {
     return Ejercicio(
-        nombre: "Prensa horizontal en máquina con pies abajo",
+        nombre: "_Ejercicios.prensa_horizontal_en_máquina_con_pies_abajo".tr(),
+        nombreEs: "Prensa horizontal en máquina con pies abajo",
         imagen: ['PrensaConPiesAbajo.gif'],
         descripcion: '',
         material: [
@@ -3322,7 +4002,8 @@ class Ejercicio {
 
   factory Ejercicio.prensaVerticalEnMaquina() {
     return Ejercicio(
-        nombre: "Prensa vertical en máquina",
+        nombre: "_Ejercicios.prensa_vertical_en_máquina".tr(),
+        nombreEs: "Prensa vertical en máquina",
         imagen: ['PrensaEnMaquinaAUnaPierna.gif'],
         descripcion: '',
         material: [
@@ -3337,7 +4018,8 @@ class Ejercicio {
 
   factory Ejercicio.zancadasEnMultipower() {
     return Ejercicio(
-        nombre: "Zancadas en multipower",
+        nombre: "_Ejercicios.zancadas_en_multipower".tr(),
+        nombreEs: "Zancadas en multipower",
         imagen: ['ZancadasEnMultipower.gif'],
         descripcion: '',
         material: [
@@ -3351,7 +4033,8 @@ class Ejercicio {
 
   factory Ejercicio.sentadillaBulgaraEnMultipower() {
     return Ejercicio(
-        nombre: "Sentadilla búlgara en multipower",
+        nombre: "_Ejercicios.sentadilla_búlgara_en_multipower".tr(),
+        nombreEs: "Sentadilla búlgara en multipower",
         imagen: ['SentadillaBulgaraEnMultipower.gif'],
         descripcion: '',
         material: [
@@ -3365,7 +4048,8 @@ class Ejercicio {
 
   factory Ejercicio.zancadasEnPolea() {
     return Ejercicio(
-        nombre: "Zancadas en polea",
+        nombre: "_Ejercicios.zancadas_en_polea".tr(),
+        nombreEs: "Zancadas en polea",
         imagen: ['33511101-Cable-Lunge_Thighs_small.png'],
         descripcion: '',
         material: [
@@ -3379,7 +4063,8 @@ class Ejercicio {
 
   factory Ejercicio.sentadillaSissy() {
     return Ejercicio(
-        nombre: "Sentadilla sissy",
+        nombre: "_Ejercicios.sentadilla_sissy".tr(),
+        nombreEs: "Sentadilla sissy",
         imagen: ['SentadillaSisy.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'barra', 'mancuernas', 'elasticos'],
@@ -3390,7 +4075,8 @@ class Ejercicio {
   }
   factory Ejercicio.extensionDeCuadricepsConBandaElasticaDePie() {
     return Ejercicio(
-        nombre: "Extensión de cuádriceps con banda elástica de pie",
+        nombre: "_Ejercicios.extensión_de_cuádriceps_con_banda_elástica_de_pie".tr(),
+        nombreEs: "Extensión de cuádriceps con banda elástica de pie",
         imagen: [
           'ExtensionDeCuadricepsBandaElastica.gif',
         ],
@@ -3405,7 +4091,8 @@ class Ejercicio {
   }
   factory Ejercicio.extensionDeCuadricepsConBandaElasticaSentado() {
     return Ejercicio(
-        nombre: "Extensión de cuádriceps con banda elástica sentado",
+        nombre: "_Ejercicios.extensión_de_cuádriceps_con_banda_elástica_sentado".tr(),
+        nombreEs: "Extensión de cuádriceps con banda elástica sentado",
         imagen: [
           '30081301-Resistance-Band-Leg-Extension-(female)_Thighs_180.gif',
         ],
@@ -3418,14 +4105,97 @@ class Ejercicio {
         },
         patron: 28);
   }
+factory Ejercicio.sentadillaLateralConTrx() {
+    return Ejercicio(
+        nombre: "_Ejercicios.sentadilla_lateral_con_trx".tr(),
+        nombreEs: "Sentadilla lateral con TRX",
+        imagen: [
+          '11321301-Suspender-Side-Lunge_Thighs_180.gif',
+        ],
+        descripcion: '',
+        material: [
+          'trx',
+        ],
+        musculosTrabajados: {
+          'Primario1': 'Cuadriceps',
+        },
+        patron: 28);
+  }
+  factory Ejercicio.zancadasConTrx() {
+    return Ejercicio(
+        nombre: "_Ejercicios.zancadas_con_trx".tr(),
+        nombreEs: "Zancadas con TRX",
+        imagen: [
+          '11191301-Suspender-Lunge-Back-Crossover_Thighs_180.gif',
+        ],
+        descripcion: '',
+        material: [
+          'trx',
+        ],
+        musculosTrabajados: {
+          'Primario1': 'Cuadriceps',
+        },
+        patron: 28);
+  }
 
+  factory Ejercicio.sentadillaAUnaPiernaConTrx() {
+    return Ejercicio(
+        nombre: "_Ejercicios.sentadilla_a_una_pierna_con_trx".tr(),
+        nombreEs: "Sentadilla a una pierna con TRX",
+        imagen: [
+          '11191301-Suspender-Lunge-Back-Crossover_Thighs_180.gif',
+        ],
+        descripcion: '',
+        material: [
+          'trx',
+        ],
+        musculosTrabajados: {
+          'Primario1': 'Cuadriceps',
+        },
+        patron: 28);
+  }
+  factory Ejercicio.pistolSquatConKettlebell() {
+    return Ejercicio(
+        nombre: "_Ejercicios.pistol_squat_con_kettlebell".tr(),
+        nombreEs: "Pistol squat con kettlebell",
+        imagen: [
+          'PistolSquatConKetbell.gif',
+        ],
+        descripcion: '',
+        material: [
+          'kettlebell',
+        ],
+        musculosTrabajados: {
+          'Primario1': 'Cuadriceps',
+        },
+        patron: 28);
+  }
+
+factory Ejercicio.zancadasConKettlebell() {
+    return Ejercicio(
+        nombre: "_Ejercicios.zancadas_con_kettlebell".tr(),
+        nombreEs: "Zancadas con kettlebell",
+        imagen: [
+          ' ZancadasConKetbell.gif',
+        ],
+        descripcion: '',
+        material: [
+          'kettlebell',
+        ],
+        musculosTrabajados: {
+          'Primario1': 'Cuadriceps',
+        },
+        patron: 28);
+  }
+ 
   // FEMORAL
 
   // flexion de rodilla
 
   factory Ejercicio.nordicCurl() {
     return Ejercicio(
-        nombre: "Nordic curl",
+        nombre: "_Ejercicios.nordic_curl".tr(),
+        nombreEs: "Nordic curl",
         imagen: ['NordicCurl.gif'],
         descripcion: '',
         material: ['barra'],
@@ -3437,7 +4207,8 @@ class Ejercicio {
   }
   factory Ejercicio.femoralTumbadoConMancuerna() {
     return Ejercicio(
-        nombre: "Femoral tumbado con mancuerna",
+        nombre: "_Ejercicios.femoral_tumbado_con_mancuerna".tr(),
+        nombreEs: "Femoral tumbado con mancuerna",
         imagen: ['FemoralTumbadoConMancuerna.gif'],
         descripcion: '',
         material: ['mancuernas', 'bancoplano'],
@@ -3450,7 +4221,8 @@ class Ejercicio {
 
   factory Ejercicio.curlFemoralConToalla() {
     return Ejercicio(
-        nombre: "Curl femoral con toalla",
+        nombre: "_Ejercicios.curl_femoral_con_toalla".tr(),
+        nombreEs: "Curl femoral con toalla",
         imagen: ['hamstringworkwithblanket.gif'],
         descripcion: '',
         material: ['barra', 'mancuernas', 'poleas', 'elasticos'],
@@ -3463,7 +4235,8 @@ class Ejercicio {
 
   factory Ejercicio.curlFemoralSentadoEnMaquina() {
     return Ejercicio(
-        nombre: "Curl femoral sentado",
+        nombre: "_Ejercicios.curl_femoral_sentado".tr(),
+        nombreEs: "Curl femoral sentado",
         imagen: ['CurlFemoralSentado.gif'],
         descripcion: '',
         material: ['gym'],
@@ -3475,7 +4248,8 @@ class Ejercicio {
 
   factory Ejercicio.curlFemoralDePie() {
     return Ejercicio(
-        nombre: "Curl femoral de pie",
+        nombre: "_Ejercicios.curl_femoral_de_pie".tr(),
+        nombreEs: "Curl femoral de pie",
         imagen: ['FemoralDePie.gif'],
         descripcion: '',
         material: ['gym'],
@@ -3487,7 +4261,8 @@ class Ejercicio {
 
   factory Ejercicio.curlFemoralTumbado() {
     return Ejercicio(
-        nombre: "Curl femoral tumbado",
+        nombre: "_Ejercicios.curl_femoral_tumbado".tr(),
+        nombreEs: "Curl femoral tumbado",
         imagen: ['FemoralTumbado.gif'],
         descripcion: '',
         material: ['gym'],
@@ -3499,7 +4274,8 @@ class Ejercicio {
 
   factory Ejercicio.nordicCurlAsistidoEnPolea() {
     return Ejercicio(
-        nombre: "Nordic curl asistido en polea",
+        nombre: "_Ejercicios.nordic_curl_asistido_en_polea".tr(),
+        nombreEs: "Nordic curl asistido en polea",
         imagen: ['NordicCurlAsistidoEnPolea.gif'],
         descripcion: '',
         material: ['polea', 'poleaalta'],
@@ -3510,7 +4286,8 @@ class Ejercicio {
   }
   factory Ejercicio.curlFemoralDePieConBandaElastica() {
     return Ejercicio(
-        nombre: "Curl femoral de pie con banda elástica",
+        nombre: "_Ejercicios.curl_femoral_de_pie_con_banda_elástica".tr(),
+        nombreEs: "Curl femoral de pie con banda elástica",
         imagen: [
           '24221301-Resistance-Band-Leg-Curl_Thighs_180.gif',
           'FemoralDePieBandaElastica.gif',
@@ -3525,10 +4302,23 @@ class Ejercicio {
 
   factory Ejercicio.curlFemoralTumbadoConBandaElastica() {
     return Ejercicio(
-        nombre: "Curl femoral tumbado con banda elástica",
+        nombre: "_Ejercicios.curl_femoral_tumbado_con_banda_elástica".tr(),
+        nombreEs: "Curl femoral tumbado con banda elástica",
         imagen: ['CurlFemoralBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
+        musculosTrabajados: {
+          'Primario1': 'Femoral',
+        },
+        patron: 29);
+  }
+  factory Ejercicio.curlFemoralTumbadoConTrx() {
+    return Ejercicio(
+        nombre: "_Ejercicios.curl_femoral_tumbado_con_trx".tr(),
+        nombreEs: "Curl femoral tumbado con TRX",
+        imagen: ['10831301-Suspender-Leg-Curl_Thighs_360.gif'],
+        descripcion: '',
+        material: ['trx'],
         musculosTrabajados: {
           'Primario1': 'Femoral',
         },
@@ -3538,7 +4328,8 @@ class Ejercicio {
 
   factory Ejercicio.buenosDias() {
     return Ejercicio(
-        nombre: "Buenos días",
+        nombre: "_Ejercicios.buenos_días".tr(),
+        nombreEs: "Buenos días",
         imagen: ['BuenosDias.gif'],
         descripcion: '',
         material: ['gym', 'barra'],
@@ -3548,7 +4339,8 @@ class Ejercicio {
   }
   factory Ejercicio.pesoMuertoAUnaPierna() {
     return Ejercicio(
-        nombre: "Peso muerto a una pierna",
+        nombre: "_Ejercicios.peso_muerto_a_una_pierna".tr(),
+        nombreEs: "Peso muerto a una pierna",
         imagen: ['PesoMuertoAUnaPierna.gif'],
         descripcion: '',
         material: ['gym', 'barra'],
@@ -3559,7 +4351,8 @@ class Ejercicio {
 
   factory Ejercicio.pesoMuertoRumano() {
     return Ejercicio(
-        nombre: "Peso muerto rumano",
+        nombre: "_Ejercicios.peso_muerto_rumano".tr(),
+        nombreEs: "Peso muerto rumano",
         imagen: ['PesoMuertoRumano.gif'],
         descripcion: '',
         material: ['gym', 'barra'],
@@ -3569,7 +4362,8 @@ class Ejercicio {
   }
   factory Ejercicio.pesoMuertoPiernasRigidasConMancuernas() {
     return Ejercicio(
-        nombre: "Peso muerto piernas rígidas con mancuernas",
+       nombre: "_Ejercicios.peso_muerto_piernas_rígidas_con_mancuernas".tr(),
+        nombreEs: "Peso muerto piernas rígidas con mancuernas",
         imagen: ['PesoMuertoPiernasRigidasConMancuernas.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas'],
@@ -3580,7 +4374,8 @@ class Ejercicio {
 
   factory Ejercicio.pesoMuertoRumanoConMancuernas() {
     return Ejercicio(
-        nombre: "Peso muerto rumano con mancuernas",
+        nombre: "_Ejercicios.peso_muerto_rumano_con_mancuernas".tr(),
+        nombreEs: "Peso muerto rumano con mancuernas",
         imagen: ['PesoMuertoRumanoConMancuernas.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas'],
@@ -3591,7 +4386,8 @@ class Ejercicio {
 
   factory Ejercicio.pesoMuertoAUnaPiernaConMancuernas() {
     return Ejercicio(
-        nombre: "Peso muerto a una pierna con mancuernas",
+        nombre: "_Ejercicios.peso_muerto_a_una_pierna_con_mancuernas".tr(),
+        nombreEs: "Peso muerto a una pierna con mancuernas",
         imagen: [
           '27501301-Dumbbell-Single-Leg-Deadlift-with-Wall-Support-(female)_Hips_360.gif'
         ],
@@ -3603,7 +4399,8 @@ class Ejercicio {
   }
   factory Ejercicio.hiperextensionesReversasEnMaquina() {
     return Ejercicio(
-        nombre: "Hiperextensiones reversas en máquina",
+        nombre: "_Ejercicios.hiperextensiones_reversas_en_máquina".tr(),
+        nombreEs: "Hiperextensiones reversas en máquina",
         imagen: ['HiperExtensionesReversasEnMaquina.gif'],
         descripcion: '',
         material: [
@@ -3616,7 +4413,8 @@ class Ejercicio {
 
   factory Ejercicio.hiperExtensionesReversas() {
     return Ejercicio(
-        nombre: "Hiperextensiones reversas",
+        nombre: "_Ejercicios.hiperextensiones_reversas".tr(),
+        nombreEs: "Hiperextensiones reversas",
         imagen: ['HiperExtensionesReversas.gif'],
         descripcion: '',
         material: ['barra', 'mancuernas', 'polea', 'bancoplano'],
@@ -3626,7 +4424,8 @@ class Ejercicio {
   }
   factory Ejercicio.pullThroughPiernasRigidasEnPolea() {
     return Ejercicio(
-        nombre: "Pull through piernas rígidas en polea",
+      nombre: "_Ejercicios.pull_through_piernas_rígidas_en_polea".tr(),
+        nombreEs: "Pull through piernas rígidas en polea",
         imagen: ['PullThroughPiernasRigidasEnPolea.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja'],
@@ -3635,7 +4434,8 @@ class Ejercicio {
   }
   factory Ejercicio.buenosDiasConBandaElastica() {
     return Ejercicio(
-        nombre: "Buenos días con banda elástica",
+        nombre: "_Ejercicios.buenos_días_con_banda_elástica".tr(),
+        nombreEs: "Buenos días con banda elástica",
         imagen: ['BuenosDiasBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -3644,7 +4444,8 @@ class Ejercicio {
   }
   factory Ejercicio.pesoMuertoRumanoConBandaElastica() {
     return Ejercicio(
-        nombre: "Peso muerto rumano con banda elástica",
+        nombre: "_Ejercicios.peso_muerto_rumano_con_banda_elástica".tr(),
+        nombreEs: "Peso muerto rumano con banda elástica",
         imagen: ['PesoMuertoPiernasRigidasBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -3654,7 +4455,8 @@ class Ejercicio {
 
   factory Ejercicio.pesoMuertoAUnaPiernaConBandaElastica() {
     return Ejercicio(
-        nombre: "Peso muerto rumano a una pierna con banda elástica",
+        nombre: "_Ejercicios.peso_muerto_rumano_a_una_pierna_con_banda_elástica".tr(),
+        nombreEs: "Peso muerto rumano a una pierna con banda elástica",
         imagen: ['PesoMuertoRumanoAUnaPiernaBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -3664,20 +4466,43 @@ class Ejercicio {
 
   factory Ejercicio.extensionDeCaderaPiernasRigidasConBandaElastica() {
     return Ejercicio(
-        nombre: "Extensión de cadera piernas rígidas con banda elástica",
+        nombre: "_Ejercicios.extensión_de_cadera_piernas_rígidas_con_banda_elástica".tr(),
+        nombreEs: "Extensión de cadera piernas rígidas con banda elástica",
         imagen: ['09011301-Band-hip-extension_Hips_180.gif'],
         descripcion: '',
         material: ['elasticos'],
         musculosTrabajados: {'Primario1': 'Femoral', 'Secundario1': 'Gluteo'},
         patron: 30);
   }
+  factory Ejercicio.extensionDeCaderaPiernasRigidasConTrx() {
+    return Ejercicio(
+        nombre: "_Ejercicios.extensión_de_cadera_piernas_rígidas_con_trx".tr(),
+        nombreEs: "Extensión de cadera piernas rígidas con TRX",
+        imagen: ['11571301-Suspender-Hip-Hinge_Hips_180.gif'],
+        descripcion: '',
+        material: ['trx'],
+        musculosTrabajados: {'Primario1': 'Femoral', 'Secundario1': 'Gluteo'},
+        patron: 30);
+  }
+factory Ejercicio.pesoMuertoRumanoAUnaPiernaConTrx() {
+    return Ejercicio(
+      nombre: "_Ejercicios.peso_muerto_rumano_a_una_pierna_con_trx".tr(),
+        nombreEs: "Peso muerto rumano a una pierna con TRX",
+        imagen: ['11551301-Suspender-Single-Leg-Deadlift_Hips_180.gif'],
+        descripcion: '',
+        material: ['trx'],
+        musculosTrabajados: {'Primario1': 'Femoral', 'Secundario1': 'Gluteo'},
+        patron: 30);
+  }
+
   // GLUTEO
 
 // Axial
 
   factory Ejercicio.sentadillaSumo() {
     return Ejercicio(
-        nombre: "Sentadilla sumo",
+      nombre: "_Ejercicios.sentadilla_sumo".tr(),
+        nombreEs: "Sentadilla sumo",
         imagen: ['SentadillaSumo.gif'],
         descripcion: '',
         material: ['gym', 'barra'],
@@ -3687,7 +4512,8 @@ class Ejercicio {
   }
   factory Ejercicio.pesoMuertoSumo() {
     return Ejercicio(
-        nombre: "Peso muerto sumo",
+      nombre: "_Ejercicios.peso_muerto_sumo".tr(),
+        nombreEs: "Peso muerto sumo",
         imagen: ['PesoMuertoSumo.gif'],
         descripcion: '',
         material: ['gym', 'barra'],
@@ -3697,7 +4523,8 @@ class Ejercicio {
   }
   factory Ejercicio.sentadillaSumoConMancuerna() {
     return Ejercicio(
-        nombre: "Sentadilla sumo con mancuerna",
+        nombre: "_Ejercicios.sentadilla_sumo_con_mancuerna".tr(),
+        nombreEs: "Sentadilla sumo con mancuerna",
         imagen: ['SentadillaSumoConMancuerna.gif'],
         descripcion: '',
         material: ['mancuernas'],
@@ -3708,7 +4535,8 @@ class Ejercicio {
 
   factory Ejercicio.sentadillaSumoConMancuernaEntreBancos() {
     return Ejercicio(
-        nombre: "Sentadilla sumo con mancuerna entre bancos",
+        nombre: "_Ejercicios.sentadilla_sumo_con_mancuerna_entre_bancos".tr(),
+        nombreEs: "Sentadilla sumo con mancuerna entre bancos",
         imagen: [
           '24311301-Dumbbell-Sumo-Squat-off-Benches-(female)_Hips_180.gif'
         ],
@@ -3721,7 +4549,8 @@ class Ejercicio {
 
   factory Ejercicio.sentadillaSumoEnMultipower() {
     return Ejercicio(
-        nombre: "Sentadilla sumo en multipower",
+      nombre: "_Ejercicios.sentadilla_sumo_en_multipower".tr(),
+        nombreEs: "Sentadilla sumo en multipower",
         imagen: ['SentadillaSumoEnMultipower.gif'],
         descripcion: '',
         material: ['gym'],
@@ -3730,8 +4559,9 @@ class Ejercicio {
   }
   factory Ejercicio.sentadillaSumoEnPolea() {
     return Ejercicio(
-        nombre: "Sentadilla sumo en polea",
-        imagen: ['33541101-Cable-Front-Squat-(VERSION-2)_Thighs_small'],
+        nombre: "_Ejercicios.sentadilla_sumo_en_polea".tr(),
+        nombreEs: "Sentadilla sumo en polea",
+        imagen: ['33541101-Cable-Front-Squat-(VERSION-2)_Thighs_small.png'],
         descripcion: 'Abre mas las piernas que en una sentadilla convencional',
         material: ['polea'],
         musculosTrabajados: {'Primario1': 'Gluteo', 'Secundario1': 'Femoral'},
@@ -3740,10 +4570,32 @@ class Ejercicio {
 
   factory Ejercicio.sentadillaSumoConBandasElasticas() {
     return Ejercicio(
-        nombre: "Sentadilla sumo con bandas elásticas",
+        nombre: "_Ejercicios.sentadilla_sumo_con_bandas_elásticas".tr(),
+        nombreEs: "Sentadilla sumo con bandas elásticas",
         imagen: ['SentadillasBandaElastica.gif'],
         descripcion: 'Abre mas las piernas que en una sentadilla convencional',
         material: ['elasticos'],
+        musculosTrabajados: {'Primario1': 'Gluteo', 'Secundario1': 'Femoral'},
+        patron: 31);
+  }
+
+  factory Ejercicio.sentadillaSumoAUnaPiernaConTrx() {
+    return Ejercicio(
+        nombre: "_Ejercicios.sentadilla_sumo_a_una_pierna_con_trx".tr(),
+        nombreEs: "Sentadilla sumo a una pierna con TRX",
+        imagen: ['SentadillaAbiertaAUnaPiernaEnTRX.gif'],
+        descripcion: 'Abre mas las piernas que en una sentadilla convencional',
+        material: ['trx'],
+        musculosTrabajados: {'Primario1': 'Gluteo', 'Secundario1': 'Femoral'},
+        patron: 31);
+  }
+  factory Ejercicio.sentadillaSumoConKettlebell() {
+    return Ejercicio(
+      nombre: "_Ejercicios.sentadilla_sumo_con_kettlebell".tr(),
+        nombreEs: "Sentadilla sumo con kettlebell",
+        imagen: ['SentadillaSumoConKetbell.gif','SentadillaSumoConKetbellSinStep.gif'],
+        descripcion: 'Abre mas las piernas que en una sentadilla convencional',
+        material: ['kettlebell'],
         musculosTrabajados: {'Primario1': 'Gluteo', 'Secundario1': 'Femoral'},
         patron: 31);
   }
@@ -3751,7 +4603,8 @@ class Ejercicio {
 
   factory Ejercicio.hipThrust() {
     return Ejercicio(
-        nombre: "Hip Thrust",
+        nombre: "_Ejercicios.hip_thrust".tr(),
+        nombreEs: "Hip Thrust",
         imagen: ['HipThrust.gif'],
         descripcion: '',
         material: ['gym', 'barra'],
@@ -3762,7 +4615,8 @@ class Ejercicio {
 
   factory Ejercicio.puenteDeGluteosConBarra() {
     return Ejercicio(
-        nombre: "Puente de glúteos con barra",
+        nombre: "_Ejercicios.puente_de_glúteos_con_barra".tr(),
+        nombreEs: "Puente de glúteos con barra",
         imagen: ['PuenteDeGluteos.gif'],
         descripcion: '',
         material: ['gym', 'barra'],
@@ -3772,7 +4626,8 @@ class Ejercicio {
   }
   factory Ejercicio.hipThrustPesoCorporal() {
     return Ejercicio(
-        nombre: "Hip Thrust con carga externa",
+        nombre: "_Ejercicios.hip_thrust_con_carga_externa".tr(),
+        nombreEs: "Hip Thrust con carga externa",
         imagen: ['HipThrustPesoCorporal.gif'],
         descripcion: 'Añade carga encima de ti, por ejemplo con una mochila',
         material: ['mancuernas', 'polea'],
@@ -3781,7 +4636,8 @@ class Ejercicio {
   }
   factory Ejercicio.hipThrustEnMaquina() {
     return Ejercicio(
-        nombre: "Hip Thrust en máquina",
+        nombre: "_Ejercicios.hip_thrust_en_máquina".tr(),
+        nombreEs: "Hip Thrust en máquina",
         imagen: ['HipThrustEnMaquina.gif'],
         descripcion: '',
         material: ['gym'],
@@ -3791,7 +4647,8 @@ class Ejercicio {
 
   factory Ejercicio.hipThrustConBandaElastica() {
     return Ejercicio(
-        nombre: "Hip Thrust con banda elástica",
+        nombre: "_Ejercicios.hip_thrust_con_banda_elástica".tr(),
+        nombreEs: "Hip Thrust con banda elástica",
         imagen: [
           '27601301-Resistance-Band-Hip-Thrust_Hips_180.gif',
           'HipThrustBandaElastica.gif'
@@ -3804,7 +4661,8 @@ class Ejercicio {
 
   factory Ejercicio.hipThrustDeRodillasConBandaElastica() {
     return Ejercicio(
-        nombre: "Hip Thrust de rodillas con banda elástica",
+        nombre: "_Ejercicios.hip_thrust_de_rodillas_con_banda_elástica".tr(),
+        nombreEs: "Hip Thrust de rodillas con banda elástica",
         imagen: [
           '32361301-Resistance-Band-Hip-Thrusts-on-Knees-(Female)_Hips_360.gif'
         ],
@@ -3818,7 +4676,8 @@ class Ejercicio {
 
   factory Ejercicio.hipThrustAUnaPierna() {
     return Ejercicio(
-        nombre: "Hip thrust a una pierna",
+        nombre: "_Ejercicios.hip_thrust_a_una_pierna".tr(),
+        nombreEs: "Hip thrust a una pierna",
         imagen: ['HipThrustAUnaPierna.gif'],
         descripcion: '',
         material: ['gym', 'barra'],
@@ -3828,7 +4687,8 @@ class Ejercicio {
   }
   factory Ejercicio.stepUpEnMultipower() {
     return Ejercicio(
-        nombre: "Step up en multipower",
+        nombre: "_Ejercicios.step_up_en_multipower".tr(),
+        nombreEs: "Step up en multipower",
         imagen: ['StepUpEnMultipower.gif'],
         descripcion: '',
         material: [
@@ -3839,7 +4699,8 @@ class Ejercicio {
   } 
   factory Ejercicio.sentadillaBulgaraEnfasisGluteo() {
     return Ejercicio(
-        nombre: "Sentadilla búlgara con barra (enfasis glúteo)",
+        nombre: "_Ejercicios.sentadilla_búlgara_con_barra_(enfasis_glúteo)".tr(),
+        nombreEs: "Sentadilla búlgara con barra (enfasis glúteo)",
         imagen: ['SentadillaBulgara.gif'],
         descripcion:
             'Baja llevando la cadera hacia atras, separando el pie y con una rotación externa para maximizar el trabajo de glúteo',
@@ -3851,7 +4712,8 @@ class Ejercicio {
 
   factory Ejercicio.frogHipThrust() {
     return Ejercicio(
-        nombre: "Frog hip thrust",
+        nombre: "_Ejercicios.frog_hip_thrust".tr(),
+        nombreEs: "Frog hip thrust",
         imagen: ['FrogHipThrust.gif'],
         descripcion: '',
         material: ['mancuernas'],
@@ -3862,7 +4724,8 @@ class Ejercicio {
 
   factory Ejercicio.puenteDeGluteosAUnaPierna() {
     return Ejercicio(
-        nombre: "Puente de glúteos a una pierna",
+        nombre: "_Ejercicios.puente_de_glúteos_a_una_pierna".tr(),
+        nombreEs: "Puente de glúteos a una pierna",
         imagen: ['PuenteDeGluteosAUnaPierna.gif'],
         descripcion: 'Añade carga encima de ti, por ejemplo con una mochila',
         material: ['mancuernas'],
@@ -3872,7 +4735,8 @@ class Ejercicio {
   }
   factory Ejercicio.extensionDeGluteoAUnaPierna() {
     return Ejercicio(
-        nombre: "Extensiones de glúteo a una pierna",
+        nombre: "_Ejercicios.extensiones_de_glúteo_a_una_pierna".tr(),
+        nombreEs: "Extensiones de glúteo a una pierna",
         imagen: ['ExtensionDeGluteoAUnaPierna.gif'],
         descripcion: '',
         material: ['mancuernas'],
@@ -3882,7 +4746,8 @@ class Ejercicio {
   }
   factory Ejercicio.patadaDeGluteoConPesoCorporal() {
     return Ejercicio(
-        nombre: "Patada de glúteo",
+        nombre: "_Ejercicios.patada_de_glúteo".tr(),
+        nombreEs: "Patada de glúteo",
         imagen: ['PatadaDeGluteoPesoCorporal.gif'],
         descripcion: '',
         material: ['mancuernas'],
@@ -3892,7 +4757,8 @@ class Ejercicio {
   }
   factory Ejercicio.sentadillaBulgaraConMancuernasEnfasisGluteo() {
     return Ejercicio(
-        nombre: "Sentadilla búlgara con mancuernas (énfasis glúteo)",
+        nombre: "_Ejercicios.sentadilla búlgara con mancuernas (énfasis glúteo)".tr(),
+        nombreEs: "Sentadilla búlgara con mancuernas (énfasis glúteo)",
         imagen: ['SentadillaBulgaraConMancuerna.gif'],
         descripcion:
             'Baja llevando la cadera hacia atras, separando el pie y con una rotación externa para maximizar el trabajo de glúteo',
@@ -3903,7 +4769,8 @@ class Ejercicio {
   }
   factory Ejercicio.sentadillaBulgaraConMancuernasEnfasisGluteoGym() {
     return Ejercicio(
-        nombre: "Sentadilla búlgara con mancuernas (énfasis glúteo)",
+        nombre: "_Ejercicios.sentadilla búlgara con mancuernas (énfasis glúteo)".tr(),
+        nombreEs: "Sentadilla búlgara con mancuernas (énfasis glúteo)",
         imagen: ['SentadillaBulgaraConMancuerna.gif'],
         descripcion:
             'Baja llevando la cadera hacia atras, separando el pie y con una rotación externa para maximizar el trabajo de glúteo',
@@ -3916,7 +4783,8 @@ class Ejercicio {
   }
   factory Ejercicio.hiperextensionesReversasEnMultipower() {
     return Ejercicio(
-        nombre: "Hiperextensiones reversas en multipower",
+         nombre: "_Ejercicios.hiperextensiones reversas en multipower".tr(),
+        nombreEs: "Hiperextensiones reversas en multipower",
         imagen: ['HiperextensionesReversasEnMultipower.gif'],
         descripcion: '',
         material: ['gym'],
@@ -3927,7 +4795,8 @@ class Ejercicio {
 
   factory Ejercicio.patadaDeGluteoEnMaquina() {
     return Ejercicio(
-        nombre: "Patada de glúteos en máquina",
+        nombre: "_Ejercicios.patada_de_glúteos_en_máquina".tr(),
+        nombreEs: "Patada de glúteos en máquina",
         imagen: ['PatadaDeGluteoEnMaquina.gif'],
         descripcion: '',
         material: ['gym'],
@@ -3937,7 +4806,8 @@ class Ejercicio {
 
   factory Ejercicio.patadaDeGluteoEnPolea() {
     return Ejercicio(
-        nombre: "Patada de glúteo en polea",
+        nombre: "_Ejercicios.patada_de_glúteo_en_polea".tr(),
+        nombreEs: "Patada de glúteo en polea",
         imagen: ['PatadaDeGluteoEnPolea.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja'],
@@ -3947,7 +4817,8 @@ class Ejercicio {
 
   factory Ejercicio.pullThroughEnPolea() {
     return Ejercicio(
-        nombre: "Pull through en polea",
+        nombre: "_Ejercicios.pull_through_en_polea".tr(),
+        nombreEs: "Pull through en polea",
         imagen: ['PullThroughEnPolea.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja'],
@@ -3956,7 +4827,8 @@ class Ejercicio {
   }
   factory Ejercicio.pullThroughConBandaElastica() {
     return Ejercicio(
-        nombre: "Pull through con banda elástica",
+        nombre: "_Ejercicios.pull_through_con_banda_elástica".tr(),
+        nombreEs: "Pull through con banda elástica",
         imagen: ['PullThroughBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -3965,7 +4837,8 @@ class Ejercicio {
   }
   factory Ejercicio.extensionDeCaderaConBandaElastica() {
     return Ejercicio(
-        nombre: "Extensión de cadera con banda elástica",
+        nombre: "_Ejercicios.extensión_de_cadera_con_banda_elástica".tr(),
+        nombreEs: "Extensión de cadera con banda elástica",
         imagen: ['ExtensionDeCaderaBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -3975,7 +4848,8 @@ class Ejercicio {
 
   factory Ejercicio.patadaDeGluteoConBandaElastica() {
     return Ejercicio(
-        nombre: "Patada de glúteo con banda elástica",
+        nombre: "_Ejercicios.patada_de_glúteo_con_banda_elástica".tr(),
+        nombreEs: "Patada de glúteo con banda elástica",
         imagen: ['PatadaDeGluteoBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -3985,7 +4859,8 @@ class Ejercicio {
 
   factory Ejercicio.sentadillaBulgaraConBandasElasticasEnfasisGluteo() {
     return Ejercicio(
-        nombre: "Sentadilla búlgara con bandas elásticas (énfasis glúteo)",
+        nombre: "_Ejercicios.sentadilla_búlgara_con_bandas_elásticas_(énfasis_glúteo)".tr(),
+        nombreEs: "Sentadilla búlgara con bandas elásticas (énfasis glúteo)",
         imagen: ['SentadillaBulgaraBandaElastica.gif'],
         descripcion:
             'Baja llevando la cadera hacia atras, separando el pie y con una rotación externa para maximizar el trabajo de glúteo',
@@ -3994,11 +4869,42 @@ class Ejercicio {
         musculosTrabajados: {'Primario1': 'Gluteo', 'Secundario1': 'Femoral'},
         patron: 33);
   }
+   factory Ejercicio.extensionDeCaderaConTrx() {
+    return Ejercicio(
+        nombre: "_Ejercicios.extensión_de_cadera_con_trx".tr(),
+        nombreEs: "Extensión de cadera con TRX",
+        imagen: ['10791301-Suspender-Hyperextension_Back_180.gif'],
+        descripcion: '',
+        material: ['trx'],
+        musculosTrabajados: {'Primario1': 'Gluteo', 'Secundario1': 'Femoral'},
+        patron: 33);
+  }
+   factory Ejercicio.puenteDeGluteosConTrx() {
+    return Ejercicio(
+        nombre: "_Ejercicios.puente_de_glúteos_con_trx".tr(),
+        nombreEs: "Puente de glúteos con TRX",
+        imagen: ['10781301-Suspender-Hip-Bridge_Hips_180.gif'],
+        descripcion: '',
+        material: ['trx'],
+        musculosTrabajados: {'Primario1': 'Gluteo', 'Secundario1': 'Femoral'},
+        patron: 33);
+  }
+   factory Ejercicio.extensionDeCaderaConKettlebell() {
+    return Ejercicio(
+        nombre: "_Ejercicios.extensión_de_cadera_con_kettlebell".tr(),
+        nombreEs: "Extensión de cadera con kettlebell",
+        imagen: ['PullThroughtConKetbell.gif'],
+        descripcion: '',
+        material: ['kettlebell'],
+        musculosTrabajados: {'Primario1': 'Gluteo', 'Secundario1': 'Femoral'},
+        patron: 33);
+  }
   // AbduccionDeGluteo
 
   factory Ejercicio.abduccionDeGluteoConBarra() {
     return Ejercicio(
-        nombre: "Abducción De glúteo con barra",
+        nombre: "_Ejercicios.abducción_de_glúteo_con_barra".tr(),
+        nombreEs: "Abducción de glúteo con barra",
         imagen: ['AbduccionDeGluteo.gif'],
         descripcion: '',
         material: ['barra'],
@@ -4009,7 +4915,8 @@ class Ejercicio {
   }
   factory Ejercicio.abduccionDeGluteoConCaderaExtendida() {
     return Ejercicio(
-        nombre: "Abducción de glúteo con cadera extendida",
+        nombre: "_Ejercicios.abducción_de_glúteo_con_cadera_extendida".tr(),
+        nombreEs: "Abducción de glúteo con cadera extendida",
         imagen: ['AbduccionDeGluteoPesoCorporal.gif'],
         descripcion: '',
         material: ['mancuernas'],
@@ -4022,7 +4929,8 @@ class Ejercicio {
 
   factory Ejercicio.abduccionDeGluteoConPesoCorporal() {
     return Ejercicio(
-        nombre: "Abducción de glúteo con peso corporal",
+         nombre: "_Ejercicios.abducción_de_glúteo_con_peso_corporal".tr(),
+        nombreEs: "Abducción de glúteo con peso corporal",
         imagen: ['AbduccionDeGluteoPesoCorporal2.gif'],
         descripcion: '',
         material: ['barra', 'mancuernas'],
@@ -4035,7 +4943,8 @@ class Ejercicio {
 
   factory Ejercicio.abduccionDeGluteoEnMaquina() {
     return Ejercicio(
-        nombre: "Abducción de glúteo sentado en máquina",
+        nombre: "_Ejercicios.abducción_de_glúteo_sentado_en_máquina".tr(),
+        nombreEs: "Abducción de glúteo sentado en máquina",
         imagen: ['AbduccionesEnMaquina.gif'],
         descripcion: '',
         material: ['gym'],
@@ -4047,7 +4956,8 @@ class Ejercicio {
 
   factory Ejercicio.abduccionesDeGluteoEnMaquina() {
     return Ejercicio(
-        nombre: "Abducción de glúteo en máquina",
+        nombre: "_Ejercicios.abducción_de_glúteo_en_máquina".tr(),
+        nombreEs: "Abducción de glúteo en máquina",
         imagen: ['AbduccionesMaquinaDeGluteo.gif'],
         descripcion: '',
         material: ['gym'],
@@ -4059,7 +4969,8 @@ class Ejercicio {
 
   factory Ejercicio.abduccionDeGluteoEnPolea() {
     return Ejercicio(
-        nombre: "Abducción de glúteo en polea",
+        nombre: "_Ejercicios.abducción_de_glúteo_en_polea".tr(),
+        nombreEs: "Abducción de glúteo en polea",
         imagen: ['08791301-Cable-hip-abduction-(version-2)_Hips_180.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja'],
@@ -4071,7 +4982,8 @@ class Ejercicio {
 
   factory Ejercicio.abduccionDeGluteoConGomaElastica() {
     return Ejercicio(
-        nombre: "Abducción de glúteo con banda elástica",
+        nombre: "_Ejercicios.abducción_de_glúteo_con_banda_elástica".tr(),
+        nombreEs: "Abducción de glúteo con banda elástica",
         imagen: ['AbduccionesDeGluteoBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -4082,7 +4994,8 @@ class Ejercicio {
   }
   factory Ejercicio.abduccionDeGluteoConGomaElasticaTumbado() {
     return Ejercicio(
-        nombre: "Abducción de glúteo con banda elástica tumbado",
+        nombre: "_Ejercicios.abducción_de_glúteo_con_banda_elástica_tumbado".tr(),
+        nombreEs: "Abducción de glúteo con banda elástica tumbado",
         imagen: ['24211301-Resistance-Band-Lying-Abduction_Hips_180.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -4093,7 +5006,8 @@ class Ejercicio {
   }
   factory Ejercicio.abduccionDeGluteoConGomaElasticaDeRodillas() {
     return Ejercicio(
-        nombre: "Abducción de glúteo con banda elástica de rodillas",
+        nombre: "_Ejercicios.abducción_de_glúteo_con_banda_elástica_de_rodillas".tr(),
+        nombreEs: "Abducción de glúteo con banda elástica de rodillas",
         imagen: [
           '24181301-Resistance-Band-Bent-Leg-Side-Kick-(kneeling)_Hips_180.gif'
         ],
@@ -4107,7 +5021,8 @@ class Ejercicio {
 
   factory Ejercicio.pasosLateralesConBandaElastica() {
     return Ejercicio(
-        nombre: "Pasos laterales con banda elástica",
+        nombre: "_Ejercicios.pasos_laterales_con_banda_elástica".tr(),
+        nombreEs: "Pasos laterales con banda elástica",
         imagen: ['24601301-Resistance-Band-Lateral-Walk_Hips_180.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -4116,10 +5031,26 @@ class Ejercicio {
         },
         patron: 34);
   }
+
+  factory Ejercicio.abduccionDeGluteoConTrx() {
+    return Ejercicio(
+        nombre: "_Ejercicios.abducción_de_glúteo_con_trx".tr(),
+        nombreEs: "Abducción de glúteo con TRX",
+        imagen: [
+          '10771301-Suspender-Hip-Abduction_Hips_180.gif'
+        ],
+        descripcion: '',
+        material: ['trx'],
+        musculosTrabajados: {
+          'Primario1': 'Gluteo',
+        },
+        patron: 34);
+  }
   // Aduccion de gluteo
   factory Ejercicio.aduccionDeGluteoConPesoCorporal() {
     return Ejercicio(
-        nombre: "Aducciones de glúteo con peso corporal",
+        nombre: "_Ejercicios.aducciones_de_glúteo_con_peso_corporal".tr(),
+        nombreEs: "Aducciones de glúteo con peso corporal",
         imagen: ['AduccionDeGluteoPesoCorporal.gif'],
         descripcion: '',
         material: ['barra', 'mancuernas'],
@@ -4132,7 +5063,8 @@ class Ejercicio {
 
   factory Ejercicio.aduccionesEnMaquina() {
     return Ejercicio(
-        nombre: "Aductores en máquina sentado",
+        nombre: "_Ejercicios.abducción_de_glúteo_sentado_en_máquina".tr(),
+        nombreEs: "Aductores en máquina sentado",
         imagen: ['AduccionesEnMaquina.gif'],
         descripcion: '',
         material: ['gym'],
@@ -4143,7 +5075,8 @@ class Ejercicio {
   }
   factory Ejercicio.aduccionDeGluteoEnPolea() {
     return Ejercicio(
-        nombre: "Aducción de glúteo en polea",
+        nombre: "_Ejercicios.aducción_de_glúteo_en_polea".tr(),
+        nombreEs: "Aducción de glúteo en polea",
         imagen: ['AduccionEnPolea.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja'],
@@ -4155,7 +5088,8 @@ class Ejercicio {
   }
   factory Ejercicio.aduccionDeGluteoConGomaElastica() {
     return Ejercicio(
-        nombre: "Aducción de glúteo con banda elástica",
+        nombre: "_Ejercicios.aducción_de_glúteo_con_banda_elástica".tr(),
+        nombreEs: "Aducción de glúteo con banda elástica",
         imagen: ['AduccionesBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -4168,7 +5102,8 @@ class Ejercicio {
 
   factory Ejercicio.remoAlMentonConBarraRecta() {
     return Ejercicio(
-        nombre: "Remo al mentón con barra",
+        nombre: "_Ejercicios.remo_al_mentón_con_barra".tr(),
+        nombreEs: "Remo al mentón con barra",
         imagen: ['RemoAlMenton.gif'],
         descripcion: '',
         material: ['gym', 'barra'],
@@ -4181,7 +5116,8 @@ class Ejercicio {
 
   factory Ejercicio.encogimientosDeTrapecioConBarra() {
     return Ejercicio(
-        nombre: "Encogimientos de trapecio con barra",
+        nombre: "_Ejercicios.encogimientos_de_trapecio_con_barra".tr(),
+        nombreEs: "Encogimientos de trapecio con barra",
         imagen: ['00951301-Barbell-Shrug_Back_180.gif'],
         descripcion: '',
         material: ['gym', 'barra'],
@@ -4193,7 +5129,8 @@ class Ejercicio {
   }
   factory Ejercicio.encogimientosDeTrapecioConMancuerna() {
     return Ejercicio(
-        nombre: "Encogimientos de trapecio con mancuerna",
+        nombre: "_Ejercicios.encogimientos_de_trapecio_con_mancuerna".tr(),
+        nombreEs: "Encogimientos de trapecio con mancuerna",
         imagen: ['EncogimientosDeTrapecioConMancuerna.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas'],
@@ -4205,7 +5142,8 @@ class Ejercicio {
 
   factory Ejercicio.remoAlMentonConMancuerna() {
     return Ejercicio(
-        nombre: "Remo al mentón con mancuerna",
+        nombre: "_Ejercicios.remo_al_mentón_con_mancuerna".tr(),
+        nombreEs: "Remo al mentón con mancuerna",
         imagen: ['RemoAlMentonConMancuernas.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas'],
@@ -4217,7 +5155,8 @@ class Ejercicio {
 
   factory Ejercicio.encogimientosDeTrapecioEnMultipower() {
     return Ejercicio(
-        nombre: "Encogimientos de trapecio en multipower",
+        nombre: "_Ejercicios.encogimientos_de_trapecio_en_multipower".tr(),
+        nombreEs: "Encogimientos de trapecio en multipower",
         imagen: ['EncogimientosDeTrapecioEnMultipower.gif'],
         descripcion: '',
         material: [
@@ -4231,7 +5170,8 @@ class Ejercicio {
 
   factory Ejercicio.remoAlMentonEnMultipower() {
     return Ejercicio(
-        nombre: "Remo al mentón en multipower",
+        nombre: "_Ejercicios.remo_al_mentón_en_multipower".tr(),
+        nombreEs: "Remo al mentón en multipower",
         imagen: ['RemoAlMentonEnMultipower.gif'],
         descripcion: '',
         material: [
@@ -4246,7 +5186,8 @@ class Ejercicio {
 
   factory Ejercicio.remoAlMentonEnPolea() {
     return Ejercicio(
-        nombre: "Remo al mentón en polea",
+        nombre: "_Ejercicios.remo_al_mentón_en_polea".tr(),
+        nombreEs: "Remo al mentón en polea",
         imagen: ['RemoAlMentonEnPoleaBaja.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja'],
@@ -4259,7 +5200,8 @@ class Ejercicio {
 
   factory Ejercicio.encogimientosDeTrapecioEnPolea() {
     return Ejercicio(
-        nombre: "Encogimientos de trapecio en polea",
+        nombre: "_Ejercicios.encogimientos_de_trapecio_en_polea".tr(),
+        nombreEs: "Encogimientos de trapecio en polea",
         imagen: ['02201301-Cable-Shrug_Back_180.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleabaja'],
@@ -4270,7 +5212,8 @@ class Ejercicio {
   }
   factory Ejercicio.encogimientosDeTrapecioConBandaElastica() {
     return Ejercicio(
-        nombre: "Encogimientos de trapecio con banda elástica",
+        nombre: "_Ejercicios.encogimientos_de_trapecio_con_banda_elástica".tr(),
+        nombreEs: "Encogimientos de trapecio con banda elástica",
         imagen: ['EncomientosDeTrapecioBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -4281,7 +5224,8 @@ class Ejercicio {
   }
   factory Ejercicio.remoAlMentonConBandaElastica() {
     return Ejercicio(
-        nombre: "Remo al mentón con banda elástica",
+        nombre: "_Ejercicios.remo_al_mentón_con_banda_elástica".tr(),
+        nombreEs: "Remo al mentón con banda elástica",
         imagen: ['RemoAlMentonBandaElastica.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -4295,7 +5239,8 @@ class Ejercicio {
 // recto abdominal
   factory Ejercicio.ruedaAbdominalConBarra() {
     return Ejercicio(
-        nombre: "Rueda abdominal con barra",
+        nombre: "_Ejercicios.rueda_abdominal_con_barra".tr(),
+        nombreEs: "Rueda abdominal con barra",
         imagen: ['RuedaAbdominalBarra.gif'],
         descripcion: '',
         material: ['barra'],
@@ -4307,7 +5252,8 @@ class Ejercicio {
   }
   factory Ejercicio.encogimientosAbdominales() {
     return Ejercicio(
-        nombre: "Encogimientos abdominales",
+        nombre: "_Ejercicios.encogimientos_abdominales".tr(),
+        nombreEs: "Encogimientos abdominales",
         imagen: ['AbdominalesEnElSuelo.gif'],
         descripcion: '',
         material: ['gym', 'mancuernas', 'barra', 'elasticos'],
@@ -4319,7 +5265,8 @@ class Ejercicio {
 
   factory Ejercicio.encogimientosAbdominalesColgado() {
     return Ejercicio(
-        nombre: "Encogimientos abdominales colgado",
+        nombre: "_Ejercicios.encogimientos_abdominales_colgado".tr(),
+        nombreEs: "Encogimientos abdominales colgado",
         imagen: ['AbdominalesColgado.gif', 'AbdominalesColgados.gif'],
         descripcion: '',
         material: ['gym', 'dominadas'],
@@ -4331,7 +5278,8 @@ class Ejercicio {
   }
   factory Ejercicio.encogimientosAbdominalesEnFondos() {
     return Ejercicio(
-        nombre: "Encogimientos abdominales en máquina de fondos",
+        nombre: "_Ejercicios.encogimientos_abdominales_en_máquina_de_fondos".tr(),
+        nombreEs: "Encogimientos abdominales en máquina de fondos",
         imagen: ['AbdominalesEnFondos.gif'],
         descripcion: '',
         material: ['gym', 'paralelas'],
@@ -4344,7 +5292,8 @@ class Ejercicio {
 
   factory Ejercicio.encogimientosAbdominalesEnMaquina() {
     return Ejercicio(
-        nombre: "Encogimientos abdominales en máquina",
+        nombre: "_Ejercicios.encogimientos_abdominales_en_máquina".tr(),
+        nombreEs: "Encogimientos abdominales en máquina",
         imagen: ['AbdominalesEnMaquina.gif'],
         descripcion: '',
         material: [
@@ -4357,7 +5306,8 @@ class Ejercicio {
   }
   factory Ejercicio.absRoller() {
     return Ejercicio(
-        nombre: "Abs roller",
+        nombre: "_Ejercicios.abs_roller".tr(),
+        nombreEs: "Abs roller",
         imagen: ['AbsRoller.gif'],
         descripcion: '',
         material: [
@@ -4370,7 +5320,8 @@ class Ejercicio {
   }
   factory Ejercicio.encogimientosAbdominalesEnPolea() {
     return Ejercicio(
-        nombre: "Encogimientos abdominales en polea",
+        nombre: "_Ejercicios.encogimientos_abdominales_en_polea".tr(),
+        nombreEs: "Encogimientos abdominales en polea",
         imagen: ['EncogimientosAbdominalesEnPolea.gif'],
         descripcion: '',
         material: ['gym', 'polea', 'poleaalta'],
@@ -4382,7 +5333,8 @@ class Ejercicio {
   }
   factory Ejercicio.ruedaAbdominal() {
     return Ejercicio(
-        nombre: "Rueda abdominal",
+        nombre: "_Ejercicios.rueda_abdominal".tr(),
+        nombreEs: "Rueda abdominal",
         imagen: ['23321301-Wheel-Rollout-(female)_Waist_360.gif'],
         descripcion: '',
         material: ['gym'],
@@ -4395,10 +5347,60 @@ class Ejercicio {
 
   factory Ejercicio.planchaAbdominal() {
     return Ejercicio(
-        nombre: "Plancha abdominal",
+        nombre: "_Ejercicios.plancha_abdominal".tr(),
+        nombreEs: "Plancha abdominal",
         imagen: ['04651101-Front-Plank_Waist_small.png'],
         descripcion: '',
         material: ['gym', 'barra', 'mancuernas', 'polea', 'elasticos'],
+        musculosTrabajados: {
+          'Primario1': 'Abs',
+        },
+        patron: 39);
+  }
+  factory Ejercicio.planchaAbdominalConTrx() {
+    return Ejercicio(
+        nombre: "_Ejercicios.plancha_abdominal_con_trx".tr(),
+        nombreEs: "Plancha abdominal con TRX",
+        imagen: ['11351301-Suspender-Single-Leg-Plank_Waist_180.gif'],
+        descripcion: '',
+        material: ['trx'],
+        musculosTrabajados: {
+          'Primario1': 'Abs',
+        },
+        patron: 39);
+  }
+  factory Ejercicio.ruedaAbdominalConTrx() {
+    return Ejercicio(
+        nombre: "_Ejercicios.rueda_abdominal_con_trx".tr(),
+        nombreEs: "Rueda abdominal con TRX",
+        imagen: ['10911301-Suspender-Rollout_Waist_180.gif',
+        'AbdominalesConTRX.gif'],
+        descripcion: '',
+        material: ['trx'],
+        musculosTrabajados: {
+          'Primario1': 'Abs',
+        },
+        patron: 39);
+  }
+   factory Ejercicio.encogimientosAbdominalesConTrx() {
+    return Ejercicio(
+        nombre: "_Ejercicios.encogimientos_abdominales_con_trx".tr(),
+        nombreEs: "Encogimientos abdominales con TRX",
+        imagen: ['11471301-Suspender-Supine-Crunch_Waist_180.gif'],
+        descripcion: '',
+        material: ['trx'],
+        musculosTrabajados: {
+          'Primario1': 'Abs',
+        },
+        patron: 39);
+  }
+  factory Ejercicio.encogimientosAbdominalesInvertidosConTrx() {
+    return Ejercicio(
+        nombre: "_Ejercicios.encogimientos_abdominales_invertidos_con_trx".tr(),
+        nombreEs: "Encogimientos abdominales invertidos con TRX",
+        imagen: ['CrunchAbdominalInvertidoConTRX.gif'],
+        descripcion: '',
+        material: ['trx'],
         musculosTrabajados: {
           'Primario1': 'Abs',
         },
@@ -4408,7 +5410,8 @@ class Ejercicio {
 
   factory Ejercicio.encogimientosAbdominalesColgadoConTorsion() {
     return Ejercicio(
-      nombre: "Encogimientos abdominales colgado con rotación de tronco",
+      nombre: "_Ejercicios.encogimientos_abdominales_colgado_con_rotación_de_tronco".tr(),
+      nombreEs: "Encogimientos abdominales colgado con rotación de tronco",
       imagen: ['OblicuosColgado.gif'],
       descripcion: '',
       material: ['gym', 'dominadas'],
@@ -4422,7 +5425,8 @@ class Ejercicio {
 
   factory Ejercicio.encogimientosAbdominalesConTorsion() {
     return Ejercicio(
-      nombre: "Encogimientos abdominales con rotación de tronco",
+      nombre: "_Ejercicios.encogimientos_abdominales_con_rotación_de_tronco".tr(),
+      nombreEs: "Encogimientos abdominales con rotación de tronco",
       imagen: ['AbdominalesConGiro.gif'],
       descripcion: '',
       material: ['gym', 'polea', 'barra', 'mancuernas', 'elasticos'],
@@ -4435,7 +5439,8 @@ class Ejercicio {
 
   factory Ejercicio.planchaLateral() {
     return Ejercicio(
-      nombre: "Plancha lateral",
+      nombre: "_Ejercicios.plancha_lateral".tr(),
+      nombreEs: "Plancha lateral",
       imagen: ['07151301-Side-Plank-m_Waist_180.gif'],
       descripcion: '',
       material: ['gym', 'polea', 'barra', 'mancuernas', 'elasticos'],
@@ -4448,7 +5453,8 @@ class Ejercicio {
 
   factory Ejercicio.lenador() {
     return Ejercicio(
-      nombre: "Leñador",
+      nombre: "_Ejercicios.leñador".tr(),
+      nombreEs: "Leñador",
       imagen: ['Leñador.gif'],
       descripcion: '',
       material: [
@@ -4464,7 +5470,8 @@ class Ejercicio {
 
   factory Ejercicio.pressPallof() {
     return Ejercicio(
-      nombre: "Press pallof",
+      nombre: "_Ejercicios.press_pallof".tr(),
+      nombreEs: "Press pallof",
       imagen: ['PressPallof.gif'],
       descripcion: '',
       material: [
@@ -4480,7 +5487,8 @@ class Ejercicio {
 
   factory Ejercicio.lenadorConElasticos() {
     return Ejercicio(
-      nombre: "Leñador con elástico",
+      nombre: "_Ejercicios.leñador_con_elástico".tr(),
+      nombreEs: "Leñador con elástico",
       imagen: ['LeñadorBandaElastica.gif'],
       descripcion: '',
       material: [
@@ -4495,7 +5503,8 @@ class Ejercicio {
 
   factory Ejercicio.pressPallofConBandaElastica() {
     return Ejercicio(
-      nombre: "Press pallof con elástico",
+      nombre: "_Ejercicios.press_pallof_con_elástico".tr(),
+      nombreEs: "Press pallof con elástico",
       imagen: ['PressPallofBandaElastica.gif'],
       descripcion: '',
       material: [
@@ -4507,10 +5516,41 @@ class Ejercicio {
       patron: 40,
     );
   }
+  factory Ejercicio.planchaLateralConTrx() {
+    return Ejercicio(
+      nombre: "_Ejercicios.plancha_lateral_con_trx".tr(),
+      nombreEs: "Plancha lateral con TRX",
+      imagen: ['11451301-Suspender-Star-Plank_Waist_180.gif'],
+      descripcion: '',
+      material: [
+        'trx',
+      ],
+      musculosTrabajados: {
+        'Primario1': 'Abs',
+      },
+      patron: 40,
+    );
+  }
+  factory Ejercicio.kettlebellWindmill() {
+    return Ejercicio(
+      nombre: "_Ejercicios.kettlebell_windmill".tr(),
+      nombreEs: "Kettlebell windmill",
+      imagen: ['05541301-KettlebellWindmillWaist.gif'],
+      descripcion: '',
+      material: [
+        'kettlebell',
+      ],
+      musculosTrabajados: {
+        'Primario1': 'Abs',
+      },
+      patron: 40,
+    );
+  }
 // Gemelo Rodilla Extendida
   factory Ejercicio.gemeloDePieConBarra() {
     return Ejercicio(
-        nombre: "Gemelo de pie con barra recta",
+        nombre: "_Ejercicios.gemelo_de_pie_con_barra_recta".tr(),
+        nombreEs: "Gemelo de pie con barra recta",
         imagen: ['GemeloDePie.gif'],
         descripcion: '',
         material: ['barra'],
@@ -4522,7 +5562,8 @@ class Ejercicio {
   }
   factory Ejercicio.gemeloDePieConMancuerna() {
     return Ejercicio(
-        nombre: "Gemelo de pie con mancuerna",
+        nombre: "_Ejercicios.gemelo_de_pie_con_mancuerna".tr(),
+        nombreEs: "Gemelo de pie con mancuerna",
         imagen: ['04171301-Dumbbell-Standing-Calf-Raise_Calf_180.gif'],
         descripcion: '',
         material: ['mancuernas'],
@@ -4534,7 +5575,8 @@ class Ejercicio {
   }
   factory Ejercicio.gemeloDePieConMancuernaAUnaPierna() {
     return Ejercicio(
-        nombre: "Gemelo de pie con mancuerna a una pierna",
+        nombre: "_Ejercicios.gemelo_de_pie_con_mancuerna_a_una_pierna".tr(),
+        nombreEs: "Gemelo de pie con mancuerna a una pierna",
         imagen: ['04091301-Dumbbell-Single-Leg-Calf-Raise_Calves_180.gif'],
         descripcion: '',
         material: ['mancuernas'],
@@ -4546,7 +5588,8 @@ class Ejercicio {
   }
   factory Ejercicio.gemeloDePie() {
     return Ejercicio(
-        nombre: "Gemelo de pie",
+        nombre: "_Ejercicios.gemelo_de_pie".tr(),
+        nombreEs: "Gemelo de pie",
         imagen: ['GemeloDePieEnMaquina.gif'],
         descripcion: '',
         material: ['gym'],
@@ -4558,7 +5601,8 @@ class Ejercicio {
 
   factory Ejercicio.gemeloEnMaquina() {
     return Ejercicio(
-        nombre: "Gemelo en máquina",
+        nombre: "_Ejercicios.gemelo_en_máquina".tr(),
+        nombreEs: "Gemelo en máquina",
         imagen: ['GemeloEnMaquina.gif'],
         descripcion: '',
         material: ['gym'],
@@ -4570,7 +5614,8 @@ class Ejercicio {
 
   factory Ejercicio.gemeloDePieEnMultipower() {
     return Ejercicio(
-        nombre: "Gemelo de pie en multipower",
+        nombre: "_Ejercicios.gemelo_de_pie_en_multipower".tr(),
+        nombreEs: "Gemelo de pie en multipower",
         imagen: ['GemeloDePieEnMultipower.gif'],
         descripcion: '',
         material: ['gym'],
@@ -4583,7 +5628,8 @@ class Ejercicio {
 
   factory Ejercicio.gemeloEnPrensaInclinada() {
     return Ejercicio(
-        nombre: "Gemelo en prensa inclinada",
+        nombre: "_Ejercicios.gemelo_en_prensa_inclinada".tr(),
+        nombreEs: "Gemelo en prensa inclinada",
         imagen: ['GemeloEnPrensa2.gif', 'GemeloEnPrensa.gif'],
         descripcion: '',
         material: ['gym'],
@@ -4594,7 +5640,8 @@ class Ejercicio {
   }
   factory Ejercicio.gemeloDePieConCargaExterna() {
     return Ejercicio(
-        nombre: "Gemelo de pie con carga externa",
+        nombre: "_Ejercicios.gemelo_de_pie_con_carga_externa".tr(),
+        nombreEs: "Gemelo de pie con carga externa",
         imagen: ['GemeloDePie.gif'],
         descripcion:
             'Hazlo con una carga externa, por ejemplo una mochila o una garrafa de agua',
@@ -4608,7 +5655,8 @@ class Ejercicio {
 
   factory Ejercicio.gemeloDePieConBandasElasticas() {
     return Ejercicio(
-        nombre: "Gemelo de pie con banda elástica",
+        nombre: "_Ejercicios.gemelo_de_pie_con_banda_elástica".tr(),
+        nombreEs: "Gemelo de pie con banda elástica",
         imagen: ['GemeloBandaElastica.gif', 'GemeloBandaElastica2.gif'],
         descripcion: '',
         material: ['elasticos'],
@@ -4617,10 +5665,12 @@ class Ejercicio {
         },
         patron: 37);
   }
-  factory Ejercicio.gemeloSentadoConBandasElasticas() {
+  
+  factory Ejercicio.gemeloDePieConBandasElasticasAUnaPierna() {
     return Ejercicio(
-        nombre: "Gemelo sentado con banda elástica",
-        imagen: ['24251301-Resistance-Band-Calf-Raise_Calves_180.gif'],
+        nombre: "_Ejercicios.gemelo_de_pie_a_una_pierna_con_banda_elástica".tr(),
+        nombreEs: "Gemelo de pie a una pierna con banda elástica",
+        imagen: ['GemeloDePieAUnaPierna.gif'],
         descripcion: '',
         material: ['elasticos'],
         musculosTrabajados: {
@@ -4628,12 +5678,13 @@ class Ejercicio {
         },
         patron: 37);
   }
-  factory Ejercicio.gemeloDePieConBandasElasticasAUnaPierna() {
+  factory Ejercicio.gemeloDePieConTrx() {
     return Ejercicio(
-        nombre: "Gemelo de pie a una pierna con banda elástica",
-        imagen: ['GemeloDePieAUnaPierna.gif'],
+      nombre: "_Ejercicios.gemelo_de_pie_con_trx".tr(),
+        nombreEs: "Gemelo de pie con TRX",
+        imagen: ['11541301-Suspender-Calf-Raise_Calves_360.gif'],
         descripcion: '',
-        material: ['elasticos'],
+        material: ['trx'],
         musculosTrabajados: {
           'Primario1': 'Gemelo',
         },
@@ -4643,7 +5694,8 @@ class Ejercicio {
 
   factory Ejercicio.gemeloSentadoConBarra() {
     return Ejercicio(
-        nombre: "Gemelo sentado con barra recta",
+        nombre: "_Ejercicios.gemelo_sentado_con_barra_recta".tr(),
+        nombreEs: "Gemelo sentado con barra recta",
         imagen: ['GemloSentado.gif'],
         descripcion: '',
         material: ['barra'],
@@ -4656,7 +5708,8 @@ class Ejercicio {
 
   factory Ejercicio.gemeloSentadoConMancuernas() {
     return Ejercicio(
-        nombre: "Gemelo sentado con mancuernas",
+      nombre: "_Ejercicios.gemelo_sentado_con_mancuernas".tr(),
+        nombreEs: "Gemelo sentado con mancuernas",
         imagen: ['GemeloSentadoConMancuernas.gif'],
         descripcion: '',
         material: ['mancuernas'],
@@ -4669,7 +5722,8 @@ class Ejercicio {
 
   factory Ejercicio.gemeloSentado() {
     return Ejercicio(
-        nombre: "Gemelo sentado",
+       nombre: "_Ejercicios.gemelo_sentado".tr(),
+        nombreEs: "Gemelo sentado",
         imagen: ['GemeloSentadoEnMaquina.gif'],
         descripcion: '',
         material: ['gym'],
@@ -4680,7 +5734,8 @@ class Ejercicio {
   }
   factory Ejercicio.gemeloSentadoEnMultipower() {
     return Ejercicio(
-        nombre: "Gemelo sentado en multipower",
+      nombre: "_Ejercicios.gemelo_sentado_en_multipower".tr(),
+        nombreEs: "Gemelo sentado en multipower",
         imagen: ['GemeloSentadoEnMultipower.gif'],
         descripcion: '',
         material: ['gym'],
@@ -4692,7 +5747,8 @@ class Ejercicio {
   }
   factory Ejercicio.gemeloSentadoConCargaExterna() {
     return Ejercicio(
-        nombre: "Gemelo sentado con carga externa",
+        nombre: "_Ejercicios.gemelo_sentado_con_carga_externa".tr(),
+        nombreEs: "Gemelo sentado con carga externa",
         imagen: ['GemloSentado.gif'],
         descripcion:
             'Hazlo con una carga externa, por ejemplo, con una mochila encima de tus piernas.',
@@ -4704,35 +5760,49 @@ class Ejercicio {
         patron: 38);
   }
 
-  factory Ejercicio.pressInclinadoConBarraSerieDescendente() {
+  // factory Ejercicio.pressInclinadoConBarraSerieDescendente() {
+  //   return Ejercicio(
+       
+  //       nombreEs: "Press inclinado con barra (Serie descendente doble)",
+  //       imagen: ['PressBanca.gif'],
+  //       descripcion: '',
+  //       comentarios: Comentarios(
+  //           semana1: 'Malas Sensaciones,dolor en los hombros',
+  //           semana2: 'null',
+  //           semana3: 'null',
+  //           semana4: 'null'),
+  //       material: ['gym'],
+  //       patron: 38);
+  // }
+  factory Ejercicio.gemeloSentadoConBandasElasticas() {
     return Ejercicio(
-        nombre: "Press inclinado con barra (Serie descendente doble)",
-        imagen: ['PressBanca.gif'],
+        nombre: "_Ejercicios.gemelo_sentado_con_banda_elástica".tr(),
+        nombreEs: "Gemelo sentado con banda elástica",
+        imagen: ['24251301-Resistance-Band-Calf-Raise_Calves_180.gif'],
         descripcion: '',
-        comentarios: Comentarios(
-            semana1: 'Malas Sensaciones,dolor en los hombros',
-            semana2: 'null',
-            semana3: 'null',
-            semana4: 'null'),
-        material: ['gym'],
+        material: ['elasticos'],
+        musculosTrabajados: {
+          'Primario1': 'Gemelo',
+        },
         patron: 38);
   }
-  factory Ejercicio.pressInclinadoConBarraDescansoPausa() {
-    return Ejercicio(
-        nombre: 'Press inclinado con barra (Descanso-Pausa simple de 20")',
-        imagen: ['PressInclinadoConBarra.jpg'],
-        descripcion: '',
-        comentarios: Comentarios(
-            semana1: 'Malas Sensaciones,dolor en los hombros',
-            semana2: 'null',
-            semana3: 'null',
-            semana4: 'null'),
-        material: ['gym'],
-        patron: 38);
-  }
+  // factory Ejercicio.pressInclinadoConBarraDescansoPausa() {
+  //   return Ejercicio(
+  //       nombre: 'Press inclinado con barra (Descanso-Pausa simple de 20")',
+  //       imagen: ['PressInclinadoConBarra.jpg'],
+  //       descripcion: '',
+  //       comentarios: Comentarios(
+  //           semana1: 'Malas Sensaciones,dolor en los hombros',
+  //           semana2: 'null',
+  //           semana3: 'null',
+  //           semana4: 'null'),
+  //       material: ['gym'],
+  //       patron: 38);
+  // }
 factory Ejercicio.pressHorizontalEnMaquinaAgarreNeutro1() {
     return Ejercicio(
-        nombre: "Press vertical en máquina agarre neutro",
+        nombre: "_Ejercicios.press_vertical_en_máquina_agarre_neutro".tr(),
+        nombreEs: "Press vertical en máquina agarre neutro",
         imagen: ['PressVerticalEnMaquinaAgarreNeutro.gif'],
         descripcion: '',
         material: [
@@ -4747,7 +5817,8 @@ factory Ejercicio.pressHorizontalEnMaquinaAgarreNeutro1() {
   }
 factory Ejercicio.pressHorizontalEnMaquina1() {
     return Ejercicio(
-        nombre: "Press vertical en máquina",
+        nombre: "_Ejercicios.press_vertical_en_máquina".tr(),
+        nombreEs: "Press vertical en máquina",
         imagen: ['PressVerticalEnMaquina.gif'],
         descripcion: '',
         material: [
@@ -4762,7 +5833,8 @@ factory Ejercicio.pressHorizontalEnMaquina1() {
   }
 factory Ejercicio.flexionesPliometricas1() {
     return Ejercicio(
-        nombre: "Flexiones pliométricas",
+        nombre: "_Ejercicios.flexiones_pliométricas".tr(),
+        nombreEs: "Flexiones pliométricas",
         imagen: ['FlexionesAlternas.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -4789,7 +5861,8 @@ factory Ejercicio.flexionesPliometricas1() {
   }
   factory Ejercicio.wipersIsometricos1() {
     return Ejercicio(
-        nombre: "Wipers ismétricos",
+        nombre: "_Ejercicios.wipers_ismétricos".tr(),
+        nombreEs: "Wipers ismétricos",
         imagen: ['05001301-Isometric-Wipers_Chest_360.gif'],
         descripcion: '',
         material: ['barra', 'mancuernas'],
@@ -4799,7 +5872,8 @@ factory Ejercicio.flexionesPliometricas1() {
         patron: 4);}
   factory Ejercicio.jalonDorsalAgarreCerrado1() {
     return Ejercicio(
-        nombre: "Jalón dorsal agarre en V invertida",
+        nombre: "_Ejercicios.jalón_dorsal_agarre_en_V_invertida".tr(),
+        nombreEs: "Jalón dorsal agarre en V invertida",
         imagen: ['JalonDorsalEnPoleaAgarreCerrado.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -4826,7 +5900,8 @@ factory Ejercicio.flexionesPliometricas1() {
   }
     factory Ejercicio.remoEnPuntaAgarreAncho1() {
     return Ejercicio(
-        nombre: "Remo en punta agarre ancho",
+        nombre: "_Ejercicios.remo_en_punta_agarre_ancho".tr(),
+        nombreEs: "Remo en punta agarre ancho",
         imagen: ['RemoEnPuntaAgarreAbierto.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -4854,7 +5929,8 @@ factory Ejercicio.flexionesPliometricas1() {
   }
       factory Ejercicio.elevacionLateralEnMaquina1() {
     return Ejercicio(
-        nombre: "Elevaciones laterales en máquina",
+        nombre: "_Ejercicios.elevaciones_laterales_en_máquina".tr(),
+        nombreEs: "Elevaciones laterales en máquina",
         imagen: ['ElevacionesLateralesEnMaquina.gif',],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -4880,7 +5956,8 @@ factory Ejercicio.flexionesPliometricas1() {
 
   factory Ejercicio.elevacionLateralEnCruceDePoleas1() {
     return Ejercicio(
-        nombre: "Elevaciones laterales en cruce de poleas",
+        nombre: "_Ejercicios.elevaciones_laterales_en_cruce_de_poleas".tr(),
+        nombreEs: "Elevaciones laterales en cruce de poleas",
         imagen: ['ElevacionLateralEnCruceDePoleas.gif',],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -4905,7 +5982,8 @@ factory Ejercicio.flexionesPliometricas1() {
             ); } 
   factory Ejercicio.remoAlMentonAgarreAncho1() {
     return Ejercicio(
-        nombre: "Remo al mentón agarre ancho",
+        nombre: "_Ejercicios.remo_al_mentón_agarre_ancho".tr(),
+        nombreEs: "Remo al mentón agarre ancho",
         imagen: ['RemoAlMentonAgarreAmplio.gif','RemoAlMentonAgarreAmplio2.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -4931,7 +6009,8 @@ factory Ejercicio.flexionesPliometricas1() {
           
          factory Ejercicio.elevacionesLateralesCrucifixConMancuerna1() {
     return Ejercicio(
-        nombre: "Elevaciones laterales crucifix con mancuernas",
+        nombre: "_Ejercicios.elevaciones_laterales_crucifix_con_mancuernas".tr(),
+        nombreEs: "Elevaciones laterales crucifix con mancuernas",
         imagen: ['ElevacionesLateralesCrucifixConMancuernas.gif',],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -4959,7 +6038,8 @@ factory Ejercicio.flexionesPliometricas1() {
         
   factory Ejercicio.abduccionHorizontalEnCruceDePoleas1() {
     return Ejercicio(
-        nombre: "Hombro posterior en cruce de poleas",
+        nombre: "_Ejercicios.hombro_posterior_en_cruce_de_poleas".tr(),
+        nombreEs: "Hombro posterior en cruce de poleas",
         imagen: ['AbduccionHorizontalEnPoleaAlta.gif',],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -4984,7 +6064,8 @@ factory Ejercicio.flexionesPliometricas1() {
             ); }
 factory Ejercicio.curlConcentradoEnBancoInclinadoConMancuerna1() {
     return Ejercicio(
-        nombre: "Curl concentrado en banco inclinado con mancuerna",
+        nombre: "_Ejercicios.curl_concentrado_en_banco_inclinado_con_mancuerna".tr(),
+        nombreEs: "Curl concentrado en banco inclinado con mancuerna",
         imagen: ['CurlConcentradoEnBancoInclinado.gif'],
         descripcion: '',
         apuntescarga: Apuntescarga(
@@ -5361,7 +6442,7 @@ factory Ejercicio.curlConcentradoEnBancoInclinadoConMancuerna1() {
 //   }
 
   Ejercicio.fromJson(Map<String, dynamic> json) {
-    nombre = json['nombre'];
+    nombreEs = json['nombre'];
     imagen = json['imagen'] != null ? json['imagen'].cast<String>() : null;
     descripcion = json['descripcion'];
 
@@ -5487,7 +6568,7 @@ factory Ejercicio.curlConcentradoEnBancoInclinadoConMancuerna1() {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['nombre'] = this.nombre;
+    data['nombre'] = this.nombreEs;
     // data['imagen'] = this.imagen;
     data['descripcion'] = (this.descripcion != "") ? this.descripcion : null;
     if (this.apuntescarga != null) {

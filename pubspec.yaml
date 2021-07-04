@@ -32,16 +32,16 @@ dependencies:
   html: ^0.14.0+4
   auto_size_text: ^2.1.0
   
-  excel: ^2.0.0-null-safety-3
+  excel: ^2.0.0-null-safety
   
   http: ^0.13.0
   firebase_auth_oauth: ^1.0.1
-  flutter_dialogs: ^1.1.0
+ 
   firebase_auth: ^1.0.1
   google_sign_in: ^4.1.0
   flutter_facebook_login_web: ^0.2.1+1
   flutter_bloc: 
-  font_awesome_flutter: ^9.0.0
+ 
   flutter_signin_button: ^2.0.0
   flutter_auth_buttons: ^0.10.0
   drawerbehavior: ^2.0.0+4
@@ -49,7 +49,7 @@ dependencies:
   url_launcher: ^6.0.3
   shared_preferences: ^2.0.5
   firebase_storage: ^8.0.1
-  community_material_icon: ^5.4.55
+ 
   firebase: ^9.0.1
   js: ^0.6.2
   webview_flutter: ^1.0.7
@@ -61,19 +61,93 @@ dependencies:
   firebase_core: ^1.0.2
   file_picker: ^3.0.0
   data_tables: ^1.3.2
-  device_preview: ^0.7.3
-
-
-
+  device_preview: 
   
 
- 
- 
-  
- 
   equatable:
+  flutter_form_builder: ^6.0.1
+  fa_stepper: ^0.0.2
+  
+  simple_animations: ^3.1.1
+  rflutter_alert: ^1.1.0
+  percent_indicator: "^2.1.1"
+  badges: ^1.1.1
+ 
+  fab_circular_menu: ^1.0.0
+  flip_card: ^0.4.4
+
+  path_provider: ^2.0.2
+
+ 
+  
+  
+  
+
+  
+  
+  shimmer: ^1.1.1
+  community_material_icon: ^3.5.95
+  video_player: ^1.0.1
+ 
+
+  stepper_touch: ^0.0.1
+  animated_text_kit: ^2.0.0
+  
+  row_collection: ^0.2.4
+  
+   
+  
+ 
+ 
+
+  connectivity: ^3.0.6
+  introduction_screen: ^1.0.9
+  folding_cell: ^1.0.2
+  
+  
+
+  fl_chart: ^0.36.1
+ 
+
+  liquid_swipe: ^2.1.0
+
+
+  
+
+  
+  timer_builder: ^1.3.0
+
+
+
+  
+
+ 
+  
+
+  
+
+
+  diacritic: ^0.1.1
+  easy_localization: ^3.0.0
+
+ 
+  
+  
+
+
+ 
   meta:
   rxdart:
+
+
+
+  
+
+ 
+ 
+  
+ 
+  
  
 
 dev_dependencies:

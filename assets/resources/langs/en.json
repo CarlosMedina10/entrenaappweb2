@@ -1,0 +1,1732 @@
+{
+    
+ 
+    "_PaginaPrincipal": {
+    
+    "editar_perfil": "Edit profile",
+    "reevaluacion": "Long time no training? Reevaluate!",
+    "sobre_mi": "About me",
+    "seguimiento":"Check",
+    "soporte": "Support",
+    "tienda_suplementacion": "Shop",
+    "pagina_web": "Website",
+    "eliminar_cuenta": "Remove account",
+    "salir": "Quit",
+    "bienvenido": "Welcome",
+    "bienvenida": "Welcome",
+    "tienes_x_puntos": "You have {} points",
+    "usuario_pro": "You're PRO user!",
+    "crea_un":"Create a",
+    "nuevo":"new",
+    "entrenamiento":"training",
+    "nuevo2":"New!",
+    "entrenamiento2":"Workout",
+    "historial":"Log",
+    "reuniones":"Meetings",
+    "semana_actual": "Current week",
+    "estadisticas_globales":"Global stats",
+    "estadisticas_individuales":"Individual stats",
+    "ver":"Go",
+    "coste_estadisticas":"**Check stats costs 10 points",
+    "numero_de_sesiones_semanales": "Amount of weekly sessions",
+    "modelo":"Model",
+    "hipertrofia":"Hipertrophy",
+    "musculos_prioritarios":"Main muscles",
+    "compensado": "Balanced",
+    "h":"Y",
+    "as_completado_un":"ou completed a ",
+    "de_tu_entrenamiento": "of your workout",
+    "siguenos_en_redes_sociales":"Follow us!",
+    "comparte_la_aplicacion": "Share the app with your friends and followers!",
+    "version":"EntrenaAPP version",
+    "desliza":"Slide to change the week",
+    "¿estas_seguro?": "Are you sure?",
+    "todavia_no_has_completado": "You have not completed your mesocycle yet. Are you sure you want to skip to the next one?",
+    "si":"Yes",
+    "no": "No"
+ },
+ "_Principal": {
+    
+    "error": "Error!",
+    "error2":"Error",
+    "ok": "Ok",
+    "ver_video": "Watch video",
+    "¿estas_seguro?":"Are you sure?",
+    "si": "Yes",
+    "no": "No",
+    "advertencia_eliminar_cuenta": "If you do this, all application data and your account will be removed automatically",
+    "error_conexion_internet": "You are not connected to internet. Workout cannot be loaded. Please, try again later",
+    "error_desconocido": "Unexpected error. Remove all your application data and try again. \n\nDevice -> Settings -> Apps -> EntrenaAPP -> Clear data\n\nIf you have any doubt, check the video",
+    "error_entrenamiento_completado": "It is possible that your last workout has not been checked as completed. Please, try again later",
+    "error_actualizando_semana": "Unable to update you week. Please, check your connection and try again later",
+    "error_eliminando_cuenta": "Unable to remove your account because we need a more recent session login. Please, to remove correctly your account, log off and log on and try again",
+    "ha_iniciado_reunion": "{} has started a new meeting"
+    
+ },
+ "_Tab_Screen": {
+    "inicio": "Start",
+    "puntos": "Points",
+    "comunidad": "Community"
+ 
+   },
+   "_Estadisticas_Globales": {
+    "series":"Sets",
+    "desliza":"*Slide for another stats",
+    "numero_series": "Number of sets for each muscle",
+    "informacion": "Información",
+    "informacion_contenido": " C: Chest \n B: Back \n Q: Quads \n H: Hamstrings \n G: Glutes \n B: Biceps \n T:Triceps \n AD: Ant Deltoid \n LD: Lat Deltoid \n PD: Post Deltoid",
+    "cerrar": "Close",
+    "numero_semana": "Week {}",
+    "ver_trabajo_secundario":"See also secondary work",
+    "frecuencia_trabajo": "Frequency by muscle",
+    "1_dia":"1 day",
+    "2_dias": "2 days",
+    "3_dias": "3 days",
+    "4_dias": "4 days",
+    "5_dias": "5 days",
+    "frecuencia": "Frequency",
+    "informacion_contenido_frecuencia":"C: Chest \n B: Back \n Q: Quads \n H: Hamstrings \n G: Glutes \n B: Biceps \n T:Triceps \n AD: Ant Deltoid \n LD: Lat Deltoid \n PD: Post Deltoid \n TR: Trapezius \n AB: Abs \n CA: Calf",
+    "tipos_de_trabajo":"Sort of work",
+    "porcentaje_de_trabajo": "% of work by mesocycle",
+    "fuerza": "Strength",
+    "hipertrofia": "Hypertrophy",
+    "estres_metabolico": "Metabolic Stress",
+    "p":"C",
+    "e":"B",
+    "c": "Q",
+    "i": "H",
+    "g": "G",
+    "b": "B",
+    "t":"T",
+    "da": "A D",
+    "dl": "L D",
+    "dp": "P D",
+    "tr": "TR",
+    "ab":"AB",
+    "gm":"CA"
+   
+
+ 
+   },
+   "_Estadisticas_Individuales": {
+    "pecho":"Chest",
+    "espalda":  "Back",
+    "deltoides_lateral": "Lateral Deltoid",
+    "deltoides_posterior": "Posterior Deltoid",
+    "deltoides_anterior": "Anterior Deltoid",
+    "biceps":"Biceps",
+    "triceps": "Triceps",
+    "cuadriceps": "Quadriceps",
+    "isquios": "Hamstrings",
+    "gluteo": "Glutes",
+    "trapecio": "Trapezius",
+    "gemelo": "Calf",
+    "abs": "Abs",
+    "numero_series": "Number of sets for {}",
+    "semana_1": "Week 1",
+    "semana_2": "Week 2",
+    "semana_3": "Week 3",
+    "semana_4": "Week 4",
+    "distribucion_del_trabajo":"Work distribution of {}",
+    "no_hay_series": "There are no sets for the primary work of this muscle (which the main target is this muscle). This muscle would be receiving indirect work.",
+    "fuerza": "Strenght",
+    "hipertrofia": "Hypertrophy",
+    "estres_metabolico": "Metabolic Stress",
+    "frecuencia": "Frequency: {}",
+    "musculo_en": "{} in:",
+    "ejercicios_que_trabajan_musculo": "Day {}: {}",
+    "cerrar": "Close",
+    "trabajo_primario_con": "Primary work by:",
+    "ejercicios_trabajo_primario": "Exercises which primary work:",
+    "ver": "See",
+    "trabajo_secundario_con": "Secondary work by:",
+    "ejercicios_trabajo_secundario": "Exercises which secondary work:",
+    "desliza": "*Slide to see another muscle."
+
+   
+
+ 
+   },
+   "_EditarPerfil": {
+        
+            "perfil": "PROFILE",
+            "informacion_personal": "Personal Info",
+            "nombre_usuario": "User Name",
+            "introduce_tu_nombre_de_usuario":"Your user name here",
+            "correo_electronico": "Your e-mail here",
+            "no_registrado":"Not registered yet",
+            "guardar":"Save",
+            "cancelar":"Cancel",
+            "ajusta": "Ajust",
+            "error":"Error!",
+            "ha_ocurrido_un_error":"There was an error loading your user name. \nPlease, try again later.",
+            "ok":"Ok"
+
+       
+    },
+    "_Explicacion": {
+        "en_que_nos_vamos_a_basar":"What are we going to base on?",
+        "preguntas":"Then we are going to ask you some questions... and we will also test you! Do not worry, it will cost you less than 5 minutes. Thanks to this you will be sure your training is agreed at your current level and knowledge",
+        "objetivo": "What is the goal of this?",
+        "reevaluacion_objetivo": "The goal of retesting is to help people who did not used for a while the app and they want to start using again. Imagine you started with no-experience and a high BMI, and we made a training program for you. For any reason you stopped using our app and now you come back but you are no longer so inexperienced, you would like to adapt your program to your new circumstances. We have already thought of you!",
+        "¿cuanto_tiempo_llevas_entrenando?":"How long have you \n being training?",
+        "seleccionar": "Select",
+        "0_2_meses":"0 - 2 months",
+        "2_6_meses": "2 - 6 months",
+        "6_meses_1_año":"6 months - 1 year",
+        "1_2_años":"1 - 2 years",
+        "2_5_años":"2 - 5 years",
+        "+_5_años": "+ 5 years",
+        "informacion": "Info",
+        "continuar":"Continue",
+        "cancelar":"Cancel",
+        "advertencia1":"If you proceed, your future level could be lower than your current level. (This could make sense if you trained once during a whole month with the app, then you left us, and now you want a fresh start from scratch, for example. If that is your case, continue)",
+        "advertencia2":"Previously, you achieved a higher level, you have access to full app functions, in case you retest yourself you will not be in a higher level, this will be the same or lower (doing the training stage again). (This could make sense if you trained once during a whole month with the app, then you left us, and now you want a fresh start from scratch, for example). If that is your case, continue"
+
+       
+
+   
+},
+"_Calculadora": {
+    "debes_seleccionar_tu_sexo":"You must chose your genre",
+    "calculadora_imc":"BMI CALCULATOR",
+    "hombre":"MALE",
+    "mujer": "FEMALE",
+    "altura": "HEIGHT",
+    "peso":"WEIGHT",
+    "edad": "AGE",
+    "pasar_al_examen":"Go to test"
+    },
+    "_Preguntas": {
+        "press_banca": "Bench press is an exercise in which we work...",
+        "sentadilla": "Squat is an exercise in which we work...",
+        "remo_con_barra": "Barbell row is an exercise in which we work...",
+        "press_frances": "French press is an exercise in which we work...",
+        "curl_martillo": "Hammer Curl is an exercise in which we work... ",
+        "press_militar": "Militar Press is an exercise in which we work...",
+        
+        "seal_row": "Seal row is an exercise in which we work...",
+        "rir": "RIR means:",
+        "rpe": "RPE means:",
+        "press_pallof": "Pallof press is an exercise in which we work...",
+        "10_reps_rir_2": "If we have a 10 reps set RIR 2",
+        "biceps_triceps": "Biceps y triceps are:",
+        
+        
+        
+        "hip_thrust_peso_muerto_rumano": "Hip Thrust works better the glute muscle than Romanian Deadlift because...",
+        "abduccion_horizontal": "The horizontal abduction occurs mainly by the action of...",
+        "desactivar_gastrocnemio": "If I want to inhibe the action of the gastronemius when I train the calf muscles ...",
+        "acciones_isquios": "The main action of the hamstring muscles are:",
+        "haz_clavicular_deltoides_anterior": "The clavicular bundle (of the pectoral muscle) and the anterior deltoid have in common:",
+        "gluteo_femoral": "The gluteus and femoral muscles have in common:"
+    
+    
+    },
+    "_Result" : {
+
+        
+        "formacion_3_meses": "The EntrenaAPP team has determined that you must go through a training period of 3 months (you enter phase 1/3 of the training) with progressively harder workouts. Once you finish this period, you will be ready to use all the functionalities of the application. \n \nNext we are going to show you a short guide to use and you will be ready to configure your training and start to progress for real!",
+        "formacion_2_meses":"The EntrenaAPP team has determined that you must go through a training period of 2 months (you enter phase 2/3 of the training) with progressively harder workouts. Once you finish this period, you will be ready to use all the functionalities of the application. \n \nNext we are going to show you a short guide to use and you will be ready to configure your training and start to progress for real!",
+        "formacion_superada":"The EntrenaAPP team has determined that you are ready to access all the functionalities of the application, according to the experience and knowledge you have. Congratulations! \n \n You have obtained {}. \n \n Next we are going to show you a small guide to use and you will be ready to configure your training and start to progress for real!",
+        "continuar": "Continue"
+        
+
+    },
+    
+    "_Tutorial": {
+        "cuestionario_previo": "Previous questionnaire",
+        "explicacion_cuestionario": "The next thing you are going to do when you finish watching this little guide is access this questionnaire.\n \n 1) Choose number of days, material you have for train, if you want to prioritize ant muscle group etc \n \n 2) If you dont check any of the last 2 options, you will get the structured tranig routine for you with the exercises selected by defoault. \n\n 3) If you check one of the two: \n \n -The one marked in red will allow you to access the training structure designed for you and selected the exercises that best suit you based on the movement pattern. \n \n -The one marked in yellow will allow you to create a training from 0. (**This option is only recommended if you have a coach or if your knowledge is advanced and you do the training routines yourself.)",
+        "siguiente": "Next",
+        "que_puedo_hacer": "What can i do?",
+        "explicacion_que_puedo_hacer": "You already have your training! \n \n 1) Click on the button to access it. \n \n 2) Where the red arrow indicates you can edit the training.\n \n 3) By pressing where the blue arrow indicates, you access your training \n\n 4) By pressing where the pink arrow indicates, you access the agenda to record the load and the repetitions performed for each series. \n\n 5) By clicking where the green arrow indicates, you access the detail page of the exercise. \n \n -In the detail page you can see the muscles you work, take note there in the agenda, activate the chronometer and ...! even change the exercise for another biomechanically similar !.",
+        "¿que_mas?": "What else?",
+        "que_mas_explicacion": "No, you haven't even seen 50% of the app yet... \n\n 1) Press where the yellow arrow indicates and access the global statistics of your training: \n \n - Number of series of each muscle group. \n \n - Work distribution. \n \n - Work frequency of each muscle group \n \n 2)Press where the red date indicates and access the specific statistics of each muscle group.",
+        "ademas": "Also...",
+        "ademas_explicacion":"-¡Get points!. Yes, the app is free, but some non-essential features cost points. You can get these points for free (watching ads, sharing the application on instagram etc), buy them or you can go premium and the application works without points (and even without an internet connection!). \n \n -Access our community. It's free and you will be able to meet and learn from people who share your same passion! \n \n -Enter our store and ask your questions to find honest advice. At Entrenaapp we prefer to win a client to make a sale.",
+        "saltar":  "Jump",
+        "acabar": "Finish"
+       },
+    
+       "_Cuestionario": {
+        
+        "cuestionario_usuario": "User questionnaire",
+        "enhorabuena": "¡Congratulations!",
+        "solicitud_prueba_gratuita": "Your free trial request has been successfully processed. Thank you very much for your trust in EntrenaAPP. Enjoy it!",
+        "este_entrenamiento_todavia_no_esta_disponible": "This training is not yet available. Please, review the combinations of muscle groups that you can prioritize for training {} days ",
+        "ver_posibles_combinaciones": "See possible combinations to prioritize work",
+        "la_fecha_debe_ser_posterior": "Your mesocycle date must be after {} which is the one for the last mesocycle you configured.",
+        "tienes_puntos":"You have {} points",
+        "fase_formacion":  "Training phase {}/3",
+        "fecha_comienzo": "Starting date",
+        "debes_introducir_fecha":"You must enter a date",
+        "sexo": "Gender",
+        "debes_seleccionar_tu_sexo": "You must select your gender",
+        "hombre": "Male",
+        "mujer": "Female",
+        "numero_dias_entrenamiento": "Number of training days",
+        "debes_seleccionar_numero_dias": "you must select a number of trainig days",
+        "material": "Material",
+        "gym":"Im going to train in a gym",
+        "casa":  "Im going to train at home",
+        "debes_seleccionar_material": "You must select the material you have",
+        "debes_seleccionar_al_menos_uno":"You must select at least one",
+        "material_basico": "Basic material",
+        "barra": "Bar with discs",
+        "mancuernas": "Dumbbells",
+        "elasticos": "Elastic bands",
+        "polea": "height adjustable pulley",
+        "otros_complementos": "Other accessories",
+        "banco_plano": "Flat bench",
+        "banco_regulable": "Bench with adjustable height",
+        "polea_baja":"Low pulley",
+        "polea_alta":  "High pulley",
+        "dominadas": "Chin-up bar",
+        "paralelas":"Parallel bars",
+        "trx":"TRX",
+        "kettlebell":"Kettlebell",
+        "priorizar": "Prioritize",
+        "opcion_premium": "This option is only available for premium users",
+        "fase_formacion_no_acabada": "You have not finished the training phase yet, so we consider that you still should not try to prioritize any muscle group and this option is disabled. Be patient and do things right!",
+        "¿quieres_priorizar?": "Do you want to prioritize a muscle group?",
+        "debes_responder_aqui": "You must answer here",
+        "si": "Yes",
+        "no": "No",
+        "pecho":"Chest",
+        "espalda":  "Back",
+        "deltoides": "Deltoid (shoulders)",
+        "biceps":"Biceps",
+        "triceps": "Triceps",
+        "cuadriceps": "Quadriceps",
+        "femoral": "Hamstrings",
+        "gluteo": "Glutes",
+        "tren_inferior": "Lower body",
+        "tren_superior": "Upper body",
+        "gestion_fatiga": "Fatigue management",
+        "explicacion_gestion_fatiga": "This functionality will allow us in the future to adjust the volume and intensity of your workouts based on the fatigue generated by your last training mesocycle performed in the application.",
+        "fase_formacion_gestion_fatiga":"As we are still in the training phase, we are increasing the volume and intensity of your workouts month by month, so an answer is not necessary here yet.",
+        "gestion_fatiga_solo_premium":  "This functionality is only available for premium users.",
+        "seleccionar_gestion_fatiga": "You must select the option that best suits what you felt during the previous mesocycle ",
+        "gestion_fatiga_texto":"Manage the volume and intensity of your workouts based on the subjective quantification of fatigue",
+        "demasiadas_agujetas": "Too much soreness after workouts that lasted until the next session for that muscle group",
+        "no_mejora_rendimiento": "I could not improve my performance training week by week",
+        "dos_anteriores": "I identify with the previous two",
+        "trabajo_optimo": "I consider that the work of this mesocycle has been optimal",
+        "no_maxima_congestion": "I felt that I did not reach maximum congestion after workouts, perhaps a slight increase in volume and intensity of work would be optimal",
+        "apenas_sentia_trabajo": "I hardly felt work and I need a substantial increase compared to the previous mesocycle",
+        "mas_informacion_gestion_fatiga": "More information on managing fatigue",
+        "seleccion_ejercicios":"Exercise selection",
+        "¿quieres_seleccionar?":  "Do you want to select the exercises for your mesocycle yourself based on a structure set by a professional?",
+        "mas_informacion_seleccion_ejercicios": "More information on selecting exercises yourself",
+        "crear_mesociclo_desde_0_advertencia_usuario_no_premium":"Use it only if you have a training designed by you or by a coach and you want to enter it in the application, if not, DO NOT use this option.\n \nThis option is only available for premium users.",
+        "crear_mesociclo_desde_0_advertencia_usuario_premium": "Use it only if you have a training designed by you or by a coach and you want to enter it in the application, if not, DO NOT use this option.",
+        "crear_mesociclo_desde_0": "Create Mesocycle from 0",
+        "¿quieres_crear_desde_0?": "Do you want to create your mesocycle from 0?",
+        "mas_informacion_crear_mesociclo_desde_0": "Learn more about creating workouts from scratch.",
+        "necesitaras_conexion": "Please, you will need an internet connection so that we can save your training, otherwise the data will not be updated.",
+        "enviar_formulario": "Send form",
+        "iniciar_prueba_premium": "Start 2 week free premium trial.",
+        "procesando": "Processing",
+        "combinaciones_disponibles":"Combinations available the training of {} days: ",
+        "no_hay_combinaciones_disponibles":  "There is no possibility of prioritizing with only two days of training",
+        "biceps_triceps":"Biceps y Triceps",
+        "pecho_hombros": "Chest and delts (shoulders)",
+        "espalda_biceps_triceps": "Back,Biceps y Triceps",
+        "gluteo_isquios_cuadriceps": "Glutes, Hamstrings and Quadriceps"
+        
+       },
+
+       "_Sobre_mi": {
+        "volver": "RETURN",
+        "conoce_al_creador": "Meet the creator of the app!",
+        "sobre_mi": "ABOUT ME",
+        "sobre_mi_explicacion": "My first contact with the gym was at the young age of 16, a world that has helped me to be a very disciplined person in everything I do. \n \nAfter several years of training and progressive progress, I progressed until I reached the highest level as a member of the Spanish natural bodybuilding team, winning the world championship at 24 years old. \n \n My greatest motivation is to apply science together with more than a decade of experience in the fitness sector to improve people's health, always faithful to my principles and in a natural way.",
+        "explicacion_que_puedo_hacer": "You already have your training! \n \n 1) Click on the button to access it. \n \n 2) Where the red arrow indicates you can edit the training. \n \n 3) By pressing where the blue arrow indicates, you access your training. \n\n 4) By pressing where the pink arrow indicates, you access the agenda to record the load and the repetitions performed for each series. \n\n 5)By clicking where the green arrow indicates, you access the details page of the exercise. \n \n -On the detail page you can see the muscles you work, point from there in the agenda, activate the stopwatch and ... even change the exercise for another biomechanically similar!.",
+        "palmares": "SPORT PALM GROVES",
+        "texto_1_palmares": "WNBB World Champion",
+        "texto_2_palmares": "Open Warriors Champion",
+        "texto_3_palmares":"Champion of Spain AECN",
+        "texto_4_palmares":  "World runner-up WNBB",
+        "opiniones": "OPINIONS",
+        "transformaciones": "TRANSFORMATIONS",
+        "ver_mas": "SEE MORE",
+        "pasar_siguiente_pagina": "Go to the next page",
+        "ir_a_mi_entrenamiento": "Go to my training",
+        "contacta_ya": "CONTACT NOW",
+        "mensaje_carlos": "Hello Carlos, I would like to know more information about your way of working and rates."
+      
+       },
+       "_Historial": {
+        "¿estas_seguro?":"Are you sure?",
+        "si": "Yes",
+        "no": "No",
+        "al_hacerlo":"By doing so, all data for this mesocycle will be lost.",
+        "historial_de_entrenamientos": "Training history",
+        "selecciona_un_mesociclo": "Select a mesocycle",
+        "debes_seleccionar_un_mesociclo": "You must select a mesocycle",
+        "selecciona_una_semana": "Select a week",
+        "debes_seleccionar_una_semana": "You must select a week",
+        "selecciona_un_dia": "Select a day",
+        "debes_seleccionar_un_dia": "You must select a day",
+        "buscar": "Search",
+        "¿quieres_eliminar?":"Do you want to remove this mesocycle from your history?",
+        "eliminar_mesociclo":  "Eliminate mesocycle",
+        "debes_marcar_esta_casilla": "You must check this box",
+        "eliminar": "Eliminate",
+        "series_x_repeticiones": "{} sets x {} reps",
+        "tiempo_descanso_seg": "Break time: {} s",
+        "tiempo_descanso_min": "Break time: {} min",
+        "ver_apuntes": "See notes",
+        "serie_apuntada": "Set {}: {} reps x {} load",
+        "serie_vacia": "Set {}:There is no data",
+        "comentarios_apuntados": "Coments: {}",
+        "no_hay_comentarios": "There are no comments",
+        "semana_y_dia":"Week {} - {}",
+        "texto_4_palmares":  "World runner-up WNBB",
+        "opiniones": "OPINIONS",
+        "transformaciones": "TRANSFORMATIONS",
+        "ver_mas": "See more",
+        "pasar_siguiente_pagina": "Go to the next page",
+        "ir_a_mi_entrenamiento": "Go to my training",
+        "contacta_ya": "CONTACT NOW"
+
+        
+      
+       },
+       "_Hall_Reuniones": {
+        "mas_reciente": "More recent",
+        "numero_de_usuarios_activo":"Number of active users",
+        "reuniones": "Meetings",
+        "interactua_y_aprende": "Interact and learn with other users of the live application",
+        "ordenar_por": "Sort by:",
+        "crear_reunion": "Create meeting",
+        "nombre_creador": "Meeting creator name: ",
+        "usuarios_en_vivo": "Live users: ",
+        "fecha_de_creacion": "Creation date: ",
+        "charla_premium":"This talk is only available to premium users \nDon't worry ... you still get {} free!",
+        "coste_de_asistencia":  "Cost of attendance: {} points",
+        "gratuita": "0 points (free)",
+        "charla_premium_2": "This talk is only available to premium users"
+  
+       },
+       "_Creacion_Reunion": {
+        "si": "Yes",
+        "no": "No",
+        "desconocido":"Unknown",
+        "creacion_de_reunion": "Meeting creation",
+        "crea_una_reunion": "Create a meeting and interact with other users with your same interests.",
+        "nombre_sala": "Room name",
+        "escribe_nombre_sala": "Write the room name",
+        "debes_escribir_nombre": "You must write a name to you room",
+        "nombre_limite_caracteres": "The name of your meeting cannot have more than 20 characters",
+        "caracteres_no_validos": "Invalid characters",
+        "asunto_reunion_texto":"Write about what your meeting is going to be about",
+        "asunto_reunion":  "Meeting matter",
+        "debes_escribir_asunto": "You must write about what your meeting is going to be about",
+        "asunto_limite_caracteres": "The subject of your meeting cannot have more than 50 characters",
+        "nombre_usuario": "User name",
+        "debes_escribir_nombre_usuario": "You must write a user name",
+        "nombre_del_creador_de_la_reunion":"Meeting creator name",
+        "conectar_audio": "Connect audio",
+        "no_esta_permitido_conectar_audio": "**It is not allowed to connect the audio in this meeting",
+        "conectar_camara": "Connect camera",
+        "no_esta_permitido_conectar_camara": "**It is not allowed to connect the camera in this meeting",
+        "reunion_premium": "This meeting is for premium users only \nDon't worry ... you still have {} free!",
+        "reunion_premium_2": "This meeting is for premium users only",
+        "coste_reunion": "This meeting has a cost of {} points",
+        "¿quieres_donacion?":"Do you want your meeting attendees have to donate points to you?",
+        "coste_en_puntos":  "Cost in points",
+        "debes_indicar_coste": "You must indicate the cost in points of the meeting",
+        "introduce_numero_entero": "You must enter a whole number",
+        "¿quieres_audio?": "Do you want your meeting attendees to be able to connect their audio?",
+        "¿quieres_camara?": "Do you want your meeting attendees to be able to connect their camera?",
+        "comparte_la_reunion":"Share the meeting with friends and followers!",
+        "promo_reunion_whatshapp": "¡Hello! \nI just started a new meeting in EntrenaApp.\nFind it with the name of {} and discuss with us about {} \nDownload it for free! \n PlayStore: https://play.google.com/store/apps/details?id=com.entrena_app.carlos10medina&hl=es \n AppStore: https://apps.apple.com/us/app/id1533801846",
+        "promo_reunion_instagram": "¡Hello! \nI just started a new meeting in EntrenaApp. \nFind it with the name of {} and discuss with us about {} \nDownload it for free!",
+        "entrenamiento": "training",
+        "nutricion": "nutrition",
+        "culturismo": "body building",
+        "fitness": "fitness",
+        "iniciar_reunion": "Start meeting"
+
+  
+       },
+       "_Reunion_Terminada":{
+        "salir": "Leave",
+        "reunion_terminada":"This meeting is already over."
+        
+       },
+       "_User_Compra": {
+        "entrenamiento": "training",
+        "gimnasio":"gym",
+        "deporte":"sport",
+        "salud": "health",
+        "error": "Error!",
+        "ok": "Ok",
+        "error_texto": "Please,try again later.",
+        "informacion": "Information",
+        "cerrar": "Close",
+        "volver": "return",
+        "explicacion_puntos_1":"As you know, performing certain actions in EntrenaAPP entails having to use points.",
+        "explicacion_puntos_2":  "*unless you are premium. Click to see the advantages",
+        "explicacion_puntos_3": "This is because these actions have a maintenance cost (for example, saving your notes or the status of your workouts in the database) or because they have required an economic investment (exercise images, for example). In addition to many months of application development! So we hope you understand the working mode.",
+        "codigo_promocional": "Promotional code:",
+        "cambiar": "Change",
+        "crear_codigo": "Create code",
+        "crear_codigo_explicacion": "Create a promotional code and get 500 free points for each user who registers with your code. You can also encourage the use of your code since the user who registers with your code will also get 500 free points.",
+        "compartir_codigo":"Share code",
+        "500_puntos_gratis": "500 free poits",
+        "error_compartir_codigo": "The promotion could not be shared at this time. Please try again later",
+        "promocion_inicial": "*Initial promotion, only available the first time.¡Take advantage of it!",
+        "10_puntos_gratis": "10 free points",
+        "para_que_se_den_puntos_condiciones": "*To get the points you have to watch the video until \"Bonus available at...\"",
+        "comprar_puntos": "Buy points",
+        "ver_planes_premium": "See premium plans",
+        "probar_premium_gratis":"Try the premium for free",
+        "¿no_te_basta?":  "Isn't what the application offers you enough and do you need personalized professional help?",
+        "tienes_x_puntos": "You have {} points.",
+        "cargando_video": "loading video"
+    },
+
+    "_Promo_Code": {
+      
+        "error": "Error!",
+        "ok": "Ok",
+        "enhorabuena": "¡Congratulations!",
+        "volver": "Return",
+        "codigo_promocional":"Promotional code",
+        "codigo_promocional_explicacion": "Customize your promotional code and earn 500 points every time a new user registers with it. \nIn addition, the new user will also receive 500 free points.",
+        "introduce_codigo_promocional": "Enter a promotional code",
+        "crear": "Create",
+        "creando_codigo": "Creating promotional code",
+        "crear_codigo_explicacion": "Create a promotional code and get 500 free points for each user who registers with your code. You can also encourage the use of your code since the user who registers with your code will also get 500 free points.",
+        "codigo_creado_correctamente":"Your promotional code has been created successfully.",
+        "codigo_ya_existente": "That promo code already exists, please create a different one",
+        "error_creando_codigo": "The promo code could not be updated, please try again later."
+
+    },
+    "_Comprar_Puntos": {
+      
+        "error": "Error!",
+        "ok": "Ok",
+        "procesando": "¡Processing!",
+        "enhorabuena": "¡Congratulations!",
+        "100_puntos":"100 points",
+        "200_puntos": "200 points",
+        "500_puntos": "500 points",
+        "1000_puntos": "1000 points",
+        "2000_puntos": "2000 points",
+        "2500_puntos": "2500 points",
+        "5000_puntos":"5000 points",
+        "1_mes_premium": "1 month premium",
+        "3_meses_premium": "3 months premium",
+        "6_meses_premium": "6 months premium",
+        "1_año_premium": "1 year premium",
+        "comprar": "Buy",
+        "pago_procesado_correctamente": "Your payment has been successful. Thank you very much for your trust in EntrenaAPP. Enjoy it!",
+        "se_esta_procesando_pago": "Your payment is being processed. As soon as we can verify that the payment was effective, we will charge you the points that you buy.",
+        "volver": "Return",
+        "ver_planes_premium":"See premium plans",
+        "procesando_pago": "Processing payment \n Please, wait."
+
+    },
+    "_Premium_Page": {
+      
+        "tu_apoyo_es_indispensable": "Your support is essential",
+        "se_premium": "Be premium",
+        "lleva_tus_resultados_al_siguiente_nivel": "Take your results to the next level",
+        "se_un_pro": "Be a PRO in the only training app endorsed by Professional Physical Activity Coaches and Athletes",
+        "premium": "Premium",
+        "gratuito": "Free",
+        "rutina_adaptada": "100% adapted training routine",
+        "acceso_comunidad": "Community access",
+        "acceso_historial": "Access to the history of your workouts",
+        "ver_estadisticas": "See statistics",
+        "registro_progresos": "Record your progress",
+        "reuniones_directo": "Live meetings to answer questions",
+        "priorizar_grupos":"Prioritize muscle group work",
+        "gestion_fatiga": "Fatigue management after each mesocycle",
+        "seleccion_ejercicios": "Possibility of selecting exercises based on movement pattern",
+        "crear_entrenamientos_desde_0": "Possibility of creating your own workouts from scratch",
+        "sin_publicidad": "Without ads",
+        "sin_conexion_a_internet": "Operation without internet connection",
+        "ver_estadisticas_2": "See statistics (*)",
+        "registrar_tus_progresos_2": "Record your progress (*)",
+        "ver_ejecucion": "See execution of exercises in detail (*)",
+        "con_gasto_de_puntos": "(*)With spending points",
+        "se_un_atleta_pro": "Be a PRO Athlete"
+        
+    
+    },
+    "_Comprar_Premium": {
+      
+        "error": "Error!",
+        "ok": "Ok",
+        "procesando": "¡Processing!",
+        "enhorabuena": "¡Congratulations!",
+        "1_mes_premium": "1 month premium",
+        "3_meses_premium": "3 months premium",
+        "6_meses_premium": "6 months premium",
+        "1_año_premium": "1 year premium",
+        "comprar": "Buy",
+        "pago_procesado_correctamente": "Your payment has been successful. Thank you very much for your trust in EntrenaAPP. Enjoy it!",
+        "se_esta_procesando_pago": "Your payment is being processed. As soon as we can verify that the payment was effective, we will charge you the points that you buy.",
+        "volver": "Return",
+        "prueba_gratis":"*Free trial for the first 2 weeks!",
+        "te_sale_el_mes_a": "*You get the month to {} ",
+        "explicacion_renovacion_automatica_google_play": "*Your subscription will automatically renew for the same period of time unless you cancel it at least 24 hours before the current period ends. You can cancel it at any time from Google Play without additional costs. Your subscription will end at the end of the current period",
+        "explicacion_renovacion_automatica_app_store": "*Your subscription will automatically renew for the same period of time unless you cancel it at least 24 hours before the current period ends. You can cancel it at any time from the App Store without additional costs. Your subscription will end at the end of the current period",
+        "procesando_pago": "Processing payment \n Please, wait."
+    
+    },
+    "_Sales_Page": {
+      
+        "enhorabuena": "¡Congratulations!",
+        "ok": "Ok",
+        "volver": "Return",
+        "estas_a_un_paso": "You are one step away from going to the next level",
+        "escoge_un_plan": "Choose a plan to use after your 2 week free trial",
+        "1_mes": "1 month",
+        "12_meses": "12 months",
+        "renovacion_automatica_app_store": "Your subscription will automatically renew for the same period of time unless you cancel it at least 24 hours before the current period ends. You can cancel it at any time from the App Store without additional costs. Your subscription will end at the end of the current period.",
+        "renovacion_automatica_play_store": "Your subscription will automatically renew for the same period of time unless you cancel it at least 24 hours before the current period ends. You can cancel it at any time from Google Play without additional costs. Your subscription will end at the end of the current period.",
+        "comenzar_mi_prueba_gratuita": "START MY FREE TRIAL",
+        "pago_procesado_correctamente": "Your free trial request has been successfully processed. Thank you very much for your trust in EntrenaAPP. Enjoy it!",
+        "procesando": "Processing",
+        "mes":"Month",
+        "mas_popular": "MOST POPULAR"
+        
+    
+    },
+    "_Semana_Entrenamiento": {
+      
+        "ir_semana_1": "Go to Week 1",
+        "semana_1": "Week 1",
+        "ir_semana_2": "Go to Week 2",
+        "semana_2": "Week 2",
+        "ir_semana_3": "Go to Week 3",
+        "semana_3": "Week 3",
+        "ir_semana_4": "Go to Week 4",
+        "semana_4": "Week 4",
+        "mesociclo_titulo": "Mesocycle {}"
+    
+    },
+    "_Dia_Entrenamiento": {
+      
+        "comparte_redes_sociales": "Share in social media",
+        "comparte_en_facebook": "Share in Facebook",
+        "comparte_en_instagram": "Share on Instagram",
+        "comparte_whatshapp_texto": "I am taking my training with EntrenaAPP. The best training app. Download it for free! \n PlayStore: https://play.google.com/store/apps/details?id=com.entrena_app.carlos10medina&hl=es \n AppStore: https://apps.apple.com/us/app/id1533801846",
+        "comparte_en_whatshapp": "Share in Whatshapp",
+        "comparte_en_telegram": "Share in  Telegram",
+        "comparte_twitter_texto": "I am taking my training with EntrenaAPP. The best training app. Download it for free on the PlayStore and AppStore!",
+        "entrenamiento": "training",
+        "gimnasio":"gym",
+        "deporte":"sport",
+        "salud": "health",
+        "nutricion":"nutrition",
+        "culturismo":"body building",
+        "fitness":"fitness",
+        
+        "comparte_en_twitter": "Share in Twitter",
+        "volver": "Return",
+        "he_completado_mi": "I have completed my: ",
+        "he_acabado": "I have finished",
+        "bienvenido": "Welcome to your training day.",
+        "tienes_x_puntos":"You have {} points.",
+        "eres_un_usuario_pro":"You are a PRO user!."
+    
+    },
+    "_Card_Ejercicio": {
+      
+        "¿que_es_el_rir?": "What RIR is?",
+        "rir_explicacion": "RIR are the repetitions that we have left in chamber. That is, the repetitions that we have to do in an exercise to reach muscle failure. Let's imagine that we are able to perform with 50 kilos 8 repetitions of the bench press to failure. If in our program they tell us that we must work with RIR 2 for 6 repetitions, the weight we will handle will be 50 kilos since we could do 8, but they indicate that we must leave 2 repetitions \"in the chamber\".",
+        "cerrar": "Close",
+        "error": "Error!",
+        "ok": "Ok",
+        "rango_repeticiones": "Repetition range: {}",
+        "numero_series": "Nº of series: {}",
+        "tiempo_descanso_seg": "Break time: {} seg",
+        "tiempo_descanso_min": "Break time: {} min",
+        "comentario": "**Notes: {}",
+        "ocurrio_un_error": "An error occurred",
+        "coste_acceder": "*Accessing this page costs 2 points.",
+        "coste_apuntar":"*Record in the agenda costs 1 point.",
+        "numero_semana": "Week {}"
+
+        
+    
+    },
+    "_Input_Usuario": {
+      
+        "error": "Error!",
+        "ok": "Ok",
+        "serie": "Set {}:",
+        "añade_un_nuevo_comentario": "Add a new comment",
+        "añade_un_comentario": "Add a new comment",
+        "introduce_comentario": "Insert your comment",
+        "comentario_muy_largo": "Comment too long",
+        "guardar_cambios": "Save changes",
+        "introduce_carga_y_repeticiones":"Set load and reps for the set {}",
+        "carga_serie": "Set load {}",
+        "introduce_la_carga": "Insert the load",
+        "introduce_un_numero": "Insert a number",
+        "carga_excesiva": "Load cannot be so big",
+        "repeticiones_serie": "Set reps {}",
+        "introduce_las_repeticiones": "Insert reps",
+        "numero_de_repeticiones_excesivo": "Reps number is too big for a human",
+        "guardar": "Save",
+        "edita_carga": "Edit set load {}",
+        "edita_repeticiones": "Edit reps set {}",
+        "ocurrio_error":"An error has occurred",
+        "notas": "Notes:",
+        "añadir_comentarios": "Add comments",
+        "añadir_carga_y_reps":"Add load and reps set {}"
+
+        
+    
+    },
+    "_Detalle_Ejercicio": {
+    
+        "error": "Error!",
+        "ok": "Ok",
+        "añade_un_nuevo_comentario": "Add a new comment ",
+        "añade_comentario": "Add a comment",
+        "guardar_cambios": "Save changes",
+        "introduce_carga_y_repeticiones": "Enter load and repetitions of the series {}",
+        "carga_serie": "Load set {}",
+        "repeticiones_serie": "Sets repetitions {}",
+        "guardar": "Save",
+        "¿no_puedes_hacer_este_ejercicio?":"Can't do this exercise?",
+        "cambialo": "Change it",
+        "volver": "Return",
+        "ocurrio_error": "An error occurred",
+        "objetivo": "Objective:  ",
+        "consejo_profesional": "Professional advice: {}",
+        "musculos_trabajados_forma_primaria": "Muscles worked primarily: {}",
+        "musculos_trabajados_forma_secundaria": "Muscles worked secondarily:  {} , {}",
+        "serie": "Sets: ",
+        "apunta_carga_y_repeticiones": "Aim for load and reps of the set you just did while you rest for the next set!",
+        "añade_un_comentario":"Add a comment",
+        "rango_de_repeticiones": "Repetition Range: {}",
+        "descanso_seg": "Break: {} seg",
+        "descanso_min": "Break: {} min",
+        "iniciar": "Start",
+        "ejercicios_similares": "Exercises with a similar movement pattern:",
+        "error_actualizando_ejercicio": "There was an error updating your exercise. Please try again later."
+        
+        
+    
+    },
+    "_Configuracion_Entrenamiento": {
+      
+        "ha_ocurrido_un_error": "An error has occurred. Please try again later",
+        "ok": "Ok",
+        "error": "Error!"
+        
+    },
+    "_Comunidad": {
+      
+        "compartelo": "¡Share it!",
+        "continuar": "Continue",
+        "cancelar": "Cancel",
+        "salir": "Leave",
+        "comunidad": "Community",
+        "entra_comunidad": "Enter the community now to ask your questions or interact with other users",
+        "unete_comunidad": "Join our community on telegram! \n \n Surely you still don't know 50% of the things you can do with the application ...\n \n Learn from the best and consult your doubts with the creator of the application to get the most out of it!",
+        "condicion": "The only condition that we are going to put on you so that you can enter our community and be able to interact with higher-level users, ask questions of all kinds, etc. is that you help us spread it. Thank you very much!",
+        "entrar": "Add",
+        "unirse": "Join"
+        
+    },
+    "_Creacion_Entrenamiento": {
+      
+        "debes_asignar_un_nombre": "Have to give a name to your mesocycle of workout.",
+        "volver": "Back",
+        "comienza_asignando_un_nombre": "Start with a name for your workout!",
+        "añade_un_nombre": "Add a name to your workout",
+        "semana_1": "Week 1",
+        "series": "Sets: ",
+        "repeticiones": "Reps: ",
+        "rir": "RIR: ",
+        "t_descanso": "Rest time: ",
+        "semana_2": "Week 2",
+        "semana_3": "Week 3",
+        "semana_4": "Week 4",
+        "cerrar": "Close",
+        "apunte": "Note",
+        "introduce_un_apunte": "Insert a note for this exercise",
+        "seleccion_ejercicio": "Exercise selection",
+        "musculo_a_trabajar": "Muscle to work",
+        "pecho": "Chest",
+        "espalda":"Back",
+        "deltoides_anterior": "Rear delts",
+        "deltoides_lateral": "Side delts",
+        "deltoides_posterior": "Front delts ",
+        "biceps": "Biceps",
+        "triceps": "Triceps",
+        "cuadriceps": "Quads",
+        "gluteo": "Buttocks",
+        "isquios": "Hamstrings",
+        "trapecio": "Trapezius",
+        "gemelo": "Calf",
+        "abs":"Abs",
+        "seleccionar_otro_grupo_muscular": "Select other muscle group",
+        "busca_un_ejercicio": "Search an exercise",
+        "selecciona_un_ejercicio":"Select an exercise",
+        "si": "Yes",
+        "no": "No",
+        "añadir_algun_apunte": "Add note",
+        "uso_apuntes":"You can use the notes for, for example,show that you have to do this exercise in superset with the next; or that you have to do a drop set on the last set.",
+        "añadir_configuracion": "Add a predetermined planning",
+        "puedes_usar_una_configuracion_usada": "You can use a planning that you have used in other exercise.",
+        "debes_seleccionar_una_configuracion": "Select a planning",
+        "configuracion": "Planning",
+        "añadir_configuracion_predeterminada": "Add a predetermined planning",
+        "debes_seleccionar_configuracion": "Select a planning",
+        "ver": "See",
+        "seleccionar": "Select",
+        "añadir_ejercicio": "Add exercise",
+        "coste_editar_entrenamiento": "**Use this option costs 50 points (once you save the data)",
+        "dia_x": "Day {}",
+        "nombre_mesociclo": "Mesocycle {}",
+        "siguiente_dia": "Next day",
+        "pasar_al_siguiente_entrenamiento": "Go to the next workout",
+        "guardar": "Save",
+        "advertencia":"¡Alert!",
+        "borra_esta_configuracion": "Delete this planning!",
+        "ejercicio_no_disponible": "This exercise isn't avalible at the moment.",
+        "¿estas_seguro_eliminar_ejercicio?": "Are you sure do u want to delete this exercise?",
+        "¿estas_seguro?": "Are you sure?",
+        "añade_nombre_configuracion": "Add name",
+        "nombre_configuracion": "Planning name",
+        "introduce_nombre": "Insert name",
+        "nombre_limite_caracteres": "The name can't be so long",
+        "guardar_configuracion": "Save planning",
+        "guarda_tus_configuraciones": "Save your planning",
+        "series_titulo":"Sets",
+        "introduce_numero_series": "Insert sets number",
+        "introduce_series": "Insert sets",
+        "introduce_numero_entero":"Insert integral number",
+        "numero_series_muy_grande": "The sets number can't be so large.",
+        "reps_titulo":"Reps",
+        "introduce_numero_repeticiones":"Insert reps number",
+        "introduce_repeticiones": "Insert reps",
+        "primer_numero_debe_ser_entero": "The first number have to be integral",
+        "rir_titulo":"RIR",
+        "introduce_numero_repeticiones_recamara": "Insert reps in reserve",
+        "introduce_rir": "Insert RIR",
+        "tiempo_descanso_titulo": "Rest time",
+        "introduce_tiempo_descanso_min_seg": "Insert rest time in seconds or minutes",
+        "introduce_tiempo_descanso": "Insert rest time",
+        "¿quieres_guardar_esta_configuracion?": "Do you want to save this planning?",
+        "siguiente": "Next",
+        "acabar": "End up"
+      
+        
+    },
+    "_EditarConfiguracion": {
+        "semana_1": "Week 1",
+        "semana_2": "Week 2",
+        "semana_3": "Week 3",
+        "semana_4": "Week 4",
+        "series_titulo":"Nº Sets",
+        "introduce_numero_series": "Add sets number",
+        "introduce_series": "Add series",
+        "introduce_numero_entero":"Add integral number",
+        "numero_series_muy_grande": "The sets number can't be so large.",
+        "reps_titulo":"Nº reps",
+        "introduce_numero_repeticiones":"Insert the number of reps",
+        "introduce_repeticiones": "Insert reps",
+        "primer_numero_debe_ser_entero": "The first number have to be integral",
+        "rir_titulo":"RIR",
+        "introduce_numero_repeticiones_recamara": "Add the reps in reserve",
+        "introduce_rir": "Add RIR",
+        "tiempo_descanso_titulo": "Rest time",
+        "introduce_tiempo_descanso_min_seg": "Add rest time in seconds or minutes",
+        "introduce_tiempo_descanso": "Add rest time",
+        "volver": "return",
+        "siguiente": "Next",
+        "acabar": "End up"
+    },
+    "_Promo_Redes_Sociales": {
+    
+        "error": "Error!",
+        "ok": "Ok",
+        "salir": "Exit",
+        "comparte": "Share the app",
+        "en_tu_storie": "in your storie",
+        "y_gana": "and win",
+        "250_puntos_gratis": "250 FREE points",
+        "compartir": "Share",
+        "125_puntos": "(125 points)",
+        "no_instagram":"You don't have Instagram installed. Please, try to install to be able to win points.",
+        "no_facebook": "You don't have facebook installed. Please, try to install to be able to win points.",
+        "usa_la_agenda":"Use the schedule",
+        "lleva_el_registro": "Keep track of each set that you do in each exercise and have on hand to know if you are progressing correctly.",
+        "ejercicios_en_detalle": "Detailed excercises",
+        "accede_pagina_detalle": "Access to the detailed page of each exercise to see the right execution, besides there is a chronometer and you can take notes about your progress without exit of the page.",
+        "visualiza_estadisticas": "See your statistics",
+        "visualiza_estadisticas_explicacion": "See your workout's statistics",
+        "reunete": "Meet with other users",
+        "reunete_explicacion": "If an user open a meeting and you want to access for ask a question, is possible that access costs points (the points are donated to the host of the meeting)."
+        
+        
+        
+    
+    },
+    "_Pagina_Espera": {
+    
+        "bienvenido": "WELCOME!",
+        "cargando_datos": "Loading data"
+       },
+    "_Welcome_User_Nuevo": {
+    
+        "bienvenido_a": "Welcome to:",
+        "espero_que": "I hope you have a great experience. \n¡Begin making your workout to your measure!.",
+        "¿tienes_un_codigo_promocional?": "Do you have any promotional code?",
+        "si": "Yes",
+        "no": "No",
+        "codigo_inexistente": "This promotional code doesn't exist",
+        "codigo_propio": "Promotional code of other account that you already have",
+        "codigo_usado": "The promotional code has already been used.",
+        "no_importa": "**If you don't have it, don't worry, push the botton to continue."
+        
+       },
+    "_Ejercicios": {
+        
+ 
+        "press_banca": "Barbell Bench press",
+        "fondos_de_pecho_en_barra": "Weighted straight bar dip",
+        "press_inclinado_con_barra": "Barbell incline bench press",
+        "press_declinado": "Barbell decline bench press",
+        "pull_over_con_barra_recta": "Barbell pullover",
+        "press_plano_con_mancuernas": "Dumbbell bench press",
+        "press_plano_con_mancuernas_agarre_neutro": "Dumbbell hammer press",
+        "press_inclinado_con_mancuernas": "Dumbbell incline bench press",
+        "press_declinado_con_mancuernas": "Dumbbell decline bench press",
+        "aperturas_planas_con_mancuernas": "Dumbbell fly",
+        "aperturas_inclinadas_con_mancuernas": "Dumbbell incline fly",
+        "aperturas_declinadas_con_mancuernas": "Dumbbell decline fly",
+        "pull_over_con_mancuerna": "Dumbbell straight arm pullover",
+        "press_plano_en_multipower": "Smith bench press",
+        "press_inclinado_en_multipower": "Smith incline bench press",
+        "press_declinado_en_multipower": "Smith decline bench press",
+        "press_horizontal_sentado_en_máquina": "Lever chest press",
+        "press_horizontal_sentado_en_máquina_agarre_neutro": "Machine inner chest press",
+        "press_inclinado_convergente": "Lever incline chest press",
+        "press_inclinado_en_máquina": "Leverage incline chest press",
+        "press_declinado_en_máquina": "Lever decline chest press",
+        "cruces_en_máquina": "Lever seated fly",
+        "fondos_de_pecho_en_barras_paralelas": "Wide grip chest dip on high parallel bars",
+        "flexiones_planas_con_banda_elástica": "Band push up",
+        "press_vertical_con_bandas_elásticas": "Band standing chest press",
+        "press_plano_con_bandas_elásticas": "Band bench press",
+        "press_inclinado_con_bandas_elásticas": "Band standing incline chest press",
+        "cruces_con_elásticos_a_altura_media": "Band middle fly",
+        "cruces_con_elásticos_desde_abajo": "Band low fly",
+        "cruces_con_elásticos_desde_arriba": "Band high fly",
+        "flexiones_planas": "Bent side knee push up",
+        "flexiones_declinadas": "Decline push up",
+        "flexiones_inclinadas": "Incline push up",
+        "flexiones_archer": "Archer push up",
+        "wipers_isométricos": "Isometric wipers",
+        "peck_deck": "Lever pec deck fly",
+        "cruces_en_polea_a_altura_central": "Cable middle fly",
+        "aperturas_planas_en_cruce_de_poleas": "Cable lying fly",
+        "aperturas_inclinadas_en_cruce_de_poleas": "Cable incline fly",
+        "cruces_en_polea_desde_abajo": "Cable low fly",
+        "aperturas_declinadas_en_polea": "Cable decline fly",
+        "cruces_en_polea_desde_arriba": "Cable standing up straight crossovers",
+        "pull_over_en_polea_alta": "Cable pushdown (straight arm)",
+        "pull_over_en_polea_alta_tumbado_en_banco_inclinado": "Cable incline pushdown",
+        "pull_over_en_polea_baja_tumbado": "Cable lying extension pullover (with rope attachment)",
+        "press_plano_con_kettlebel": "Kettlebell one arm floor press",
+        "press_plano_con_kettlebel_torso_inclinado": "Kettlebell extended range one arm press on floor",
+        "kettlebell_plyo_press-up": "Kettlebell plyo push up",
+        "flexiones_declinadas_en_trx": "Suspension incline push up",
+        "flexiones_inclinadas_en_trx": "Suspension chest press",
+        "cruces_en_trx": "Suspension fly",
+        
+        "rack_pull": "Barbell rack pull",
+        "peso_muerto": "Barbell deadlift",
+        "peso_muerto_agarre_snatch": "Wide grip barbell deadlift",
+        "remo_a_una_mano_con_barra": "Barbell one arm bent over row",
+        "remo_supino_con_barra": "Barbell reverse grip bent over row",
+        "remo_con_barra_con_codos_separados_apoyado_en_banco_inclinado": "Barbell incline row",
+        "remo_con_barra_con_codos_separados": "Barbell rear delt row",
+        "remo_con_barra": "Barbell bent over row",
+        "remo_pendlay": "Barbell pendlay row",
+        "peso_muerto_con_mancuernas": "Dumbbell straight leg deadlift",
+        "remo_con_mancuerna": "Dumbbell row",
+        "seal_row": "Dumbbell hammer grip incline bench two arm row",
+        "remo_supino_con_mancuernas_con_apoyo_en_banco_inclinado": "Dumbbell lying rear delt row",
+        "remo_neutro_con_mancuernas_de_pie": "Dumbbell bent over row",
+        "remo_con_mancuernas_con_neutrosupinación_de_pie": "Dumbbell pronated to neutral grip row",
+        "remo_con_mancuerna_con_codos_separados": "Dumbbell pronated grip row",
+        "remo_con_mancuernas_agarre_prono": "Dumbbell pronated grip row",
+        "remo_supino_en_multipower": "Smith reverse grip bent over row",
+        "remo_con_codos_separados_en_multipower": "Smith rear delt row",
+        "remo_con_mancuerna_con_codos_separados_apoyo_en_banco_inclinado": "Dumbbell incline row",
+        "peso_muerto_con_bandas_elásticas": "Band straight leg deadlift",
+        "remo_sentado_con_banda_elástica": "Band seated row",
+        "remo_a_una_mano_con_banda_elástica": "Band one arm standing low row",
+        "remo_a_dos_manos_con_banda_elástica": "Band bent over row",
+        "jalón_supino_con_banda_elástica": "Band fixed back underhand pulldown",
+        "jalón_neutro_con_banda_elástica": "Band close grip pulldown",
+        "aducción_de_hombro_con_banda_elástica": "Band kneeling one arm pulldown",
+        "face_pull_con_banda_elástica": "Band face pull",
+        "remo_alto_con_banda_elástica": "Band standing rear delt row",
+        "remo_con_codos_separados_con_banda_elástica": "Band rear delt row",
+        "peso_muerto_con_barra_hexagonal": "Trap bar deadlift",
+        "peso_muerto_en_multipower": "Smith deadlift",
+        "peso_muerto_en_polea": "Cable deadlift",
+        "remo_en_punta_agarre_cerrado": "Lever bent over row with v-bar",
+        "jalón_dorsal_en_máquina_agarre_supino": "Lever reverse grip lateral pulldown",
+        "remo_en_máquina_agarre_neutro": "Lever narrow grip seated row ",
+        "remo_en_máquina_agarre_supino": "Lever reverse grip vertical row",
+        "jalón_dorsal_agarre_supino": "Cable reverse grip traight back seated high row",
+        "remo_en_polea_a_una_mano": "Cable one arm bent over row",
+        "remo_en_polea_baja_sentado_a_una_mano": "Cable seated one arm alternate row",
+        "remo_en_polea_baja_sentado_agarre_supino": "Cable seated supine grip row",
+        "remo_en_polea_baja_sentado_agarre_neutro_cerrado": "Cable seated row",
+        "jalón_dorsal_agarre_neutro_cerrado": "Cable seated high row (V-bar)",
+        "jalón_dorsal_en_polea_a_una_mano": "Cable one arm straight back high row (kneeling)",
+        "dominadas_asistidas_con_agarre_neutro_cerrado": "Assisted parallel close grip pull up",
+        "jalón_dorsal_en_máquina_divergente": "Lever front pulldown",
+        "jalón_trasnuca": "Cable rear pulldown",
+        "remo_alto_en_máquina": "Lever high row (plate loaded)",
+        "remo_en_máquina_con_codos_separados": "Lever seated row",
+        "remo_en_punta_con_codos_separados": "Lever t-bar row",
+        "remo_con_codos_separados_en_polea_baja": "Cable floor seated wide grip row",
+        "face_pull": "Cable standing rear delt row ",
+        "jalón_dorsal_prono": "Cable bar lateral pulldown",
+        "dominadas_asistidas_agarre_prono": "Assisted pull up",
+        "remo_en_multipower": "Smith narrow row",
+        "remo_en_polea_baja_agarre_ancho": "Cable seated wide grip row",
+        "dominadas_asistidas_con_agarre_supino": "Lever assisted chin up",
+        "dominadas_con_agarre_neutro": "Chin ups (narrow parallel grip)",
+        "dominadas_con_agarre_supino": "Close grip chin up",
+        "dominadas_trasnuca": "Wide grip rear pull up",
+        "dominadas_con_agarre_neutro_amplio": "Pull up (neutral grip)",
+        "dominadas_agarre_prono": "Pull up",
+        "dominadas_asistidas_agarre_prono_(subido_en_banco)": "Bench pull ups",
+        
+        
+        "remo_en_trx": "Suspended row",
+        "face_pull_con_trx": "Inverted row with straps",
+        
+        
+        "remo_con_kettlebel": "Kettlebell two arm row",
+        "jalón_dorsal_en_cruce_de_poleas": "Twin handle parallel grip lat pulldown",
+        "remo_en_polea_baja": "Cable low seated row",
+        "remo_pendlay_en_multipower": "Smith bent over row",
+        "press_militar_sentado": "Barbell seated overhead press",
+        "press_militar_de_pie": "Barbell standing military press",
+        "press_militar_trasnuca": "Standing behind neck press",
+        "remo_al_mentón_agarre_abierto": "Barbell shoulder grip upright row",
+        "elevación_lateral_con_barra": "Landmine lateral raise",
+        "esquiador_con_barra_recta":"Barbell skier",
+        "dominadas_con_trx":"Suspension pull up",
+        "remo_con_codos_separados_con_trx": "Suspender wide grip inverted row on floor",
+        
+  
+        "press_de_hombro_con_mancuernas": "Dumbbell seated shoulder press",
+        "press_de_hombro_con_mancuernas_agarre_neutro": "Dumbbell seated shoulder press (parallel grip)",
+        "press_arnold": "Dumbbell arnold press",
+        "elevación_frontal_con_barra_recta": "Barbell front raise",
+        "elevación_frontal_con_mancuernas": "Dumbbell front raise",
+        "elevación_lateral_con_mancuerna_en_banco_inclinado": "Dumbbell incline one arm lateral raise",
+        "elevación_lateral_crucifix_con_mancuernas": "Dumbbell full can lateral raise",
+        "elevación_lateral_con_mancuerna": "Dumbbell lateral raise",
+        "elevación_lateral_con_mancuerna_a_una_mano": "Dumbbell single arm leaning lateral raise",
+    
+        "elevación_lateral_sentado_con_mancuerna": "Dumbbell seated lateral raise",
+        "elevación_lateral_tumbado_con_mancuerna":"Dumbbell side lying one hand raise",
+        "comodin_elevación_lateral":"Lateral raise",
+        "comodin_elevación_lateral_tumbado":"Side lying one hand raise",
+        "pájaro_con_mancuernas_sentado": "Dumbbell rear fly",
+        "pájaro_con_mancuernas_de_pie": "Dumbbell rear lateral raise",
+        "pájaro_con_mancuernas_con_apoyo_en_banco_inclinado":"Dumbbell reverse fly",
+        "press_de_hombro_en_máquina": "Lever seated shoulder press",
+        "elevación_lateral_en_máquina": "Lever lateral raise",
+        "hombro_posterior_en_máquina_contractora_inversa": "Lever seated reverse fly",
+        "press_militar_en_multipower":"Smith shoulder press",
+        "press_militar_trasnuca_en_multipower": "Smith behind head military press",
+        "press_militar_en_polea": " Cable alternate shoulder press",
+        "elevación_frontal_en_polea": "Cable front raise ",
+        "elevación_lateral_en_cruce_de_poleas": "Cable lateral raise",
+        "elevación_lateral_en_polea_a_una_mano": "Cable one arm lateral raise",
+        "hombro_posterior_en_cruce_de_poleas_alto": "Cable standing cross over high reverse fly",
+        "hombro_posterior_en_cruce_de_poleas_tumbado": "Cable supine reverse fly",
+        "pájaro_posterior_en_cruce_de_poleas_de_pie": "Cable cross over reverse fly",
+        "pájaro_posterior_sentado_en_cruce_de_poleas_de_pie": "Cable seated rear lateral raise",
+        "press_militar_con_banda_elástica": "Band shoulder press",
+        "elevación_frontal_con_banda_elástica": "Band front raise",
+        "elevación_lateral_con_banda_elástica": "Band lateral raise",
+        "elevación_lateral_con_banda_elástica_(Técnica_1-1/2)": "Band lateral raise (1-1/2 technique) ",
+        "pájaro_posterior_con_banda_elástica": "Band bent over rear lateral raise",
+        "press_militar_con_kettlebell":"Kettlebell two arm military press",
+        "press_arnold_con_kettlebell": "Kettlebell arnold press",
+        "elevación_frontal_con_kettlebell": "Kettlebell front raise",
+        "elevación_lateral": "Lateral raise",
+        "elevación_lateral_tumbado": "Lying lateral raise",
+        "elevación_frontal_con_trx": "Suspension front raise",
+        
+        "press_militar_con_trx":"Suspension handstand push up upper arms",
+        "elevación_lateral_en_trx": "Suspension lateral raise shoulders",
+        "abducción_horizontal_de_hombro_con_mancuerna": "Dumbbell lying on floor rear delt raise",
+        "pájaro_con_mancuernas_tumbado": "Dumbbell lying rear lateral raise",
+        "abducción_horizontal_de_hombro_con_banda_elástica": "Band pull apart",
+        "pájaro_con_trx_de_pie": "Suspension reverse fly shoulders",
+        "pájaro_con_trx_tumbado":"Suspension reverse fly wake up back",
+       
+        "curl_araña": "Barbell prone incline curl",
+        "curl_concentrado_con_barra": "Barbell standing concentration curl",
+        "curl_de_bíceps_en_banco_scott": "Barbell preacher curl",
+        "curl_de_bíceps_con_barra_recta": "Barbell curl",
+        "curl_de_arrastre_con_barra_recta":"Barbell drag curl",
+        "curl_araña_con_mancuernas": "Dumbbell prone incline curl",
+        "curl_concentrado_con_mancuerna": "Dumbbell concentration curl",
+        "curl_concentrado_con_mancuerna_apoyado_en_banco_inclinado":"Dumbbell standing one arm curl (over incline bench)",
+        "curl_martillo_en_banco_scott_con_mancuerna": "Dumbbell hammer preacher curl",
+        "curl_de_bíceps_en_banco_scott_con_mancuerna":"Dumbbell preacher curl",
+        "curl_de_bíceps_con_mancuernas_de_pie":"Dumbbell standing biceps curl",
+        "curl_martillo_con_mancuernas": "Dumbbell hammer curl",
+        "curl_de_bíceps_en_banco_inclinado_con_mancuernas_agarre_neutro": "Dumbbell incline hammer curl",
+        "curl_de_bíceps_en_banco_inclinado_con_mancuernas":"Dumbbell incline biceps curl",
+        "curl_de_bíceps_en_máquina_scott": "Lever preacher curl",
+        "curl_de_bíceps_tumbado_en_polea_alta": "Cable lying close grip curl",
+        "curl_de_bíceps_en_polea_alta_a_dos_manos": "Cable standing inner curl",
+        "curl_de_bíceps_con_barra_en_polea_baja": "Cable curl",
+        "curl_de_bíceps_con_cuerda_en_polea_baja": "Cable hammer curl",
+        "curl_de_bíceps_tumbado_en_polea_baja": "Cable lying biceps curl ",
+        "curl_de_bíceps_en_polea_baja_a_una_mano": "Cable one arm biceps curl",
+        "curl_concentrado_con_banda_elástica": "Band concentration curl",
+        "curl_de_bíceps_con_banda_elástica": "Alternate biceps curl (with band)",
+        "curl_de_bíceps_con_elástico_sentado": "Band seated biceps curl",
+        "curl_martillo_con_banda_elástica": "Band hammer curl",
+        "curl_de_bíceps_con_banda_elástica_agarre_reverso": "Band reverse curl",
+        "curl_de_bíceps_barra_z": "Ez barbell curl ",
+        "curl_de_bíceps_con_kettlebell_agarre_reverso": "Kettlebell double alternating hang clean forearms",
+        "curl_de_bíceps_con_trx": "Suspension arm curl",
+        "curl_de_bíceps_con_trx_a_una_mano": " Suspension one arm biceps curl",
+        "curl_con_barra_recta_y_banda_elástica": "Band ez barbell close-grip curl",
+     
+        "press_cerrado": "Barbell close grip bench press",
+        "extensión_de_tríceps_con_barra_recta": "Barbell standing overhead triceps extension",
+        "press_francés_con_barra_recta": "Barbell decline close grip to skull press",
+        "press_cerrado_con_mancuernas": "Dumbbell lying elbow press",
+        "extensión_de_tríceps_con_mancuerna_a_dos_manos_de_pie": "Dumbbell standing triceps extension",
+        "extensión_de_tríceps_con_mancuerna_de_pie_a_una_mano": "Dumbbell standing one arm extension",
+        "introduce_un_apunte": "Insert a note for this exercise",
+        "extensión_de_tríceps_con_mancuerna_sentado": "Dumbbell seated triceps extension",
+        "press_francés_con_mancuernas": "Dumbbell lying triceps extension",
+        "patada_de_tríceps_con_mancuerna": "Dumbbell kickback",
+        "fondos_de_tríceps_en_máquina":"Lever seated dip",
+        "extensión_de_tríceps_en_máquina": "Lever triceps extension",
+        "fondos_de_tríceps": "Triceps dip",
+        "flexiones_cerradas": "Close grip push up",
+        "fondos_de_tríceps_entre_bancos_con_peso_corporal": "Bench triceps dip",
+        "press_cerrado_en_multipower": "Smith close grip bench press",
+        "flexiones_cerradas_con_banda_elástica": "Band close grip push up",
+        "extensión_de_tríceps_con_elastico_apoyado_abajo": "Band pushdown",
+        "extensión_de_tríceps_con_banda_elástica_arriba": "Band overhead triceps extension",
+        "extensión_de_tríceps_con_banda_elástica_arriba_a_una_mano": "Band side triceps extension",
+        "press_francés_con_banda_elástica": "Band skull crusher",
+        "patada_de_tríceps_con_banda_elástica":"Band kickback",
+        "fondos_de_tríceps_con_trx": "Suspension triceps dip",
+        "fondos_de_tríceps_en_máquina_de_dominadas_asistidas": "Assisted standing triceps dip",
+        "press_cerrado_con_trx":"Suspension close grip chest press chest",
+        "extensión_de_tríceps_con_trx": "Suspension triceps extension",
+        "extensión_de_tríceps_tumbado_con_trx": "Suspension triceps extension push-up",
+        "tríceps_kickback_con_trx": "Suspension triceps kickback",
+        "extensión_de_tríceps_en_polea_alta_con_barra_recta":"Cable pushdown",
+        "extensión_de_tríceps_en_polea_alta_con_cuerda": "Cable pushdown (with rope attachment)",
+        "extensión_de_tríceps_en_polea_baja_a_dos_manos": "Cable overhead triceps extension (rope attachment)",
+        "extensión_de_tríceps_en_polea_baja_a_una_mano": "Cable alternate triceps extension",
+        "patada_de_tríceps_en_polea_baja": "Cable kickback",
+        "press_francés_con_barra_z": "EZ barbell jm bench press",
+       
+        "sentadilla_con_barra": "Barbell full squat",
+        "sentadilla_frontal": "Barbell clean grip front squat",
+        "sentadilla_hack_con_barra": "Barbell hack squat",
+        "split_squat": "Barbell split squat",
+        "sentadilla_búlgara_con_barra": "Barbell single leg split squat",
+        "zancadas_con_barra": "Barbell rear lunge",
+        "sentadilla_con_mancuernas": "Dumbbell squat",
+        "sentadilla_con_mancuernas_a_una_pierna": "Dumbbell single leg squat",
+        "sentadilla_frontal_con_mancuerna": "Dumbbell goblet squat",
+        "sentadilla_búlgara_con_mancuernas": "Dumbbell bulgarian split squat",
+        "zancadas_con_mancuernas":"Dumbbell lunge",
+        "sentadilla_en_multipower": "Smith full squat",
+        "sentadilla_en_multipower_bajando_con_cadera_perpendicular": "Smith squat",
+        "sentadilla_frontal_en_multipower": "Smith front squat",
+        "sentadilla_hack_en_multipower": "Smith hack squat",
+        "prensa_vertical_en_multipower": "Smith leg press",
+        "zancadas_en_multipower": "Smith sprint lunge",
+        "sentadilla_búlgara_en_multipower": "Smith single leg split squat",
+        "sentadilla_con_banda_elástica": "Band squat",
+        "sentadilla_búlgara_con_bandas_elásticas": "Band one arm single leg split squat",
+        "zancadas_con_banda_elástica": "Band lunges",
+        "extensión_de_cuádriceps_con_banda_elástica_de_pie":"Band standing leg extension",
+        "extensión_de_cuádriceps_con_banda_elástica_sentado": "Resistance band leg extension",
+        "sentadilla_a_una_pierna_con_peso_corporal": "Single leg squat with support ",
+        "sentadilla_sissy":"Sissy squat bodyweight",
+        "sentadilla_con_trx": "Suspension squat",
+        "sentadilla_búlgara_con_trx":"Suspended split squat",
+        "sentadilla_lateral_con_trx":"Suspension side lunge",
+        "zancadas_con_trx": "Suspension lunges",
+        "sentadilla_a_una_pierna_con_trx": "Suspension single leg squat",
+        "prensa_inclinada":"Sled 45 leg press",
+        "sentadilla_hack": "Sled hack squat",
+        "prensa_horizontal_en_máquina": "Lever horizontal leg press",
+        "extensión_de_cuádriceps": "Lever leg extension",
+        "prensa_horizontal_en_máquina_con_pies_abajo": "Lever seated squat calf raise on leg press machine",
+        "prensa_vertical_en_máquina": "Assisted single leg press",
+        "sentadilla_frontal_en_polea": "Cable front squat",
+        "zancadas_en_polea": "Cable lunge",
+        "sentadilla_frontal_con_kettlebell": "Kettlebell front squat",
+        "pistol_squat_con_kettlebell": "Kettlebell pistol squat",
+        "zancadas_con_kettlebell": "Kettlebell forward lunge",
+      
+        "nordic_curl": "Inverse leg curl",
+        "curl_femoral_sentado": "Lever seated leg curl",
+        "curl_femoral_tumbado": "Lever lying leg curl",
+        "curl_femoral_de_pie": "Lever kneeling leg curl",
+        "buenos_días": "Barbell good morning",
+        "peso_muerto_a_una_pierna": "Barbell single leg deadlift ",
+        "peso_muerto_rumano": "Barbell romanian deadlift ",
+        "peso_muerto_piernas_rígidas_con_mancuernas": "Dumbbell stiff leg deadlift",
+        "peso_muerto_rumano_con_mancuernas": "Dumbbell romanian deadlift",
+        "femoral_tumbado_con_mancuerna": "Dumbbell lying femoral",
+        "peso_muerto_a_una_pierna_con_mancuernas": "Dumbbell single leg deadlift",
+        "nordic_curl_asistido_en_polea": "Cable assisted inverse leg curl",
+        "pull_through_piernas_rígidas_en_polea": "Cable straight legs pull through ",
+        "curl_femoral_de_pie_con_banda_elástica": "Band leg curl",
+        "curl_femoral_tumbado_con_banda_elástica": "Band lying leg curl",
+        "buenos_días_con_banda_elástica": "Band good morning",
+        "peso_muerto_rumano_con_banda_elástica":"Band stiff leg deadlift",
+        "peso_muerto_rumano_a_una_pierna_con_banda_elástica": "Band single stiff leg deadlift",
+        "extensión_de_cadera_piernas_rígidas_con_banda_elástica": "Band hip extension",
+        "hiperextensiones_reversas_en_máquina": "Lever reverse hyperextension",
+        "hiperextensiones_reversas": "Reverse hyperextension",
+        
+        "curl_femoral_con_toalla": "Hamstring work with blanket",
+        "curl_femoral_tumbado_con_trx": "Suspension leg curl thighs",
+        "extensión_de_cadera_piernas_rígidas_con_trx": "Suspension hip hinge hips",
+        "peso_muerto_rumano_a_una_pierna_con_trx": "Suspension single leg deadlift hips",
+        
+        "sentadilla_sumo": "Sumo squat",
+        "peso_muerto_sumo": "Barbell sumo deadlift",
+        "sentadilla_sumo_con_mancuerna": "Dumbbell sumo squat",
+        "sentadilla_sumo_con_mancuerna_entre_bancos": "Dumbbell sumo squat off benches",
+        "sentadilla_sumo_en_multipower": "Smith sumo squat",
+        "hip_thrust": "Barbell tip thrust",
+        "puente_de_glúteos_con_barra":"Barbell glute bridge",
+        "hip_thrust_a_una_pierna": "Barbell one leg hip thrust",
+        "sentadilla_búlgara_con_barra_(enfasis_glúteo)": "Barbell one leg squat (gluteal emphasis)",
+        "abducción_de_glúteo_con_barra":"Weighted lying hip abduction",
+        "sentadilla_sumo_en_polea": " Cable sumo squat",
+        "patada_de_glúteo_en_polea": "Cable standing hip extension",
+        "pull_through_en_polea": "Cable pull through",
+        "abducción_de_glúteo_en_polea":"Cable hip abduction",
+        "aducción_de_glúteo_en_polea": "Cable hip adduction",
+        "sentadilla_sumo_con_bandas_elásticas": "Band sumo squat",
+        "hip_thrust_con_banda_elástica": "Band hip thrust",
+        "hip_thrust_de_rodillas_con_banda_elástica": "Band hip thrusts on knees",
+        "pull_through_con_banda_elástica": "Band pull through",
+        "extensión_de_cadera_con_banda_elástica": "Band hip extension",
+        "patada_de_glúteo_con_banda_elástica": "Band bent over hip extension",
+        "abducción_de_glúteo_con_banda_elástica": "Band hip abduction",
+        "abducción_de_glúteo_con_banda_elástica_tumbado": "Band lying abduction",
+        "abducción_de_glúteo_con_banda_elástica_de_rodillas": "Band bent leg side kick",
+        "pasos_laterales_con_banda_elástica": "Band lateral walk",
+        "aducción_de_glúteo_con_banda_elástica": "Band hip adduction",
+        "sentadilla_sumo_con_kettlebell": "Kettlebell sumo squat",
+        "hip_thrust_en_máquina": "Lever hip thrust",
+        "patada_de_glúteos_en_máquina": "Lever hip extension ",
+        "abducción_de_glúteo_sentado_en_máquina":"Lever seated hip abduction",
+        "abducción_de_glúteo_en_máquina": "Lever side hip abduction",
+        "aductores_en_máquina_sentado": "Lever seated hip adduction",
+        "step_up_en_multipower": "Smith lateral step up",
+        "hiperextensiones reversas en multipower": "Smith reverse hyperextension ",
+        "hip_thrust_con_carga_externa": "Hip thrusts (with external load)",
+        "frog_hip_thrust": "Frog hip thrust ",
+        "puente_de_glúteos_a_una_pierna": "Glute bridge one leg on floor",
+        "patada_de_glúteo": "Bent leg kickback",
+        "abducción_de_glúteo_con_cadera_extendida": "Bridge hip abduction",
+        "abducción_de_glúteo_con_peso_corporal": "Bent leg side kick",
+        "aducciones_de_glúteo_con_peso_corporal":"Side plank hip adduction",
+        "sentadilla búlgara con mancuernas (énfasis glúteo)": "Dumbbell bulgarian split squat (gluteal emphasis)",
+        "puente_de_glúteos_con_trx": "Suspension hip bridge",
+        "extensión_de_cadera_con_kettlebell":"Kettlebell swing",
+        "sentadilla_sumo_a_una_pierna_con_trx": "Suspension side stretch",
+        "extensiones_de_glúteo_a_una_pierna":"Glute bridge one leg on bench",
+        "sentadilla_búlgara_con_bandas_elásticas_(énfasis_glúteo)": "Band one arm single leg split squat (gluteal emphasis)",
+        "extensión_de_cadera_con_trx": "Suspension hyperextension back",
+        "abducción_de_glúteo_con_trx": "Suspension hip abduction hips",
+
+
+        "remo_al_mentón_con_barra": "Barbell upright row",
+        "encogimientos_de_trapecio_con_barra":"Barbell shrug",
+        "encogimientos_de_trapecio_con_mancuerna":"Dumbbell shrug",
+        "remo_al_mentón_con_mancuerna": "Dumbbell upright row",
+        "encogimientos_de_trapecio_en_multipower": "Smith back shrug",
+        "remo_al_mentón_en_multipower":"Smith upright row",
+        "remo_al_mentón_en_polea": "Cable upright row",
+        "encogimientos_de_trapecio_en_polea": "Cable shrug",
+        "encogimientos_de_trapecio_con_banda_elástica": "Band shrug",
+        "remo_al_mentón_con_banda_elástica": "Band upright row",
+
+        "rueda_abdominal_con_barra": "Barbell rollout",
+        "encogimientos_abdominales": "3/4 Sit-up",
+        "encogimientos_abdominales_colgado": "Hanging straight leg raise",
+        "encogimientos_abdominales_en_máquina_de_fondos": "Captains chair straight leg raise",
+        "encogimientos_abdominales_en_máquina": "Lever seated crunch ",
+        "abs_roller": "Ab roller crunch",
+        "rueda_abdominal": "Wheel rollout",
+        "plancha_abdominal": "Front plank",
+        "encogimientos_abdominales_colgado_con_rotación_de_tronco": "Hanging oblique knee raise",
+        "encogimientos_abdominales_con_rotación_de_tronco": "Air bike",
+        "plancha_lateral": "Side plank",
+        "encogimientos_abdominales_en_polea": "Cable seated crunch",
+        "leñador": "Cable twist",
+        "press_pallof": "Cable standing twist row (V bar) ",
+        "leñador_con_elástico": "Band twist",
+        "press_pallof_con_elástico": "Band horizontal pallof press",
+        "kettlebell_windmill": "Kettlebell double windmill",
+        "plancha_abdominal_con_trx": "Suspension leg plank",
+        "rueda_abdominal_con_trx": "Suspension rollout",
+        "encogimientos_abdominales_con_trx": "Suspension jack knife",
+        "encogimientos_abdominales_invertidos_con_trx": "Suspension supine crunch",
+        "plancha_lateral_con_trx": "Suspension star plank",
+  
+        "gemelo_de_pie_con_barra_recta":"Barbell standing calf raise",
+        "gemelo_sentado_con_barra_recta": "Barbell seated calf raise",
+        "gemelo_de_pie_con_mancuerna": "Dumbbell standing calf raise",
+        "gemelo_de_pie_con_mancuerna_a_una_pierna": "Dumbbell single leg calf raise",
+        "gemelo_sentado_con_mancuernas": "Dumbbell seated calf raise",
+        "gemelo_sentado_en_multipower": "Smith toe raise",
+        "gemelo_de_pie_en_multipower": "Smith standing leg calf raise",
+        "gemelo_de_pie": "Lever standing calf raise",
+        "gemelo_en_máquina": "Lever rotary calf",
+        "gemelo_sentado": "Lever seated calf raise",
+        "gemelo_en_prensa_inclinada": "Sled calf press on leg press",
+        "gemelo_de_pie_con_carga_externa":"Standing calf raise with external load",
+        "gemelo_sentado_con_carga_externa": "Seated calf raise with external load",
+        "gemelo_de_pie_con_banda_elástica": "Band calf raise",
+        "gemelo_sentado_con_banda_elástica":"Resistance band calf raise",
+        "gemelo_de_pie_a_una_pierna_con_banda_elástica": "Band single leg calf raise",
+        "gemelo_de_pie_con_trx": "Suspension calf raise",
+        
+        
+       
+        "press_vertical_en_máquina_agarre_neutro":"Machine inner chest press",
+        "press_vertical_en_máquina": "Lever chest press",
+        "flexiones_pliométricas": "Archer push up",
+        "wipers_ismétricos": "Isometric wipers",
+        "jalón_dorsal_agarre_en_V_invertida": "Cable seated high row (V bar)",
+        "remo_en_punta_agarre_ancho": "Lever T bar row",
+        "elevaciones_laterales_en_máquina": "Lever lateral raise",
+        "elevaciones_laterales_en_cruce_de_poleas": "Cable lateral raise",
+        "remo_al_mentón_agarre_ancho": "Barbell shoulder grip upright row",
+        "elevaciones_laterales_crucifix_con_mancuernas": "Dumbbell full can lateral raise",
+        "hombro_posterior_en_cruce_de_poleas": "Cable standing cross over high reverse fly",
+        "curl_concentrado_en_banco_inclinado_con_mancuerna": "Dumbbell standing one arm curl (over incline bench)"
+        },
+
+        "_Quiz_Page": {
+
+            "error": "Error!",
+            
+            "ok": "Ok",
+            
+            "ha_ocurrido_un_error": " An error has occurred. Please log in again and if the problem persists send us an email to info@entrenaapp.com ",
+            
+            "examen": "Examn",
+            
+            "no_puedes_ir_hacia_atras": " You cannot go back at this time.",
+            
+            "pregunta": "Question {}/10",
+            
+            "errores_restan": "** The wrong answers subtract."
+            
+            },
+            
+            "_Muestra_Instagram": {
+            
+            "series_repeticiones": "{} sets x {} reps",
+            
+            "tiempo_descanso_seg": "Break time: {} sec",
+            
+            "tiempo_descanso_min": "Break time: {} min",
+            
+            "semana_dia": "Week {} - {}"
+            
+            },
+            
+            "_Estructuracion_Entrenamiento": {
+            
+            "¿estas seguro?": "Are you sure?",
+            
+            "si": "Yes",
+            
+            "no": "No",
+            "dia": "Day {}",
+            "numero_dia": "Day of {}",
+            
+            "seleccion_de_ejercicios": " Exercise selection: {}",
+            
+            "mesociclo": "Mesocycle {}",
+            
+            "volver": "Return",
+            
+            "siguiente_dia": "Next day",
+            
+            "pasar_al_siguiente_entrenamiento": " Go to the next workout ",
+            
+            "al_hacerlo_se_perderan_los_cambios": " By doing so, the changes you have made in this training will be lost and another with a different structure will be displayed.",
+            
+            "ver_otra_estructura": " See another structure"
+            
+            },
+            
+            "_Compartir_Reunion_Instagram": {
+            
+            "nueva_reunion": " I have started a new meeting in EntrenaApp ",
+            
+            "encuentra_reunion": "Find it under the name of {} and discuss with us about {}. \n \n Download it for free!",
+            
+            "descargatela_gratis": "Download it for free!"
+            
+            },
+            
+            "_Compartir_Foto_Codigo": {
+            
+            "con_opciones_para_todos": " With options for all levels, from letting the application manage your workouts based on your level and experience to setting them up yourself from 0",
+            
+            "recomendable_100": "RECOMMENDABLE 100%",
+            
+            "registrate_con_mi_codigo": " Register with my code ",
+            
+            "y_entra_con_500": " and enter with 500 extra points for free.",
+            
+            "descargala_ya": " DOWNLOAD NOW!"
+            
+            },
+            
+            "_Card_Dia_Entrenamiento": {
+            
+            "semana": "WEEK {}"
+            
+            },
+            
+            "_Dia_Entrenamiento_Model": {
+            
+            "dia_de_torso": "Torso day",
+            
+            "dia_de_torso_x": "Torso day {}",
+            
+            "dia_de_pierna": "Leg day",
+            
+            "dia_de_pierna_x": "Leg day {}",
+            
+            "dia_de_empuje": "Push day",
+            
+            "dia_de_empuje_x": "Push day {}",
+            
+            "dia_de_tiron": "Pull day",
+            
+            "dia_de_tiron_x": "Pull day {}",
+            
+            "dia_de_pierna_enfasis_cuadriceps": "Leg day (quadriceps emphasis)",
+            
+            "dia_de_pierna_2_enfasis_cuadriceps": "Leg day 2 (quadriceps emphasis)",
+            
+            "dia_de_pierna_enfasis_femoral_gluteo": "Leg day (Femoral / Gluteal Emphasis) + Lateral shoulder",
+            
+            "dia_de_pecho": "Chest day",
+            
+            "dia_de_espalda": "Back day",
+            
+            "dia_de_hombro": "Shoulder day",
+            
+            "dia_de_pierna_enfasis_gluteo": "Leg day 2(Gluteal emphasis)",
+            
+            "dia_de_brazos": "Arms day",
+            
+            "tecnica_1_1/2": "1-1/2 Technique You go up, down halfway, up and down all the way down, that's one rep.",
+            
+            "en_superserie_con_el_siguiente_ejercicio": "In superset with the following exercise",
+            
+            "dia_de_empuje_prioridad_hombros": "Push day (Shoulders priority)",
+            
+            "en_superserie_con_biceps": "In superset with biceps",
+            
+            "dia_de_hombro_y_brazos":"Shoulder and Arms Day",
+            
+            "dia_de_femoral_y_espalda": "Hamstrings + Back Day",
+            
+            "en_superserie_con_triceps": "In superset with triceps",
+            
+            "en_superserie_con_press": "In superset with press",
+            
+            "triserie_con_los_siguientes_ejercicios": "Triset with the following two exercises.",
+            
+            "dia_de_pecho_hombro_y_brazos":"Chest + Shoulder + Arms Day",
+            
+            "dia_de_femoral_gluteo": "Hamstrings/Gluteal day",
+            
+            "dia_de_espalda_pecho_brazos": " Back/Chest/Arms Day",
+            
+            "dia_de_cuadriceps": "Quadriceps day",
+            
+            "1_de_parada_abajo": "1\" from stopping down (without resting the arm on the body)",
+            
+            "dia": "Day {}",
+            
+            "triserie": "Triset with lateral raises and flat press."
+            
+            },
+            
+            "_Mesociclo_Entrenamiento_Model": {
+            
+            "torso_pierna_formacion_1": " Torso-Leg Training Phase (Level 1)",
+            
+            "torso_pierna_formacion_2": " Torso-Leg Training Phase (Level 2)",
+            
+            "torso_pierna": "Torso-Leg",
+            
+            "pierna_torso": "Leg-Torso",
+            
+            "tiron_empuje_pierna_formacion_1": "Pull-Push-Leg Training Phase (Level 1)",
+            
+            "tiron_empuje_pierna_formacion_2": "Pull-Push-Leg Training Phase (Level 2)",
+            
+            "tiron_empuje_pierna_m1": "Pull-Push-Leg (M1)",
+            
+            "tiron_empuje_pierna_m2": "Pull-Push-Leg (M2)",
+            
+            "tiron_empuje_pierna_m3": "Pull-Push-Leg (M3)",
+            
+            "3_dias_p_tren_inferior": "3 days lower body priority",
+            
+            "3_dias_p_tren_superior": "3 days priority upper body",
+            
+            "espalda_pecho_pierna_hombro":"Back-Chest-Leg-Shoulder",
+            
+            "empuje_pierna_tiron_pierna":"Push-Leg-Pull-Leg",
+            
+            "tiron_empuje_pierna_empuje":"Pull-Push-Leg-Push",
+            
+            "empuje_tiron_pierna_tiron":" Push-Pull-Leg-Pull",
+            
+            "pierna_tiron_pierna_empuje":"Leg-Pull-Leg-Push",
+            
+            "tiron_empuje_pierna_brazos":"Pull-Push-Leg-Arms",
+            
+            "tiron_empuje_pierna_hombro":" Pull-Push-Leg-Shoulder",
+            
+            "pierna_empuje_tiron_pierna":"Leg-Push-Pull-Leg",
+            
+            "pierna_empuje_tiron_pierna_torso_formacion_1":"Leg-Push-Pull-Leg-Torso Training Phase (Level 1)",
+            
+            "pierna_empuje_tiron_pierna_torso_formacion_2":"Leg-Push-Pull-Leg-Torso Training Phase (Level 2)",
+            
+            "pierna_empuje_tiron_pierna_torso":"Leg-Push-Pull-Leg-Torso",
+            
+            "pierna_empuje_tiron_pierna_hombro_y_brazos": "Leg-Push-Pull-Leg-Shoulder and arms",
+            
+            "empuje_cuadriceps_tiron_empuje_femoral_y_espalda":"Push-Quadriceps-Pull-Push-/Back",
+            
+            "pierna_empuje_tiron_pierna_empuje":"Leg-Push-Pull-Leg-Push",
+            
+            "pierna_tiron_empuje_gluteo_y_femoral_espalda_pecho_y_brazos":"Leg-Pull-Push-Gluteal/Hamstrings-Back/Chest/Arms",
+            
+            "pierna_tiron_empuje_pierna_tiron":"Leg-Pull-Push-Leg-Pull",
+            
+            "empuje_femoral_y_gluteo_tiron_cuadriceps_hombro_y_brazos": "Push-Hamstrings/Gluteal-Pull-Quadriceps-Shoulder/Arms",
+            
+            "pierna_tiron_empuje_cuadriceps_espalda_pecho_y_brazos":"Leg-Pull-Push-Quadriceps-Back/Chest/Arms",
+            
+            "empuje_pierna_tiron_pierna_brazos": "Push-Leg-Pull-Leg-Arms",
+            
+            "tiron_empuje_pierna_f2_m1": "Pull-Push-Leg (Frequency 2) M1",
+            
+            "tiron_empuje_pierna_f2_m2": "Pull-Push-Leg (Frequency 2) M2",
+            
+            "tiron_empuje_cuadriceps_empuje_femoral_y_espalda_empuje": "Pull-Push-Quadriceps-Push-Hamstrings/Back-Push",
+            
+            "tiron_empuje_femoral_y_espalda_empuje_tiron_cuadriceps": "Pull-Push-Hamstrings/Back-Push-Pull-Quadriceps",
+            
+            "pierna_empuje_tiron_cuadriceps_empuje_gluteo_femoral_y_espalda": "Leg-Push-Pull-Quadriceps-Push-Gluteal/Hamstrings/Back",
+            
+            "tiron_empuje_pierna_f2_formacion_1": "Pull-Push-Leg (Frequency 2) F.F (Level 1)",
+            
+            "tiron_empuje_pierna_f2_formacion_2": "Pull-Push-Leg (Frequency 2) F.F (Level 2)"
+            
+            },
+            
+            "_Patron_Model": {
+            
+            "empuje_horizontal": " We work the pectoralis major with emphasis on the sternocostal bundle with a horizontal push exercise.",
+            
+            "empuje_inclinado": " We work the pectoralis major with emphasis on the clavicular bundle with an inclined bench push exercise.",
+            
+            "empuje_declinado": " We work the pectoralis major with emphasis on the sternocostal bundle with a horizontal push exercise on a declined bench.",
+            
+            "flexion_de_hombro_abduccion_horizontal": "Work of the pectoralis major with emphasis on the clavicular bundle with exercise of shoulder flexion and horizontal adduction. We also put a lot of work on the front delts when doing a shoulder push-up.",
+            
+            "aduccion_horizontal": "Work of the pectoralis major (specifically the sternocostal bundle) with horizontal adduction exercise.",
+            
+            "aduccion_de_hombro_y_aduccion_horizontal": "Work of the pectoralis major (specifically the sternocostal bundle) with shoulder adduction and horizontal adduction exercises.",
+            
+            "bisagra_de_cadera": "Exercise based on the hip hinge movement with which we work the entire posterior chain of the body (back, femoral, trapezius, posterior shoulder etc).",
+            
+            "aduccion_de_hombro": "Work of the wide dorsal muscle (specifically this movement pattern is the best for working the lower part of the dorsi) with a shoulder adduction movement",
+            
+            "extension_de_hombro_flexion_de_codo": "Wide dorsal muscle work (specifically this movement pattern is best for working the upper wide dorsal mucle) with a shoulder extension movement",
+            
+            "aproximacion_de_escapulas": "Work of the upper part of the back (middle trapezius, rhomboids, back shoulder etc)",
+            
+            "extension_de_hombro_sin_flexion_de_codo": "Work of the wide dorsal muscle (specifically this movement pattern is the best for working the upper part of the wide dorsal muscle) with a shoulder extension movement in which the elbow is also not flexed as in a dumbbell row, for example.",
+            
+            "aduccion_y_extension_de_hombro": "Movement that combines adduction with shoulder extension with which we work the wide dorsal muscle.",
+            
+            "extension_de_hombro_y_aproximacion_de_escapulas": "Movement that combines the shoulder extension with the scapular approach to work the scapulae approximators together with the wide dorsal muscle.",
+            
+            "empuje_vertical": " Work the anterior deltoid with an overhead push exercise.",
+            
+            "flexion_de_hombro": "Shoulder flexion movement to work the anterior deltoid.",
+            
+            "hombro_lateral_tension_constante": "Work of the lateral head of the deltoid with constant tension.",
+            
+            "hombro_lateral_acortamiento":" Work of the lateral head of the deltoid in shortening.",
+            
+            "hombro_lateral_estiramiento": "Lateral deltoid head work in stretch.",
+            
+            "abduccion_horizontal": "Horizontal abduction movement to work the posterior deltoid.",
+            
+            "biceps_hombro_flexion":"Work the biceps (especially the short head) with the shoulder flexed.",
+            
+            "biceps_hombro_anatomico": "Work of the biceps with the shoulder in anatomical position",
+            
+            "biceps_hombro_extension": " Work the biceps (especially the long head) with the shoulder in extension",
+            
+            "empuje_cerrado": "Triceps work with close grip push exercise.",
+            
+            "triceps_hombro_flexion": " Triceps work (emphasis on the medial head) with the shoulder flexed.",
+            
+            "triceps_hombro_extension":"Triceps work (emphasis on long head) with shoulder extension",
+            
+            "extension_de_rodilla_con_extension_de_cadera": "Work the quadriceps (also the hamstrings and glutes) with a heavy exercise that combines knee and hip extension.",
+            
+            "extension_de_rodilla_pesada": "Quadriceps work with a heavy knee extension exercise.",
+            
+            "extension_de_rodilla_ligera": " Quadriceps work with a light knee extension exercise.",
+            
+            "flexion_de_rodilla": "Hamstring workout with knee flexion based exercise.",
+            
+            "extension_de_cadera_rodilla_fija": "Hip extension movement keeping the knees rigid or semi-rigid to prioritize the work of the hamstrings over the gluteus",
+            
+            "extension_de_cadera_con_carga_axial": "Exercise based on hip extension with axial load prioritizing the gluteus maximus work over the hamstrings.",
+            
+            "extension_de_cadera_con_carga_horizontal_pesado": "Exercise based on hip extension with horizontal load prioritizing gluteus maximus work.",
+            
+            "extension_de_cadera_ligero": "Light exercise based on hip extension to work the gluteus maximus.",
+            
+            "abduccion_de_cadera": "Light exercise based on hip abduction to work the gluteus medius.",
+            
+            "aduccion_de_cadera": "Light exercise based on hip adduction to work the adductors.",
+            
+            "trapecio": " Direct work of the trapezoids.",
+            
+            "gemelo_rodilla_extendida": " Calf exercise with the knee extended to work both the soleus and the gastrocnemius.",
+            
+            "gemelo_rodilla_flexionada": "Calf exercise with the knee flexed to emphasize the work of the soleus since when flexing the knee we deactivate the gastrocnemius.",
+            
+            "flexion_de_columna": "Rectus abdominis work with spinal flexion exercise (or spinal extension).",
+            
+            "rotacion_de_tronco": "Work of the oblique muscles with trunk rotation exercise (or anti-rotation of this one)."
+
+            },
+
+            "_Login": {
+        
+                "o": "or",
+                "no_se_ha_podido_iniciar_sesion": "Login failed.",
+                "inicio_de_sesion_fallido": "Login failed.",
+                "este_usuario_no_esta_registrado": "This user is not registered.",
+                "contraseña_incorrecta": "Incorrect password",
+                "iniciando_sesion": "Logging in...",
+                "correo": "Mail",
+                "correo_invalido": "Invalid email",
+                "contraseña": "Password",
+                "contraseña_invalida": "Invalid password",
+                "terminos_y_condiciones": "Upon entering, you agree to our terms and conditions",
+                "ver": "See",
+                "iniciar_sesion": "Log in",
+                "¿todavia_no_tienes_una_cuenta?": "You still do not have an account?",
+                "registrate": "Sign up",
+                "¿olvidaste_tu_contraseña?":"Did you forget your password?",
+                "cambiala": "Change it"
+                },
+                "_Register": {
+            
+                    "¿ya_tienes_una_cuenta?": "Do you already have an account?",
+                    "inicia_sesion": "Log in",
+                    "aceptar_politica": "Please accept the privacy policy.",
+                    "registrando": "Registering ...",
+                    "correo": "Mail",
+                    "correo_invalido": "Invalid email",
+                    "contraseña": "Password",
+                    "al_menos_8_caracteres": "At least 8 characters with letters and numbers.",
+                    "verificar_contraseña": "Verify Password",
+                    "no_coinciden_las_contraseñas": "Passwords do not match",
+                    "estoy_de_acuerdo_con_los_terminos_y_condiciones": "I agree with the terms and conditions.",
+                    "ver_terminos_y_condiciones": "See terms and conditions of EntrenaAPP",
+                    "registrarme": "Sign up",
+                    "registro_fallido":"Sign up failed.",
+                    "este_usuario_ya_esta_registrado": "This user is already registered."
+                    },
+    
+                    "_Change_Password": {
+            
+                        "cambiando_contraseña": "Changing Password",
+                        "mensaje_enviado_correctamente": "Message sent successfully!",
+                        "cambio_de_contraseña_fallido": "Password change failed",
+                        "volver": "RETURN",
+                        "¿olvidaste_tu_contraseña?": "Did you forget your password?",
+                        "escribe_el_correo": "Please provide the email address associated with your account and we will send you a link so you can reset your password.",
+                        "correo": "Mail",
+                        "correo_invalido": "Invalid email",
+                        "enviar": "Send"
+                        
+                        
+                        },
+    
+                        "_Share": {
+            
+                            "estoy_llevando_mis_entrenamientos": "I am taking my trainings with EntrenaAPP. The best training app. Download it for free! \n PlayStore: https://play.google.com/store/apps/details?id=com.entrena_app.carlos10medina&hl=es \n AppStore: https://apps.apple.com/us/app/id1533801846",
+                            "estoy_llevando_mis_entrenamientos_2": "I am taking my trainings with EntrenaAPP. The best training app. Download it for free on the PlayStore and AppStore!",
+                            "no_app": "You don't have {} installed. Please install {} to be able to share the application."
+                            },
+                            "_Compartir_Foto_Instagram": {
+        
+                                "con_opciones_para_todos_los_niveles": "With options for all levels, from letting the application manage your workouts based on your level and experience to setting them up yourself from 0",
+                                "recomendable_100": "RECOMMENDED 100%",
+                                "registrate_con_mi_codigo": "Register with my code  ",
+                                "y_entra_con_500_puntos_extra_gratis": "and enter with 500 extra points for free.",
+                                "descargala_ya": "DOWNLOAD NOW!"
+                                
+                                },
+                                "_Compartir_Reunion": {
+        
+                                    "he_iniciado_una_nueva_reunion": "I have started a new meeting in EntrenaAPP",
+                                    "encuentrala": "Find it under the name of {} and discuss with us about {}.",
+                                    "descargatela_gratis": "Download it for free!"
+                                    
+                                    
+                                    }
+       }

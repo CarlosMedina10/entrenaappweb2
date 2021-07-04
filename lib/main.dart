@@ -471,136 +471,127 @@
 //     );
 //   }
 // }
-import 'dart:io';
 
-import 'package:device_preview/device_preview.dart';
-import 'package:device_preview/plugins.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
+
+
+import 'package:easy_localization/easy_localization.dart';
+import 'package:entrenaapp/blocs/authentication_bloc/authentication_bloc.dart';
+import 'package:entrenaapp/repository/user_repository.dart';
+import 'package:entrenaapp/src/entrenadores_screens/app/Screens/principal.dart';
+import 'package:entrenaapp/src/ui/landingPage/HomePage.dart';
+import 'package:entrenaapp/src/ui/landingPage/SucessPayment.dart';
+import './src/ui/usuarioDentro/comprobando.dart';
+import 'package:firebase/firebase.dart';
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:path/path.dart' as path;
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
-import 'basic.dart';
+import 'blocs/authentication_bloc/bloc.dart';
 
-void main() {
-  debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
 
+GoogleSignIn _googleSignIn = GoogleSignIn(
+  scopes: <String>[
+    'email',
+
+  ],
+);
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+await EasyLocalization.ensureInitialized();
+   ResponsiveSizingConfig.instance.setCustomBreakpoints(
+    ScreenBreakpoints(desktop: 1025, tablet: 550, watch: 200),
+  );
 
+  Database db = database();
+    final UserRepository userRepository = UserRepository(db);
+
+
+  runApp(
+
+    EasyLocalization(
+          child:   BlocProvider(
+      create: (context) => AuthenticationBloc(userRepository)
+        ..add(AppStarted()),
+      child: App(userRepository),
+    ),
+  
+           supportedLocales: [
+      Locale('es', ),
+      Locale('en', ),
+      
+      
+    ],
+   
+    
+    path: 'resources/langs', //'resources/langs',
+    fallbackLocale:  Locale('en', ),
+   
+    useOnlyLangCode: true,
   
 
-  runApp(Row(
-    textDirection: TextDirection.ltr,
-    crossAxisAlignment: CrossAxisAlignment.stretch,
-    children: [
-      /*Expanded(
-        child: Container(color: Colors.red),
-      ),*/
-      Expanded(
-        child: DevicePreview(
-          enabled: true,
-         
-          builder: (context) => BasicApp(),
-        ),
-      ),
-      Container(color: Colors.red,width: 400,)
-    ],
-  ));
+    ));
+  
+
 }
 
+class App extends StatelessWidget {
+  final UserRepository _userRepository;
 
-// import 'package:entrenaapp/blocs/authentication_bloc/authentication_bloc.dart';
-// import 'package:entrenaapp/repository/user_repository.dart';
-// import 'package:entrenaapp/src/ui/landingPage/HomePage.dart';
-// import 'package:entrenaapp/src/ui/landingPage/SucessPayment.dart';
-// import './src/ui/usuarioDentro/comprobando.dart';
-// import 'package:firebase/firebase.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:google_sign_in/google_sign_in.dart';
-// import 'package:responsive_builder/responsive_builder.dart';
+  App(this._userRepository,);
 
-// import 'blocs/authentication_bloc/bloc.dart';
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      locale: context.locale,
+    supportedLocales: context.supportedLocales,
+    localizationsDelegates: context.localizationDelegates,
+      // ignore: missing_return
+      onGenerateRoute: (RouteSettings settings) {
+    Widget pageView;
+    if (settings.name != null) {
+      var uriData = Uri.parse(settings.name);
+      print(uriData.path);
+      print(uriData.queryParameters['session_id']);
+      print('kkkk');
+      //uriData.path will be your path and uriData.queryParameters will hold query-params values
+
+      switch (uriData.path) {
+        case '/success':
+          pageView = Success(_userRepository,uriData.queryParameters['session_id']);
+          break;
+        //....
+      }
+    }
+    if (pageView != null) {
+      return MaterialPageRoute(
+          builder: (BuildContext context) => pageView);
+    }
+  },
+       title: 'EntrenaApp',
+
+      home:
+
+      BlocBuilder<AuthenticationBloc, AuthenticationState>(
+        builder: (context, state) {
+          if (state is Uninitialized) {
+            return Center(child:CircularProgressIndicator(),);
+          }
+          if (state is Authenticated) {
 
 
-// GoogleSignIn _googleSignIn = GoogleSignIn(
-//   scopes: <String>[
-//     'email',
+            return Principal('W8BP78bU2oSUsOkiJvQTFLicseg1', 'Carlos', _userRepository.firebaseDatabase);
+            // return  Comprobando(_userRepository);
+            // return Sorteo(_userRepository);
+          }
+          if (state is Unauthenticated) {
+            // return LoginScreen(userRepository: _userRepository,);
+            return HomePage(_userRepository,_googleSignIn);
+          }
+          return Container();
+        },
+      ),
+    );
 
-//   ],
-// );
-// void main() {
-//   WidgetsFlutterBinding.ensureInitialized();
-
-//    ResponsiveSizingConfig.instance.setCustomBreakpoints(
-//     ScreenBreakpoints(desktop: 1025, tablet: 550, watch: 200),
-//   );
-
-//   Database db = database();
-//     final UserRepository userRepository = UserRepository(db);
-
-//   runApp(
-//     BlocProvider(
-//       create: (context) => AuthenticationBloc(userRepository)
-//         ..add(AppStarted()),
-//       child: App(userRepository),
-//     )
-//   );
-
-// }
-
-// class App extends StatelessWidget {
-//   final UserRepository _userRepository;
-
-//   App(this._userRepository,);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       // ignore: missing_return
-//       onGenerateRoute: (RouteSettings settings) {
-//     Widget pageView;
-//     if (settings.name != null) {
-//       var uriData = Uri.parse(settings.name);
-//       print(uriData.path);
-//       print(uriData.queryParameters['session_id']);
-//       print('kkkk');
-//       //uriData.path will be your path and uriData.queryParameters will hold query-params values
-
-//       switch (uriData.path) {
-//         case '/success':
-//           pageView = Success(_userRepository,uriData.queryParameters['session_id']);
-//           break;
-//         //....
-//       }
-//     }
-//     if (pageView != null) {
-//       return MaterialPageRoute(
-//           builder: (BuildContext context) => pageView);
-//     }
-//   },
-//        title: 'EntrenaApp',
-
-//       home:
-
-//       BlocBuilder<AuthenticationBloc, AuthenticationState>(
-//         builder: (context, state) {
-//           if (state is Uninitialized) {
-//             return Center(child:CircularProgressIndicator(),);
-//           }
-//           if (state is Authenticated) {
-//             return  Comprobando(_userRepository);
-//             // return Sorteo(_userRepository);
-//           }
-//           if (state is Unauthenticated) {
-//             // return LoginScreen(userRepository: _userRepository,);
-//             return HomePage(_userRepository,_googleSignIn);
-//           }
-//           return Container();
-//         },
-//       ),
-//     );
-
-//   }
-// }
+  }
+}
